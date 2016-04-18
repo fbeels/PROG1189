@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalProject", "FinalProject\FinalProject.csproj", "{3E94041E-EEE4-487C-8B0C-4EB9F23225A8}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BOL", "BOL\BOL.csproj", "{5AEFF12D-27C4-4851-88C7-076831483886}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Types", "Types\Types.csproj", "{658513EB-5A29-45F9-BAD9-111DF1F3E437}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLLayer", "SQLLayer\SQLLayer.csproj", "{F422F740-D711-48FA-932B-A14F63549ED4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{658513EB-5A29-45F9-BAD9-111DF1F3E437}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{658513EB-5A29-45F9-BAD9-111DF1F3E437}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{658513EB-5A29-45F9-BAD9-111DF1F3E437}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F422F740-D711-48FA-932B-A14F63549ED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F422F740-D711-48FA-932B-A14F63549ED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F422F740-D711-48FA-932B-A14F63549ED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F422F740-D711-48FA-932B-A14F63549ED4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

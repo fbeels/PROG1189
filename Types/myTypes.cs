@@ -22,7 +22,6 @@ namespace MyTypes
         Closed
     }
 
-
     public struct ParmStructure
     {
         private string ParmID_;

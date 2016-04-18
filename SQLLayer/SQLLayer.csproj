@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5AEFF12D-27C4-4851-88C7-076831483886}</ProjectGuid>
+    <ProjectGuid>{F422F740-D711-48FA-932B-A14F63549ED4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BOL</RootNamespace>
-    <AssemblyName>BOL</AssemblyName>
+    <RootNamespace>SQLLayer</RootNamespace>
+    <AssemblyName>SQLLayer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -41,18 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PurchaseOrder.cs" />
-    <Compile Include="PurchaseOrderItem.cs" />
+    <Compile Include="SQLLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Types\Types.csproj">
-      <Project>{658513eb-5a29-45f9-bad9-111df1f3e437}</Project>
-      <Name>Types</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
