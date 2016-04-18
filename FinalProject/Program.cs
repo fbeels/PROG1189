@@ -20,9 +20,6 @@ namespace FinalProject
         }
 
 
-     static void test()
-        {
-            Console.WriteLine("Testing 123");
-        }
+     
     }
 }
