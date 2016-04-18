@@ -14,5 +14,26 @@
       <FileName>PurchaseOrder.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="BOL.Payroll">
+    <Position X="7.5" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAEAAAAgAAAAAAAAAACAIAAAAAAAAAAAAAACEAAA=</HashCode>
+      <FileName>Payroll.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BOL.Employee">
+    <Position X="2.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAgAAEAAACAAAAAIAABAACAACAAAAEACAAAAIAABAAg=</HashCode>
+      <FileName>Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BOL.EmploymentInfo">
+    <Position X="6" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAACCAAAACAAAAIAQgAAAhAAAA=</HashCode>
+      <FileName>EmploymentInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
