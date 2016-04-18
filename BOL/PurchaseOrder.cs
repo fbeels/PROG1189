@@ -16,7 +16,6 @@ namespace BOL
         public double Tax { get; set; }
         public OrderStatus Status { get; set; }
 
-
-
+       
     }
 }
