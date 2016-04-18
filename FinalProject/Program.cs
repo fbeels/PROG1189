@@ -18,5 +18,11 @@ namespace FinalProject
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
+
+
+     static void test()
+        {
+            Console.WriteLine("Testing 123");
+        }
     }
 }
