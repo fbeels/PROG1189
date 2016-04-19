@@ -18,5 +18,15 @@ namespace BOL
         public double PayRate { get; set; }
         public bool EmailNotification { get; set; }
 
+        public EmploymentInfo create()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public EmploymentInfo update()
+        {
+            throw new System.NotImplementedException();
+        }
+
     }
 }

@@ -16,5 +16,15 @@ namespace BOL
         public double EI { get; set; }
         public double Pension { get; set; }
 
+        public Payroll create()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Payroll update()
+        {
+            throw new System.NotImplementedException();
+        }
+
     }
 }

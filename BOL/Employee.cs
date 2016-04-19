@@ -20,6 +20,16 @@ namespace BOL
         public string Phone { get; set; }
         public string Cell { get; set; }
         public string Email { get; set; }
+
+        public Employee create()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Employee update()
+        {
+            throw new System.NotImplementedException();
+        }
         
     }
 }
