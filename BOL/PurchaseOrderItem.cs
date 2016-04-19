@@ -10,7 +10,7 @@ namespace BOL
     public class PurchaseOrderItem
     {
         public int ItemID { get; set; }
-        public PurchaseOrder PO { get; set; }
+        public PurchaseOrder PurchaseOrder { get; set; }
 
         public string ItemName { get; set; }
         public string Description { get; set; }
@@ -19,9 +19,5 @@ namespace BOL
         public string Reason { get; set; }
         public string Source { get; set; }
         public ItemStatus Status { get; set; }
-
-
-
-
     }
 }

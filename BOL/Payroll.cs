@@ -9,7 +9,7 @@ namespace BOL
     {
 
         public int ChequeID { get; set; }
-        public int EmpID { get; set; }
+        public Employee EmpID { get; set; }
         public double Payrate { get; set; }
         public double IncomeTax { get; set; }
         public double CPP { get; set; }

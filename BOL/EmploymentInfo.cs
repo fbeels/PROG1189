@@ -14,7 +14,7 @@ namespace BOL
         public DateTime JobStartDate { get; set; }
         public string JobAssignment { get; set; }
         public string Dept { get; set; }
-        public int SupervisorID { get; set; }
+        public Employee SupervisorID { get; set; }
         public double PayRate { get; set; }
         public bool EmailNotification { get; set; }
 

@@ -15,6 +15,10 @@ namespace BOL
         public double SubTotal { get; set; }
         public double Tax { get; set; }
         public OrderStatus Status { get; set; }
-        
+
+        public PurchaseOrder create()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
