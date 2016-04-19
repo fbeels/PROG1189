@@ -7,103 +7,16 @@ namespace BOL
 {
     public class EmploymentInfo
     {
-        public int EmpId
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
 
-        public string SIN
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public Employee EmpID { get; set; }
+        public string SIN { get; set; }
+        public DateTime SeniorityDate { get; set; }
+        public DateTime JobStartDate { get; set; }
+        public string JobAssignment { get; set; }
+        public string Dept { get; set; }
+        public int SupervisorID { get; set; }
+        public double PayRate { get; set; }
+        public bool EmailNotification { get; set; }
 
-        public DateTime SeniorityDate
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public DateTime JobStartDate
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public string JobAssignment
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public string Dept
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public int SupervisorID
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public double PayRate
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public Boolean EmailNotification
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
     }
 }

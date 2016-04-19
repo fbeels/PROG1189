@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MyTypes;
 namespace BOL
 {
-    class PurchaseOrder
+   public class PurchaseOrder
     {
         public int PurchaseOrderID { get; set; }
         public int EmployeeID { get; set; }

@@ -7,81 +7,14 @@ namespace BOL
 {
     public class Payroll
     {
-        public int ChequeId
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
 
-        public int EmpId
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public int ChequeID { get; set; }
+        public int EmpID { get; set; }
+        public double Payrate { get; set; }
+        public double IncomeTax { get; set; }
+        public double CPP { get; set; }
+        public double EI { get; set; }
+        public double Pension { get; set; }
 
-        public double Payrate
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public double IncomeTax
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public double Cpp
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public double EI
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public double Pension
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
     }
 }

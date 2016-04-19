@@ -9,8 +9,8 @@ namespace BOL
 {
     public class PurchaseOrderItem
     {
-        public int PurchaseOrderItemID { get; set; }
-        public int PurchaseOrderID { get; set; }
+        public int ItemID { get; set; }
+        public PurchaseOrder PO { get; set; }
 
         public string ItemName { get; set; }
         public string Description { get; set; }
