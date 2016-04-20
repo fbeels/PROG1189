@@ -51,18 +51,18 @@ namespace DAL
             {
                 for (int i = 0; i <= parms.Count - 1; i++)
                 {
-                    cmd.Parameters.AddWithValue(parms.Item(i).ParmID, parms.Item(i).ParmDataType);
-                    if (parms.Item(i).ParmSize != 0)
+                    cmd.Parameters.AddWithValue(parms[i].ParmID, parms[i].ParmDataType);
+                    if (parms[i].ParmSize != 0)
                     {
-                        cmd.Parameters(parms.Item(i).ParmID).Size = parms.Item(i).ParmSize;
+                        cmd.Parameters[parms[i].ParmID].Size = parms[i].ParmSize;
                     }
                     else {
-                        cmd.Parameters(parms.Item(i).ParmID).Size = 0;
+                        cmd.Parameters[parms[i].ParmID].Size = 0;
                     }
 
-                    cmd.Parameters(parms.Item(i).ParmID).Value = parms.Item(i).ParmValue;
+                    cmd.Parameters[parms[i].ParmID].Value = parms[i].ParmValue;
 
-                    cmd.Parameters(parms.Item(i).ParmID).Direction = parms.Item(i).ParmDirection;
+                    cmd.Parameters[parms[i].ParmID].Direction = parms[i].ParmDirection;
                 }
             }
             return cmd;
@@ -73,9 +73,9 @@ namespace DAL
             {
                 for (int i = 0; i <= parm.Count - 1; i++)
                 {
-                    ParmStructure x = parm(i);
-                    x.ParmValue = cmd.Parameters(i).Value;
-                    parm(i) = x;
+                    ParmStructure x = parm[i];
+                    x.ParmValue = cmd.Parameters[i].Value;
+                    parm[i] = x;
                 }
             }
         }

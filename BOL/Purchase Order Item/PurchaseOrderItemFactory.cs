@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MyTypes;
+using SQLLayer;
 
 namespace BOL.Purchase_Order_Item
 {
@@ -18,7 +19,7 @@ namespace BOL.Purchase_Order_Item
 
         static public PurchaseOrderItem Create(int ItemID)
         {
-            DataTable x = PurchaseOrderItemSQL.retrievePurchaseOrderItem(PO_ID);
+            DataTable x = PurchaseOrderItemSQL.retrievePurchaseOrderItem(ItemID);
 
             return RePackager(x);
         }
