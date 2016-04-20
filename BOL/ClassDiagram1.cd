@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
-  <Class Name="BOL.Employee">
-    <Position X="1.5" Y="0.75" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAgACEAACCAAAAAIAABAAAAAAAAAAEACAABAIAAFAAg=</HashCode>
-      <FileName>Employee.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="BOL.EmploymentInfo">
     <Position X="4.25" Y="0.75" Width="2" />
     <TypeIdentifier>
@@ -25,14 +18,14 @@
     <Position X="2.5" Y="4.75" Width="2" />
     <TypeIdentifier>
       <HashCode>CAIAAAQEAAAgAAAAAAAAAAAAAAAAACAAAABAAAAAAAA=</HashCode>
-      <FileName>PurchaseOrder.cs</FileName>
+      <FileName>Purchase Order\PurchaseOrder.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BOL.PurchaseOrderItem">
     <Position X="5.75" Y="4.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAEAwAgAAIAhAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
-      <FileName>PurchaseOrderItem.cs</FileName>
+      <HashCode>AAAEAgAEAwAgAAIAhAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Purchase Order Item\PurchaseOrderItem.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
