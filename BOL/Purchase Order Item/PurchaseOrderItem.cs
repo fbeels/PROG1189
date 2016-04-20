@@ -19,5 +19,7 @@ namespace BOL
         public string Reason { get; set; }
         public string Source { get; set; }
         public ItemStatus Status { get; set; }
+        public string Justification { get; set; }
+
     }
 }

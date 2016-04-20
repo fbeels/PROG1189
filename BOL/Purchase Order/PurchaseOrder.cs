@@ -16,7 +16,7 @@ namespace BOL
         public double Tax { get; set; }
         public OrderStatus Status { get; set; }
 
-        public PurchaseOrder create()
+        public PurchaseOrder create(DateTime OrderDate)
         {
             throw new System.NotImplementedException();
         }

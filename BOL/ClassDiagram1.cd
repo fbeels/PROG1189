@@ -3,28 +3,28 @@
   <Class Name="BOL.Employee">
     <Position X="1.5" Y="0.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAgACEAACCAAAAAIAABAAAAAAAAAAEACAAAAIAABAAg=</HashCode>
+      <HashCode>AAgACEAACCAAAAAIAABAAAAAAAAAAEACAABAIAAFAAg=</HashCode>
       <FileName>Employee.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BOL.EmploymentInfo">
     <Position X="4.25" Y="0.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAACAAAAAAAAAAIAAAACAAAAACAAAAIAQgAAAhAAAA=</HashCode>
+      <HashCode>AAAACAAAAAAAAAAIAAAACAAAAACAAAAIAQhAAAhEAAA=</HashCode>
       <FileName>EmploymentInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BOL.Payroll">
     <Position X="7.75" Y="0.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>EAAACEAAAAgAAAAAAAAAAACIAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>EAAACEAAAAgAAAAAAAAAAACIAAAAAEAAAABAAAAEAAA=</HashCode>
       <FileName>Payroll.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BOL.PurchaseOrder">
     <Position X="2.5" Y="4.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>CAIAAAQEAAAgAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <HashCode>CAIAAAQEAAAgAAAAAAAAAAAAAAAAACAAAABAAAAAAAA=</HashCode>
       <FileName>PurchaseOrder.cs</FileName>
     </TypeIdentifier>
   </Class>
