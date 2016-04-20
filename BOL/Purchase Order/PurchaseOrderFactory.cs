@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Common;
 using SQLLayer;
+using BOL.Purchase_Order_Item;
 
 namespace BOL.Purchase_Order
 {
-   static class PurchaseOrderFactory
+    static class PurchaseOrderFactory
     {
         static public PurchaseOrder Create()
         {
@@ -19,26 +20,46 @@ namespace BOL.Purchase_Order
 
         static public PurchaseOrder Create(int PO_ID)
         {
-            DataTable x = new DataTable();
-
-            return RePackager(x);
+            DataTable podt = PurchaseOrderSQL.retrievePurchaseOrder(PO_ID);
+            DataTable idt = PurchaseOrderItemSQL.retrievePurchaseOrderItemByOrderID(PO_ID);
+            return RePackager(podt, idt);
         }
 
-        static private PurchaseOrder RePackager(DataTable dt)
+        static private PurchaseOrder RePackager(DataTable podt, DataTable idt)
         {
-            PurchaseOrder x = new PurchaseOrder();
+            PurchaseOrder po = new PurchaseOrder();
 
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in podt.Rows)
             {
-                x.PurchaseOrderID = int.Parse(row["poid"].ToString());
-                x.OrderDate = DateTime.Parse(row["orderdate"].ToString());
-                x.Tax = double.Parse(row["tax"].ToString());
-                x.SubTotal = double.Parse(row["subtotal"].ToString());
-                x.Status = (OrderStatus) int.Parse(row["orderdate"].ToString());
-                x.EmployeeID = int.Parse(row["orderdate"].ToString());
+                po.PurchaseOrderID = int.Parse(row["poid"].ToString());
+                po.OrderDate = DateTime.Parse(row["orderdate"].ToString());
+                po.Tax = double.Parse(row["Tax"].ToString());
+                po.SubTotal = double.Parse(row["subtotal"].ToString());
+                po.Status = (OrderStatus)int.Parse(row["orderdate"].ToString());
+                po.EmployeeID = int.Parse(row["orderdate"].ToString());
+
             }
 
-            return x;
+            foreach (DataRow row in idt.Rows)
+            {
+                PurchaseOrderItem item = new PurchaseOrderItem();
+
+                item.ItemID = int.Parse(row["po_item_ID"].ToString());
+                item.Description = row["desc"].ToString();
+                item.ItemName = row["itemname"].ToString();
+                item.PurchaseOrderID = int.Parse(row["po_id"].ToString());
+                item.Price = double.Parse(row["price"].ToString());
+                item.Quantity = int.Parse(row["quantity"].ToString());
+                item.Reason = row["reason"].ToString();
+                item.Source = row["source"].ToString();
+                item.Status = (ItemStatus)int.Parse(row["reason"].ToString());
+                item.Justification = row["justification"].ToString();
+
+                po.Items.Add(item);
+            }
+
+
+            return po;
         }
     }
 }

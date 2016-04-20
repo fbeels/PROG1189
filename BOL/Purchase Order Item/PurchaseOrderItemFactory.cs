@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Common;
 using SQLLayer;
+using SQLLayer.PurchaseOrderItem;
 
 namespace BOL.Purchase_Order_Item
 {
@@ -19,30 +20,30 @@ namespace BOL.Purchase_Order_Item
 
         static public PurchaseOrderItem Create(int ItemID)
         {
-            DataTable x = PurchaseOrderItemSQL.retrievePurchaseOrderItem(ItemID);
+            DataTable dt = PurchaseOrderItemSQL.retrievePurchaseOrderItem(ItemID);
 
-            return RePackager(x);
+            return RePackager(dt);
         }
 
         static private PurchaseOrderItem RePackager(DataTable dt)
         {
-            PurchaseOrderItem x = new PurchaseOrderItem();
+            PurchaseOrderItem item = new PurchaseOrderItem();
 
             foreach (DataRow row in dt.Rows)
             {
-                x.ItemID = int.Parse(row["po_item_ID"].ToString());
-                x.Description = row["desc"].ToString();
-                x.ItemName = row["itemname"].ToString();
-                //x.PurchaseOrder = row["itemname"].ToString();
-                x.Price = double.Parse(row["price"].ToString());
-                x.Quantity = int.Parse(row["quantity"].ToString());
-                x.Reason = row["reason"].ToString();
-                x.Source = row["source"].ToString();
-                x.Status = (ItemStatus) int.Parse(row["reason"].ToString());
-                x.Justification = row["justification"].ToString();
+                item.ItemID = int.Parse(row["po_item_ID"].ToString());
+                item.Description = row["desc"].ToString();
+                item.ItemName = row["itemname"].ToString();
+                item.PurchaseOrderID = int.Parse(row["po_id"].ToString());
+                item.Price = double.Parse(row["price"].ToString());
+                item.Quantity = int.Parse(row["quantity"].ToString());
+                item.Reason = row["reason"].ToString();
+                item.Source = row["source"].ToString();
+                item.Status = (ItemStatus) int.Parse(row["reason"].ToString());
+                item.Justification = row["justification"].ToString();
             }
             
-            return x;
+            return item;
         }
 
     }

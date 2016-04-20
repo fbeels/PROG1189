@@ -9,17 +9,16 @@ using System.Data;
 
 namespace SQLLayer
 {
-    class PurchaseOrderSQL
+    static public class PurchaseOrderSQL
     {
         static public DataTable retrievePurchaseOrder(int PO_ID)
         {
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
             tmpParmList.Add(new ParmStructure("@poid", SqlDbType.Int, ParameterDirection.Input, 0, PO_ID));
-            
+
             return DataAccess.GetDataTable("getPOByID", tmpParmList);
         }
 
-        
-
+       
     }
 }

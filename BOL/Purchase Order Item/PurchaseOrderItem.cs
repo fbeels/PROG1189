@@ -8,11 +8,10 @@ using Common;
 
 namespace BOL.Purchase_Order_Item
 {
-    public class PurchaseOrderItem
+    public class PurchaseOrderItem : IPurchaseOrderItems
     {
         public int ItemID { get; set; }
-        public PurchaseOrder PurchaseOrder { get; set; }
-
+        public int PurchaseOrderID { get; set; }
         public string ItemName { get; set; }
         public string Description { get; set; }
         public int Quantity { get; set; }
