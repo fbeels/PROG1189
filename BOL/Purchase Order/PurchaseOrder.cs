@@ -17,6 +17,8 @@ namespace BOL.Purchase_Order
         public double Tax { get; set; }
         public OrderStatus Status { get; set; }
 
+        public void gitTest() {
 
+        }
     }
 }
