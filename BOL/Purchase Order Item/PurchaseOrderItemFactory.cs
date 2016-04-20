@@ -5,25 +5,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MyTypes;
+using SQLLayer;
 
 namespace BOL.Purchase_Order_Item
 {
-    class PurchaseOrderItemFactory
+    static class PurchaseOrderItemFactory
     {
 
-        public PurchaseOrderItem Create()
+        static public PurchaseOrderItem Create()
         {
             return new PurchaseOrderItem();
         }
 
-        public PurchaseOrderItem Create(int ItemID)
+        static public PurchaseOrderItem Create(int ItemID)
         {
-            DataTable x = new DataTable();
+            DataTable x = PurchaseOrderItemSQL.retrievePurchaseOrderItem(ItemID);
 
             return RePackager(x);
         }
 
-        private PurchaseOrderItem RePackager(DataTable dt)
+        static private PurchaseOrderItem RePackager(DataTable dt)
         {
             PurchaseOrderItem x = new PurchaseOrderItem();
 

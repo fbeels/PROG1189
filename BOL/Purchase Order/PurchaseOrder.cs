@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MyTypes;
-namespace BOL
+
+namespace BOL.Purchase_Order
 {
    public class PurchaseOrder
     {
@@ -16,9 +17,6 @@ namespace BOL
         public double Tax { get; set; }
         public OrderStatus Status { get; set; }
 
-        public PurchaseOrder create(DateTime OrderDate)
-        {
-            throw new System.NotImplementedException();
-        }
+
     }
 }

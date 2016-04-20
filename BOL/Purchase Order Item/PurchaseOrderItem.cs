@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BOL.Purchase_Order;
 using MyTypes;
 
-namespace BOL
+namespace BOL.Purchase_Order_Item
 {
     public class PurchaseOrderItem
     {
