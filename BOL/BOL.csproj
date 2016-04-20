@@ -51,6 +51,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SQLLayer\SQLLayer.csproj">
+      <Project>{f422f740-d711-48fa-932b-a14f63549ed4}</Project>
+      <Name>SQLLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Types\Types.csproj">
       <Project>{658513eb-5a29-45f9-bad9-111df1f3e437}</Project>
       <Name>Types</Name>

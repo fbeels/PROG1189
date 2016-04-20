@@ -18,7 +18,7 @@ namespace BOL.Purchase_Order_Item
 
         static public PurchaseOrderItem Create(int ItemID)
         {
-            DataTable x = new DataTable();
+            DataTable x = PurchaseOrderItemSQL.retrievePurchaseOrderItem(PO_ID);
 
             return RePackager(x);
         }
