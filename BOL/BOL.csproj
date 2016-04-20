@@ -55,9 +55,9 @@
       <Project>{f422f740-d711-48fa-932b-a14f63549ed4}</Project>
       <Name>SQLLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Types\Types.csproj">
+    <ProjectReference Include="..\Types\Common.csproj">
       <Project>{658513eb-5a29-45f9-bad9-111df1f3e437}</Project>
-      <Name>Types</Name>
+      <Name>Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

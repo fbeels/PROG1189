@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Data.SqlClient;
-using MyTypes;
+using Common;
 
 namespace DAL
 {

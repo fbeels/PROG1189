@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BOL.Purchase_Order;
-using MyTypes;
+using Common;
 
 namespace BOL.Purchase_Order_Item
 {
