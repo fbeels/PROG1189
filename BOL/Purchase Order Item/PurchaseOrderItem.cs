@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MyTypes;
 
-namespace BOL
+namespace BOL.Purchase_Order_Item
 {
     public class PurchaseOrderItem
     {

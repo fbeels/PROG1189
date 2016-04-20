@@ -8,22 +8,22 @@ using MyTypes;
 
 namespace BOL.Purchase_Order_Item
 {
-    class PurchaseOrderItemFactory
+    static class PurchaseOrderItemFactory
     {
 
-        public PurchaseOrderItem Create()
+        static public PurchaseOrderItem Create()
         {
             return new PurchaseOrderItem();
         }
 
-        public PurchaseOrderItem Create(int ItemID)
+        static public PurchaseOrderItem Create(int ItemID)
         {
             DataTable x = new DataTable();
 
             return RePackager(x);
         }
 
-        private PurchaseOrderItem RePackager(DataTable dt)
+        static private PurchaseOrderItem RePackager(DataTable dt)
         {
             PurchaseOrderItem x = new PurchaseOrderItem();
 
