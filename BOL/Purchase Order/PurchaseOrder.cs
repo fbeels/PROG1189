@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MyTypes;
+using Common;
+using BOL.Purchase_Order_Item;
+
 
 namespace BOL.Purchase_Order
 {
@@ -17,9 +19,12 @@ namespace BOL.Purchase_Order
         public double Tax { get; set; }
         public OrderStatus Status { get; set; }
 
-        public void test { }
+        public List<PurchaseOrderItem> Items { get; set; }
 
 
+        public void gitTest() {
+
+        }
 
     }
 }

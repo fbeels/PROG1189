@@ -6,22 +6,8 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Diagnostics;
 
-namespace MyTypes
+namespace Common
 {
-    public enum ItemStatus
-    {
-        Pending,
-        Approved,
-        Denied
-    }
-
-    public enum OrderStatus
-    {
-        Pending,
-        UnderReview,
-        Closed
-    }
-
     public struct ParmStructure
     {
         private string ParmID_;
