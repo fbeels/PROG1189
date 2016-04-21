@@ -9,7 +9,7 @@ using BOL.Purchase_Order_Item;
 
 namespace BOL.Purchase_Order
 {
-   public class PurchaseOrder
+    public class PurchaseOrder : IPurchaseOrder
     {
         public int PurchaseOrderID { get; set; }
         public int EmployeeID { get; set; }
@@ -21,10 +21,36 @@ namespace BOL.Purchase_Order
 
         public List<PurchaseOrderItem> Items { get; set; }
 
+        const double tax = .13;
 
-        public void gitTest() {
+        public void gitTest()
+        {
 
         }
 
+
+        public double calculateSubtotal()
+        {
+            double subtotal = 0.0;
+            foreach (PurchaseOrderItem item in Items)
+            {
+                subtotal += item.calculateSubtotal();
+            }
+
+            return subtotal;
+        }
+
+        public double calculateTax()
+        {
+            double subtotal = calculateSubtotal();
+            return subtotal * tax;
+        }
+
+        public double calculateTotal()
+        {
+            double subtotal = calculateSubtotal();
+            double taxamnt = calculateTax();
+            return subtotal * taxamnt;
+        }
     }
 }

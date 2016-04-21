@@ -12,6 +12,7 @@ namespace BOL.Purchase_Order
 {
     static class PurchaseOrderFactory
     {
+
         static public PurchaseOrder Create()
         {
             return new PurchaseOrder();

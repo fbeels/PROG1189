@@ -19,6 +19,20 @@ namespace SQLLayer
             return DataAccess.GetDataTable("getPOByID", tmpParmList);
         }
 
-       
+        static public bool createInitialPO(IPurchaseOrderItem item, IPurchaseOrder PO)
+        {
+            List<ParmStructure> tmpParmList = new List<ParmStructure>();
+            tmpParmList.Add(new ParmStructure("@tax", SqlDbType.Int, ParameterDirection.Input, 0, PO.Tax));
+            tmpParmList.Add(new ParmStructure("@subtotal", SqlDbType.Int, ParameterDirection.Input, 0, PO.SubTotal));
+            tmpParmList.Add(new ParmStructure("@empid", SqlDbType.Int, ParameterDirection.Input, 0, PO.EmployeeID));
+            tmpParmList.Add(new ParmStructure("@status", SqlDbType.Int, ParameterDirection.Input, 0, OrderStatus.Pending));
+
+            int id = DataAccess.SendData("insertPO", tmpParmList);
+            item.PurchaseOrderID = id;
+            PurchaseOrderItemSQL.insertPurchaseOrderItem(item);
+            return true;
+        }
+
+
     }
 }

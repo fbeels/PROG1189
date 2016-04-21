@@ -8,7 +8,7 @@ using Common;
 
 namespace BOL.Purchase_Order_Item
 {
-    public class PurchaseOrderItem : IPurchaseOrderItems
+    public class PurchaseOrderItem : IPurchaseOrderItem
     {
         public int ItemID { get; set; }
         public int PurchaseOrderID { get; set; }
@@ -21,5 +21,10 @@ namespace BOL.Purchase_Order_Item
         public ItemStatus Status { get; set; }
         public string Justification { get; set; }
 
+
+        public double calculateSubtotal()
+        {
+            return Price * Quantity;
+        }
     }
 }

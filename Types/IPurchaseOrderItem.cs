@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public interface IPurchaseOrderItems
+    public interface IPurchaseOrderItem
     {
         int ItemID { get; set; }
         int PurchaseOrderID { get; set; }

@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IPurchaseOrderItems.cs" />
+    <Compile Include="IPurchaseOrder.cs" />
+    <Compile Include="IPurchaseOrderItem.cs" />
     <Compile Include="ItemStatus.cs" />
     <Compile Include="ParmStructure.cs" />
     <Compile Include="OrderStatus.cs" />

@@ -19,17 +19,17 @@ namespace SQLLayer
             return DataAccess.GetDataTable("getPOItemByID", tmpParmList);
         }
 
-        static public int insertPurchaseOrderItem(IPurchaseOrderItems POI)
+        static public int insertPurchaseOrderItem(IPurchaseOrderItem item)
         {
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
-            tmpParmList.Add(new ParmStructure("@po_id", SqlDbType.Int, ParameterDirection.Input, 0, POI.PurchaseOrderID));
-            tmpParmList.Add(new ParmStructure("@itemname", SqlDbType.VarChar, ParameterDirection.Input, 50, POI.ItemName));
-            tmpParmList.Add(new ParmStructure("@desc", SqlDbType.VarChar, ParameterDirection.Input, 50, POI.Description));
-            tmpParmList.Add(new ParmStructure("@quantity", SqlDbType.Int, ParameterDirection.Input, 50, POI.Quantity));
-            tmpParmList.Add(new ParmStructure("@price", SqlDbType.Float, ParameterDirection.Input, 50, POI.Price));
-            tmpParmList.Add(new ParmStructure("@reason", SqlDbType.VarChar, ParameterDirection.Input, 50, POI.Reason));
-            tmpParmList.Add(new ParmStructure("@source", SqlDbType.VarChar, ParameterDirection.Input, 50, POI.Source));
-            tmpParmList.Add(new ParmStructure("@justification", SqlDbType.VarChar, ParameterDirection.Input, 50, POI.Justification));
+            tmpParmList.Add(new ParmStructure("@po_id", SqlDbType.Int, ParameterDirection.Input, 0, item.PurchaseOrderID));
+            tmpParmList.Add(new ParmStructure("@itemname", SqlDbType.VarChar, ParameterDirection.Input, 50, item.ItemName));
+            tmpParmList.Add(new ParmStructure("@desc", SqlDbType.VarChar, ParameterDirection.Input, 50, item.Description));
+            tmpParmList.Add(new ParmStructure("@quantity", SqlDbType.Int, ParameterDirection.Input, 50, item.Quantity));
+            tmpParmList.Add(new ParmStructure("@price", SqlDbType.Float, ParameterDirection.Input, 50, item.Price));
+            tmpParmList.Add(new ParmStructure("@reason", SqlDbType.VarChar, ParameterDirection.Input, 50, item.Reason));
+            tmpParmList.Add(new ParmStructure("@source", SqlDbType.VarChar, ParameterDirection.Input, 50, item.Source));
+            tmpParmList.Add(new ParmStructure("@justification", SqlDbType.VarChar, ParameterDirection.Input, 50, item.Justification));
 
             return DataAccess.SendData("getPOItemByID", tmpParmList);
         }
