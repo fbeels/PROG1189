@@ -16,7 +16,7 @@ namespace SQLLayer
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
             tmpParmList.Add(new ParmStructure("@poItemid", SqlDbType.Int, ParameterDirection.Input, 0, POItem_ID));
 
-            return DataAccess.GetDataTable("getPOItemByID", tmpParmList)
+            return DataAccess.GetDataTable("getPOItemByID", tmpParmList);
         }
 
         static public int insertPurchaseOrderItem(IPurchaseOrderItem item)
@@ -47,7 +47,7 @@ namespace SQLLayer
         static public bool modifyItem(IPurchaseOrderItem item)
         {
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
-            tmpParmList.Add(new ParmStructure("@poItemid", SqlDbType.Int, ParameterDirection.Input, 0, POItem_ID));
+            tmpParmList.Add(new ParmStructure("@poItemid", SqlDbType.Int, ParameterDirection.Input, 0, item.PurchaseOrderID));
             tmpParmList.Add(new ParmStructure("@po_id", SqlDbType.Int, ParameterDirection.Input, 0, item.PurchaseOrderID));
             tmpParmList.Add(new ParmStructure("@itemname", SqlDbType.VarChar, ParameterDirection.Input, 50, item.ItemName));
             tmpParmList.Add(new ParmStructure("@desc", SqlDbType.VarChar, ParameterDirection.Input, 50, item.Description));

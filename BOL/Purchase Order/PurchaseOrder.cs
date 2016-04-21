@@ -52,5 +52,6 @@ namespace BOL.Purchase_Order
             double taxamnt = calculateTax();
             return subtotal * taxamnt;
         }
+
     }
 }

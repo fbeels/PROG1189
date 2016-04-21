@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Common;
 using SQLLayer;
-using SQLLayer.PurchaseOrderItem;
 
 namespace BOL.Purchase_Order_Item
 {
