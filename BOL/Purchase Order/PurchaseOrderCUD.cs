@@ -13,6 +13,11 @@ namespace BOL.Purchase_Order
             return PurchaseOrderSQL.createInitialPO(item, PO);
         }
 
+        public bool Update(PurchaseOrder PO)
+        {
+            return PurchaseOrderSQL.modifyPO(PO);
+        }
+
 
     }
 }
