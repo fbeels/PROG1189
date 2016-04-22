@@ -21,19 +21,19 @@ namespace BOL
         public string Cell { get; set; }
         public string Email { get; set; }
 
-        public Employee create(string Lastname,char MiddleIntm,string FirstName,DateTime DOB,string Address,string City,string Prov,string Postal,int EmpID,string Phone,string Cell,string Email) as Employee
+        public Employee create(string Lastname, char MiddleIntm, string FirstName, DateTime DOB, string Address, string City, string Prov, string Postal, int EmpID, string Phone, string Cell, string Email)
         {
             throw new System.NotImplementedException();
         }
 
-      
 
-       
-       
 
-        
-       
-            
-        
-    }//end of class
+
+
+
+
+
+
+
+}//end of class
 }//end of namespace
