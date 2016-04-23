@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 using SQLLayer;
 namespace BOL.Purchase_Order
 {
-    class PurchaseOrderCUD
+    static public class PurchaseOrderCUD
     {
-        public bool Create(PurchaseOrder PO, Purchase_Order_Item.PurchaseOrderItem item) 
+        static public int Create(PurchaseOrder PO, Purchase_Order_Item.PurchaseOrderItem item) 
         {
             return PurchaseOrderSQL.createInitialPO(item, PO);
         }
 
-        public bool Update(PurchaseOrder PO)
+        static public bool Update(PurchaseOrder PO)
         {
             return PurchaseOrderSQL.modifyPO(PO);
         }
+
 
 
 

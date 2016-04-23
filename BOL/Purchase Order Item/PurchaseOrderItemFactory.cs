@@ -9,7 +9,7 @@ using SQLLayer;
 
 namespace BOL.Purchase_Order_Item
 {
-    static class PurchaseOrderItemFactory
+    public static class PurchaseOrderItemFactory
     {
 
         static public PurchaseOrderItem Create()
@@ -38,11 +38,11 @@ namespace BOL.Purchase_Order_Item
                 item.Quantity = int.Parse(row["quantity"].ToString());
                 item.Reason = row["reason"].ToString();
                 item.Source = row["source"].ToString();
-                item.Status = (ItemStatus) int.Parse(row["reason"].ToString());
+                item.Status = (ItemStatus)int.Parse(row["reason"].ToString());
                 item.Justification = row["justification"].ToString();
 
             }
-            
+
             return item;
         }
 

@@ -64,6 +64,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BOL\BOL.csproj">
+      <Project>{5aeff12d-27c4-4851-88c7-076831483886}</Project>
+      <Name>BOL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Types\Common.csproj">
+      <Project>{658513eb-5a29-45f9-bad9-111df1f3e437}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -125,7 +133,7 @@
     </Compile>
     <Compile Include="PurchaseOrder\CreatePO.aspx.vb">
       <DependentUpon>CreatePO.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>

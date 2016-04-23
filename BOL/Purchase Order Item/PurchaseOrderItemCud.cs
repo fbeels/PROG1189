@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BOL.Purchase_Order_Item
 {
-    class PurchaseOrderItemCUD
+   static public class PurchaseOrderItemCUD
     {
         public static int Insert(PurchaseOrderItem item)
         {

@@ -30,8 +30,9 @@ namespace SQLLayer
             tmpParmList.Add(new ParmStructure("@reason", SqlDbType.VarChar, ParameterDirection.Input, 50, item.Reason));
             tmpParmList.Add(new ParmStructure("@source", SqlDbType.VarChar, ParameterDirection.Input, 50, item.Source));
             tmpParmList.Add(new ParmStructure("@justification", SqlDbType.VarChar, ParameterDirection.Input, 50, item.Justification));
+            tmpParmList.Add(new ParmStructure("@orderstatus", SqlDbType.Int, ParameterDirection.Input, 0, item.Status));
 
-            return DataAccess.SendData("getPOItemByID", tmpParmList);
+            return DataAccess.SendData("insertPOItem", tmpParmList);
         }
 
 

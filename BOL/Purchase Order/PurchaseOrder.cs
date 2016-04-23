@@ -18,6 +18,8 @@ namespace BOL.Purchase_Order
         public double SubTotal { get; set; }
         public double Tax { get; set; }
         public OrderStatus Status { get; set; }
+        public double Total { get; set; }
+
 
         public List<PurchaseOrderItem> Items { get; set; }
 

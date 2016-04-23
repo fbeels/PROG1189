@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class CreatePO
     
     '''<summary>
+    '''ddlEmployee control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlEmployee As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
     '''lblDate control.
     '''</summary>
     '''<remarks>
@@ -48,6 +57,15 @@ Partial Public Class CreatePO
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents lblSuper As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''t control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents t As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''Gridview1 control.
