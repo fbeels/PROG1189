@@ -73,10 +73,22 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox1.Designer.vb">
+    <Compile Include="common\AboutBox1.Designer.vb">
       <DependentUpon>AboutBox1.vb</DependentUpon>
     </Compile>
-    <Compile Include="AboutBox1.vb">
+    <Compile Include="common\AboutBox1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payroll\AddEmployee.Designer.vb">
+      <DependentUpon>AddEmployee.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll\AddEmployee.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payroll\CalcPayroll.Designer.vb">
+      <DependentUpon>CalcPayroll.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll\CalcPayroll.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.vb">
@@ -86,10 +98,10 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="main.Designer.vb">
+    <Compile Include="common\main.Designer.vb">
       <DependentUpon>main.vb</DependentUpon>
     </Compile>
-    <Compile Include="main.vb">
+    <Compile Include="common\main.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -107,18 +119,36 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SplashScreen1.Designer.vb">
+    <Compile Include="Payroll\EditEmployee.Designer.vb">
+      <DependentUpon>EditEmployee.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll\EditEmployee.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payroll\GetPayrollInfo.Designer.vb">
+      <DependentUpon>GetPayrollInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll\GetPayrollInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payroll\RetrieveEmployee.Designer.vb">
+      <DependentUpon>RetrieveEmployee.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll\RetrieveEmployee.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="common\SplashScreen1.Designer.vb">
       <DependentUpon>SplashScreen1.vb</DependentUpon>
     </Compile>
-    <Compile Include="SplashScreen1.vb">
+    <Compile Include="common\SplashScreen1.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AboutBox1.resx">
+    <EmbeddedResource Include="common\AboutBox1.resx">
       <DependentUpon>AboutBox1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="main.resx">
+    <EmbeddedResource Include="common\main.resx">
       <DependentUpon>main.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -127,7 +157,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="SplashScreen1.resx">
+    <EmbeddedResource Include="common\SplashScreen1.resx">
       <DependentUpon>SplashScreen1.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
@@ -142,6 +172,9 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PurchaseOrder\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
