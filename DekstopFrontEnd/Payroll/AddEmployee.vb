@@ -1,6 +1,8 @@
 ﻿Imports BOL
+
 Public Class AddEmployee
-    Dim myemp As Employee = Employee.Create()
+    Dim myemp As Employee = Employee.create()
+
     Private Sub AddEmployee_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtfirstname.MaxLength = 50
         txtmiddleinit.MaxLength = 1
@@ -48,21 +50,35 @@ Public Class AddEmployee
     Private Sub btnsave_Click(sender As Object, e As EventArgs) Handles btnsave.Click
 
         Dim strfname As String = txtfirstname.Text
+        myemp.FirstName = strfname
         Dim strmidinit As String = txtmiddleinit.Text
+        myemp.MiddleInt = strmidinit
         Dim strlname As String = txtlastname.Text
+        myemp.LastName = strlname
         Dim dateofbirth As Date = dtpdateofbirth.Value
+        myemp.DOB = dateofbirth
         Dim strsin As String = txtsin.Text
+        myemp.SIN = strsin
         Dim strstreetaddress As String = txtstreetaddress.Text
+        myemp.Address = strstreetaddress
         Dim strcity As String = txtcity.Text
+        myemp.City = strcity
         Dim strpostal As String = txtpostal.Text
+        myemp.Postal = strpostal
         Dim strprov As String = cboProv.SelectedValue
+        myemp.Prov = strprov
         Dim strcell As String = mtxcellphone.Text
+        myemp.Cell = strcell
         Dim strwork As String = mtxworkphone.Text
+        myemp.Phone = strwork
         Dim intdept As Integer = cbodept.SelectedValue
+        myemp.Dept = intdept
         Dim intsuper As Integer = cbosupervisor.SelectedValue
+        myemp.SupervisorID = intsuper
         Dim intjob As Integer = cbojobid.SelectedValue
+        myemp.JobAssignment = intjob
         Dim dblpayrate As Double = txtpayrate.Text
-
+        myemp.PayRate = dblpayrate
 
     End Sub
 End Class

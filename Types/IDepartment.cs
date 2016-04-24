@@ -9,7 +9,7 @@ namespace Common
    
     public interface IDepartment
     {
-        public int DeptID { get; set; }
-        public String DeptName { get; set; }
+        int DeptID { get; set; }
+        String DeptName { get; set; }
     }
 }

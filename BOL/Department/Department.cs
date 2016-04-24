@@ -7,7 +7,7 @@ using Common;
 
 namespace BOL
 {
-    class Department
+    class Dept
     {
         public class Department : IDepartment
         {
