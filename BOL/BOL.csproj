@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Department\Department.cs" />
+    <Compile Include="Department\DepartmentFactory.cs" />
     <Compile Include="Employee\Employee.cs" />
     <Compile Include="EmploymentInfo.cs" />
     <Compile Include="Payroll.cs" />
