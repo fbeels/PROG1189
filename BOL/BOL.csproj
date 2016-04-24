@@ -51,6 +51,7 @@
     <Compile Include="Purchase Order\PurchaseOrder.cs" />
     <Compile Include="Purchase Order Item\PurchaseOrderItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Purchase Order\PurchaseOrderList.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SQLLayer\SQLLayer.csproj">

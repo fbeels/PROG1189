@@ -13,7 +13,50 @@ Public Class CreatePO
         If Not Page.IsPostBack Then
             SetInitialRow()
         End If
+
+        If Request.QueryString("id") <> Nothing Then
+            ' doStuff()
+        End If
+
     End Sub
+
+    Sub doStuff()
+        Dim rowIndex As Integer = 0
+
+
+        If ViewState("CurrentTable") IsNot Nothing Then
+            Dim dtCurrentTable As DataTable = DirectCast(ViewState("CurrentTable"), DataTable)
+            Dim drCurrentRow As DataRow = Nothing
+
+            If dtCurrentTable.Rows.Count > 0 Then
+                For i As Integer = 1 To dtCurrentTable.Rows.Count
+                    Dim box1 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(1).FindControl("txtName"), TextBox)
+                    Dim box2 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(2).FindControl("txtDesc"), TextBox)
+                    Dim box3 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(3).FindControl("txtPrice"), TextBox)
+                    Dim box4 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(4).FindControl("txtQ"), TextBox)
+                    Dim box5 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(5).FindControl("txtStore"), TextBox)
+                    Dim box6 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(6).FindControl("txtJust"), TextBox)
+
+                    Dim id As Integer = Request.QueryString("id")
+
+                    myPurchaseOrder = PurchaseOrderFactory.Create(id)
+
+
+
+
+                Next
+
+                dtCurrentTable.Rows.Add(drCurrentRow)
+                ViewState("CurrentTable") = dtCurrentTable
+                Gridview1.DataSource = dtCurrentTable
+                Gridview1.DataBind()
+
+            End If
+        Else
+            Response.Write("ViewState is null")
+        End If
+    End Sub
+
 
     ''' <summary>
     ''' Click event to add a new row the the gridview, also inserts the PO
@@ -92,6 +135,7 @@ Public Class CreatePO
                     item.Justification = box6.Text
 
                     myItems.Add(item)
+
                     If myPurchaseOrder.PurchaseOrderID = 0 Then
                         myPurchaseOrder.OrderDate = Date.Now
                         myPurchaseOrder.Status = Common.OrderStatus.Pending

@@ -10,7 +10,7 @@ using BOL.Purchase_Order_Item;
 
 namespace BOL.Purchase_Order
 {
-    static class PurchaseOrderFactory
+    static public class PurchaseOrderFactory
     {
 
         static public PurchaseOrder Create()

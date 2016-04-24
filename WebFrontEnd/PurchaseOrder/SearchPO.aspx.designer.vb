@@ -11,50 +11,41 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class Acme
+Partial Public Class SearchPO
     
     '''<summary>
-    '''head control.
+    '''txtSearchID control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents head As Global.System.Web.UI.WebControls.ContentPlaceHolder
+    Protected WithEvents txtSearchID As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''form1 control.
+    '''txtSearchDate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
+    Protected WithEvents txtSearchDate As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''logo control.
+    '''btnSearch control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents logo As Global.System.Web.UI.WebControls.Image
+    Protected WithEvents btnSearch As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
-    '''Content control.
+    '''dgData control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Content As Global.System.Web.UI.WebControls.ContentPlaceHolder
-    
-    '''<summary>
-    '''lblDate control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblDate As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents dgData As Global.System.Web.UI.WebControls.DataGrid
 End Class
