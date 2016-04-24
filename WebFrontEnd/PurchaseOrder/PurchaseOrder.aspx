@@ -16,8 +16,6 @@
         <br />
         <br />
 
-        <asp:TextBox runat="server" ID="t" />
-
         <asp:GridView ID="Gridview1" runat="server" ShowFooter="true" AutoGenerateColumns="false">
             <Columns>
                 <asp:BoundField DataField="RowNumber" HeaderText="Row Number" />

@@ -8,6 +8,7 @@ using Common;
 
 namespace BOL.Purchase_Order_Item
 {
+    [Serializable]
     public class PurchaseOrderItem : IPurchaseOrderItem
     {
         public int ItemID { get; set; }

@@ -59,15 +59,6 @@ Partial Public Class CreatePO
     Protected WithEvents lblSuper As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''t control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents t As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
     '''Gridview1 control.
     '''</summary>
     '''<remarks>

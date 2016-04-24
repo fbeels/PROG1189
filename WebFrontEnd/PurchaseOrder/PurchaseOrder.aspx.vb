@@ -2,16 +2,26 @@
 Imports BOL.Purchase_Order_Item
 Public Class CreatePO
     Inherits System.Web.UI.Page
-
     Dim myItems As List(Of PurchaseOrderItem)
     Dim myPurchaseOrder As PurchaseOrder
+
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         lblDate.Text = Date.Now.ToShortDateString
-        myItems = New List(Of PurchaseOrderItem)
-        myPurchaseOrder = New PurchaseOrder
+
 
         If Not Page.IsPostBack Then
             SetInitialRow()
+            myItems = New List(Of PurchaseOrderItem)
+            myPurchaseOrder = New PurchaseOrder
+        End If
+
+        If IsNothing(ViewState("PO")) AndAlso IsNothing(ViewState("Items")) Then
+            ViewState("PO") = myPurchaseOrder
+            ViewState("Items") = myItems
+        Else
+            myPurchaseOrder = ViewState("PO")
+            myItems = ViewState("Items")
         End If
 
         If Request.QueryString("id") <> Nothing Then
@@ -39,7 +49,7 @@ Public Class CreatePO
 
                     Dim id As Integer = Request.QueryString("id")
 
-                    myPurchaseOrder = PurchaseOrderFactory.Create(id)
+                    ViewState("PO") = PurchaseOrderFactory.Create(id)
 
 
 
@@ -58,17 +68,19 @@ Public Class CreatePO
     End Sub
 
 
-    ''' <summary>
-    ''' Click event to add a new row the the gridview, also inserts the PO
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
+
+
+
+#Region "Add PO/Items Controls"
     Protected Sub ButtonAdd_Click(sender As Object, e As EventArgs)
-        AddNewRowToGrid()
+        AddNewRowToGrid(False)
     End Sub
 
 
-#Region "GridView Controls"
+    Protected Sub btnSubmit_Click(sender As Object, e As EventArgs) Handles btnSubmit.Click
+        AddNewRowToGrid(True)
+    End Sub
+
     ''' <summary>
     ''' Sets the inital rows in the gridview
     ''' </summary>
@@ -98,7 +110,7 @@ Public Class CreatePO
     ''' <summary>
     ''' Adds a new row the gridview
     ''' </summary>
-    Private Sub AddNewRowToGrid()
+    Private Sub AddNewRowToGrid(submit As Boolean)
         Dim rowIndex As Integer = 0
 
 
@@ -152,8 +164,13 @@ Public Class CreatePO
                         myPurchaseOrder.Tax = myPurchaseOrder.calculateTax
                         myPurchaseOrder.Total = myPurchaseOrder.calculateTotal
                         item.PurchaseOrderID = myPurchaseOrder.PurchaseOrderID
-                        PurchaseOrderItemCUD.Insert(item)
+                        If i = dtCurrentTable.Rows.Count Then 'if it's the last item in the table, add it.
+                            PurchaseOrderItemCUD.Insert(item)
+                        End If
                         PurchaseOrderCUD.Update(myPurchaseOrder)
+                        If submit Then
+                            Exit Sub
+                        End If
                     End If
 
                 Next
@@ -196,6 +213,8 @@ Public Class CreatePO
             End If
         End If
     End Sub
+
+
 
 #End Region
 End Class
