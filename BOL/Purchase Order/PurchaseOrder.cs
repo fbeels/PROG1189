@@ -25,12 +25,6 @@ namespace BOL.Purchase_Order
 
         const double tax = .13;
 
-        public void gitTest()
-        {
-
-        }
-
-
         public double calculateSubtotal()
         {
             double subtotal = 0.0;

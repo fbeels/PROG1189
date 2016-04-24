@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class Acme
     
     '''<summary>
+    '''head control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents head As Global.System.Web.UI.WebControls.ContentPlaceHolder
+    
+    '''<summary>
     '''form1 control.
     '''</summary>
     '''<remarks>

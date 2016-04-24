@@ -29,7 +29,9 @@ namespace SQLLayer
             tmpParmList.Add(new ParmStructure("@orderstatus", SqlDbType.TinyInt, ParameterDirection.Input, 0, OrderStatus.Pending));
             tmpParmList.Add(new ParmStructure("@poid", SqlDbType.Int, ParameterDirection.Output, 10, null));
 
-            int id = DataAccess.SendData("insertPO", tmpParmList);
+            DataAccess.SendData("insertPO", tmpParmList);
+
+            int id = int.Parse(tmpParmList[5].ParmValue.ToString());
             item.PurchaseOrderID = id;
             PurchaseOrderItemSQL.insertPurchaseOrderItem(item);
             return id;
@@ -42,19 +44,26 @@ namespace SQLLayer
             tmpParmList.Add(new ParmStructure("@tax", SqlDbType.Float, ParameterDirection.Input, 9, PO.Tax));
             tmpParmList.Add(new ParmStructure("@subtotal", SqlDbType.Float, ParameterDirection.Input, 9, PO.SubTotal));
             tmpParmList.Add(new ParmStructure("@orderdate", SqlDbType.Date, ParameterDirection.Input, 0, DateTime.Now));
-
-            DataAccess.SendData("modifyPO", tmpParmList);
+            //TODO add missing parms
+            DataAccess.SendData("UpdatePO", tmpParmList);
             return true;
         }
 
-
-        static public bool modifyPOStatus(int PO_ID, OrderStatus status)
+        static public DataTable searchPO(int ID = -1, DateTime? date = null)
         {
+            var effectiveDate = date ?? DateTime.MinValue;
+
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
-            tmpParmList.Add(new ParmStructure("@poid", SqlDbType.Int, ParameterDirection.Input, 0, PO_ID));
-            tmpParmList.Add(new ParmStructure("@status", SqlDbType.TinyInt, ParameterDirection.Input, 0, status));
-            DataAccess.SendData("modifyPOStatus", tmpParmList);
-            return true;
+            if (ID != -1)
+            {
+                tmpParmList.Add(new ParmStructure("@poid", SqlDbType.Int, ParameterDirection.Input, 0, ID));
+            }
+            else if (effectiveDate == DateTime.MinValue)
+            {
+                tmpParmList.Add(new ParmStructure("@date", SqlDbType.DateTime, ParameterDirection.Input, 0, effectiveDate));
+            }
+
+            return DataAccess.GetDataTable("searchPO", tmpParmList);
         }
 
     }
