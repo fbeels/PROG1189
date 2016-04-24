@@ -6,8 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{51DE9613-0511-4AC6-902B-88346E83E6E3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>DekstopFrontEnd.My.MyApplication</StartupObject>
-    <RootNamespace>DekstopFrontEnd</RootNamespace>
+    <StartupObject>My.MyApplication</StartupObject>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>DekstopFrontEnd</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
@@ -160,6 +161,9 @@
     <EmbeddedResource Include="common\SplashScreen1.resx">
       <DependentUpon>SplashScreen1.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Payroll\AddEmployee.resx">
+      <DependentUpon>AddEmployee.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -175,6 +179,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PurchaseOrder\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BOL\BOL.csproj">
+      <Project>{5aeff12d-27c4-4851-88c7-076831483886}</Project>
+      <Name>BOL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Types\Common.csproj">
+      <Project>{658513eb-5a29-45f9-bad9-111df1f3e437}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
