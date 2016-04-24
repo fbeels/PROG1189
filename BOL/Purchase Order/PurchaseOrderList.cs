@@ -19,24 +19,25 @@ namespace BOL.Purchase_Order
 
 
 
-        static public List<PurchaseOrderList>  Create(int ID = -1, DateTime? date = null)
+        static public List<PurchaseOrderList> Create(int EmployeeID, int ID = -1, DateTime? date = null)
         {
-            return RePackager(PurchaseOrderSQL.searchPO(ID, date));
+            return RePackager(PurchaseOrderSQL.searchPO(EmployeeID, ID, date));
         }
 
 
-        static private List<PurchaseOrderList>  RePackager(DataTable dt)
+        static private List<PurchaseOrderList> RePackager(DataTable dt)
         {
             List<PurchaseOrderList> myList = new List<PurchaseOrderList>();
 
-            foreach (PurchaseOrder orders in dt.Rows)
+            foreach (DataRow orders in dt.Rows)
             {
                 PurchaseOrderList x = new PurchaseOrderList();
-                x.EmployeeID = orders.EmployeeID;
-                x.Status = orders.Status;
-                x.Total = orders.Total;
-                x.OrderDate = orders.OrderDate;
-                x.PurchaseOrderID = orders.PurchaseOrderID;
+                x.EmployeeID = (int)orders[5];
+                x.Status = (OrderStatus) int.Parse(orders[2].ToString());
+                x.Total = (double.Parse(orders[3].ToString())) + (double.Parse(orders[4].ToString()));
+                x.OrderDate = DateTime.Parse(orders[1].ToString());
+                x.PurchaseOrderID = (int) orders[0];
+                myList.Add(x);
             }
             return myList;
         }

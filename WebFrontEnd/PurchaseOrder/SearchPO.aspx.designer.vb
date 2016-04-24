@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class SearchPO
     
     '''<summary>
+    '''ddlEmployee control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlEmployee As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
     '''txtSearchID control.
     '''</summary>
     '''<remarks>

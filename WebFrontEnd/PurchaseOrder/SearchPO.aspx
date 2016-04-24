@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Acme.Master" CodeBehind="SearchPO.aspx.vb" Inherits="WebFrontEnd.SearchPO" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="../js/jquery.js"></script>
     <script src="../js/jquery-ui.js"></script>
@@ -12,13 +13,19 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-       Search by ID or by Date<br />
-    <asp:TextBox runat="server" id="txtSearchID" placeholder="Purchase Order ID"/> - or - 
-    <asp:TextBox runat="server" id="txtSearchDate" placeholder="Purchase Order Date"/><br />
+    <asp:DropDownList runat="server" ID="ddlEmployee">
+        <asp:ListItem>10000001</asp:ListItem>
 
-    <asp:Button Text="Search" runat="server" id="btnSearch"/>
+    </asp:DropDownList><br />
+    <hr />
 
-    <asp:DataGrid runat="server" ID="dgData">    
-        
+    Search by ID or by Date<br />
+    <asp:TextBox runat="server" ID="txtSearchID" placeholder="Purchase Order ID" />
+    - or - 
+    <asp:TextBox runat="server" ID="txtSearchDate" placeholder="Purchase Order Date" /><br />
+
+    <asp:Button Text="Search" runat="server" ID="btnSearch" />
+
+    <asp:DataGrid runat="server" ID="dgData">
     </asp:DataGrid>
 </asp:Content>
