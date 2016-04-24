@@ -9,6 +9,7 @@ using BOL.Purchase_Order_Item;
 
 namespace BOL.Purchase_Order
 {
+    [Serializable]
     public class PurchaseOrder : IPurchaseOrder
     {
         public int PurchaseOrderID { get; set; }

@@ -97,8 +97,14 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\jquery-ui.css" />
+    <Content Include="css\jquery-ui.structure.css" />
+    <Content Include="css\jquery-ui.theme.css" />
     <Content Include="img\acme_logo.png" />
-    <Content Include="PurchaseOrder\CreatePO.aspx" />
+    <Content Include="js\jquery-ui.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="PurchaseOrder\PurchaseOrder.aspx" />
+    <Content Include="PurchaseOrder\SearchPO.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -128,12 +134,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="PurchaseOrder\CreatePO.aspx.designer.vb">
-      <DependentUpon>CreatePO.aspx</DependentUpon>
+    <Compile Include="PurchaseOrder\PurchaseOrder.aspx.designer.vb">
+      <DependentUpon>PurchaseOrder.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PurchaseOrder\CreatePO.aspx.vb">
-      <DependentUpon>CreatePO.aspx</DependentUpon>
+    <Compile Include="PurchaseOrder\PurchaseOrder.aspx.vb">
+      <DependentUpon>PurchaseOrder.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PurchaseOrder\SearchPO.aspx.designer.vb">
+      <DependentUpon>SearchPO.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrder\SearchPO.aspx.vb">
+      <DependentUpon>SearchPO.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
