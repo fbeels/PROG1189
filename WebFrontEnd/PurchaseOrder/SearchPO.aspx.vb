@@ -9,25 +9,30 @@ Public Class SearchPO
 
 
     Protected Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
-        loadDataGrid(PurchaseOrderList.Create(txtSearchID.Text, Date.Parse(txtSearchDate.Text)))
+        If txtSearchDate.Text = Nothing Then
+            loadDataGrid(PurchaseOrderList.Create(Integer.Parse(ddlEmployee.SelectedValue), txtSearchID.Text))
+        Else
+            loadDataGrid(PurchaseOrderList.Create(Integer.Parse(ddlEmployee.SelectedValue), Nothing, Date.Parse(txtSearchDate.Text)))
+        End If
+
     End Sub
 
 
     Sub loadDataGrid(results As List(Of PurchaseOrderList))
         Dim Table As New DataTable
         With Table.Columns
-            .Add("ID", GetType(Integer))
+            .Add("ID", GetType(String))
             .Add("Employee ID", GetType(Integer))
             .Add("Status", GetType(String))
-            .Add("Total", GetType(Double))
-            .Add("Order Date", GetType(Date))
+            .Add("Total", GetType(String))
+            .Add("Order Date", GetType(String))
         End With
 
         For i As Integer = 0 To results.Count - 1
             Dim Row As DataRow
             Row = Table.NewRow()
             Dim id As Integer = results.Item(i).PurchaseOrderID
-            Row.Item("ID") = "<a href='PurchaseOrder.aspx?id=" & id & "' >'" & id & "</a>"
+            Row.Item("ID") = "<a href='PurchaseOrder.aspx?id=" & id & "' >" & id & "</a>"
             Row.Item("Employee ID") = results.Item(i).EmployeeID
             Row.Item("Status") = results.Item(i).Status.ToString
             Row.Item("Total") = results.Item(i).Total.ToString("c2")
@@ -36,5 +41,6 @@ Public Class SearchPO
         Next
 
         dgData.DataSource = Table
+        dgData.DataBind()
     End Sub
 End Class

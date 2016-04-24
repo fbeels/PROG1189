@@ -16,7 +16,7 @@ namespace SQLLayer
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
             tmpParmList.Add(new ParmStructure("@poid", SqlDbType.Int, ParameterDirection.Input, 0, PO_ID));
 
-            return DataAccess.GetDataTable("getPOByID", tmpParmList);
+            return DataAccess.GetDataTable("GetPOByID", tmpParmList);
         }
 
         static public int createInitialPO(IPurchaseOrderItem item, IPurchaseOrder PO)
@@ -51,21 +51,25 @@ namespace SQLLayer
             return true;
         }
 
-        static public DataTable searchPO(int ID = -1, DateTime? date = null)
+        static public DataTable searchPO(int empid, int ID = -1, DateTime? date = null)
         {
             var effectiveDate = date ?? DateTime.MinValue;
 
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
+
+            tmpParmList.Add(new ParmStructure("@empid", SqlDbType.Int, ParameterDirection.Input, 0, empid));
+
             if (ID != -1)
             {
                 tmpParmList.Add(new ParmStructure("@poid", SqlDbType.Int, ParameterDirection.Input, 0, ID));
+                return DataAccess.GetDataTable("GetPOByID", tmpParmList);
             }
             else if (effectiveDate == DateTime.MinValue)
             {
-                tmpParmList.Add(new ParmStructure("@date", SqlDbType.DateTime, ParameterDirection.Input, 0, effectiveDate));
+                tmpParmList.Add(new ParmStructure("@orderdate", SqlDbType.DateTime, ParameterDirection.Input, 0, effectiveDate));
+                return DataAccess.GetDataTable("GetPOByDate", tmpParmList);
             }
-
-            return DataAccess.GetDataTable("searchPO", tmpParmList);
+            return null;
         }
 
     }
