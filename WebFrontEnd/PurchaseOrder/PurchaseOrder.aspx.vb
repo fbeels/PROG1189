@@ -25,9 +25,6 @@ Public Class CreatePO
         End If
 
 
-
-
-
         If IsNothing(ViewState("PO")) AndAlso IsNothing(ViewState("Items")) Then
             ViewState("PO") = myPurchaseOrder
             ViewState("Items") = myItems
