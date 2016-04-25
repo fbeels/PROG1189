@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class SearchPO
+Partial Public Class CreatePO
     
     '''<summary>
     '''ddlEmployee control.
@@ -23,47 +23,56 @@ Partial Public Class SearchPO
     Protected WithEvents ddlEmployee As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
-    '''txtSearchID control.
+    '''lblDate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtSearchID As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lblDate As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''txtSearchDate control.
+    '''lblEmp control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtSearchDate As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lblEmp As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''btnSearch control.
+    '''lblDept control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnSearch As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents lblDept As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''lblErr control.
+    '''lblSuper control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents lblErr As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lblSuper As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''dgData control.
+    '''Gridview1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents dgData As Global.System.Web.UI.WebControls.DataGrid
+    Protected WithEvents Gridview1 As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''btnSubmit control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSubmit As Global.System.Web.UI.WebControls.Button
 End Class

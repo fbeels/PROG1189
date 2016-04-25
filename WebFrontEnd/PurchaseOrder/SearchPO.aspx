@@ -25,7 +25,7 @@
     <asp:TextBox runat="server" ID="txtSearchDate" placeholder="Purchase Order Date" /><br />
 
     <asp:Button Text="Search" runat="server" ID="btnSearch" />
-
+    <asp:Label Text="" id="lblErr" runat="server" />
     <asp:DataGrid runat="server" ID="dgData">
     </asp:DataGrid>
 </asp:Content>
