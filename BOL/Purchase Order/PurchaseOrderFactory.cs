@@ -29,6 +29,7 @@ namespace BOL.Purchase_Order
         static private PurchaseOrder RePackager(DataTable podt, DataTable idt)
         {
             PurchaseOrder po = new PurchaseOrder();
+            po.Items = new List<PurchaseOrderItem>();
 
             foreach (DataRow row in podt.Rows)
             {
@@ -36,8 +37,8 @@ namespace BOL.Purchase_Order
                 po.OrderDate = DateTime.Parse(row["orderdate"].ToString());
                 po.Tax = double.Parse(row["Tax"].ToString());
                 po.SubTotal = double.Parse(row["subtotal"].ToString());
-                po.Status = (OrderStatus)int.Parse(row["orderdate"].ToString());
-                po.EmployeeID = int.Parse(row["orderdate"].ToString());
+                po.Status = (OrderStatus) int.Parse(row["status"].ToString());
+                po.EmployeeID = int.Parse(row["empid"].ToString());
 
             }
 
@@ -46,14 +47,14 @@ namespace BOL.Purchase_Order
                 PurchaseOrderItem item = new PurchaseOrderItem();
 
                 item.ItemID = int.Parse(row["po_item_ID"].ToString());
-                item.Description = row["desc"].ToString();
+                item.Description = row["itemdesc"].ToString();
                 item.ItemName = row["itemname"].ToString();
                 item.PurchaseOrderID = int.Parse(row["po_id"].ToString());
                 item.Price = double.Parse(row["price"].ToString());
                 item.Quantity = int.Parse(row["quantity"].ToString());
                 item.Reason = row["reason"].ToString();
                 item.Source = row["source"].ToString();
-                item.Status = (ItemStatus)int.Parse(row["reason"].ToString());
+                item.Status = (ItemStatus)int.Parse(row["itemstatus"].ToString());
                 item.Justification = row["justification"].ToString();
 
                 po.Items.Add(item);

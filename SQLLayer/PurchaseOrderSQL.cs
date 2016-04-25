@@ -48,6 +48,7 @@ namespace SQLLayer
             tmpParmList.Add(new ParmStructure("@orderstatus", SqlDbType.TinyInt, ParameterDirection.Input, 0, PO.Status));
             
             DataAccess.SendData("UpdatePO", tmpParmList);
+         
             return true;
         }
 
@@ -59,14 +60,14 @@ namespace SQLLayer
 
             tmpParmList.Add(new ParmStructure("@empid", SqlDbType.Int, ParameterDirection.Input, 0, empid));
 
-            if (ID != -1)
+            if (ID != 0)
             {
                 tmpParmList.Add(new ParmStructure("@poid", SqlDbType.Int, ParameterDirection.Input, 0, ID));
-                return DataAccess.GetDataTable("GetPOByID", tmpParmList);
+                return DataAccess.GetDataTable("GetPOByIDAndEmpID", tmpParmList);
             }
-            else if (effectiveDate == DateTime.MinValue)
+            else if (effectiveDate != DateTime.MinValue)
             {
-                tmpParmList.Add(new ParmStructure("@orderdate", SqlDbType.DateTime, ParameterDirection.Input, 0, effectiveDate));
+                tmpParmList.Add(new ParmStructure("@orderdate", SqlDbType.Date, ParameterDirection.Input, 0, effectiveDate));
                 return DataAccess.GetDataTable("GetPOByDate", tmpParmList);
             }
             return null;

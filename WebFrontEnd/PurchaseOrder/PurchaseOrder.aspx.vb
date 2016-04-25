@@ -11,16 +11,19 @@ Public Class CreatePO
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         lblDate.Text = Date.Now.ToShortDateString
 
+        If Not Page.IsPostBack Then
+            SetInitialRow()
+            myItems = New List(Of PurchaseOrderItem)
+            myPurchaseOrder = New PurchaseOrder
+        End If
+
         If Request.QueryString("id") <> Nothing Then
             PO_ID = Request.QueryString("id")
             myPurchaseOrder = PurchaseOrderFactory.Create(PO_ID)
             myItems = myPurchaseOrder.Items
 
-        Else
             If Not Page.IsPostBack Then
-                SetInitialRow()
-                myItems = New List(Of PurchaseOrderItem)
-                myPurchaseOrder = New PurchaseOrder
+                dostuff()
             End If
         End If
 
@@ -37,14 +40,36 @@ Public Class CreatePO
 
     End Sub
 
+    Sub dostuff()
+        Dim rowIndex As Integer = 0
+
+        For i As Integer = 0 To myItems.Count - 1
+            Dim box1 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(1).FindControl("txtName"), TextBox)
+            Dim box2 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(2).FindControl("txtDesc"), TextBox)
+            Dim box3 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(3).FindControl("txtPrice"), TextBox)
+            Dim box4 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(4).FindControl("txtQ"), TextBox)
+            Dim box5 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(5).FindControl("txtStore"), TextBox)
+            Dim box6 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(6).FindControl("txtJust"), TextBox)
+            box1.Text = myItems.Item(i).ItemName
+            box2.Text = myItems.Item(i).Description
+            box3.Text = myItems.Item(i).Price
+            box4.Text = myItems.Item(i).Quantity
+            box5.Text = myItems.Item(i).Source
+            box6.Text = myItems.Item(i).Justification
+            rowIndex += 1
+            AddNewRowToGrid(False, True)
+        Next
+
+    End Sub
+
 #Region "Add PO/Items Controls"
     Protected Sub ButtonAdd_Click(sender As Object, e As EventArgs)
-        AddNewRowToGrid(False)
+        AddNewRowToGrid(False, False)
     End Sub
 
 
     Protected Sub btnSubmit_Click(sender As Object, e As EventArgs) Handles btnSubmit.Click
-        AddNewRowToGrid(True)
+        AddNewRowToGrid(True, False)
     End Sub
 
     ''' <summary>
@@ -81,7 +106,7 @@ Public Class CreatePO
     ''' <summary>
     ''' Adds a new row the gridview
     ''' </summary>
-    Private Sub AddNewRowToGrid(submit As Boolean)
+    Private Sub AddNewRowToGrid(isSubmit As Boolean, isEdit As Boolean)
         Dim rowIndex As Integer = 0
 
 
@@ -107,44 +132,54 @@ Public Class CreatePO
                     dtCurrentTable.Rows(i - 1)("Column6") = box6.Text
                     rowIndex += 1
 
-
                     Dim item As PurchaseOrderItem = PurchaseOrderItemFactory.Create()
 
-                    item.ItemName = box1.Text
-                    item.Description = box2.Text
-                    item.Price = box3.Text
-                    item.Quantity = box4.Text
-                    item.Source = box5.Text
-                    item.Justification = box6.Text
+                    If isEdit = False Then
 
-                    myItems.Add(item)
+                        If i <> dtCurrentTable.Rows.Count Then
+                            item.ItemName = box1.Text
+                            item.Description = box2.Text
+                            item.Price = box3.Text
+                            item.Quantity = box4.Text
+                            item.Source = box5.Text
+                            item.Justification = box6.Text
+                            item.ItemID = myItems.Item(i - 1).ItemID
 
-                    If myPurchaseOrder.PurchaseOrderID = 0 Then
-                        myPurchaseOrder.OrderDate = Date.Now
-                        myPurchaseOrder.Status = Common.OrderStatus.Pending
-                        myPurchaseOrder.Items = myItems
-                        myPurchaseOrder.SubTotal = myPurchaseOrder.calculateSubtotal
-                        myPurchaseOrder.Tax = myPurchaseOrder.calculateTax
-                        myPurchaseOrder.Total = myPurchaseOrder.calculateTotal
-                        myPurchaseOrder.EmployeeID = ddlEmployee.SelectedValue
+                            If myPurchaseOrder.PurchaseOrderID = 0 Then
+                                myPurchaseOrder.OrderDate = Date.Now
+                                myPurchaseOrder.Status = Common.OrderStatus.Pending
+                                myPurchaseOrder.Items = myItems
+                                myPurchaseOrder.SubTotal = myPurchaseOrder.calculateSubtotal
+                                myPurchaseOrder.Tax = myPurchaseOrder.calculateTax
+                                myPurchaseOrder.Total = myPurchaseOrder.calculateTotal
+                                myPurchaseOrder.EmployeeID = ddlEmployee.SelectedValue
 
-                        myPurchaseOrder.PurchaseOrderID = PurchaseOrderCUD.Create(myPurchaseOrder, item)
+                                myPurchaseOrder.PurchaseOrderID = PurchaseOrderCUD.Create(myPurchaseOrder, item)
+                            Else
+                                myPurchaseOrder.Items = myItems
+                                myPurchaseOrder.SubTotal = myPurchaseOrder.calculateSubtotal
+                                myPurchaseOrder.Tax = myPurchaseOrder.calculateTax
+                                myPurchaseOrder.Total = myPurchaseOrder.calculateTotal
+                                item.PurchaseOrderID = myPurchaseOrder.PurchaseOrderID
+                                If i = dtCurrentTable.Rows.Count Then 'if it's the last item in the table, add it.
+                                    If item.ItemName <> Nothing Then
+                                        PurchaseOrderItemCUD.Insert(item)
+                                    End If
+
+                                End If
+                                PurchaseOrderCUD.Update(myPurchaseOrder)
+                                PurchaseOrderItemCUD.Update(item)
+                            End If
+                        End If
+
                     Else
-                        myPurchaseOrder.Items = myItems
-                        myPurchaseOrder.SubTotal = myPurchaseOrder.calculateSubtotal
-                        myPurchaseOrder.Tax = myPurchaseOrder.calculateTax
-                        myPurchaseOrder.Total = myPurchaseOrder.calculateTotal
-                        item.PurchaseOrderID = myPurchaseOrder.PurchaseOrderID
-                        If i = dtCurrentTable.Rows.Count Then 'if it's the last item in the table, add it.
-                            PurchaseOrderItemCUD.Insert(item)
-                        End If
-                        PurchaseOrderCUD.Update(myPurchaseOrder)
-                        If submit Then
-                            Exit Sub
-                        End If
+
                     End If
 
                 Next
+                If isSubmit Then
+                    Exit Sub
+                End If
 
                 dtCurrentTable.Rows.Add(drCurrentRow)
                 ViewState("CurrentTable") = dtCurrentTable
