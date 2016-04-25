@@ -23,6 +23,13 @@ Partial Class RetrieveEmployee
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.grbsearch = New System.Windows.Forms.GroupBox()
+        Me.btnselect = New System.Windows.Forms.Button()
+        Me.lstsearchresults = New System.Windows.Forms.ListBox()
+        Me.btnsearch = New System.Windows.Forms.Button()
+        Me.txtsearchlname = New System.Windows.Forms.TextBox()
+        Me.txtsearchid = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.grbempinfo = New System.Windows.Forms.GroupBox()
         Me.mtxcellphone = New System.Windows.Forms.MaskedTextBox()
         Me.mtxworkphone = New System.Windows.Forms.MaskedTextBox()
@@ -56,19 +63,15 @@ Partial Class RetrieveEmployee
         Me.lblfirstname = New System.Windows.Forms.Label()
         Me.lblmiddleint = New System.Windows.Forms.Label()
         Me.lbllastname = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtsearchid = New System.Windows.Forms.TextBox()
-        Me.txtsearchlname = New System.Windows.Forms.TextBox()
-        Me.btnsearch = New System.Windows.Forms.Button()
-        Me.lstsearchresults = New System.Windows.Forms.ListBox()
-        Me.btnselect = New System.Windows.Forms.Button()
+        Me.lblnomatches = New System.Windows.Forms.Label()
+        Me.lbldebug = New System.Windows.Forms.Label()
         Me.grbsearch.SuspendLayout()
         Me.grbempinfo.SuspendLayout()
         Me.SuspendLayout()
         '
         'grbsearch
         '
+        Me.grbsearch.Controls.Add(Me.lblnomatches)
         Me.grbsearch.Controls.Add(Me.btnselect)
         Me.grbsearch.Controls.Add(Me.lstsearchresults)
         Me.grbsearch.Controls.Add(Me.btnsearch)
@@ -78,10 +81,68 @@ Partial Class RetrieveEmployee
         Me.grbsearch.Controls.Add(Me.Label1)
         Me.grbsearch.Location = New System.Drawing.Point(10, 11)
         Me.grbsearch.Name = "grbsearch"
-        Me.grbsearch.Size = New System.Drawing.Size(769, 96)
+        Me.grbsearch.Size = New System.Drawing.Size(769, 112)
         Me.grbsearch.TabIndex = 0
         Me.grbsearch.TabStop = False
         Me.grbsearch.Text = "Search"
+        '
+        'btnselect
+        '
+        Me.btnselect.Location = New System.Drawing.Point(612, 24)
+        Me.btnselect.Name = "btnselect"
+        Me.btnselect.Size = New System.Drawing.Size(120, 61)
+        Me.btnselect.TabIndex = 6
+        Me.btnselect.Text = "Select"
+        Me.btnselect.UseVisualStyleBackColor = True
+        '
+        'lstsearchresults
+        '
+        Me.lstsearchresults.FormattingEnabled = True
+        Me.lstsearchresults.Location = New System.Drawing.Point(371, 17)
+        Me.lstsearchresults.Name = "lstsearchresults"
+        Me.lstsearchresults.Size = New System.Drawing.Size(215, 69)
+        Me.lstsearchresults.TabIndex = 5
+        '
+        'btnsearch
+        '
+        Me.btnsearch.Location = New System.Drawing.Point(217, 33)
+        Me.btnsearch.Name = "btnsearch"
+        Me.btnsearch.Size = New System.Drawing.Size(97, 56)
+        Me.btnsearch.TabIndex = 4
+        Me.btnsearch.Text = "Search"
+        Me.btnsearch.UseVisualStyleBackColor = True
+        '
+        'txtsearchlname
+        '
+        Me.txtsearchlname.Location = New System.Drawing.Point(79, 70)
+        Me.txtsearchlname.Name = "txtsearchlname"
+        Me.txtsearchlname.Size = New System.Drawing.Size(100, 20)
+        Me.txtsearchlname.TabIndex = 3
+        '
+        'txtsearchid
+        '
+        Me.txtsearchid.Location = New System.Drawing.Point(83, 27)
+        Me.txtsearchid.Name = "txtsearchid"
+        Me.txtsearchid.Size = New System.Drawing.Size(100, 20)
+        Me.txtsearchid.TabIndex = 2
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(24, 62)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(56, 13)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Last name"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(23, 30)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(19, 13)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Id:"
         '
         'grbempinfo
         '
@@ -388,69 +449,30 @@ Partial Class RetrieveEmployee
         Me.lbllastname.TabIndex = 38
         Me.lbllastname.Text = "Last Name:"
         '
-        'Label1
+        'lblnomatches
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(23, 30)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(19, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Id:"
+        Me.lblnomatches.AutoSize = True
+        Me.lblnomatches.Location = New System.Drawing.Point(401, 93)
+        Me.lblnomatches.Name = "lblnomatches"
+        Me.lblnomatches.Size = New System.Drawing.Size(94, 13)
+        Me.lblnomatches.TabIndex = 7
+        Me.lblnomatches.Text = "No matches found"
         '
-        'Label2
+        'lbldebug
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(24, 62)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(56, 13)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Last name"
-        '
-        'txtsearchid
-        '
-        Me.txtsearchid.Location = New System.Drawing.Point(92, 27)
-        Me.txtsearchid.Name = "txtsearchid"
-        Me.txtsearchid.Size = New System.Drawing.Size(100, 20)
-        Me.txtsearchid.TabIndex = 2
-        '
-        'txtsearchlname
-        '
-        Me.txtsearchlname.Location = New System.Drawing.Point(79, 70)
-        Me.txtsearchlname.Name = "txtsearchlname"
-        Me.txtsearchlname.Size = New System.Drawing.Size(100, 20)
-        Me.txtsearchlname.TabIndex = 3
-        '
-        'btnsearch
-        '
-        Me.btnsearch.Location = New System.Drawing.Point(217, 33)
-        Me.btnsearch.Name = "btnsearch"
-        Me.btnsearch.Size = New System.Drawing.Size(97, 56)
-        Me.btnsearch.TabIndex = 4
-        Me.btnsearch.Text = "Search"
-        Me.btnsearch.UseVisualStyleBackColor = True
-        '
-        'lstsearchresults
-        '
-        Me.lstsearchresults.FormattingEnabled = True
-        Me.lstsearchresults.Location = New System.Drawing.Point(371, 17)
-        Me.lstsearchresults.Name = "lstsearchresults"
-        Me.lstsearchresults.Size = New System.Drawing.Size(215, 69)
-        Me.lstsearchresults.TabIndex = 5
-        '
-        'btnselect
-        '
-        Me.btnselect.Location = New System.Drawing.Point(612, 24)
-        Me.btnselect.Name = "btnselect"
-        Me.btnselect.Size = New System.Drawing.Size(120, 61)
-        Me.btnselect.TabIndex = 6
-        Me.btnselect.Text = "Select"
-        Me.btnselect.UseVisualStyleBackColor = True
+        Me.lbldebug.AutoSize = True
+        Me.lbldebug.Location = New System.Drawing.Point(117, 414)
+        Me.lbldebug.Name = "lbldebug"
+        Me.lbldebug.Size = New System.Drawing.Size(39, 13)
+        Me.lbldebug.TabIndex = 2
+        Me.lbldebug.Text = "Label3"
         '
         'RetrieveEmployee
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(799, 532)
+        Me.Controls.Add(Me.lbldebug)
         Me.Controls.Add(Me.grbempinfo)
         Me.Controls.Add(Me.grbsearch)
         Me.Name = "RetrieveEmployee"
@@ -460,6 +482,7 @@ Partial Class RetrieveEmployee
         Me.grbempinfo.ResumeLayout(False)
         Me.grbempinfo.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents grbsearch As System.Windows.Forms.GroupBox
@@ -503,4 +526,6 @@ Partial Class RetrieveEmployee
     Friend WithEvents lblfirstname As System.Windows.Forms.Label
     Friend WithEvents lblmiddleint As System.Windows.Forms.Label
     Friend WithEvents lbllastname As System.Windows.Forms.Label
+    Friend WithEvents lblnomatches As System.Windows.Forms.Label
+    Friend WithEvents lbldebug As System.Windows.Forms.Label
 End Class

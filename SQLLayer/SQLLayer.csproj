@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DepartmentSQL.cs" />
+    <Compile Include="EmployeeSQL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseOrderSQL.cs" />
     <Compile Include="PurchaseOrderItemSQL.cs" />

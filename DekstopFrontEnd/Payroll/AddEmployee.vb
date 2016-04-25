@@ -72,11 +72,11 @@ Public Class AddEmployee
         Dim strwork As String = mtxworkphone.Text
         myemp.Phone = strwork
         Dim intdept As Integer = cbodept.SelectedValue
-        myemp.Dept = intdept
+        myemp.DeptID = intdept
         Dim intsuper As Integer = cbosupervisor.SelectedValue
         myemp.SupervisorID = intsuper
         Dim intjob As Integer = cbojobid.SelectedValue
-        myemp.JobAssignment = intjob
+        myemp.JobID = intjob
         Dim dblpayrate As Double = txtpayrate.Text
         myemp.PayRate = dblpayrate
 
