@@ -80,5 +80,10 @@ Public Class AddEmployee
         Dim dblpayrate As Double = txtpayrate.Text
         myemp.PayRate = dblpayrate
 
+
+        'Dim done As Integer
+        'done = Employee.insert(myemp)
+
+
     End Sub
 End Class

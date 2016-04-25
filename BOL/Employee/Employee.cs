@@ -128,6 +128,24 @@ namespace BOL
             return myList;
         }
      
+        //static public int insert(Employee emp)
+        //{
+        //    return RePackagerdt2int(EmployeeSQL.insertEmp(emp));
+        //}
+
+        //static private int RePackagerdt2int(DataTable dt)
+        //{
+        //    //Employee myList = new Employee();
+        //    Employee x = new Employee();
+        //    int y=0;
+        //    foreach (DataRow emps in dt.Rows)
+        //    {
+        //      //  x.EmpID = (int)emps[0];
+        //        y= (int)emps[0];
+        //    }
+        //    //return myList;
+        //    return y;
+        //}
 
 
 

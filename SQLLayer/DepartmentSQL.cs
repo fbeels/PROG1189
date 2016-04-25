@@ -13,10 +13,7 @@ namespace SQLLayer
 {
     public class DepartmentSQL
     {
-        public static System.Data.DataTable retrieveDepartments()
-        {
-            throw new NotImplementedException();
-        }
+      
 
 
         static public DataTable GetAllDepts()
