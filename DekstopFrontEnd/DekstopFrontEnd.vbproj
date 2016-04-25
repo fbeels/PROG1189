@@ -164,6 +164,9 @@
     <EmbeddedResource Include="Payroll\AddEmployee.resx">
       <DependentUpon>AddEmployee.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Payroll\RetrieveEmployee.resx">
+      <DependentUpon>RetrieveEmployee.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">

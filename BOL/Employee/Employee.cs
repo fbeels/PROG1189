@@ -20,13 +20,24 @@ namespace BOL
         public string Phone { get; set; }
         public string Cell { get; set; }
         public string Email { get; set; }
+        public string SIN { get; set; }
+        public DateTime SeniorityDate { get; set; }
+        public DateTime JobStartDate { get; set; }
+        public string JobAssignment { get; set; }
+        public string Dept { get; set; }
+        public int SupervisorID { get; set; }
+        public double PayRate { get; set; }
+        public bool EmailNotification { get; set; }
 
-        public Employee create(string Lastname, char MiddleIntm, string FirstName, DateTime DOB, string Address, string City, string Prov, string Postal, int EmpID, string Phone, string Cell, string Email)
+        public Employee create(string Lastname, char MiddleIntm, string FirstName, DateTime DOB, string Address, string City, string Prov, string Postal, int EmpID, string Phone, string Cell, string Email, string SIN,DateTime SeniorityDate,DateTime JobStartDate,string JobAssignment,string Dept,int SupervisorID,double PayRate,bool EmailNotification)
         {
             throw new System.NotImplementedException();
         }
 
-
+        static public Employee create()
+        {
+            return new Employee();
+        }
 
 
 
