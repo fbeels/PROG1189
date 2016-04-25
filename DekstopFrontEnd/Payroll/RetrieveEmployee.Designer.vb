@@ -23,6 +23,7 @@ Partial Class RetrieveEmployee
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.grbsearch = New System.Windows.Forms.GroupBox()
+        Me.lblnomatches = New System.Windows.Forms.Label()
         Me.btnselect = New System.Windows.Forms.Button()
         Me.lstsearchresults = New System.Windows.Forms.ListBox()
         Me.btnsearch = New System.Windows.Forms.Button()
@@ -63,8 +64,13 @@ Partial Class RetrieveEmployee
         Me.lblfirstname = New System.Windows.Forms.Label()
         Me.lblmiddleint = New System.Windows.Forms.Label()
         Me.lbllastname = New System.Windows.Forms.Label()
-        Me.lblnomatches = New System.Windows.Forms.Label()
         Me.lbldebug = New System.Windows.Forms.Label()
+        Me.dtpsenority = New System.Windows.Forms.DateTimePicker()
+        Me.dtpstartdate = New System.Windows.Forms.DateTimePicker()
+        Me.dtpterminationdate = New System.Windows.Forms.DateTimePicker()
+        Me.lblsenoritydate = New System.Windows.Forms.Label()
+        Me.lblstartdate = New System.Windows.Forms.Label()
+        Me.lbltermination = New System.Windows.Forms.Label()
         Me.grbsearch.SuspendLayout()
         Me.grbempinfo.SuspendLayout()
         Me.SuspendLayout()
@@ -79,18 +85,31 @@ Partial Class RetrieveEmployee
         Me.grbsearch.Controls.Add(Me.txtsearchid)
         Me.grbsearch.Controls.Add(Me.Label2)
         Me.grbsearch.Controls.Add(Me.Label1)
-        Me.grbsearch.Location = New System.Drawing.Point(10, 11)
+        Me.grbsearch.Location = New System.Drawing.Point(15, 17)
+        Me.grbsearch.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.grbsearch.Name = "grbsearch"
-        Me.grbsearch.Size = New System.Drawing.Size(769, 112)
+        Me.grbsearch.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.grbsearch.Size = New System.Drawing.Size(1154, 172)
         Me.grbsearch.TabIndex = 0
         Me.grbsearch.TabStop = False
         Me.grbsearch.Text = "Search"
         '
+        'lblnomatches
+        '
+        Me.lblnomatches.AutoSize = True
+        Me.lblnomatches.Location = New System.Drawing.Point(602, 143)
+        Me.lblnomatches.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblnomatches.Name = "lblnomatches"
+        Me.lblnomatches.Size = New System.Drawing.Size(139, 20)
+        Me.lblnomatches.TabIndex = 7
+        Me.lblnomatches.Text = "No matches found"
+        '
         'btnselect
         '
-        Me.btnselect.Location = New System.Drawing.Point(612, 24)
+        Me.btnselect.Location = New System.Drawing.Point(918, 37)
+        Me.btnselect.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnselect.Name = "btnselect"
-        Me.btnselect.Size = New System.Drawing.Size(120, 61)
+        Me.btnselect.Size = New System.Drawing.Size(180, 94)
         Me.btnselect.TabIndex = 6
         Me.btnselect.Text = "Select"
         Me.btnselect.UseVisualStyleBackColor = True
@@ -98,54 +117,68 @@ Partial Class RetrieveEmployee
         'lstsearchresults
         '
         Me.lstsearchresults.FormattingEnabled = True
-        Me.lstsearchresults.Location = New System.Drawing.Point(371, 17)
+        Me.lstsearchresults.ItemHeight = 20
+        Me.lstsearchresults.Location = New System.Drawing.Point(556, 26)
+        Me.lstsearchresults.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.lstsearchresults.Name = "lstsearchresults"
-        Me.lstsearchresults.Size = New System.Drawing.Size(215, 69)
+        Me.lstsearchresults.Size = New System.Drawing.Size(320, 104)
         Me.lstsearchresults.TabIndex = 5
         '
         'btnsearch
         '
-        Me.btnsearch.Location = New System.Drawing.Point(217, 33)
+        Me.btnsearch.Location = New System.Drawing.Point(326, 51)
+        Me.btnsearch.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnsearch.Name = "btnsearch"
-        Me.btnsearch.Size = New System.Drawing.Size(97, 56)
+        Me.btnsearch.Size = New System.Drawing.Size(146, 86)
         Me.btnsearch.TabIndex = 4
         Me.btnsearch.Text = "Search"
         Me.btnsearch.UseVisualStyleBackColor = True
         '
         'txtsearchlname
         '
-        Me.txtsearchlname.Location = New System.Drawing.Point(79, 70)
+        Me.txtsearchlname.Location = New System.Drawing.Point(118, 108)
+        Me.txtsearchlname.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtsearchlname.Name = "txtsearchlname"
-        Me.txtsearchlname.Size = New System.Drawing.Size(100, 20)
+        Me.txtsearchlname.Size = New System.Drawing.Size(148, 26)
         Me.txtsearchlname.TabIndex = 3
         '
         'txtsearchid
         '
-        Me.txtsearchid.Location = New System.Drawing.Point(83, 27)
+        Me.txtsearchid.Location = New System.Drawing.Point(124, 42)
+        Me.txtsearchid.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtsearchid.Name = "txtsearchid"
-        Me.txtsearchid.Size = New System.Drawing.Size(100, 20)
+        Me.txtsearchid.Size = New System.Drawing.Size(148, 26)
         Me.txtsearchid.TabIndex = 2
+        Me.txtsearchid.Text = "10000001"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(24, 62)
+        Me.Label2.Location = New System.Drawing.Point(36, 95)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(56, 13)
+        Me.Label2.Size = New System.Drawing.Size(84, 20)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Last name"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(23, 30)
+        Me.Label1.Location = New System.Drawing.Point(34, 46)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(19, 13)
+        Me.Label1.Size = New System.Drawing.Size(27, 20)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Id:"
         '
         'grbempinfo
         '
+        Me.grbempinfo.Controls.Add(Me.lbltermination)
+        Me.grbempinfo.Controls.Add(Me.lblstartdate)
+        Me.grbempinfo.Controls.Add(Me.lblsenoritydate)
+        Me.grbempinfo.Controls.Add(Me.dtpterminationdate)
+        Me.grbempinfo.Controls.Add(Me.dtpstartdate)
+        Me.grbempinfo.Controls.Add(Me.dtpsenority)
         Me.grbempinfo.Controls.Add(Me.mtxcellphone)
         Me.grbempinfo.Controls.Add(Me.mtxworkphone)
         Me.grbempinfo.Controls.Add(Me.cboProv)
@@ -178,303 +211,381 @@ Partial Class RetrieveEmployee
         Me.grbempinfo.Controls.Add(Me.lblfirstname)
         Me.grbempinfo.Controls.Add(Me.lblmiddleint)
         Me.grbempinfo.Controls.Add(Me.lbllastname)
-        Me.grbempinfo.Location = New System.Drawing.Point(11, 129)
+        Me.grbempinfo.Location = New System.Drawing.Point(16, 198)
+        Me.grbempinfo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.grbempinfo.Name = "grbempinfo"
-        Me.grbempinfo.Size = New System.Drawing.Size(767, 262)
+        Me.grbempinfo.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.grbempinfo.Size = New System.Drawing.Size(1150, 403)
         Me.grbempinfo.TabIndex = 1
         Me.grbempinfo.TabStop = False
         Me.grbempinfo.Text = "Employee Info"
         '
         'mtxcellphone
         '
-        Me.mtxcellphone.Location = New System.Drawing.Point(567, 89)
+        Me.mtxcellphone.Location = New System.Drawing.Point(850, 137)
+        Me.mtxcellphone.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.mtxcellphone.Mask = "(999) 000-0000"
         Me.mtxcellphone.Name = "mtxcellphone"
-        Me.mtxcellphone.Size = New System.Drawing.Size(100, 20)
+        Me.mtxcellphone.Size = New System.Drawing.Size(148, 26)
         Me.mtxcellphone.TabIndex = 69
         '
         'mtxworkphone
         '
-        Me.mtxworkphone.Location = New System.Drawing.Point(567, 61)
+        Me.mtxworkphone.Location = New System.Drawing.Point(850, 94)
+        Me.mtxworkphone.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.mtxworkphone.Mask = "(999) 000-0000"
         Me.mtxworkphone.Name = "mtxworkphone"
-        Me.mtxworkphone.Size = New System.Drawing.Size(100, 20)
+        Me.mtxworkphone.Size = New System.Drawing.Size(148, 26)
         Me.mtxworkphone.TabIndex = 68
         '
         'cboProv
         '
         Me.cboProv.FormattingEnabled = True
         Me.cboProv.Items.AddRange(New Object() {"NB", "NS", "PE", "NF", "QC", "ON"})
-        Me.cboProv.Location = New System.Drawing.Point(314, 111)
+        Me.cboProv.Location = New System.Drawing.Point(471, 171)
+        Me.cboProv.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cboProv.Name = "cboProv"
-        Me.cboProv.Size = New System.Drawing.Size(121, 21)
+        Me.cboProv.Size = New System.Drawing.Size(180, 28)
         Me.cboProv.TabIndex = 67
         '
         'dtpdateofbirth
         '
         Me.dtpdateofbirth.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpdateofbirth.Location = New System.Drawing.Point(91, 140)
+        Me.dtpdateofbirth.Location = New System.Drawing.Point(136, 215)
+        Me.dtpdateofbirth.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.dtpdateofbirth.Name = "dtpdateofbirth"
-        Me.dtpdateofbirth.Size = New System.Drawing.Size(83, 20)
+        Me.dtpdateofbirth.Size = New System.Drawing.Size(122, 26)
         Me.dtpdateofbirth.TabIndex = 66
         '
         'cbojobid
         '
         Me.cbojobid.FormattingEnabled = True
-        Me.cbojobid.Location = New System.Drawing.Point(558, 176)
+        Me.cbojobid.Location = New System.Drawing.Point(353, 287)
+        Me.cbojobid.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbojobid.Name = "cbojobid"
-        Me.cbojobid.Size = New System.Drawing.Size(81, 21)
+        Me.cbojobid.Size = New System.Drawing.Size(260, 28)
         Me.cbojobid.TabIndex = 65
         '
         'cbodept
         '
         Me.cbodept.FormattingEnabled = True
-        Me.cbodept.Location = New System.Drawing.Point(388, 178)
+        Me.cbodept.Location = New System.Drawing.Point(122, 284)
+        Me.cbodept.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbodept.Name = "cbodept"
-        Me.cbodept.Size = New System.Drawing.Size(53, 21)
+        Me.cbodept.Size = New System.Drawing.Size(158, 28)
         Me.cbodept.TabIndex = 64
         '
         'cbosupervisor
         '
         Me.cbosupervisor.FormattingEnabled = True
-        Me.cbosupervisor.Location = New System.Drawing.Point(385, 208)
+        Me.cbosupervisor.Location = New System.Drawing.Point(724, 287)
+        Me.cbosupervisor.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbosupervisor.Name = "cbosupervisor"
-        Me.cbosupervisor.Size = New System.Drawing.Size(75, 21)
+        Me.cbosupervisor.Size = New System.Drawing.Size(224, 28)
         Me.cbosupervisor.TabIndex = 63
         '
         'txtemail
         '
-        Me.txtemail.Location = New System.Drawing.Point(567, 119)
+        Me.txtemail.Location = New System.Drawing.Point(850, 183)
+        Me.txtemail.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtemail.Name = "txtemail"
-        Me.txtemail.Size = New System.Drawing.Size(140, 20)
+        Me.txtemail.Size = New System.Drawing.Size(208, 26)
         Me.txtemail.TabIndex = 62
         '
         'txtpayrate
         '
-        Me.txtpayrate.Location = New System.Drawing.Point(564, 210)
+        Me.txtpayrate.Location = New System.Drawing.Point(1054, 289)
+        Me.txtpayrate.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtpayrate.Name = "txtpayrate"
-        Me.txtpayrate.Size = New System.Drawing.Size(48, 20)
+        Me.txtpayrate.Size = New System.Drawing.Size(70, 26)
         Me.txtpayrate.TabIndex = 61
         '
         'txtpostal
         '
-        Me.txtpostal.Location = New System.Drawing.Point(314, 137)
+        Me.txtpostal.Location = New System.Drawing.Point(471, 211)
+        Me.txtpostal.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtpostal.Name = "txtpostal"
-        Me.txtpostal.Size = New System.Drawing.Size(52, 20)
+        Me.txtpostal.Size = New System.Drawing.Size(76, 26)
         Me.txtpostal.TabIndex = 60
         '
         'txtcity
         '
-        Me.txtcity.Location = New System.Drawing.Point(314, 85)
+        Me.txtcity.Location = New System.Drawing.Point(471, 131)
+        Me.txtcity.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtcity.Name = "txtcity"
-        Me.txtcity.Size = New System.Drawing.Size(134, 20)
+        Me.txtcity.Size = New System.Drawing.Size(199, 26)
         Me.txtcity.TabIndex = 59
         '
         'txtsin
         '
-        Me.txtsin.Location = New System.Drawing.Point(131, 178)
+        Me.txtsin.Location = New System.Drawing.Point(846, 219)
+        Me.txtsin.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtsin.Name = "txtsin"
-        Me.txtsin.Size = New System.Drawing.Size(124, 20)
+        Me.txtsin.Size = New System.Drawing.Size(184, 26)
         Me.txtsin.TabIndex = 58
         '
         'txtstreetaddress
         '
-        Me.txtstreetaddress.Location = New System.Drawing.Point(314, 59)
+        Me.txtstreetaddress.Location = New System.Drawing.Point(471, 91)
+        Me.txtstreetaddress.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtstreetaddress.Name = "txtstreetaddress"
-        Me.txtstreetaddress.Size = New System.Drawing.Size(125, 20)
+        Me.txtstreetaddress.Size = New System.Drawing.Size(186, 26)
         Me.txtstreetaddress.TabIndex = 57
         '
         'txtmiddleinit
         '
-        Me.txtmiddleinit.Location = New System.Drawing.Point(87, 80)
+        Me.txtmiddleinit.Location = New System.Drawing.Point(130, 123)
+        Me.txtmiddleinit.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtmiddleinit.Name = "txtmiddleinit"
-        Me.txtmiddleinit.Size = New System.Drawing.Size(45, 20)
+        Me.txtmiddleinit.Size = New System.Drawing.Size(66, 26)
         Me.txtmiddleinit.TabIndex = 56
         '
         'txtlastname
         '
-        Me.txtlastname.Location = New System.Drawing.Point(82, 108)
+        Me.txtlastname.Location = New System.Drawing.Point(123, 166)
+        Me.txtlastname.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtlastname.Name = "txtlastname"
-        Me.txtlastname.Size = New System.Drawing.Size(99, 20)
+        Me.txtlastname.Size = New System.Drawing.Size(146, 26)
         Me.txtlastname.TabIndex = 55
         '
         'txtfirstname
         '
-        Me.txtfirstname.Location = New System.Drawing.Point(87, 56)
+        Me.txtfirstname.Location = New System.Drawing.Point(130, 86)
+        Me.txtfirstname.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtfirstname.Name = "txtfirstname"
-        Me.txtfirstname.Size = New System.Drawing.Size(120, 20)
+        Me.txtfirstname.Size = New System.Drawing.Size(178, 26)
         Me.txtfirstname.TabIndex = 54
         '
         'lblpayrate
         '
         Me.lblpayrate.AutoSize = True
-        Me.lblpayrate.Location = New System.Drawing.Point(504, 208)
+        Me.lblpayrate.Location = New System.Drawing.Point(968, 292)
+        Me.lblpayrate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblpayrate.Name = "lblpayrate"
-        Me.lblpayrate.Size = New System.Drawing.Size(46, 13)
+        Me.lblpayrate.Size = New System.Drawing.Size(67, 20)
         Me.lblpayrate.TabIndex = 53
         Me.lblpayrate.Text = "Payrate:"
         '
         'lbljobid
         '
         Me.lbljobid.AutoSize = True
-        Me.lbljobid.Location = New System.Drawing.Point(504, 177)
+        Me.lbljobid.Location = New System.Drawing.Point(298, 287)
+        Me.lbljobid.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbljobid.Name = "lbljobid"
-        Me.lbljobid.Size = New System.Drawing.Size(38, 13)
+        Me.lbljobid.Size = New System.Drawing.Size(47, 20)
         Me.lbljobid.TabIndex = 52
-        Me.lbljobid.Text = "JobID:"
+        Me.lbljobid.Text = "Jobs:"
         '
         'lbldept
         '
         Me.lbldept.AutoSize = True
-        Me.lbldept.Location = New System.Drawing.Point(311, 181)
+        Me.lbldept.Location = New System.Drawing.Point(20, 292)
+        Me.lbldept.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbldept.Name = "lbldept"
-        Me.lbldept.Size = New System.Drawing.Size(62, 13)
+        Me.lbldept.Size = New System.Drawing.Size(94, 20)
         Me.lbldept.TabIndex = 51
         Me.lbldept.Text = "Department"
         '
         'lblsupervisor
         '
         Me.lblsupervisor.AutoSize = True
-        Me.lblsupervisor.Location = New System.Drawing.Point(311, 208)
+        Me.lblsupervisor.Location = New System.Drawing.Point(632, 290)
+        Me.lblsupervisor.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblsupervisor.Name = "lblsupervisor"
-        Me.lblsupervisor.Size = New System.Drawing.Size(57, 13)
+        Me.lblsupervisor.Size = New System.Drawing.Size(84, 20)
         Me.lblsupervisor.TabIndex = 50
         Me.lblsupervisor.Text = "Supervisor"
         '
         'lblsin
         '
         Me.lblsin.AutoSize = True
-        Me.lblsin.Location = New System.Drawing.Point(1, 177)
+        Me.lblsin.Location = New System.Drawing.Point(652, 220)
+        Me.lblsin.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblsin.Name = "lblsin"
-        Me.lblsin.Size = New System.Drawing.Size(124, 13)
+        Me.lblsin.Size = New System.Drawing.Size(185, 20)
         Me.lblsin.TabIndex = 49
         Me.lblsin.Text = "Social Insurance number"
         '
         'lblemail
         '
         Me.lblemail.AutoSize = True
-        Me.lblemail.Location = New System.Drawing.Point(530, 119)
+        Me.lblemail.Location = New System.Drawing.Point(795, 183)
+        Me.lblemail.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblemail.Name = "lblemail"
-        Me.lblemail.Size = New System.Drawing.Size(31, 13)
+        Me.lblemail.Size = New System.Drawing.Size(46, 20)
         Me.lblemail.TabIndex = 48
         Me.lblemail.Text = "email"
         '
         'lblcellphone
         '
         Me.lblcellphone.AutoSize = True
-        Me.lblcellphone.Location = New System.Drawing.Point(504, 92)
+        Me.lblcellphone.Location = New System.Drawing.Point(756, 142)
+        Me.lblcellphone.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblcellphone.Name = "lblcellphone"
-        Me.lblcellphone.Size = New System.Drawing.Size(57, 13)
+        Me.lblcellphone.Size = New System.Drawing.Size(84, 20)
         Me.lblcellphone.TabIndex = 47
         Me.lblcellphone.Text = "Cell phone"
         '
         'lblworkphone
         '
         Me.lblworkphone.AutoSize = True
-        Me.lblworkphone.Location = New System.Drawing.Point(494, 66)
+        Me.lblworkphone.Location = New System.Drawing.Point(741, 102)
+        Me.lblworkphone.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblworkphone.Name = "lblworkphone"
-        Me.lblworkphone.Size = New System.Drawing.Size(67, 13)
+        Me.lblworkphone.Size = New System.Drawing.Size(96, 20)
         Me.lblworkphone.TabIndex = 46
         Me.lblworkphone.Text = "Work Phone"
         '
         'lblpostal
         '
         Me.lblpostal.AutoSize = True
-        Me.lblpostal.Location = New System.Drawing.Point(240, 140)
+        Me.lblpostal.Location = New System.Drawing.Point(360, 215)
+        Me.lblpostal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblpostal.Name = "lblpostal"
-        Me.lblpostal.Size = New System.Drawing.Size(63, 13)
+        Me.lblpostal.Size = New System.Drawing.Size(92, 20)
         Me.lblpostal.TabIndex = 45
         Me.lblpostal.Text = "Postal code"
         '
         'lblcity
         '
         Me.lblcity.AutoSize = True
-        Me.lblcity.Location = New System.Drawing.Point(270, 83)
+        Me.lblcity.Location = New System.Drawing.Point(405, 128)
+        Me.lblcity.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblcity.Name = "lblcity"
-        Me.lblcity.Size = New System.Drawing.Size(23, 13)
+        Me.lblcity.Size = New System.Drawing.Size(32, 20)
         Me.lblcity.TabIndex = 44
         Me.lblcity.Text = "city"
         '
         'lblprov
         '
         Me.lblprov.AutoSize = True
-        Me.lblprov.Location = New System.Drawing.Point(246, 108)
+        Me.lblprov.Location = New System.Drawing.Point(369, 166)
+        Me.lblprov.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblprov.Name = "lblprov"
-        Me.lblprov.Size = New System.Drawing.Size(49, 13)
+        Me.lblprov.Size = New System.Drawing.Size(69, 20)
         Me.lblprov.TabIndex = 43
         Me.lblprov.Text = "Province"
         '
         'lblstreetaddress
         '
         Me.lblstreetaddress.AutoSize = True
-        Me.lblstreetaddress.Location = New System.Drawing.Point(227, 59)
+        Me.lblstreetaddress.Location = New System.Drawing.Point(340, 91)
+        Me.lblstreetaddress.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblstreetaddress.Name = "lblstreetaddress"
-        Me.lblstreetaddress.Size = New System.Drawing.Size(76, 13)
+        Me.lblstreetaddress.Size = New System.Drawing.Size(116, 20)
         Me.lblstreetaddress.TabIndex = 42
         Me.lblstreetaddress.Text = "Street Address"
         '
         'lbldob
         '
         Me.lbldob.AutoSize = True
-        Me.lbldob.Location = New System.Drawing.Point(11, 144)
+        Me.lbldob.Location = New System.Drawing.Point(16, 222)
+        Me.lbldob.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbldob.Name = "lbldob"
-        Me.lbldob.Size = New System.Drawing.Size(66, 13)
+        Me.lbldob.Size = New System.Drawing.Size(99, 20)
         Me.lbldob.TabIndex = 41
         Me.lbldob.Text = "Date of Birth"
         '
         'lblfirstname
         '
         Me.lblfirstname.AutoSize = True
-        Me.lblfirstname.Location = New System.Drawing.Point(22, 59)
+        Me.lblfirstname.Location = New System.Drawing.Point(33, 91)
+        Me.lblfirstname.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblfirstname.Name = "lblfirstname"
-        Me.lblfirstname.Size = New System.Drawing.Size(54, 13)
+        Me.lblfirstname.Size = New System.Drawing.Size(81, 20)
         Me.lblfirstname.TabIndex = 40
         Me.lblfirstname.Text = "first Name"
         '
         'lblmiddleint
         '
         Me.lblmiddleint.AutoSize = True
-        Me.lblmiddleint.Location = New System.Drawing.Point(11, 83)
+        Me.lblmiddleint.Location = New System.Drawing.Point(16, 128)
+        Me.lblmiddleint.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblmiddleint.Name = "lblmiddleint"
-        Me.lblmiddleint.Size = New System.Drawing.Size(65, 13)
+        Me.lblmiddleint.Size = New System.Drawing.Size(96, 20)
         Me.lblmiddleint.TabIndex = 39
         Me.lblmiddleint.Text = "Middle Initial"
         '
         'lbllastname
         '
         Me.lbllastname.AutoSize = True
-        Me.lbllastname.Location = New System.Drawing.Point(15, 111)
+        Me.lbllastname.Location = New System.Drawing.Point(22, 171)
+        Me.lbllastname.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbllastname.Name = "lbllastname"
-        Me.lbllastname.Size = New System.Drawing.Size(61, 13)
+        Me.lbllastname.Size = New System.Drawing.Size(90, 20)
         Me.lbllastname.TabIndex = 38
         Me.lbllastname.Text = "Last Name:"
-        '
-        'lblnomatches
-        '
-        Me.lblnomatches.AutoSize = True
-        Me.lblnomatches.Location = New System.Drawing.Point(401, 93)
-        Me.lblnomatches.Name = "lblnomatches"
-        Me.lblnomatches.Size = New System.Drawing.Size(94, 13)
-        Me.lblnomatches.TabIndex = 7
-        Me.lblnomatches.Text = "No matches found"
         '
         'lbldebug
         '
         Me.lbldebug.AutoSize = True
-        Me.lbldebug.Location = New System.Drawing.Point(117, 414)
+        Me.lbldebug.Location = New System.Drawing.Point(176, 637)
+        Me.lbldebug.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbldebug.Name = "lbldebug"
-        Me.lbldebug.Size = New System.Drawing.Size(39, 13)
+        Me.lbldebug.Size = New System.Drawing.Size(57, 20)
         Me.lbldebug.TabIndex = 2
         Me.lbldebug.Text = "Label3"
         '
+        'dtpsenority
+        '
+        Me.dtpsenority.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpsenority.Location = New System.Drawing.Point(164, 366)
+        Me.dtpsenority.Name = "dtpsenority"
+        Me.dtpsenority.Size = New System.Drawing.Size(144, 26)
+        Me.dtpsenority.TabIndex = 70
+        '
+        'dtpstartdate
+        '
+        Me.dtpstartdate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpstartdate.Location = New System.Drawing.Point(578, 370)
+        Me.dtpstartdate.Name = "dtpstartdate"
+        Me.dtpstartdate.Size = New System.Drawing.Size(138, 26)
+        Me.dtpstartdate.TabIndex = 71
+        '
+        'dtpterminationdate
+        '
+        Me.dtpterminationdate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpterminationdate.Location = New System.Drawing.Point(972, 372)
+        Me.dtpterminationdate.Name = "dtpterminationdate"
+        Me.dtpterminationdate.Size = New System.Drawing.Size(138, 26)
+        Me.dtpterminationdate.TabIndex = 72
+        '
+        'lblsenoritydate
+        '
+        Me.lblsenoritydate.AutoSize = True
+        Me.lblsenoritydate.Location = New System.Drawing.Point(33, 372)
+        Me.lblsenoritydate.Name = "lblsenoritydate"
+        Me.lblsenoritydate.Size = New System.Drawing.Size(111, 20)
+        Me.lblsenoritydate.TabIndex = 73
+        Me.lblsenoritydate.Text = "Seniority DAte"
+        '
+        'lblstartdate
+        '
+        Me.lblstartdate.AutoSize = True
+        Me.lblstartdate.Location = New System.Drawing.Point(466, 372)
+        Me.lblstartdate.Name = "lblstartdate"
+        Me.lblstartdate.Size = New System.Drawing.Size(87, 20)
+        Me.lblstartdate.TabIndex = 74
+        Me.lblstartdate.Text = "Start Date:"
+        '
+        'lbltermination
+        '
+        Me.lbltermination.AutoSize = True
+        Me.lbltermination.Location = New System.Drawing.Point(860, 370)
+        Me.lbltermination.Name = "lbltermination"
+        Me.lbltermination.Size = New System.Drawing.Size(85, 20)
+        Me.lbltermination.TabIndex = 75
+        Me.lbltermination.Text = "Terminator"
+        '
         'RetrieveEmployee
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(799, 532)
+        Me.ClientSize = New System.Drawing.Size(1198, 818)
         Me.Controls.Add(Me.lbldebug)
         Me.Controls.Add(Me.grbempinfo)
         Me.Controls.Add(Me.grbsearch)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "RetrieveEmployee"
         Me.Text = "RetrieveEmployee"
         Me.grbsearch.ResumeLayout(False)
@@ -528,4 +639,10 @@ Partial Class RetrieveEmployee
     Friend WithEvents lbllastname As System.Windows.Forms.Label
     Friend WithEvents lblnomatches As System.Windows.Forms.Label
     Friend WithEvents lbldebug As System.Windows.Forms.Label
+    Friend WithEvents lbltermination As System.Windows.Forms.Label
+    Friend WithEvents lblstartdate As System.Windows.Forms.Label
+    Friend WithEvents lblsenoritydate As System.Windows.Forms.Label
+    Friend WithEvents dtpterminationdate As System.Windows.Forms.DateTimePicker
+    Friend WithEvents dtpstartdate As System.Windows.Forms.DateTimePicker
+    Friend WithEvents dtpsenority As System.Windows.Forms.DateTimePicker
 End Class

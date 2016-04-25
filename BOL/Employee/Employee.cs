@@ -44,7 +44,7 @@ namespace BOL
         {
             return new Employee();
         }
-
+//-------------------------------------------------------------
         static public List<Employee> search(int search_empid, string search_lname)
         {
                return SearchRePackager(EmployeeSQL.searchEmp(search_empid, search_lname));
@@ -64,7 +64,7 @@ namespace BOL
             }
             return myList;
         }
-
+//-----------------------------------------------------------------------------------
         static public Employee retrieve(int empid)
         {
             return RePackager(EmployeeSQL.retrieveEmp(empid));
@@ -96,7 +96,7 @@ namespace BOL
                 x.JobID = (int)emps[15];
                 x.SupervisorID = (int)emps[16];
                 x.EmailNotification = (bool)emps[17];
-             //   x.PayRate = (double)emps[18];
+               x.PayRate = System.Convert.ToDouble((Decimal)emps[18]);
                 x.TerminationDate = (DateTime)emps[19];
                 x.DeptID= (int)emps[20];
 
@@ -106,37 +106,28 @@ namespace BOL
             //return myList;
             return x;
         }
-      
-        //Public Overloads Shared Function create(Optional ByVal stusearchid As String = "", Optional ByVal stusearchfname As String = "",) As List(Of student)
-        //    Dim dtstudents As DataTable = SQL.StudentSQL.RetrieveSome(stusearchid, stuseaerchlname)
-        //    Return Repackage_IDNAME_Table_To_List(dtstudents)
-        //End Function
+      //-------------------------------------------------------------------
+
+        static public List<Employee> GetAllEmpsInDept(int deptID)
+        {
+            return GetAllEmpsInDeptRePackager(EmployeeSQL.GetAllEmpsInDept(deptID));
+        }
 
 
+        static private List<Employee> GetAllEmpsInDeptRePackager(DataTable dt)
+        {
+            List<Employee> myList = new List<Employee>();
 
-        //Private Shared Function Repackage_IDNAME_Table_To_List(dtemp As DataTable) As List(Of student)
-
-        //    Dim listofstudents As New List(Of student)
-        //    Dim stu As student = Nothing
-
-        //    'Iterate through each of the rows in the DataTable
-        //    For Each dr As DataRow In dtemp.Rows
-        //        'Instantiate the JobAssignmentReport intance for the current iteration
-        //        stu = New student
-        //        'strDetail = row.Item("Detail")
-
-        //        stu._studentid = CStr(dr.Item(0)) '            studentid nchar(8)
-        //        stu._firstname = CStr(dr.Item(1)) + " " + CStr(dr.Item(2)) ' 
-        //        '   stu._firstname = CStr(dr.Item(1))        '   firstname varchar(50)
-        //        '  stu._lastname = CStr(dr.Item(2)) '            lastname varchar(50)
-
-        //        'Add the inidividual object to the list
-        //        listofstudents.Add(stu)
-        //    Next
-
-        //    Return listofstudents
-
-        //End Function
+            foreach (DataRow emps in dt.Rows)
+            {
+                Employee x = new Employee();
+                x.EmpID = (int)emps[0];
+                x.LastName = (string)emps[1];
+                myList.Add(x);
+            }
+            return myList;
+        }
+     
 
 
 

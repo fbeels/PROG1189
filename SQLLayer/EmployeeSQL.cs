@@ -26,6 +26,12 @@ namespace SQLLayer
             tmpParmList.Add(new ParmStructure("@empid", SqlDbType.Int, ParameterDirection.Input, 0, empid));
             return DataAccess.GetDataTable("GetEmployeeWithId", tmpParmList);
         }
+        static public DataTable GetAllEmpsInDept(int deptid)
+        {
+            List<ParmStructure> tmpParmList = new List<ParmStructure>();
+            tmpParmList.Add(new ParmStructure("@deptid", SqlDbType.Int, ParameterDirection.Input, 0, deptid));
+            return DataAccess.GetDataTable("GetAllEmpsInDept", tmpParmList);
+        }
        
     }
 }

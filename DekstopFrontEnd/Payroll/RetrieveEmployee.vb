@@ -85,5 +85,86 @@ Public Class RetrieveEmployee
         txtfirstname.Text = emp.FirstName
         txtmiddleinit.Text = emp.MiddleInt
         txtlastname.Text = emp.LastName
+        dtpdateofbirth.Text = emp.DOB
+
+        txtsin.Text = emp.SIN
+        txtstreetaddress.Text = emp.Address
+        txtcity.Text = emp.City
+
+        txtpostal.Text = emp.Postal
+
+        mtxcellphone.Text = emp.Cell
+        mtxworkphone.Text = emp.Phone
+        txtemail.Text = emp.Email
+
+        dtpsenority.Text = emp.SeniorityDate
+        dtpstartdate.Text = emp.JobStartDate
+        dtpterminationdate.Text = emp.TerminationDate
+
+        Dim strprov As String = emp.Prov
+        'MsgBox(strprov.ToString)
+        cboProv.SelectedText = strprov.ToString
+
+        Dim deptid As Integer = emp.DeptID
+
+        'cbodept
+
+        Dim allDepts = New List(Of Department)
+        allDepts = Department.GetAllDepts()
+        If allDepts.Count > 0 Then
+            cbodept.DataSource = allDepts
+            cbodept.DisplayMember = "DeptName"    ' indicate property name of obj to SHOW
+            cbodept.ValueMember = "DeptId"     ' prop name of object to return
+        End If
+
+
+
+
+        'get all employees in selected department
+        Dim allempsInDept = New List(Of Employee)
+        allempsInDept = Employee.GetAllEmpsInDept(deptid)
+        If allempsInDept.Count > 0 Then
+            cbosupervisor.DataSource = allempsInDept
+            cbosupervisor.DisplayMember = "lastname"    ' indicate property name of obj to SHOW
+            cbosupervisor.ValueMember = "empid"     ' prop name of object to return
+        End If
+
+
+
+        'cbojobid
+        'Dim allJobs = New List(Of Job)
+        'allJobs = Job.GetAllJobs4Dropdowns(deptid)
+        'If allJobs.Count > 0 Then
+        '    cbojobid.DataSource = allJobs
+        '    cbojobid.DisplayMember = "JobName"    ' indicate property name of obj to SHOW
+        '    cbojobid.ValueMember = "JobId"     ' prop name of object to return
+        'End If
+        LoadJobsDropdown(deptid)
+
+        txtpayrate.Text = emp.PayRate
     End Sub
+
+    'Private Sub cbodept_SelectedValueChanged(sender As Object, e As EventArgs) Handles cbodept.SelectedValueChanged
+    '    MsgBox("here")
+    '    Dim newdeptid As Integer = cbodept.SelectedValue
+    '    LoadJobsDropdown(newdeptid)
+    'End Sub
+
+    'Private Sub cbodept_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbodept.SelectedIndexChanged
+
+
+    'End Sub
+
+    Private Sub LoadJobsDropdown(ByRef deptid As Integer)
+        cbojobid.Items.Clear()
+        Dim allJobs = New List(Of Job)
+        allJobs = Job.GetAllJobs4Dropdowns(deptid)
+        If allJobs.Count > 0 Then
+            cbojobid.DataSource = allJobs
+            cbojobid.DisplayMember = "JobName"    ' indicate property name of obj to SHOW
+            cbojobid.ValueMember = "JobId"     ' prop name of object to return
+        End If
+    End Sub
+
+   
 End Class

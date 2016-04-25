@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +7,9 @@ using Common;
 using DAL;
 using System.Data;
 
-
 namespace SQLLayer
 {
-    public class DepartmentSQL
+    static public class JobSQL
     {
         public static System.Data.DataTable retrieveDepartments()
         {
@@ -19,11 +17,14 @@ namespace SQLLayer
         }
 
 
-        static public DataTable GetAllDepts()
+        static public DataTable GetAllJobs4Dropdowns(int dept)
         {
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
-            return DataAccess.GetDataTable("GetDepartments", tmpParmList);
+            tmpParmList.Add(new ParmStructure("@deptid", SqlDbType.Int, ParameterDirection.Input, 0, dept));
+            return DataAccess.GetDataTable("GetJobsInDept", tmpParmList);
         }
+
+      
 
     }
 }
