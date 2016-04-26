@@ -23,4 +23,20 @@
     Private Sub btncalcpayroll_Click(sender As Object, e As EventArgs) Handles btncalcpayroll.Click
         CalcPayroll.Show()
     End Sub
+
+    Private Sub btnmodPO_Click(sender As Object, e As EventArgs) Handles btnmodPO.Click
+        If TabControl1.Contains(ModifyPO) Then
+            TabControl1.TabPages(ModifyPO).Select()
+        Else
+            TabControl1.TabPages.Add(ModifyPO)
+        End If
+    End Sub
+
+    Private Sub btncreatePO_Click(sender As Object, e As EventArgs) Handles btncreatePO.Click
+        If TabControl1.Contains(CreatePO) Then
+            TabControl1.TabPages(CreatePO).Select()
+        Else
+            TabControl1.TabPages.Add(CreatePO)
+        End If
+    End Sub
 End Class

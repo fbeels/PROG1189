@@ -50,7 +50,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MdiTabControl">
-      <HintPath>..\..\..\..\..\..\..\..\..\MDITabControl\MdiTabControl.dll</HintPath>
+      <HintPath>..\..\..\..\Google Drive\School\Term 6\Files\N-Tier\Project -  cR\MdiTabControl.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
@@ -159,6 +159,12 @@
       <DependentUpon>CreatePO.vb</DependentUpon>
     </Compile>
     <Compile Include="PurchaseOrder\CreatePO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseOrder\ModifyPO.Designer.vb">
+      <DependentUpon>ModifyPO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrder\ModifyPO.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

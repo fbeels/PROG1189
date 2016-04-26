@@ -11,7 +11,7 @@ Public Class SearchPO
     Protected Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         If txtSearchDate.Text = Nothing Then
             If txtSearchID.Text = String.Empty Then
-                lblErr.Text = "Both fields are negative, try again."
+                lblErr.Text = "Both fields are empty, try again."
                 Exit Sub
             End If
             Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(Integer.Parse(ddlEmployee.SelectedValue), txtSearchID.Text)

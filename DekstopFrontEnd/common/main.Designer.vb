@@ -49,42 +49,38 @@ Partial Class main
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(9, 3, 0, 3)
-        Me.MenuStrip1.Size = New System.Drawing.Size(1376, 35)
+        Me.MenuStrip1.Size = New System.Drawing.Size(917, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'FileToolStripMenuItem
         '
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(47, 29)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(35, 20)
         Me.FileToolStripMenuItem.Text = "file"
         '
         'StatusStrip1
         '
         Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 853)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 547)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(2, 0, 21, 0)
-        Me.StatusStrip1.Size = New System.Drawing.Size(1376, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(917, 22)
         Me.StatusStrip1.TabIndex = 1
         Me.StatusStrip1.Text = "StatusStrip1"
         '
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 35)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Padding = New System.Windows.Forms.Padding(0, 0, 2, 0)
-        Me.ToolStrip1.Size = New System.Drawing.Size(1376, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(917, 25)
         Me.ToolStrip1.TabIndex = 2
         Me.ToolStrip1.Text = "ToolStrip1"
         '
         'SplitContainer1
         '
         Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainer1.Location = New System.Drawing.Point(0, 60)
-        Me.SplitContainer1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.SplitContainer1.Location = New System.Drawing.Point(0, 49)
         Me.SplitContainer1.Name = "SplitContainer1"
         '
         'SplitContainer1.Panel1
@@ -101,97 +97,89 @@ Partial Class main
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.TabControl1)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1376, 793)
-        Me.SplitContainer1.SplitterDistance = 247
-        Me.SplitContainer1.SplitterWidth = 6
+        Me.SplitContainer1.Size = New System.Drawing.Size(917, 498)
+        Me.SplitContainer1.SplitterDistance = 164
         Me.SplitContainer1.TabIndex = 3
         '
         'btnviewpayroll
         '
-        Me.btnviewpayroll.Location = New System.Drawing.Point(33, 506)
-        Me.btnviewpayroll.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnviewpayroll.Location = New System.Drawing.Point(22, 329)
         Me.btnviewpayroll.Name = "btnviewpayroll"
-        Me.btnviewpayroll.Size = New System.Drawing.Size(112, 35)
+        Me.btnviewpayroll.Size = New System.Drawing.Size(75, 23)
         Me.btnviewpayroll.TabIndex = 7
         Me.btnviewpayroll.Text = "view Payroll"
         Me.btnviewpayroll.UseVisualStyleBackColor = True
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(54, 135)
-        Me.Button7.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.Button7.Location = New System.Drawing.Point(36, 88)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(112, 35)
+        Me.Button7.Size = New System.Drawing.Size(75, 23)
         Me.Button7.TabIndex = 6
         Me.Button7.Text = "Button7"
         Me.Button7.UseVisualStyleBackColor = True
         '
         'btnmodemp
         '
-        Me.btnmodemp.Location = New System.Drawing.Point(40, 388)
-        Me.btnmodemp.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnmodemp.Location = New System.Drawing.Point(27, 252)
         Me.btnmodemp.Name = "btnmodemp"
-        Me.btnmodemp.Size = New System.Drawing.Size(156, 35)
+        Me.btnmodemp.Size = New System.Drawing.Size(104, 23)
         Me.btnmodemp.TabIndex = 5
         Me.btnmodemp.Text = "Modify Employee"
         Me.btnmodemp.UseVisualStyleBackColor = True
         '
         'btnsearchEmp
         '
-        Me.btnsearchEmp.Location = New System.Drawing.Point(40, 343)
-        Me.btnsearchEmp.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnsearchEmp.Location = New System.Drawing.Point(27, 223)
         Me.btnsearchEmp.Name = "btnsearchEmp"
-        Me.btnsearchEmp.Size = New System.Drawing.Size(159, 35)
+        Me.btnsearchEmp.Size = New System.Drawing.Size(106, 23)
         Me.btnsearchEmp.TabIndex = 4
         Me.btnsearchEmp.Text = "Search Employee"
         Me.btnsearchEmp.UseVisualStyleBackColor = True
         '
         'btnAddEmp
         '
-        Me.btnAddEmp.Location = New System.Drawing.Point(33, 298)
-        Me.btnAddEmp.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnAddEmp.Location = New System.Drawing.Point(22, 194)
         Me.btnAddEmp.Name = "btnAddEmp"
-        Me.btnAddEmp.Size = New System.Drawing.Size(166, 35)
+        Me.btnAddEmp.Size = New System.Drawing.Size(111, 23)
         Me.btnAddEmp.TabIndex = 3
         Me.btnAddEmp.Text = "Add Employee"
         Me.btnAddEmp.UseVisualStyleBackColor = True
         '
         'btncalcpayroll
         '
-        Me.btncalcpayroll.Location = New System.Drawing.Point(40, 462)
-        Me.btncalcpayroll.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btncalcpayroll.Location = New System.Drawing.Point(27, 300)
         Me.btncalcpayroll.Name = "btncalcpayroll"
-        Me.btncalcpayroll.Size = New System.Drawing.Size(174, 35)
+        Me.btncalcpayroll.Size = New System.Drawing.Size(116, 23)
         Me.btncalcpayroll.TabIndex = 2
         Me.btncalcpayroll.Text = "Calculate Payroll"
         Me.btncalcpayroll.UseVisualStyleBackColor = True
         '
         'btnmodPO
         '
-        Me.btnmodPO.Location = New System.Drawing.Point(33, 91)
-        Me.btnmodPO.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnmodPO.Location = New System.Drawing.Point(22, 59)
         Me.btnmodPO.Name = "btnmodPO"
-        Me.btnmodPO.Size = New System.Drawing.Size(202, 35)
+        Me.btnmodPO.Size = New System.Drawing.Size(135, 23)
         Me.btnmodPO.TabIndex = 1
         Me.btnmodPO.Text = "Modify Purchase Order"
         Me.btnmodPO.UseVisualStyleBackColor = True
         '
         'btncreatePO
         '
-        Me.btncreatePO.Location = New System.Drawing.Point(33, 26)
-        Me.btncreatePO.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btncreatePO.Location = New System.Drawing.Point(22, 17)
         Me.btncreatePO.Name = "btncreatePO"
-        Me.btncreatePO.Size = New System.Drawing.Size(202, 35)
+        Me.btncreatePO.Size = New System.Drawing.Size(135, 23)
         Me.btncreatePO.TabIndex = 0
         Me.btncreatePO.Text = "Create Purchase Order"
         Me.btncreatePO.UseVisualStyleBackColor = True
         '
         'TabControl1
         '
-        Me.TabControl1.Location = New System.Drawing.Point(3, 3)
+        Me.TabControl1.Location = New System.Drawing.Point(2, 2)
+        Me.TabControl1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TabControl1.MenuRenderer = Nothing
         Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.Size = New System.Drawing.Size(1117, 790)
+        Me.TabControl1.Size = New System.Drawing.Size(745, 513)
         Me.TabControl1.TabCloseButtonImage = Nothing
         Me.TabControl1.TabCloseButtonImageDisabled = Nothing
         Me.TabControl1.TabCloseButtonImageHot = Nothing
@@ -199,16 +187,15 @@ Partial Class main
         '
         'main
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1376, 875)
+        Me.ClientSize = New System.Drawing.Size(917, 569)
         Me.Controls.Add(Me.SplitContainer1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.KeyPreview = True
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "main"
         Me.Text = "main"
         Me.MenuStrip1.ResumeLayout(False)

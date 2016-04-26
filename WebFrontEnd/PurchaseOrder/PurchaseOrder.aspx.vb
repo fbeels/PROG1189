@@ -172,7 +172,6 @@ Public Class CreatePO
                                 myPurchaseOrder.Items.Last.ItemID = PurchaseOrderItemCUD.Insert(item)
                                 PurchaseOrderCUD.Update(myPurchaseOrder)
 
-
                             End If
                         End If
 
@@ -206,6 +205,7 @@ Public Class CreatePO
             Response.Write("ViewState is null")
         End If
         SetPreviousData()
+        lblTotal.Text = myPurchaseOrder.calculateTotal.ToString("c2")
     End Sub
     ''' <summary>
     ''' Sets the previous data in the row
@@ -229,6 +229,7 @@ Public Class CreatePO
                     box4.Text = dt.Rows(i)("Column4").ToString()
                     box5.Text = dt.Rows(i)("Column5").ToString()
                     box6.Text = dt.Rows(i)("Column6").ToString()
+
 
                     rowIndex += 1
                 Next
