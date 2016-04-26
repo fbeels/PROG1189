@@ -91,6 +91,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FinalProjDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FinalProjDataSet2.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinalProjDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Payroll\AddEmployee.Designer.vb">
       <DependentUpon>AddEmployee.vb</DependentUpon>
     </Compile>
@@ -194,6 +199,17 @@
     </None>
     <None Include="FinalProjDataSet.xss">
       <DependentUpon>FinalProjDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="FinalProjDataSet2.xsc">
+      <DependentUpon>FinalProjDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="FinalProjDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FinalProjDataSet2.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FinalProjDataSet2.xss">
+      <DependentUpon>FinalProjDataSet2.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
