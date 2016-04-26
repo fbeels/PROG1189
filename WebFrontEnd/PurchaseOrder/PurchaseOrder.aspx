@@ -55,6 +55,9 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:Button Text="Submit" ID="btnSubmit" runat="server" />
+        <br />
+        <asp:Button Text="Submit" ID="btnSubmit" runat="server" /><br />
+
+        Total:<asp:Label Text="" runat="server" ID="lblTotal" />
     </div>
 </asp:Content>

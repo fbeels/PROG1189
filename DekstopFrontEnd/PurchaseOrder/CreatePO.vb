@@ -16,6 +16,7 @@ Public Class CreatePO
         lblErr.ForeColor = Color.Red
         setupDG()
         setupEmployees()
+        displayEmp()
     End Sub
 
 
@@ -46,45 +47,45 @@ Public Class CreatePO
         If checkForEmpty() = False Then
 
             For i As Integer = 0 To dgvPO.Rows.Count - 2
-                Dim item As PurchaseOrderItem = PurchaseOrderItemFactory.Create()
+                'Dim item As PurchaseOrderItem = PurchaseOrderItemFactory.Create()
 
 
-                item.ItemName = dgvPO.Item("Name", i).EditedFormattedValue
-                item.Description = dgvPO.Item("Descripion", i).EditedFormattedValue
-                item.Price = dgvPO.Item("Price", i).EditedFormattedValue
-                item.Quantity = dgvPO.Item("Quantity", i).EditedFormattedValue
-                item.Source = dgvPO.Item("Store", i).EditedFormattedValue
-                item.Justification = dgvPO.Item("Justification", i).EditedFormattedValue
-                myPurchaseOrder.Items.Add(item)
-                item.ItemID = myItems.Item(i - 1).ItemID
-                If myPurchaseOrder.PurchaseOrderID = 0 Then
-                    myPurchaseOrder.OrderDate = Date.Now()
-                    myPurchaseOrder.Status = OrderStatus.Pending
-                    myPurchaseOrder.Items = myItems
-                    myPurchaseOrder.SubTotal = myPurchaseOrder.calculateSubtotal
-                    myPurchaseOrder.Tax = myPurchaseOrder.calculateTax
-                    myPurchaseOrder.Total = myPurchaseOrder.calculateTotal
-                    myPurchaseOrder.EmployeeID = ddlEmployees.Text
+                'item.ItemName = dgvPO.Item("Name", i).EditedFormattedValue
+                'item.Description = dgvPO.Item("Descripion", i).EditedFormattedValue
+                'item.Price = dgvPO.Item("Price", i).EditedFormattedValue
+                'item.Quantity = dgvPO.Item("Quantity", i).EditedFormattedValue
+                'item.Source = dgvPO.Item("Store", i).EditedFormattedValue
+                'item.Justification = dgvPO.Item("Justification", i).EditedFormattedValue
+                'myPurchaseOrder.Items.Add(item)
+                'item.ItemID = myItems.Item(i - 1).ItemID
+                'If myPurchaseOrder.PurchaseOrderID = 0 Then
+                '    myPurchaseOrder.OrderDate = Date.Now()
+                '    myPurchaseOrder.Status = OrderStatus.Pending
+                '    myPurchaseOrder.Items = myItems
+                '    myPurchaseOrder.SubTotal = myPurchaseOrder.calculateSubtotal
+                '    myPurchaseOrder.Tax = myPurchaseOrder.calculateTax
+                '    myPurchaseOrder.Total = myPurchaseOrder.calculateTotal
+                '    myPurchaseOrder.EmployeeID = ddlEmployees.Text
 
 
-                    ids = PurchaseOrderCUD.Create(myPurchaseOrder, item)
-                    myPurchaseOrder.PurchaseOrderID = ids("POID")
-                Else
-                    myPurchaseOrder.Items = myItems
-                    myPurchaseOrder.SubTotal = myPurchaseOrder.calculateSubtotal
-                    myPurchaseOrder.Tax = myPurchaseOrder.calculateTax
-                    myPurchaseOrder.Total = myPurchaseOrder.calculateTotal
-                    item.PurchaseOrderID = myPurchaseOrder.PurchaseOrderID
-                    If i = dgvPO.Rows.Count Then 'if it's the last item in the table, add it.
-                        If item.ItemName <> Nothing Then
-                            PurchaseOrderItemCUD.Insert(item)
-                        End If
+                '    ids = PurchaseOrderCUD.Create(myPurchaseOrder, item)
+                '    myPurchaseOrder.PurchaseOrderID = ids("POID")
+                'Else
+                '    myPurchaseOrder.Items = myItems
+                '    myPurchaseOrder.SubTotal = myPurchaseOrder.calculateSubtotal
+                '    myPurchaseOrder.Tax = myPurchaseOrder.calculateTax
+                '    myPurchaseOrder.Total = myPurchaseOrder.calculateTotal
+                '    item.PurchaseOrderID = myPurchaseOrder.PurchaseOrderID
+                '    If i = dgvPO.Rows.Count Then 'if it's the last item in the table, add it.
+                '        If item.ItemName <> Nothing Then
+                '            PurchaseOrderItemCUD.Insert(item)
+                '        End If
 
-                    End If
+                '    End If
 
-                    PurchaseOrderCUD.Update(myPurchaseOrder)
-                    PurchaseOrderItemCUD.Update(item)
-                End If
+                '    PurchaseOrderCUD.Update(myPurchaseOrder)
+                '    PurchaseOrderItemCUD.Update(item)
+                'End If
             Next
 
         End If
@@ -92,6 +93,10 @@ Public Class CreatePO
     End Sub
 
     Private Sub ddlEmployees_DropDownClosed(sender As Object, e As EventArgs) Handles ddlEmployees.DropDownClosed
+        displayEmp()
+    End Sub
+
+    Sub displayEmp()
         myEmployee = Employee.retrieve(ddlEmployees.Text)
         Dim sup As Employee = Employee.retrieve(myEmployee.SupervisorID)
         lblEmp.Text = myEmployee.FirstName & " " & myEmployee.LastName
