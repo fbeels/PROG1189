@@ -229,12 +229,6 @@ Public Class CreatePO
                     box4.Text = dt.Rows(i)("Column4").ToString()
                     box5.Text = dt.Rows(i)("Column5").ToString()
                     box6.Text = dt.Rows(i)("Column6").ToString()
-                    box1.ReadOnly = True
-                    box2.ReadOnly = True
-                    box3.ReadOnly = True
-                    box4.ReadOnly = True
-                    box5.ReadOnly = True
-                    box6.ReadOnly = True
 
                     rowIndex += 1
                 Next

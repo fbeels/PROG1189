@@ -45,6 +45,7 @@
     <Compile Include="Department\DepartmentFactory.cs" />
     <Compile Include="Employee\Employee.cs" />
     <Compile Include="EmploymentInfo.cs" />
+    <Compile Include="Job\Job.cs" />
     <Compile Include="Payroll.cs" />
     <Compile Include="Purchase Order Item\PurchaseOrderItemCUD.cs" />
     <Compile Include="Purchase Order Item\PurchaseOrderItemFactory.cs" />
