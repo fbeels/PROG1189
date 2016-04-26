@@ -7,15 +7,14 @@ using Common;
 
 namespace BOL
 {
-    class Dept
-    {
+   
         public class Department : IDepartment
         {
             public int DeptID { get; set; }
             public String DeptName { get; set; }
 
         }
-    }
+  
 
 
 }
