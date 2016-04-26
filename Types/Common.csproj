@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IDepartment.cs" />
+    <Compile Include="IEmployee.cs" />
     <Compile Include="IPurchaseOrder.cs" />
     <Compile Include="IPurchaseOrderItem.cs" />
     <Compile Include="ItemStatus.cs" />
