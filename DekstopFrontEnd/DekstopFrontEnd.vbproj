@@ -142,6 +142,12 @@
     <Compile Include="Payroll\EditEmployee.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Payroll\emailTest.Designer.vb">
+      <DependentUpon>emailTest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll\emailTest.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Payroll\GetPayrollInfo.Designer.vb">
       <DependentUpon>GetPayrollInfo.vb</DependentUpon>
     </Compile>
@@ -166,6 +172,12 @@
     <Compile Include="PurchaseOrder\CreatePO.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="PurchaseOrder\ModifyPO.Designer.vb">
+      <DependentUpon>ModifyPO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrder\ModifyPO.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="common\AboutBox1.resx">
@@ -185,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Payroll\CalcPayroll.resx">
       <DependentUpon>CalcPayroll.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payroll\emailTest.resx">
+      <DependentUpon>emailTest.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Payroll\Payroll.rdlc" />
     <EmbeddedResource Include="Payroll\AddEmployee.resx">

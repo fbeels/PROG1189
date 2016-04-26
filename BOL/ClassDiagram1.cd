@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
-  <Class Name="BOL.EmploymentInfo">
-    <Position X="4.25" Y="0.75" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAACAAAAAAAAAAIAAAACAAAAACAAAAIAQhAAAhEAAA=</HashCode>
-      <FileName>EmploymentInfo.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="BOL.Payroll">
     <Position X="7.75" Y="0.75" Width="2" />
     <TypeIdentifier>
@@ -14,18 +7,48 @@
       <FileName>Payroll.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BOL.PurchaseOrder">
-    <Position X="2.5" Y="4.75" Width="2" />
-    <TypeIdentifier>
-      <HashCode>CAIAAAQEAAAgAAAAAAAAAAAAAAAAACAAAABAAAAAAAA=</HashCode>
-      <FileName>Purchase Order\PurchaseOrder.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="BOL.PurchaseOrderItem">
+  <Class Name="BOL.Purchase_Order_Item.PurchaseOrderItem">
     <Position X="5.75" Y="4.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAEAgAEAwAgAAIAhAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAAEAgAEAwAgAAIAgAAAAAAAAAAAACAAAAAAgAIAAAA=</HashCode>
       <FileName>Purchase Order Item\PurchaseOrderItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BOL.Employee">
+    <Position X="8.75" Y="4.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>gAgACEAACCBAEAAIAABACAQAAQCAAEACASBAIAjFBBg=</HashCode>
+      <FileName>Employee\Employee.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BOL.Job">
+    <Position X="1.75" Y="4.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>IAAQAAAAAAAAAAAAAQAAAQQAAAgAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Job\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BOL.Purchase_Order.PurchaseOrderCUD">
+    <Position X="4.25" Y="0.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Purchase Order\PurchaseOrderCUD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BOL.Purchase_Order.PurchaseOrderFactory">
+    <Position X="3.75" Y="2.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Purchase Order\PurchaseOrderFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BOL.Purchase_Order.PurchaseOrderList">
+    <Position X="10.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>iAIAAAAEAAAAAAAAAAAAAAAAAAAAQGAAAAAAAAAAAAA=</HashCode>
+      <FileName>Purchase Order\PurchaseOrderList.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

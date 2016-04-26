@@ -24,6 +24,7 @@ Partial Class main
     Private Sub InitializeComponent()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
@@ -36,7 +37,6 @@ Partial Class main
         Me.btnmodPO = New System.Windows.Forms.Button()
         Me.btncreatePO = New System.Windows.Forms.Button()
         Me.TabControl1 = New MdiTabControl.TabControl()
-        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -62,6 +62,12 @@ Partial Class main
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(47, 29)
         Me.FileToolStripMenuItem.Text = "file"
+        '
+        'AboutToolStripMenuItem
+        '
+        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(147, 30)
+        Me.AboutToolStripMenuItem.Text = "About"
         '
         'StatusStrip1
         '
@@ -199,12 +205,6 @@ Partial Class main
         Me.TabControl1.TabCloseButtonImageDisabled = Nothing
         Me.TabControl1.TabCloseButtonImageHot = Nothing
         Me.TabControl1.TabIndex = 0
-        '
-        'AboutToolStripMenuItem
-        '
-        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(211, 30)
-        Me.AboutToolStripMenuItem.Text = "About"
         '
         'main
         '
