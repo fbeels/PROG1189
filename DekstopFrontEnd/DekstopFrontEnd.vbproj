@@ -144,6 +144,12 @@
     <Compile Include="common\SplashScreen1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="PurchaseOrder\CreatePO.Designer.vb">
+      <DependentUpon>CreatePO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrder\CreatePO.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="common\AboutBox1.resx">
@@ -167,6 +173,9 @@
     <EmbeddedResource Include="Payroll\RetrieveEmployee.resx">
       <DependentUpon>RetrieveEmployee.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseOrder\CreatePO.resx">
+      <DependentUpon>CreatePO.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -180,9 +189,7 @@
     </None>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PurchaseOrder\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\BOL\BOL.csproj">
       <Project>{5aeff12d-27c4-4851-88c7-076831483886}</Project>

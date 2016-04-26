@@ -1,9 +1,10 @@
 ﻿Imports BOL.Purchase_Order
 Imports BOL.Purchase_Order_Item
 Imports BOL
+Imports Common
 Public Class CreatePO
     Inherits System.Web.UI.Page
-    Dim myItems As List(Of PurchaseOrderItem)
+
     Dim myPurchaseOrder As PurchaseOrder
 
     Dim PO_ID As Integer
@@ -13,49 +14,59 @@ Public Class CreatePO
 
         If Not Page.IsPostBack Then
             SetInitialRow()
-            myItems = New List(Of PurchaseOrderItem)
+
             myPurchaseOrder = New PurchaseOrder
+            myPurchaseOrder.Items = New List(Of PurchaseOrderItem)
         End If
 
         If Request.QueryString("id") <> Nothing Then
             PO_ID = Request.QueryString("id")
             myPurchaseOrder = PurchaseOrderFactory.Create(PO_ID)
-            myItems = myPurchaseOrder.Items
+
 
             If Not Page.IsPostBack Then
-                dostuff()
+                ModifyPO()
             End If
         End If
 
 
         If IsNothing(ViewState("PO")) AndAlso IsNothing(ViewState("Items")) Then
             ViewState("PO") = myPurchaseOrder
-            ViewState("Items") = myItems
+
         Else
             myPurchaseOrder = ViewState("PO")
-            myItems = ViewState("Items")
+
         End If
 
-
+        loadEmp()
 
     End Sub
 
-    Sub dostuff()
+    Sub loadEmp()
+        Dim myEmp As Employee = Employee.retrieve(ddlEmployee.Text)
+        lblEmp.Text = myEmp.FirstName & " " & myEmp.LastName
+        lblDept.Text = myEmp.DeptID
+        Dim sup As Employee = Employee.retrieve(myEmp.SupervisorID)
+        lblSuper.Text = sup.FirstName & " " & sup.LastName
+
+    End Sub
+
+    Sub ModifyPO()
         Dim rowIndex As Integer = 0
 
-        For i As Integer = 0 To myItems.Count - 1
+        For i As Integer = 0 To myPurchaseOrder.Items.Count - 1
             Dim box1 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(1).FindControl("txtName"), TextBox)
             Dim box2 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(2).FindControl("txtDesc"), TextBox)
             Dim box3 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(3).FindControl("txtPrice"), TextBox)
             Dim box4 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(4).FindControl("txtQ"), TextBox)
             Dim box5 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(5).FindControl("txtStore"), TextBox)
             Dim box6 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(6).FindControl("txtJust"), TextBox)
-            box1.Text = myItems.Item(i).ItemName
-            box2.Text = myItems.Item(i).Description
-            box3.Text = myItems.Item(i).Price
-            box4.Text = myItems.Item(i).Quantity
-            box5.Text = myItems.Item(i).Source
-            box6.Text = myItems.Item(i).Justification
+            box1.Text = myPurchaseOrder.Items.Item(i).ItemName
+            box2.Text = myPurchaseOrder.Items.Item(i).Description
+            box3.Text = myPurchaseOrder.Items.Item(i).Price
+            box4.Text = myPurchaseOrder.Items.Item(i).Quantity
+            box5.Text = myPurchaseOrder.Items.Item(i).Source
+            box6.Text = myPurchaseOrder.Items.Item(i).Justification
             rowIndex += 1
             AddNewRowToGrid(False, True)
         Next
@@ -99,10 +110,13 @@ Public Class CreatePO
         Gridview1.DataBind()
     End Sub
 
-    Private Sub LoadDataFromDB(PO As PurchaseOrder)
-        Dim rowIndex As Integer = 0
 
+    Sub doTaxCalculations()
+        myPurchaseOrder.SubTotal = myPurchaseOrder.calculateSubtotal
+        myPurchaseOrder.Tax = myPurchaseOrder.calculateTax
+        myPurchaseOrder.Total = myPurchaseOrder.calculateTotal
     End Sub
+
     ''' <summary>
     ''' Adds a new row the gridview
     ''' </summary>
@@ -124,62 +138,63 @@ Public Class CreatePO
                     Dim box6 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(6).FindControl("txtJust"), TextBox)
                     drCurrentRow = dtCurrentTable.NewRow()
                     drCurrentRow("RowNumber") = i + 1
+
+
+                    If isEdit = False Then
+                        Dim item As PurchaseOrderItem = PurchaseOrderItemFactory.Create()
+                        item.ItemName = box1.Text
+                        item.Description = box2.Text
+                        item.Price = box3.Text
+                        item.Quantity = box4.Text
+                        item.Source = box5.Text
+                        item.Justification = box6.Text
+
+                        If rowIndex = dtCurrentTable.Rows.Count - 1 Then 'if the rowindex is equal to the rowcount AKA the last row, give it a fake index so it can be found and replaced later
+                            item.ItemID = -1
+                        End If
+
+                        If myPurchaseOrder.PurchaseOrderID = 0 Then ' if PO has an id of 0 AKA not inserted then do so
+                            myPurchaseOrder.Items.Add(item)
+                            myPurchaseOrder.OrderDate = Date.Now
+                            myPurchaseOrder.Status = OrderStatus.Pending
+                            myPurchaseOrder.EmployeeID = ddlEmployee.SelectedValue
+                            doTaxCalculations()
+
+                            Dim ids As Dictionary(Of String, Integer) = PurchaseOrderCUD.Create(myPurchaseOrder, item) 'insert the PO and initial item, adding the ID's to a dict
+                            myPurchaseOrder.PurchaseOrderID = ids("POID")
+                            myPurchaseOrder.Items(0).ItemID = ids("ItemID")
+
+                        Else 'if the po is already in the DB, update
+                            If rowIndex = myPurchaseOrder.Items.Count Then 'if the last item, add it, calculate, insert and change id
+                                myPurchaseOrder.Items.Add(item)
+                                doTaxCalculations()
+                                item.PurchaseOrderID = myPurchaseOrder.PurchaseOrderID
+                                myPurchaseOrder.Items.Last.ItemID = PurchaseOrderItemCUD.Insert(item)
+                                PurchaseOrderCUD.Update(myPurchaseOrder)
+
+
+                            End If
+                        End If
+
+
+                        End If
+                    ViewState("PO") = myPurchaseOrder
+
+                    rowIndex += 1
+
+
                     dtCurrentTable.Rows(i - 1)("Column1") = box1.Text
                     dtCurrentTable.Rows(i - 1)("Column2") = box2.Text
                     dtCurrentTable.Rows(i - 1)("Column3") = box3.Text
                     dtCurrentTable.Rows(i - 1)("Column4") = box4.Text
                     dtCurrentTable.Rows(i - 1)("Column5") = box5.Text
                     dtCurrentTable.Rows(i - 1)("Column6") = box6.Text
-                    rowIndex += 1
-
-                    Dim item As PurchaseOrderItem = PurchaseOrderItemFactory.Create()
-
-                    If isEdit = False Then
-
-                        If i <> dtCurrentTable.Rows.Count Then
-                            item.ItemName = box1.Text
-                            item.Description = box2.Text
-                            item.Price = box3.Text
-                            item.Quantity = box4.Text
-                            item.Source = box5.Text
-                            item.Justification = box6.Text
-                            item.ItemID = myItems.Item(i - 1).ItemID
-
-                            If myPurchaseOrder.PurchaseOrderID = 0 Then
-                                myPurchaseOrder.OrderDate = Date.Now
-                                myPurchaseOrder.Status = Common.OrderStatus.Pending
-                                myPurchaseOrder.Items = myItems
-                                myPurchaseOrder.SubTotal = myPurchaseOrder.calculateSubtotal
-                                myPurchaseOrder.Tax = myPurchaseOrder.calculateTax
-                                myPurchaseOrder.Total = myPurchaseOrder.calculateTotal
-                                myPurchaseOrder.EmployeeID = ddlEmployee.SelectedValue
-
-                                myPurchaseOrder.PurchaseOrderID = PurchaseOrderCUD.Create(myPurchaseOrder, item)
-                            Else
-                                myPurchaseOrder.Items = myItems
-                                myPurchaseOrder.SubTotal = myPurchaseOrder.calculateSubtotal
-                                myPurchaseOrder.Tax = myPurchaseOrder.calculateTax
-                                myPurchaseOrder.Total = myPurchaseOrder.calculateTotal
-                                item.PurchaseOrderID = myPurchaseOrder.PurchaseOrderID
-                                If i = dtCurrentTable.Rows.Count Then 'if it's the last item in the table, add it.
-                                    If item.ItemName <> Nothing Then
-                                        PurchaseOrderItemCUD.Insert(item)
-                                    End If
-
-                                End If
-                                PurchaseOrderCUD.Update(myPurchaseOrder)
-                                PurchaseOrderItemCUD.Update(item)
-                            End If
-                        End If
-
-                    Else
-
-                    End If
-
                 Next
                 If isSubmit Then
+
                     Exit Sub
                 End If
+
 
                 dtCurrentTable.Rows.Add(drCurrentRow)
                 ViewState("CurrentTable") = dtCurrentTable
@@ -214,6 +229,13 @@ Public Class CreatePO
                     box4.Text = dt.Rows(i)("Column4").ToString()
                     box5.Text = dt.Rows(i)("Column5").ToString()
                     box6.Text = dt.Rows(i)("Column6").ToString()
+                    box1.ReadOnly = True
+                    box2.ReadOnly = True
+                    box3.ReadOnly = True
+                    box4.ReadOnly = True
+                    box5.ReadOnly = True
+                    box6.ReadOnly = True
+
                     rowIndex += 1
                 Next
             End If

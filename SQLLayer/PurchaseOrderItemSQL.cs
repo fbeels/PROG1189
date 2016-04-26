@@ -22,6 +22,7 @@ namespace SQLLayer
         static public int insertPurchaseOrderItem(IPurchaseOrderItem item)
         {
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
+            tmpParmList.Add(new ParmStructure("@po_item_ID", SqlDbType.Int, ParameterDirection.Output, 10, null));
             tmpParmList.Add(new ParmStructure("@po_id", SqlDbType.Int, ParameterDirection.Input, 0, item.PurchaseOrderID));
             tmpParmList.Add(new ParmStructure("@itemname", SqlDbType.VarChar, ParameterDirection.Input, 50, item.ItemName));
             tmpParmList.Add(new ParmStructure("@itemdesc", SqlDbType.VarChar, ParameterDirection.Input, 50, item.Description));
@@ -33,7 +34,7 @@ namespace SQLLayer
             tmpParmList.Add(new ParmStructure("@itemstatus", SqlDbType.Int, ParameterDirection.Input, 0, item.Status));
 
             DataAccess.SendData("insertPOItem", tmpParmList);
-            int id = (int) tmpParmList[0].ParmValue;
+            int id = int.Parse(tmpParmList[0].ParmValue.ToString());
             return id;
         }
 

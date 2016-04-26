@@ -19,7 +19,7 @@ namespace SQLLayer
             return DataAccess.GetDataTable("GetPOByID", tmpParmList);
         }
 
-        static public int createInitialPO(IPurchaseOrderItem item, IPurchaseOrder PO)
+        static public Dictionary<string, int> createInitialPO(IPurchaseOrderItem item, IPurchaseOrder PO)
         {
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
             tmpParmList.Add(new ParmStructure("@tax", SqlDbType.Float, ParameterDirection.Input, 0, PO.Tax));
@@ -33,8 +33,13 @@ namespace SQLLayer
 
             int id = int.Parse(tmpParmList[5].ParmValue.ToString());
             item.PurchaseOrderID = id;
-            PurchaseOrderItemSQL.insertPurchaseOrderItem(item);
-            return id;
+            int iid = PurchaseOrderItemSQL.insertPurchaseOrderItem(item);
+            var dict = new Dictionary<string, int>
+            {
+                {"POID", id },
+                {"ItemID", iid }
+            };
+            return dict;
         }
 
         static public bool modifyPO(IPurchaseOrder PO)
@@ -46,9 +51,9 @@ namespace SQLLayer
             tmpParmList.Add(new ParmStructure("@subtotal", SqlDbType.Float, ParameterDirection.Input, 9, PO.SubTotal));
             tmpParmList.Add(new ParmStructure("@orderdate", SqlDbType.Date, ParameterDirection.Input, 0, DateTime.Now));
             tmpParmList.Add(new ParmStructure("@orderstatus", SqlDbType.TinyInt, ParameterDirection.Input, 0, PO.Status));
-            
+
             DataAccess.SendData("UpdatePO", tmpParmList);
-         
+
             return true;
         }
 
