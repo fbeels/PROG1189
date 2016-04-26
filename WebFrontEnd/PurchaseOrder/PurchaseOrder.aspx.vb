@@ -154,33 +154,41 @@ Public Class CreatePO
                         End If
 
                         If myPurchaseOrder.PurchaseOrderID = 0 Then ' if PO has an id of 0 AKA not inserted then do so
-                            myPurchaseOrder.Items.Add(item)
+                            myPurchaseOrder.Items.Insert(rowIndex, item)
                             myPurchaseOrder.OrderDate = Date.Now
                             myPurchaseOrder.Status = OrderStatus.Pending
                             myPurchaseOrder.EmployeeID = ddlEmployee.SelectedValue
                             doTaxCalculations()
 
+
                             Dim ids As Dictionary(Of String, Integer) = PurchaseOrderCUD.Create(myPurchaseOrder, item) 'insert the PO and initial item, adding the ID's to a dict
                             myPurchaseOrder.PurchaseOrderID = ids("POID")
-                            myPurchaseOrder.Items(0).ItemID = ids("ItemID")
+                            myPurchaseOrder.Items(rowIndex).ItemID = ids("ItemID")
+
 
                         Else 'if the po is already in the DB, update
                             If rowIndex = myPurchaseOrder.Items.Count Then 'if the last item, add it, calculate, insert and change id
-                                myPurchaseOrder.Items.Add(item)
-                                doTaxCalculations()
                                 item.PurchaseOrderID = myPurchaseOrder.PurchaseOrderID
+                                myPurchaseOrder.Items.Insert(rowIndex, item)
+                                doTaxCalculations()
                                 myPurchaseOrder.Items.Last.ItemID = PurchaseOrderItemCUD.Insert(item)
                                 PurchaseOrderCUD.Update(myPurchaseOrder)
-
+                            Else
+                                item.ItemID = myPurchaseOrder.Items(rowIndex).ItemID
+                                item.PurchaseOrderID = myPurchaseOrder.Items(rowIndex).PurchaseOrderID
+                                myPurchaseOrder.Items.RemoveAt(rowIndex)
+                                myPurchaseOrder.Items.Insert(rowIndex, item)
+                                doTaxCalculations()
+                                PurchaseOrderItemCUD.Update(myPurchaseOrder.Items(rowIndex))
+                                PurchaseOrderCUD.Update(myPurchaseOrder)
                             End If
                         End If
 
 
-                        End If
+                    End If
                     ViewState("PO") = myPurchaseOrder
 
                     rowIndex += 1
-
 
                     dtCurrentTable.Rows(i - 1)("Column1") = box1.Text
                     dtCurrentTable.Rows(i - 1)("Column2") = box2.Text
