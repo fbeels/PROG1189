@@ -16,8 +16,8 @@
         <div id="wrapper">
             <div id="header">
                 <asp:Image ID="logo" runat="server" ImageUrl="img/acme_logo.png" Height="75" />
-                <asp:HyperLink runat="server" Text="Link1" NavigateUrl="google.com"></asp:HyperLink>|
-                <asp:HyperLink runat="server" Text="Link2" NavigateUrl="google.com"></asp:HyperLink>|
+                <asp:HyperLink runat="server" Text="Purchase Order" NavigateUrl="~/PurchaseOrder/PurchaseOrder.aspx"></asp:HyperLink>|
+                <asp:HyperLink runat="server" Text="Search Purchase Order" NavigateUrl="~/PurchaseOrder/SearchPO.aspx"></asp:HyperLink>|
                 <asp:HyperLink runat="server" Text="Link3" NavigateUrl="google.com"></asp:HyperLink>|
                 <hr />
 
