@@ -4,14 +4,23 @@
     <div>
         <asp:DropDownList runat="server" ID="ddlEmployee">
             <asp:ListItem>10000001</asp:ListItem>
-            
+            <asp:ListItem>10000003</asp:ListItem>
         </asp:DropDownList><br />
+        <asp:Label runat="server" ID="lblPage" Font-Size="large" /><br />
+       
+        <b>Date: </b>
+        <asp:Label runat="server" ID="lblDate" />|&nbsp;
+       
+        <b>Employee: </b>
+        <asp:Label runat="server" ID="lblEmp" />|&nbsp;
+       
+        <b>Department: </b>
+        <asp:Label runat="server" ID="lblDept" />| &nbsp;
+       
+        <b>Supervisor: </b>
+        <asp:Label ID="lblSuper" runat="server" />
 
-        Date:<asp:Label runat="server" ID="lblDate" />
-        Employee: 
-        <asp:Label runat="server" ID="lblEmp" />
-        Department:
-        <asp:Label runat="server" ID="lblDept" />Supervisor:<asp:Label ID="lblSuper" runat="server" />
+
         <hr />
         <br />
         <br />
@@ -46,7 +55,12 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Justification">
                     <ItemTemplate>
-                        <asp:TextBox ID="txtJust" runat="server"></asp:TextBox>
+                         <asp:TextBox ID="txtJust" runat="server"></asp:TextBox>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Status">
+                    <ItemTemplate>
+                        <asp:Label ID="lblStatus" runat="server"></asp:Label>
                     </ItemTemplate>
                     <FooterStyle HorizontalAlign="Right" />
                     <FooterTemplate>
@@ -56,8 +70,20 @@
             </Columns>
         </asp:GridView>
         <br />
-        <asp:Button Text="Submit" ID="btnSubmit" runat="server" /><br />
+        <asp:Button Text="Submit" ID="btnSubmit" runat="server" />
+        <b>Order ID: </b>
+        <asp:Label Text="" runat="server" ID="lblID" />
+        <br />
 
-        Total:<asp:Label Text="" runat="server" ID="lblTotal" />
+        <b>Subtotal: </b>
+        <asp:Label Text="" runat="server" ID="lblSubtotal" />|&nbsp;
+      
+        <b>Tax: </b>
+        <asp:Label Text="" runat="server" ID="lblTax" />
+        |&nbsp;
+       
+        <b>Total: </b>
+        <asp:Label Text="" runat="server" ID="lblTotal" />|
+   
     </div>
 </asp:Content>
