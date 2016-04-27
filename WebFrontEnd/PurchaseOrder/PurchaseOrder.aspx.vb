@@ -142,13 +142,16 @@ Public Class CreatePO
                         If rowIndex <> dtCurrentTable.Rows.Count - 1 Then
                             Dim item As PurchaseOrderItem = PurchaseOrderItemFactory.Create()
 
-
-                            item.ItemName = Validation.box1.Text
-                            item.Description = box2.Text
-                            item.Price = box3.Text
-                            item.Quantity = box4.Text
-                            item.Source = box5.Text
-                            item.Justification = box6.Text
+                            Try
+                                item.ItemName = Validation.String(box1.Text)
+                                item.Description = Validation.String(box2.Text)
+                                item.Price = Validation.Double(box3.Text)
+                                item.Quantity = Validation.String(box4.Text)
+                                item.Source = Validation.String(box5.Text)
+                                item.Justification = Validation.String(box6.Text)
+                            Catch ex As Exception
+                                lblError.Text = ex.Message.ToString()
+                            End Try
 
                             If rowIndex = dtCurrentTable.Rows.Count - 1 Then 'if the rowindex is equal to the rowcount AKA the last row, give it a fake index so it can be found and replaced later
                                 item.ItemID = -1
@@ -184,7 +187,7 @@ Public Class CreatePO
                             End If
                         End If
                     Else
-                            If rowIndex <> dtCurrentTable.Rows.Count - 1 Then
+                        If rowIndex <> dtCurrentTable.Rows.Count - 1 Then
                             box1.Text = myPurchaseOrder.Items(rowIndex).ItemName
                             box2.Text = myPurchaseOrder.Items(rowIndex).Description
                             box3.Text = myPurchaseOrder.Items(rowIndex).Price
@@ -198,7 +201,6 @@ Public Class CreatePO
                     If rowIndex <> dtCurrentTable.Rows.Count - 1 Then
                         status.Text = myPurchaseOrder.Items(rowIndex).Status.ToString
                     End If
-
 
                     dtCurrentTable.Rows(i - 1)("Column1") = box1.Text
                     dtCurrentTable.Rows(i - 1)("Column2") = box2.Text
@@ -251,8 +253,6 @@ Public Class CreatePO
                     box5.Text = dt.Rows(i)("Column5").ToString()
                     box6.Text = dt.Rows(i)("Column6").ToString()
                     status.Text = dt.Rows(i)("Column7").ToString()
-
-
 
                     rowIndex += 1
                 Next

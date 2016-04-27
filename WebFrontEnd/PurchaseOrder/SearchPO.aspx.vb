@@ -7,7 +7,6 @@ Public Class SearchPO
 
     End Sub
 
-
     Protected Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         If txtSearchDate.Text = Nothing Then
             If txtSearchID.Text = String.Empty Then
@@ -15,15 +14,13 @@ Public Class SearchPO
                 Exit Sub
             End If
             Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(Integer.Parse(ddlEmployee.SelectedValue), txtSearchID.Text)
-
             loadDataGrid(results)
         Else
-            Dim results As List(Of PurchaseOrderList) = (PurchaseOrderList.Create(Integer.Parse(ddlEmployee.SelectedValue), Nothing, Date.Parse(txtSearchDate.Text)))
+            Dim results As List(Of PurchaseOrderList) = (PurchaseOrderList.Create(Integer.Parse(ddlEmployee.SelectedValue), Nothing, Date.Parse(txtSearchDate.Text), Date.Parse(txtEndDate.Text)))
             loadDataGrid(results)
         End If
 
     End Sub
-
 
     Sub loadDataGrid(results As List(Of PurchaseOrderList))
         Dim Table As New DataTable

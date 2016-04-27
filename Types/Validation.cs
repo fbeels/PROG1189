@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    static class Validation
+    static public class Validation
     {
 
-        static public string Empty(string validate)
+        static public string String(string validate)
         {
             if (string.IsNullOrEmpty(validate))
             {

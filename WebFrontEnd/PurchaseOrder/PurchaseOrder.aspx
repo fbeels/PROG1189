@@ -24,7 +24,7 @@
         <hr />
         <br />
         <br />
-
+        <asp:Label id="lblError" ForeColor="Red" runat="server" />
         <asp:GridView ID="Gridview1" runat="server" ShowFooter="true" AutoGenerateColumns="false">
             <Columns>
                 <asp:BoundField DataField="RowNumber" HeaderText="Row Number" />
