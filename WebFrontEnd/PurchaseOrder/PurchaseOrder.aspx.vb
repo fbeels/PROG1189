@@ -141,7 +141,9 @@ Public Class CreatePO
 
                         If rowIndex <> dtCurrentTable.Rows.Count - 1 Then
                             Dim item As PurchaseOrderItem = PurchaseOrderItemFactory.Create()
-                            item.ItemName = box1.Text
+
+
+                            item.ItemName = Validation.box1.Text
                             item.Description = box2.Text
                             item.Price = box3.Text
                             item.Quantity = box4.Text
