@@ -23,6 +23,15 @@ Partial Public Class CreatePO
     Protected WithEvents ddlEmployee As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
+    '''lblPage control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblPage As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''lblDate control.
     '''</summary>
     '''<remarks>
@@ -59,6 +68,15 @@ Partial Public Class CreatePO
     Protected WithEvents lblSuper As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
+    '''lblError control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblError As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''Gridview1 control.
     '''</summary>
     '''<remarks>
@@ -75,6 +93,33 @@ Partial Public Class CreatePO
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnSubmit As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''lblID control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblID As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''lblSubtotal control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblSubtotal As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''lblTax control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblTax As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
     '''lblTotal control.

@@ -57,9 +57,10 @@ namespace SQLLayer
             return true;
         }
 
-        static public DataTable searchPO(int empid, int ID = -1, DateTime? date = null)
+        static public DataTable searchPO(int empid, int ID = -1, DateTime? startdate = null, DateTime? enddate = null)
         {
-            var effectiveDate = date ?? DateTime.MinValue;
+            var eStartDate = startdate ?? DateTime.MinValue;
+            var eEndDate = enddate ?? DateTime.MinValue;
 
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
 
@@ -70,9 +71,10 @@ namespace SQLLayer
                 tmpParmList.Add(new ParmStructure("@poid", SqlDbType.Int, ParameterDirection.Input, 0, ID));
                 return DataAccess.GetDataTable("GetPOByIDAndEmpID", tmpParmList);
             }
-            else if (effectiveDate != DateTime.MinValue)
+            else if (eStartDate != DateTime.MinValue & eEndDate != DateTime.MinValue)
             {
-                tmpParmList.Add(new ParmStructure("@orderdate", SqlDbType.Date, ParameterDirection.Input, 0, effectiveDate));
+                tmpParmList.Add(new ParmStructure("@startdate", SqlDbType.Date, ParameterDirection.Input, 0, eStartDate));
+                tmpParmList.Add(new ParmStructure("@enddate", SqlDbType.Date, ParameterDirection.Input, 0, eEndDate));
                 return DataAccess.GetDataTable("GetPOByDate", tmpParmList);
             }
             return null;

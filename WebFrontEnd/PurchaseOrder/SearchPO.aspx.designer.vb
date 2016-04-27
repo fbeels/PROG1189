@@ -41,6 +41,15 @@ Partial Public Class SearchPO
     Protected WithEvents txtSearchDate As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
+    '''txtEndDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtEndDate As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
     '''btnSearch control.
     '''</summary>
     '''<remarks>

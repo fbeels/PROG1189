@@ -26,9 +26,13 @@ namespace BOL.Purchase_Order
 
         const double tax = .13;
 
+
+        private double subtotal;
+        private double taxamnt;
+        private double total;
+
         public double calculateSubtotal()
         {
-            double subtotal = 0.0;
             foreach (PurchaseOrderItem item in Items)
             {
                 subtotal += item.calculateSubtotal();
@@ -39,15 +43,14 @@ namespace BOL.Purchase_Order
 
         public double calculateTax()
         {
-            double subtotal = calculateSubtotal();
-            return subtotal * tax;
+            taxamnt = subtotal * tax;
+            return taxamnt;
         }
 
         public double calculateTotal()
         {
-            double subtotal = calculateSubtotal();
-            double taxamnt = calculateTax();
-            return subtotal * taxamnt;
+            total = subtotal * taxamnt;
+            return total;
         }
 
     }

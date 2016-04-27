@@ -12,7 +12,7 @@
 //    static class DepartmentFactory
 //    {
 
-//        static public List<Deptartment> Create()
+//        static public List<Department> Create()
 //        {
 //            DataTable depttable = DepartmentSQL.retrieveDepartments();
 //            return Repackager(depttable);

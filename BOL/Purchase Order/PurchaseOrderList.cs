@@ -19,9 +19,9 @@ namespace BOL.Purchase_Order
 
 
 
-        static public List<PurchaseOrderList> Create(int EmployeeID, int ID = -1, DateTime? date = null)
+        static public List<PurchaseOrderList> Create(int EmployeeID, int ID = -1, DateTime? startdate = null, DateTime? enddate = null)
         {
-            return RePackager(PurchaseOrderSQL.searchPO(EmployeeID, ID, date));
+            return RePackager(PurchaseOrderSQL.searchPO(EmployeeID, ID, startdate, enddate));
         }
 
 
