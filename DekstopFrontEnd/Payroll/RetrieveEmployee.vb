@@ -9,7 +9,8 @@ Public Class RetrieveEmployee
 
         If txtsearchid.Text = "" Then
             '  ErrorProvider1.SetError(txtsearchid, String.Empty)
-            txtsearchid.BackColor = Color.White
+            txtsearchid.BackColor = Color.Red
+            idinvalid = True
         Else
             Try
                 tempemp.EmpID = txtsearchid.Text
@@ -29,7 +30,8 @@ Public Class RetrieveEmployee
 
         If txtsearchlname.Text = "" Then
             '  ErrorProvider1.SetError(txtsearchid, String.Empty)
-            txtsearchlname.BackColor = Color.White
+            txtsearchlname.BackColor = Color.Red
+            lnameinvalid = True
         Else
             Try
                 tempemp.LastName = txtsearchlname.Text
@@ -44,7 +46,7 @@ Public Class RetrieveEmployee
         End If
 
 
-        If idinvalid = True Or lnameinvalid = True Then
+        If idinvalid = True And lnameinvalid = True Then
             lstsearchresults.Enabled = False
             btnselect.Enabled = False
         Else

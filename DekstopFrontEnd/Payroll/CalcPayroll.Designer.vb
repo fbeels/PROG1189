@@ -30,20 +30,21 @@ Partial Class CalcPayroll
         Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.CalculatePayrollTableAdapter = New FinalProjDataSetTableAdapters.CalculatePayrollTableAdapter()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.FinalProjDataSet2 = New FinalProjDataSet2()
-        Me.YtdpensionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CurpensionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.YtdeiDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CureiDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.YtdcppDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CurcppDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.YtdincometaxDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CurincometaxDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CurgrossDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.YtdgrossDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmpidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PayrollDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ChequeidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PayrollDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmpidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.YtdgrossDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CurgrossDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CurincometaxDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.YtdincometaxDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CurcppDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.YtdcppDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CureiDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.YtdeiDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CurpensionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.YtdpensionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FinalProjDataSet2 = New FinalProjDataSet2()
+        Me.btnemail = New System.Windows.Forms.Button()
         CType(Me.CalculatePayrollBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FinalProjDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -93,87 +94,12 @@ Partial Class CalcPayroll
         Me.DataGridView1.Size = New System.Drawing.Size(1287, 199)
         Me.DataGridView1.TabIndex = 1
         '
-        'FinalProjDataSet2
+        'ChequeidDataGridViewTextBoxColumn
         '
-        Me.FinalProjDataSet2.DataSetName = "FinalProjDataSet2"
-        Me.FinalProjDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'YtdpensionDataGridViewTextBoxColumn
-        '
-        Me.YtdpensionDataGridViewTextBoxColumn.DataPropertyName = "ytd_pension"
-        Me.YtdpensionDataGridViewTextBoxColumn.HeaderText = "ytd_pension"
-        Me.YtdpensionDataGridViewTextBoxColumn.Name = "YtdpensionDataGridViewTextBoxColumn"
-        Me.YtdpensionDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CurpensionDataGridViewTextBoxColumn
-        '
-        Me.CurpensionDataGridViewTextBoxColumn.DataPropertyName = "cur_pension"
-        Me.CurpensionDataGridViewTextBoxColumn.HeaderText = "cur_pension"
-        Me.CurpensionDataGridViewTextBoxColumn.Name = "CurpensionDataGridViewTextBoxColumn"
-        Me.CurpensionDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'YtdeiDataGridViewTextBoxColumn
-        '
-        Me.YtdeiDataGridViewTextBoxColumn.DataPropertyName = "ytd_ei"
-        Me.YtdeiDataGridViewTextBoxColumn.HeaderText = "ytd_ei"
-        Me.YtdeiDataGridViewTextBoxColumn.Name = "YtdeiDataGridViewTextBoxColumn"
-        Me.YtdeiDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CureiDataGridViewTextBoxColumn
-        '
-        Me.CureiDataGridViewTextBoxColumn.DataPropertyName = "cur_ei"
-        Me.CureiDataGridViewTextBoxColumn.HeaderText = "cur_ei"
-        Me.CureiDataGridViewTextBoxColumn.Name = "CureiDataGridViewTextBoxColumn"
-        Me.CureiDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'YtdcppDataGridViewTextBoxColumn
-        '
-        Me.YtdcppDataGridViewTextBoxColumn.DataPropertyName = "ytd_cpp"
-        Me.YtdcppDataGridViewTextBoxColumn.HeaderText = "ytd_cpp"
-        Me.YtdcppDataGridViewTextBoxColumn.Name = "YtdcppDataGridViewTextBoxColumn"
-        Me.YtdcppDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CurcppDataGridViewTextBoxColumn
-        '
-        Me.CurcppDataGridViewTextBoxColumn.DataPropertyName = "cur_cpp"
-        Me.CurcppDataGridViewTextBoxColumn.HeaderText = "cur_cpp"
-        Me.CurcppDataGridViewTextBoxColumn.Name = "CurcppDataGridViewTextBoxColumn"
-        Me.CurcppDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'YtdincometaxDataGridViewTextBoxColumn
-        '
-        Me.YtdincometaxDataGridViewTextBoxColumn.DataPropertyName = "ytd_incometax"
-        Me.YtdincometaxDataGridViewTextBoxColumn.HeaderText = "ytd_incometax"
-        Me.YtdincometaxDataGridViewTextBoxColumn.Name = "YtdincometaxDataGridViewTextBoxColumn"
-        Me.YtdincometaxDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CurincometaxDataGridViewTextBoxColumn
-        '
-        Me.CurincometaxDataGridViewTextBoxColumn.DataPropertyName = "cur_incometax"
-        Me.CurincometaxDataGridViewTextBoxColumn.HeaderText = "cur_incometax"
-        Me.CurincometaxDataGridViewTextBoxColumn.Name = "CurincometaxDataGridViewTextBoxColumn"
-        Me.CurincometaxDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CurgrossDataGridViewTextBoxColumn
-        '
-        Me.CurgrossDataGridViewTextBoxColumn.DataPropertyName = "cur_gross"
-        Me.CurgrossDataGridViewTextBoxColumn.HeaderText = "cur_gross"
-        Me.CurgrossDataGridViewTextBoxColumn.Name = "CurgrossDataGridViewTextBoxColumn"
-        Me.CurgrossDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'YtdgrossDataGridViewTextBoxColumn
-        '
-        Me.YtdgrossDataGridViewTextBoxColumn.DataPropertyName = "ytd_gross"
-        Me.YtdgrossDataGridViewTextBoxColumn.HeaderText = "ytd_gross"
-        Me.YtdgrossDataGridViewTextBoxColumn.Name = "YtdgrossDataGridViewTextBoxColumn"
-        Me.YtdgrossDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'EmpidDataGridViewTextBoxColumn
-        '
-        Me.EmpidDataGridViewTextBoxColumn.DataPropertyName = "empid"
-        Me.EmpidDataGridViewTextBoxColumn.HeaderText = "empid"
-        Me.EmpidDataGridViewTextBoxColumn.Name = "EmpidDataGridViewTextBoxColumn"
-        Me.EmpidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ChequeidDataGridViewTextBoxColumn.DataPropertyName = "chequeid"
+        Me.ChequeidDataGridViewTextBoxColumn.HeaderText = "chequeid"
+        Me.ChequeidDataGridViewTextBoxColumn.Name = "ChequeidDataGridViewTextBoxColumn"
+        Me.ChequeidDataGridViewTextBoxColumn.ReadOnly = True
         '
         'PayrollDateDataGridViewTextBoxColumn
         '
@@ -182,18 +108,103 @@ Partial Class CalcPayroll
         Me.PayrollDateDataGridViewTextBoxColumn.Name = "PayrollDateDataGridViewTextBoxColumn"
         Me.PayrollDateDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'ChequeidDataGridViewTextBoxColumn
+        'EmpidDataGridViewTextBoxColumn
         '
-        Me.ChequeidDataGridViewTextBoxColumn.DataPropertyName = "chequeid"
-        Me.ChequeidDataGridViewTextBoxColumn.HeaderText = "chequeid"
-        Me.ChequeidDataGridViewTextBoxColumn.Name = "ChequeidDataGridViewTextBoxColumn"
-        Me.ChequeidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.EmpidDataGridViewTextBoxColumn.DataPropertyName = "empid"
+        Me.EmpidDataGridViewTextBoxColumn.HeaderText = "empid"
+        Me.EmpidDataGridViewTextBoxColumn.Name = "EmpidDataGridViewTextBoxColumn"
+        Me.EmpidDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'YtdgrossDataGridViewTextBoxColumn
+        '
+        Me.YtdgrossDataGridViewTextBoxColumn.DataPropertyName = "ytd_gross"
+        Me.YtdgrossDataGridViewTextBoxColumn.HeaderText = "ytd_gross"
+        Me.YtdgrossDataGridViewTextBoxColumn.Name = "YtdgrossDataGridViewTextBoxColumn"
+        Me.YtdgrossDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CurgrossDataGridViewTextBoxColumn
+        '
+        Me.CurgrossDataGridViewTextBoxColumn.DataPropertyName = "cur_gross"
+        Me.CurgrossDataGridViewTextBoxColumn.HeaderText = "cur_gross"
+        Me.CurgrossDataGridViewTextBoxColumn.Name = "CurgrossDataGridViewTextBoxColumn"
+        Me.CurgrossDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CurincometaxDataGridViewTextBoxColumn
+        '
+        Me.CurincometaxDataGridViewTextBoxColumn.DataPropertyName = "cur_incometax"
+        Me.CurincometaxDataGridViewTextBoxColumn.HeaderText = "cur_incometax"
+        Me.CurincometaxDataGridViewTextBoxColumn.Name = "CurincometaxDataGridViewTextBoxColumn"
+        Me.CurincometaxDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'YtdincometaxDataGridViewTextBoxColumn
+        '
+        Me.YtdincometaxDataGridViewTextBoxColumn.DataPropertyName = "ytd_incometax"
+        Me.YtdincometaxDataGridViewTextBoxColumn.HeaderText = "ytd_incometax"
+        Me.YtdincometaxDataGridViewTextBoxColumn.Name = "YtdincometaxDataGridViewTextBoxColumn"
+        Me.YtdincometaxDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CurcppDataGridViewTextBoxColumn
+        '
+        Me.CurcppDataGridViewTextBoxColumn.DataPropertyName = "cur_cpp"
+        Me.CurcppDataGridViewTextBoxColumn.HeaderText = "cur_cpp"
+        Me.CurcppDataGridViewTextBoxColumn.Name = "CurcppDataGridViewTextBoxColumn"
+        Me.CurcppDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'YtdcppDataGridViewTextBoxColumn
+        '
+        Me.YtdcppDataGridViewTextBoxColumn.DataPropertyName = "ytd_cpp"
+        Me.YtdcppDataGridViewTextBoxColumn.HeaderText = "ytd_cpp"
+        Me.YtdcppDataGridViewTextBoxColumn.Name = "YtdcppDataGridViewTextBoxColumn"
+        Me.YtdcppDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CureiDataGridViewTextBoxColumn
+        '
+        Me.CureiDataGridViewTextBoxColumn.DataPropertyName = "cur_ei"
+        Me.CureiDataGridViewTextBoxColumn.HeaderText = "cur_ei"
+        Me.CureiDataGridViewTextBoxColumn.Name = "CureiDataGridViewTextBoxColumn"
+        Me.CureiDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'YtdeiDataGridViewTextBoxColumn
+        '
+        Me.YtdeiDataGridViewTextBoxColumn.DataPropertyName = "ytd_ei"
+        Me.YtdeiDataGridViewTextBoxColumn.HeaderText = "ytd_ei"
+        Me.YtdeiDataGridViewTextBoxColumn.Name = "YtdeiDataGridViewTextBoxColumn"
+        Me.YtdeiDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CurpensionDataGridViewTextBoxColumn
+        '
+        Me.CurpensionDataGridViewTextBoxColumn.DataPropertyName = "cur_pension"
+        Me.CurpensionDataGridViewTextBoxColumn.HeaderText = "cur_pension"
+        Me.CurpensionDataGridViewTextBoxColumn.Name = "CurpensionDataGridViewTextBoxColumn"
+        Me.CurpensionDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'YtdpensionDataGridViewTextBoxColumn
+        '
+        Me.YtdpensionDataGridViewTextBoxColumn.DataPropertyName = "ytd_pension"
+        Me.YtdpensionDataGridViewTextBoxColumn.HeaderText = "ytd_pension"
+        Me.YtdpensionDataGridViewTextBoxColumn.Name = "YtdpensionDataGridViewTextBoxColumn"
+        Me.YtdpensionDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FinalProjDataSet2
+        '
+        Me.FinalProjDataSet2.DataSetName = "FinalProjDataSet2"
+        Me.FinalProjDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'btnemail
+        '
+        Me.btnemail.Location = New System.Drawing.Point(462, 606)
+        Me.btnemail.Name = "btnemail"
+        Me.btnemail.Size = New System.Drawing.Size(174, 62)
+        Me.btnemail.TabIndex = 2
+        Me.btnemail.Text = "Send Email"
+        Me.btnemail.UseVisualStyleBackColor = True
         '
         'CalcPayroll
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1302, 600)
+        Me.ClientSize = New System.Drawing.Size(1302, 690)
+        Me.Controls.Add(Me.btnemail)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.ReportViewer1)
         Me.Name = "CalcPayroll"
@@ -224,4 +235,5 @@ Partial Class CalcPayroll
     Friend WithEvents YtdeiDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CurpensionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents YtdpensionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents btnemail As System.Windows.Forms.Button
 End Class

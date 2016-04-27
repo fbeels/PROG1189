@@ -51,5 +51,12 @@
       <FileName>Purchase Order\PurchaseOrderList.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="BOL.Department">
+    <Position X="11.5" Y="3.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQIAAAAQAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Department\Department.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

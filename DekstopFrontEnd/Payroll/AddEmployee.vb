@@ -48,53 +48,107 @@ Public Class AddEmployee
         cbodept.SelectedIndex = -1
         cbosupervisor.SelectedIndex = -1
         cbojobid.SelectedIndex = -1
-        txtpayrate.Text = -1
+        txtpayrate.Text = ""
+        txtemail.Text = ""
+        cboProv.SelectedIndex = -1
+
+        cbodept.SelectedItem = 1
+        cbosupervisor.SelectedItem = 1
+        cbojobid.SelectedItem = 1
 
     End Sub
 
     Private Sub btnsave_Click(sender As Object, e As EventArgs) Handles btnsave.Click
         Try
-
-
+            Dim inputisallok As Boolean = True
+            '----------------------------------------------------------------
             Dim strfname As String = txtfirstname.Text
+            If strfname = "" Then
+                inputisallok = False
+                ErrorProvider1.SetError(txtfirstname, "first name required")
+                txtfirstname.BackColor = Color.Red
+            Else
+                inputisallok = True
+                ErrorProvider1.SetError(txtfirstname, String.Empty)
+                txtfirstname.BackColor = Color.White
+            End If
+
             myemp.FirstName = strfname
+            '----------------------------------------------------------------
             Dim strmidinit As String = txtmiddleinit.Text
             myemp.MiddleInt = strmidinit
+            '----------------------------------------------------------------
             Dim strlname As String = txtlastname.Text
+            If strlname = "" Then
+                inputisallok = False
+                ErrorProvider1.SetError(txtlastname, "last name required")
+                txtlastname.BackColor = Color.Red
+            Else
+                inputisallok = True
+                ErrorProvider1.SetError(txtlastname, String.Empty)
+                txtlastname.BackColor = Color.White
+            End If
+
+
             myemp.LastName = strlname
+            '----------------------------------------------------------------
             Dim dateofbirth As Date = dtpdateofbirth.Value
             myemp.DOB = dateofbirth
+            '----------------------------------------------------------------
             Dim strsin As String = txtsin.Text
             myemp.SIN = strsin
+            '----------------------------------------------------------------
             Dim strstreetaddress As String = txtstreetaddress.Text
             myemp.Address = strstreetaddress
+            '----------------------------------------------------------------
             Dim strcity As String = txtcity.Text
             myemp.City = strcity
+            '----------------------------------------------------------------
             Dim strpostal As String = txtpostal.Text
             myemp.Postal = strpostal
+            '----------------------------------------------------------------
             Dim strprov As String = cboProv.SelectedItem
             ' MsgBox(strprov)
             myemp.Prov = strprov
+            '----------------------------------------------------------------
             Dim strcell As String = mtxcellphone.Text
             myemp.Cell = strcell
+            '----------------------------------------------------------------
             Dim strwork As String = mtxworkphone.Text
             myemp.Phone = strwork
+            '----------------------------------------------------------------
             Dim stremail As String = txtemail.Text
             myemp.Email = stremail
+            '----------------------------------------------------------------
             Dim intdept As Integer = cbodept.SelectedValue
             myemp.DeptID = intdept
+            '----------------------------------------------------------------
             Dim intsuper As Integer = cbosupervisor.SelectedValue
             myemp.SupervisorID = intsuper
+            '----------------------------------------------------------------
             Dim intjob As Integer = cbojobid.SelectedValue
             myemp.JobID = intjob
-            Dim dblpayrate As Double = txtpayrate.Text
-            myemp.PayRate = dblpayrate
+            '----------------------------------------------------------------
+            Dim dblpayrate As Double
+            If txtpayrate.Text = "" Then
+                dblpayrate = 0
+            Else
+                dblpayrate = txtpayrate.Text
+            End If
 
+            myemp.PayRate = dblpayrate
+            '----------------------------------------------------------------
             myemp.SeniorityDate = Date.Now
+            '----------------------------------------------------------------
             myemp.JobStartDate = Date.Now
+            '----------------------------------------------------------------
+
 
             Dim done As Integer = 0
-            done = Employee.insert(myemp)
+            If inputisallok = True Then
+                done = Employee.insert(myemp)
+            End If
+
             If done > 0 Then
                 MessageBox.Show("saved,Employee ID:" & done.ToString, "info", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
@@ -151,7 +205,7 @@ Public Class AddEmployee
         txtstreetaddress.Text = "1234 main street"
         txtcity.Text = "moncton"
         txtpostal.Text = "e1b5a3"
-        cboProv.SelectedValue = "NB"
+        cboProv.SelectedText = "NB"
         mtxcellphone.Text = "5061234567"
         mtxworkphone.Text = "9027654321"
         txtemail.Text = "jsmith@acme.com"
@@ -159,6 +213,9 @@ Public Class AddEmployee
         'Dim intsuper As Integer = cbosupervisor.SelectedValue
         'Dim intjob As Integer = cbojobid.SelectedValue
         txtpayrate.Text = "2300"
+        cbodept.SelectedItem = 1
+        cbosupervisor.SelectedItem = 1
+        cbojobid.SelectedItem = 1
 
     End Sub
 End Class
