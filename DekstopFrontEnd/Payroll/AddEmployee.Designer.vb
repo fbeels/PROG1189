@@ -22,6 +22,7 @@ Partial Class AddEmployee
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.lbllastname = New System.Windows.Forms.Label()
         Me.lblmiddleint = New System.Windows.Forms.Label()
         Me.lblfirstname = New System.Windows.Forms.Label()
@@ -58,6 +59,8 @@ Partial Class AddEmployee
         Me.mtxworkphone = New System.Windows.Forms.MaskedTextBox()
         Me.mtxcellphone = New System.Windows.Forms.MaskedTextBox()
         Me.btnprefill = New System.Windows.Forms.Button()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lbllastname
@@ -395,6 +398,10 @@ Partial Class AddEmployee
         Me.btnprefill.Text = "prefill"
         Me.btnprefill.UseVisualStyleBackColor = True
         '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        '
         'AddEmployee
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -439,6 +446,7 @@ Partial Class AddEmployee
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "AddEmployee"
         Me.Text = "AddEmp"
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -479,4 +487,5 @@ Partial Class AddEmployee
     Friend WithEvents mtxworkphone As System.Windows.Forms.MaskedTextBox
     Friend WithEvents mtxcellphone As System.Windows.Forms.MaskedTextBox
     Friend WithEvents btnprefill As System.Windows.Forms.Button
+    Friend WithEvents ErrorProvider1 As System.Windows.Forms.ErrorProvider
 End Class
