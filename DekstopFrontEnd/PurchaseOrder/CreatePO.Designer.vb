@@ -40,7 +40,18 @@ Partial Class CreatePO
         Me.lblTax = New System.Windows.Forms.Label()
         Me.lblTotal = New System.Windows.Forms.Label()
         Me.lblID = New System.Windows.Forms.Label()
+        Me.dtpStart = New System.Windows.Forms.DateTimePicker()
+        Me.dtpEnd = New System.Windows.Forms.DateTimePicker()
+        Me.txtID = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnSearch = New System.Windows.Forms.Button()
+        Me.lstResults = New System.Windows.Forms.ListBox()
         CType(Me.dgvPO, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ddlEmployees
@@ -207,11 +218,106 @@ Partial Class CreatePO
         Me.lblID.TabIndex = 19
         Me.lblID.Text = "0"
         '
+        'dtpStart
+        '
+        Me.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpStart.Location = New System.Drawing.Point(129, 49)
+        Me.dtpStart.Name = "dtpStart"
+        Me.dtpStart.Size = New System.Drawing.Size(84, 20)
+        Me.dtpStart.TabIndex = 20
+        '
+        'dtpEnd
+        '
+        Me.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpEnd.Location = New System.Drawing.Point(239, 50)
+        Me.dtpEnd.Name = "dtpEnd"
+        Me.dtpEnd.Size = New System.Drawing.Size(84, 20)
+        Me.dtpEnd.TabIndex = 21
+        '
+        'txtID
+        '
+        Me.txtID.Location = New System.Drawing.Point(5, 50)
+        Me.txtID.Name = "txtID"
+        Me.txtID.Size = New System.Drawing.Size(82, 20)
+        Me.txtID.TabIndex = 22
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(2, 34)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(33, 13)
+        Me.Label5.TabIndex = 23
+        Me.Label5.Text = "By ID"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(93, 53)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(30, 13)
+        Me.Label9.TabIndex = 24
+        Me.Label9.Text = "- Or -"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(126, 33)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(80, 13)
+        Me.Label10.TabIndex = 25
+        Me.Label10.Text = "By Date Range"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(219, 53)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(20, 13)
+        Me.Label11.TabIndex = 26
+        Me.Label11.Text = "To"
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.btnSearch)
+        Me.GroupBox1.Controls.Add(Me.Label11)
+        Me.GroupBox1.Controls.Add(Me.Label10)
+        Me.GroupBox1.Controls.Add(Me.Label9)
+        Me.GroupBox1.Controls.Add(Me.Label5)
+        Me.GroupBox1.Controls.Add(Me.txtID)
+        Me.GroupBox1.Controls.Add(Me.dtpEnd)
+        Me.GroupBox1.Controls.Add(Me.dtpStart)
+        Me.GroupBox1.Location = New System.Drawing.Point(425, 12)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(364, 76)
+        Me.GroupBox1.TabIndex = 21
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Search Purchase Orders"
+        '
+        'btnSearch
+        '
+        Me.btnSearch.Location = New System.Drawing.Point(283, 13)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(75, 23)
+        Me.btnSearch.TabIndex = 27
+        Me.btnSearch.Text = "Search"
+        Me.btnSearch.UseVisualStyleBackColor = True
+        '
+        'lstResults
+        '
+        Me.lstResults.FormattingEnabled = True
+        Me.lstResults.Location = New System.Drawing.Point(669, 94)
+        Me.lstResults.Name = "lstResults"
+        Me.lstResults.Size = New System.Drawing.Size(120, 251)
+        Me.lstResults.TabIndex = 23
+        '
         'CreatePO
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(801, 431)
+        Me.Controls.Add(Me.lstResults)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.lblID)
         Me.Controls.Add(Me.lblTotal)
         Me.Controls.Add(Me.lblTax)
@@ -233,6 +339,8 @@ Partial Class CreatePO
         Me.Name = "CreatePO"
         Me.Text = "CreatePO"
         CType(Me.dgvPO, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -256,4 +364,14 @@ Partial Class CreatePO
     Friend WithEvents lblTax As Label
     Friend WithEvents lblTotal As Label
     Friend WithEvents lblID As Label
+    Friend WithEvents dtpStart As DateTimePicker
+    Friend WithEvents dtpEnd As DateTimePicker
+    Friend WithEvents txtID As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents btnSearch As Button
+    Friend WithEvents lstResults As ListBox
 End Class

@@ -147,7 +147,54 @@ Public Class CreatePO
         lblTotal.Text = myPurchaseOrder.Total.ToString("C2")
     End Sub
 
-    Private Sub btnSubmit_Click(sender As Object, e As EventArgs)
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        If dtpStart.Text = Date.Now.ToShortDateString Then
+            If txtID.Text = String.Empty Then
+                lblErr.Text = "Both fields are empty, try again."
+                Exit Sub
+            End If
+            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(Integer.Parse(myEmployee.EmpID), txtID.Text)
+            loadDataGrid(results)
+        Else
+            Dim results As List(Of PurchaseOrderList) = (PurchaseOrderList.Create(Integer.Parse(myEmployee.EmpID), Nothing, Date.Parse(dtpStart.Text), Date.Parse(dtpEnd.Text)))
+            loadDataGrid(results)
+        End If
 
+    End Sub
+
+    Sub loadDataGrid(results As List(Of PurchaseOrderList))
+        For Each item As PurchaseOrderList In results
+            lstResults.Items.Add(item.PurchaseOrderID & ", " & item.Total.ToString("C2") & ", " & item.OrderDate.ToShortDateString)
+        Next
+    End Sub
+
+    Private Sub lstResults_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles lstResults.MouseDoubleClick
+        Dim id As Integer = lstResults.SelectedItem.ToString.Substring(0, lstResults.SelectedItem.ToString.IndexOf(","))
+
+        myPurchaseOrder = PurchaseOrderFactory.Create(id)
+        Dim Table As New DataTable
+        With Table.Columns
+            .Add("Name", GetType(String))
+            .Add("Descripion", GetType(String))
+            .Add("Price", GetType(String))
+            .Add("Quantity", GetType(String))
+            .Add("Store", GetType(String))
+            .Add("Justification", GetType(String))
+        End With
+
+        For i As Integer = 0 To myPurchaseOrder.Items.Count - 1
+            Dim Row As DataRow
+            Row = Table.NewRow()
+
+            Row.Item("Name") = myPurchaseOrder.Items(i).ItemName
+            Row.Item("Descripion") = myPurchaseOrder.Items(i).Description
+            Row.Item("Price") = myPurchaseOrder.Items(i).Price
+            Row.Item("Quantity") = myPurchaseOrder.Items(i).Quantity
+            Row.Item("Store") = myPurchaseOrder.Items(i).Source
+            Row.Item("Justification") = myPurchaseOrder.Items(i).Justification
+            Table.Rows.Add(Row)
+        Next
+
+        dgvPO.DataSource = Table
     End Sub
 End Class
