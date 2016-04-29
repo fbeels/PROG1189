@@ -28,7 +28,7 @@ namespace Common
             int ret;
             int.TryParse(validate, out ret);
 
-            if (ret ==0)
+            if (ret == 0)
             {
                 throw new FormatException(validate + " is not a valid number. Please enter a proper value");
             }else

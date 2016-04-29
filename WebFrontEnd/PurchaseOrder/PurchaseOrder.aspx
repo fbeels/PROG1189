@@ -9,13 +9,13 @@
         <asp:Label runat="server" ID="lblPage" Font-Size="large" /><br />
        
         <b>Date: </b>
-        <asp:Label runat="server" ID="lblDate" />|&nbsp;
+        <asp:Label runat="server" ID="lblDate" />&nbsp;|&nbsp;
        
         <b>Employee: </b>
-        <asp:Label runat="server" ID="lblEmp" />|&nbsp;
+        <asp:Label runat="server" ID="lblEmp" />&nbsp;|&nbsp;
        
         <b>Department: </b>
-        <asp:Label runat="server" ID="lblDept" />| &nbsp;
+        <asp:Label runat="server" ID="lblDept" />&nbsp;| &nbsp;
        
         <b>Supervisor: </b>
         <asp:Label ID="lblSuper" runat="server" />
@@ -58,9 +58,14 @@
                          <asp:TextBox ID="txtJust" runat="server"></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Status">
+                 <asp:TemplateField HeaderText="Status">
                     <ItemTemplate>
-                        <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                          <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="No Longer Needed">
+                    <ItemTemplate>
+                        <asp:CheckBox id="chkNotNeeded" runat="server" />
                     </ItemTemplate>
                     <FooterStyle HorizontalAlign="Right" />
                     <FooterTemplate>
