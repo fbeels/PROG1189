@@ -1,6 +1,6 @@
 ﻿Public Class main
 
-    Private Sub btnAddEmp_Click(sender As Object, e As EventArgs) Handles btnAddEmp.Click
+    Private Sub btnAddEmp_Click(sender As Object, e As EventArgs)
         If TabControl1.Contains(AddEmployee) Then
             TabControl1.TabPages(AddEmployee).Select()
         Else
@@ -8,7 +8,7 @@
         End If
     End Sub
 
-    Private Sub btnsearchEmp_Click(sender As Object, e As EventArgs) Handles btnsearchEmp.Click
+    Private Sub btnsearchEmp_Click(sender As Object, e As EventArgs)
         If TabControl1.Contains(RetrieveEmployee) Then
             TabControl1.TabPages(RetrieveEmployee).Select()
         Else
@@ -16,7 +16,7 @@
         End If
     End Sub
 
-    Private Sub btnmodemp_Click(sender As Object, e As EventArgs) Handles btnmodemp.Click
+    Private Sub btnmodemp_Click(sender As Object, e As EventArgs)
 
         If TabControl1.Contains(EditEmployee) Then
             TabControl1.TabPages(EditEmployee).Select()
@@ -25,13 +25,13 @@
         End If
     End Sub
 
-    Private Sub btncalcpayroll_Click(sender As Object, e As EventArgs) Handles btncalcpayroll.Click
-        If TabControl1.Contains(CalcPayroll) Then
-            TabControl1.TabPages(CalcPayroll).Select()
-        Else
-            TabControl1.TabPages.Add(CalcPayroll)
-        End If
-    End Sub
+    'Private Sub btncalcpayroll_Click(sender As Object, e As EventArgs)
+    '    If TabControl1.Contains(CalcPayroll) Then
+    '        TabControl1.TabPages(CalcPayroll).Select()
+    '    Else
+    '        TabControl1.TabPages.Add(CalcPayroll)
+    '    End If
+    'End Sub
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         AboutBox1.Show()
@@ -43,5 +43,35 @@
         Else
             TabControl1.TabPages.Add(CreatePO)
         End If
+    End Sub
+
+    Private Sub btnmodPO_Click(sender As Object, e As EventArgs) Handles btnmodPO.Click
+        If TabControl1.Contains(ModifyPO) Then
+            TabControl1.TabPages(ModifyPO).Select()
+        Else
+            TabControl1.TabPages.Add(ModifyPO)
+        End If
+    End Sub
+
+ 
+    Private Sub main_Load(sender As Object, e As EventArgs) Handles Me.Load
+
+        Dim ispayday As Boolean = False
+        Dim hasrun As Boolean = False
+
+        If (ispayday = True) Then
+            If (hasrun = False) Then
+                'ask for passcode
+            Else
+                'do nothing
+            End If
+
+        Else
+            'do nothing
+        End If
+
+
+
+
     End Sub
 End Class

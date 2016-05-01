@@ -31,6 +31,7 @@ namespace BOL
         public int JobID { get; set; }
         public int DeptID { get; set; }
         public int SupervisorID { get; set; }
+        public string supervisorName { get; set;}
         public double PayRate { get; set; }
         public DateTime TerminationDate { get; set; }
         public bool EmailNotification { get; set; }
@@ -45,12 +46,12 @@ namespace BOL
             return new Employee();
         }
 //-------------------------------------------------------------
+      //retireve employee form
         static public List<Employee> search(int search_empid, string search_lname)
         {
                return SearchRePackager(EmployeeSQL.searchEmp(search_empid, search_lname));
         }
-
-
+        
         static private List<Employee> SearchRePackager(DataTable dt)
         {
             List<Employee> myList = new List<Employee>();

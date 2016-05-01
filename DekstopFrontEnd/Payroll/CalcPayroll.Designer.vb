@@ -24,10 +24,8 @@ Partial Class CalcPayroll
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
-        Dim ReportDataSource2 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Me.CalculatePayrollBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FinalProjDataSet = New FinalProjDataSet()
-        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.CalculatePayrollTableAdapter = New FinalProjDataSetTableAdapters.CalculatePayrollTableAdapter()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ChequeidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -45,10 +43,16 @@ Partial Class CalcPayroll
         Me.YtdpensionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FinalProjDataSet2 = New FinalProjDataSet2()
         Me.btnemail = New System.Windows.Forms.Button()
+        Me.ReportViewer2 = New Microsoft.Reporting.WinForms.ReportViewer()
+        Me.FinalProjGetLastPayroll = New FinalProjGetLastPayroll()
+        Me.GetLastPayrollBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GetLastPayrollTableAdapter = New FinalProjGetLastPayrollTableAdapters.GetLastPayrollTableAdapter()
         CType(Me.CalculatePayrollBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FinalProjDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FinalProjDataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FinalProjGetLastPayroll, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GetLastPayrollBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'CalculatePayrollBindingSource
@@ -61,20 +65,6 @@ Partial Class CalcPayroll
         Me.FinalProjDataSet.DataSetName = "FinalProjDataSet"
         Me.FinalProjDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'ReportViewer1
-        '
-        ReportDataSource1.Name = "DataSet1"
-        ReportDataSource1.Value = Me.CalculatePayrollBindingSource
-        ReportDataSource2.Name = "DataSet2"
-        ReportDataSource2.Value = Me.CalculatePayrollBindingSource
-        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource1)
-        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource2)
-        Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "Payroll.rdlc"
-        Me.ReportViewer1.Location = New System.Drawing.Point(12, 23)
-        Me.ReportViewer1.Name = "ReportViewer1"
-        Me.ReportViewer1.Size = New System.Drawing.Size(1278, 232)
-        Me.ReportViewer1.TabIndex = 0
-        '
         'CalculatePayrollTableAdapter
         '
         Me.CalculatePayrollTableAdapter.ClearBeforeFill = True
@@ -86,8 +76,8 @@ Partial Class CalcPayroll
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ChequeidDataGridViewTextBoxColumn, Me.PayrollDateDataGridViewTextBoxColumn, Me.EmpidDataGridViewTextBoxColumn, Me.YtdgrossDataGridViewTextBoxColumn, Me.CurgrossDataGridViewTextBoxColumn, Me.CurincometaxDataGridViewTextBoxColumn, Me.YtdincometaxDataGridViewTextBoxColumn, Me.CurcppDataGridViewTextBoxColumn, Me.YtdcppDataGridViewTextBoxColumn, Me.CureiDataGridViewTextBoxColumn, Me.YtdeiDataGridViewTextBoxColumn, Me.CurpensionDataGridViewTextBoxColumn, Me.YtdpensionDataGridViewTextBoxColumn})
-        Me.DataGridView1.DataSource = Me.CalculatePayrollBindingSource
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 374)
+        Me.DataGridView1.DataSource = Me.GetLastPayrollBindingSource
+        Me.DataGridView1.Location = New System.Drawing.Point(3, 690)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowTemplate.Height = 28
@@ -192,31 +182,57 @@ Partial Class CalcPayroll
         '
         'btnemail
         '
-        Me.btnemail.Location = New System.Drawing.Point(462, 606)
+        Me.btnemail.Location = New System.Drawing.Point(534, 946)
         Me.btnemail.Name = "btnemail"
         Me.btnemail.Size = New System.Drawing.Size(174, 62)
         Me.btnemail.TabIndex = 2
         Me.btnemail.Text = "Send Email"
         Me.btnemail.UseVisualStyleBackColor = True
         '
+        'ReportViewer2
+        '
+        ReportDataSource1.Name = "DataSet1"
+        ReportDataSource1.Value = Me.GetLastPayrollBindingSource
+        Me.ReportViewer2.LocalReport.DataSources.Add(ReportDataSource1)
+        Me.ReportViewer2.LocalReport.ReportEmbeddedResource = "LastPayroll.rdlc"
+        Me.ReportViewer2.Location = New System.Drawing.Point(12, 12)
+        Me.ReportViewer2.Name = "ReportViewer2"
+        Me.ReportViewer2.Size = New System.Drawing.Size(1278, 645)
+        Me.ReportViewer2.TabIndex = 3
+        '
+        'FinalProjGetLastPayroll
+        '
+        Me.FinalProjGetLastPayroll.DataSetName = "FinalProjGetLastPayroll"
+        Me.FinalProjGetLastPayroll.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'GetLastPayrollBindingSource
+        '
+        Me.GetLastPayrollBindingSource.DataMember = "GetLastPayroll"
+        Me.GetLastPayrollBindingSource.DataSource = Me.FinalProjGetLastPayroll
+        '
+        'GetLastPayrollTableAdapter
+        '
+        Me.GetLastPayrollTableAdapter.ClearBeforeFill = True
+        '
         'CalcPayroll
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1302, 690)
+        Me.ClientSize = New System.Drawing.Size(1302, 1066)
+        Me.Controls.Add(Me.ReportViewer2)
         Me.Controls.Add(Me.btnemail)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.ReportViewer1)
         Me.Name = "CalcPayroll"
         Me.Text = "CalcPayroll"
         CType(Me.CalculatePayrollBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FinalProjDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FinalProjDataSet2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FinalProjGetLastPayroll, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GetLastPayrollBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
     Friend WithEvents CalculatePayrollBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents FinalProjDataSet As FinalProjDataSet
     Friend WithEvents CalculatePayrollTableAdapter As FinalProjDataSetTableAdapters.CalculatePayrollTableAdapter
@@ -236,4 +252,8 @@ Partial Class CalcPayroll
     Friend WithEvents CurpensionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents YtdpensionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents btnemail As System.Windows.Forms.Button
+    Friend WithEvents ReportViewer2 As Microsoft.Reporting.WinForms.ReportViewer
+    Friend WithEvents GetLastPayrollBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents FinalProjGetLastPayroll As FinalProjGetLastPayroll
+    Friend WithEvents GetLastPayrollTableAdapter As FinalProjGetLastPayrollTableAdapters.GetLastPayrollTableAdapter
 End Class

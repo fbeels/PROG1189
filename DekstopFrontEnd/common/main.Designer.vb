@@ -29,20 +29,22 @@ Partial Class main
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.btnmodPO = New System.Windows.Forms.Button()
+        Me.btncreatePO = New System.Windows.Forms.Button()
+        Me.TabControl1 = New MdiTabControl.TabControl()
+        Me.grbHR = New System.Windows.Forms.GroupBox()
         Me.btnviewpayroll = New System.Windows.Forms.Button()
         Me.btnmodemp = New System.Windows.Forms.Button()
         Me.btnsearchEmp = New System.Windows.Forms.Button()
         Me.btnAddEmp = New System.Windows.Forms.Button()
         Me.btncalcpayroll = New System.Windows.Forms.Button()
-        Me.btnmodPO = New System.Windows.Forms.Button()
-        Me.btncreatePO = New System.Windows.Forms.Button()
-        Me.TabControl1 = New MdiTabControl.TabControl()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
+        Me.grbHR.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -106,11 +108,7 @@ Partial Class main
         'SplitContainer1.Panel1
         '
         Me.SplitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Info
-        Me.SplitContainer1.Panel1.Controls.Add(Me.btnviewpayroll)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.btnmodemp)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.btnsearchEmp)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.btnAddEmp)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.btncalcpayroll)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.grbHR)
         Me.SplitContainer1.Panel1.Controls.Add(Me.btnmodPO)
         Me.SplitContainer1.Panel1.Controls.Add(Me.btncreatePO)
         '
@@ -122,58 +120,6 @@ Partial Class main
         Me.SplitContainer1.SplitterDistance = 270
         Me.SplitContainer1.SplitterWidth = 6
         Me.SplitContainer1.TabIndex = 3
-        '
-        'btnviewpayroll
-        '
-        Me.btnviewpayroll.Enabled = False
-        Me.btnviewpayroll.Location = New System.Drawing.Point(40, 507)
-        Me.btnviewpayroll.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.btnviewpayroll.Name = "btnviewpayroll"
-        Me.btnviewpayroll.Size = New System.Drawing.Size(156, 35)
-        Me.btnviewpayroll.TabIndex = 7
-        Me.btnviewpayroll.Text = "view Payroll"
-        Me.btnviewpayroll.UseVisualStyleBackColor = True
-        '
-        'btnmodemp
-        '
-        Me.btnmodemp.Enabled = False
-        Me.btnmodemp.Location = New System.Drawing.Point(40, 388)
-        Me.btnmodemp.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.btnmodemp.Name = "btnmodemp"
-        Me.btnmodemp.Size = New System.Drawing.Size(156, 35)
-        Me.btnmodemp.TabIndex = 5
-        Me.btnmodemp.Text = "Modify Employee"
-        Me.btnmodemp.UseVisualStyleBackColor = True
-        '
-        'btnsearchEmp
-        '
-        Me.btnsearchEmp.Location = New System.Drawing.Point(40, 343)
-        Me.btnsearchEmp.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.btnsearchEmp.Name = "btnsearchEmp"
-        Me.btnsearchEmp.Size = New System.Drawing.Size(159, 35)
-        Me.btnsearchEmp.TabIndex = 4
-        Me.btnsearchEmp.Text = "Search Employee"
-        Me.btnsearchEmp.UseVisualStyleBackColor = True
-        '
-        'btnAddEmp
-        '
-        Me.btnAddEmp.Location = New System.Drawing.Point(33, 298)
-        Me.btnAddEmp.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.btnAddEmp.Name = "btnAddEmp"
-        Me.btnAddEmp.Size = New System.Drawing.Size(166, 35)
-        Me.btnAddEmp.TabIndex = 3
-        Me.btnAddEmp.Text = "Add Employee"
-        Me.btnAddEmp.UseVisualStyleBackColor = True
-        '
-        'btncalcpayroll
-        '
-        Me.btncalcpayroll.Location = New System.Drawing.Point(40, 462)
-        Me.btncalcpayroll.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.btncalcpayroll.Name = "btncalcpayroll"
-        Me.btncalcpayroll.Size = New System.Drawing.Size(159, 35)
-        Me.btncalcpayroll.TabIndex = 2
-        Me.btncalcpayroll.Text = "Calculate Payroll"
-        Me.btncalcpayroll.UseVisualStyleBackColor = True
         '
         'btnmodPO
         '
@@ -206,6 +152,72 @@ Partial Class main
         Me.TabControl1.TabCloseButtonImageHot = Nothing
         Me.TabControl1.TabIndex = 0
         '
+        'grbHR
+        '
+        Me.grbHR.Controls.Add(Me.btnviewpayroll)
+        Me.grbHR.Controls.Add(Me.btnmodemp)
+        Me.grbHR.Controls.Add(Me.btnsearchEmp)
+        Me.grbHR.Controls.Add(Me.btnAddEmp)
+        Me.grbHR.Controls.Add(Me.btncalcpayroll)
+        Me.grbHR.Location = New System.Drawing.Point(22, 472)
+        Me.grbHR.Name = "grbHR"
+        Me.grbHR.Size = New System.Drawing.Size(224, 310)
+        Me.grbHR.TabIndex = 8
+        Me.grbHR.TabStop = False
+        Me.grbHR.Text = "Human Resources"
+        '
+        'btnviewpayroll
+        '
+        Me.btnviewpayroll.Enabled = False
+        Me.btnviewpayroll.Location = New System.Drawing.Point(30, 249)
+        Me.btnviewpayroll.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnviewpayroll.Name = "btnviewpayroll"
+        Me.btnviewpayroll.Size = New System.Drawing.Size(156, 35)
+        Me.btnviewpayroll.TabIndex = 12
+        Me.btnviewpayroll.Text = "view Payroll"
+        Me.btnviewpayroll.UseVisualStyleBackColor = True
+        '
+        'btnmodemp
+        '
+        Me.btnmodemp.Enabled = False
+        Me.btnmodemp.Location = New System.Drawing.Point(30, 130)
+        Me.btnmodemp.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnmodemp.Name = "btnmodemp"
+        Me.btnmodemp.Size = New System.Drawing.Size(156, 35)
+        Me.btnmodemp.TabIndex = 11
+        Me.btnmodemp.Text = "Modify Employee"
+        Me.btnmodemp.UseVisualStyleBackColor = True
+        '
+        'btnsearchEmp
+        '
+        Me.btnsearchEmp.Location = New System.Drawing.Point(30, 85)
+        Me.btnsearchEmp.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnsearchEmp.Name = "btnsearchEmp"
+        Me.btnsearchEmp.Size = New System.Drawing.Size(159, 35)
+        Me.btnsearchEmp.TabIndex = 10
+        Me.btnsearchEmp.Text = "Search Employee"
+        Me.btnsearchEmp.UseVisualStyleBackColor = True
+        '
+        'btnAddEmp
+        '
+        Me.btnAddEmp.Location = New System.Drawing.Point(23, 40)
+        Me.btnAddEmp.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnAddEmp.Name = "btnAddEmp"
+        Me.btnAddEmp.Size = New System.Drawing.Size(166, 35)
+        Me.btnAddEmp.TabIndex = 9
+        Me.btnAddEmp.Text = "Add Employee"
+        Me.btnAddEmp.UseVisualStyleBackColor = True
+        '
+        'btncalcpayroll
+        '
+        Me.btncalcpayroll.Location = New System.Drawing.Point(30, 204)
+        Me.btncalcpayroll.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btncalcpayroll.Name = "btncalcpayroll"
+        Me.btncalcpayroll.Size = New System.Drawing.Size(159, 35)
+        Me.btncalcpayroll.TabIndex = 8
+        Me.btncalcpayroll.Text = "Calculate Payroll"
+        Me.btncalcpayroll.UseVisualStyleBackColor = True
+        '
         'main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -228,6 +240,7 @@ Partial Class main
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
+        Me.grbHR.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -237,14 +250,15 @@ Partial Class main
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
     Friend WithEvents SplitContainer1 As System.Windows.Forms.SplitContainer
-    Friend WithEvents btnviewpayroll As System.Windows.Forms.Button
-    Friend WithEvents btnmodemp As System.Windows.Forms.Button
-    Friend WithEvents btnsearchEmp As System.Windows.Forms.Button
-    Friend WithEvents btnAddEmp As System.Windows.Forms.Button
-    Friend WithEvents btncalcpayroll As System.Windows.Forms.Button
     Friend WithEvents btnmodPO As System.Windows.Forms.Button
     Friend WithEvents btncreatePO As System.Windows.Forms.Button
     Friend WithEvents TabControl1 As MdiTabControl.TabControl
     Friend WithEvents ToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents grbHR As System.Windows.Forms.GroupBox
+    Friend WithEvents btnviewpayroll As System.Windows.Forms.Button
+    Friend WithEvents btnmodemp As System.Windows.Forms.Button
+    Friend WithEvents btnsearchEmp As System.Windows.Forms.Button
+    Friend WithEvents btnAddEmp As System.Windows.Forms.Button
+    Friend WithEvents btncalcpayroll As System.Windows.Forms.Button
 End Class
