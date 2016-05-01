@@ -22,5 +22,12 @@ namespace SQLLayer
             return DataAccess.GetDataTable("GetDepartments", tmpParmList);
         }
 
+
+        public static DataTable GetADept(int deptid)
+        {
+            List<ParmStructure> tmpParmList = new List<ParmStructure>();
+            tmpParmList.Add(new ParmStructure("@deptid", SqlDbType.Int, ParameterDirection.Input, 0, deptid));
+            return DataAccess.GetDataTable("GetDeptwithDeptID", tmpParmList);
+        }
     }
 }

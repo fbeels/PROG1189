@@ -20,12 +20,12 @@ Option Explicit On
  Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
  Global.System.ComponentModel.ToolboxItem(true),  _
  Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema"),  _
- Global.System.Xml.Serialization.XmlRootAttribute("FinalProjDataSet2"),  _
+ Global.System.Xml.Serialization.XmlRootAttribute("FinalProjGetLastPayroll"),  _
  Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")>  _
-Partial Public Class FinalProjDataSet2
+Partial Public Class FinalProjGetLastPayroll
     Inherits Global.System.Data.DataSet
     
-    Private tableCalculatePayroll As CalculatePayrollDataTable
+    Private tableGetLastPayroll As GetLastPayrollDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -56,8 +56,8 @@ Partial Public Class FinalProjDataSet2
         If (Me.DetermineSchemaSerializationMode(info, context) = Global.System.Data.SchemaSerializationMode.IncludeSchema) Then
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXmlSchema(New Global.System.Xml.XmlTextReader(New Global.System.IO.StringReader(strSchema)))
-            If (Not (ds.Tables("CalculatePayroll")) Is Nothing) Then
-                MyBase.Tables.Add(New CalculatePayrollDataTable(ds.Tables("CalculatePayroll")))
+            If (Not (ds.Tables("GetLastPayroll")) Is Nothing) Then
+                MyBase.Tables.Add(New GetLastPayrollDataTable(ds.Tables("GetLastPayroll")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -80,9 +80,9 @@ Partial Public Class FinalProjDataSet2
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property CalculatePayroll() As CalculatePayrollDataTable
+    Public ReadOnly Property GetLastPayroll() As GetLastPayrollDataTable
         Get
-            Return Me.tableCalculatePayroll
+            Return Me.tableGetLastPayroll
         End Get
     End Property
     
@@ -128,7 +128,7 @@ Partial Public Class FinalProjDataSet2
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Overrides Function Clone() As Global.System.Data.DataSet
-        Dim cln As FinalProjDataSet2 = CType(MyBase.Clone,FinalProjDataSet2)
+        Dim cln As FinalProjGetLastPayroll = CType(MyBase.Clone,FinalProjGetLastPayroll)
         cln.InitVars
         cln.SchemaSerializationMode = Me.SchemaSerializationMode
         Return cln
@@ -153,8 +153,8 @@ Partial Public Class FinalProjDataSet2
             Me.Reset
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXml(reader)
-            If (Not (ds.Tables("CalculatePayroll")) Is Nothing) Then
-                MyBase.Tables.Add(New CalculatePayrollDataTable(ds.Tables("CalculatePayroll")))
+            If (Not (ds.Tables("GetLastPayroll")) Is Nothing) Then
+                MyBase.Tables.Add(New GetLastPayrollDataTable(ds.Tables("GetLastPayroll")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -188,10 +188,10 @@ Partial Public Class FinalProjDataSet2
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Friend Overloads Sub InitVars(ByVal initTable As Boolean)
-        Me.tableCalculatePayroll = CType(MyBase.Tables("CalculatePayroll"),CalculatePayrollDataTable)
+        Me.tableGetLastPayroll = CType(MyBase.Tables("GetLastPayroll"),GetLastPayrollDataTable)
         If (initTable = true) Then
-            If (Not (Me.tableCalculatePayroll) Is Nothing) Then
-                Me.tableCalculatePayroll.InitVars
+            If (Not (Me.tableGetLastPayroll) Is Nothing) Then
+                Me.tableGetLastPayroll.InitVars
             End If
         End If
     End Sub
@@ -199,18 +199,18 @@ Partial Public Class FinalProjDataSet2
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Sub InitClass()
-        Me.DataSetName = "FinalProjDataSet2"
+        Me.DataSetName = "FinalProjGetLastPayroll"
         Me.Prefix = ""
-        Me.Namespace = "http://tempuri.org/FinalProjDataSet2.xsd"
+        Me.Namespace = "http://tempuri.org/FinalProjGetLastPayroll.xsd"
         Me.EnforceConstraints = true
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
-        Me.tableCalculatePayroll = New CalculatePayrollDataTable()
-        MyBase.Tables.Add(Me.tableCalculatePayroll)
+        Me.tableGetLastPayroll = New GetLastPayrollDataTable()
+        MyBase.Tables.Add(Me.tableGetLastPayroll)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Private Function ShouldSerializeCalculatePayroll() As Boolean
+    Private Function ShouldSerializeGetLastPayroll() As Boolean
         Return false
     End Function
     
@@ -225,7 +225,7 @@ Partial Public Class FinalProjDataSet2
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Shared Function GetTypedDataSetSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-        Dim ds As FinalProjDataSet2 = New FinalProjDataSet2()
+        Dim ds As FinalProjGetLastPayroll = New FinalProjGetLastPayroll()
         Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
         Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
         Dim any As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
@@ -273,15 +273,15 @@ Partial Public Class FinalProjDataSet2
     End Function
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Delegate Sub CalculatePayrollRowChangeEventHandler(ByVal sender As Object, ByVal e As CalculatePayrollRowChangeEvent)
+    Public Delegate Sub GetLastPayrollRowChangeEventHandler(ByVal sender As Object, ByVal e As GetLastPayrollRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class CalculatePayrollDataTable
-        Inherits Global.System.Data.TypedTableBase(Of CalculatePayrollRow)
+    Partial Public Class GetLastPayrollDataTable
+        Inherits Global.System.Data.TypedTableBase(Of GetLastPayrollRow)
         
         Private columnchequeid As Global.System.Data.DataColumn
         
@@ -317,7 +317,7 @@ Partial Public Class FinalProjDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "CalculatePayroll"
+            Me.TableName = "GetLastPayroll"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -479,44 +479,50 @@ Partial Public Class FinalProjDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As CalculatePayrollRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As GetLastPayrollRow
             Get
-                Return CType(Me.Rows(index),CalculatePayrollRow)
+                Return CType(Me.Rows(index),GetLastPayrollRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event CalculatePayrollRowChanging As CalculatePayrollRowChangeEventHandler
+        Public Event GetLastPayrollRowChanging As GetLastPayrollRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event CalculatePayrollRowChanged As CalculatePayrollRowChangeEventHandler
+        Public Event GetLastPayrollRowChanged As GetLastPayrollRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event CalculatePayrollRowDeleting As CalculatePayrollRowChangeEventHandler
+        Public Event GetLastPayrollRowDeleting As GetLastPayrollRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event CalculatePayrollRowDeleted As CalculatePayrollRowChangeEventHandler
+        Public Event GetLastPayrollRowDeleted As GetLastPayrollRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Sub AddCalculatePayrollRow(ByVal row As CalculatePayrollRow)
+        Public Overloads Sub AddGetLastPayrollRow(ByVal row As GetLastPayrollRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddCalculatePayrollRow(ByVal chequeid As Integer, ByVal PayrollDate As Date, ByVal empid As Integer, ByVal employeename As String, ByVal ytd_gross As Decimal, ByVal cur_gross As Decimal, ByVal cur_incometax As Decimal, ByVal ytd_incometax As Decimal, ByVal cur_cpp As Decimal, ByVal ytd_cpp As Decimal, ByVal cur_ei As Decimal, ByVal ytd_ei As Decimal, ByVal cur_pension As Decimal, ByVal ytd_pension As Decimal, ByVal net As Decimal) As CalculatePayrollRow
-            Dim rowCalculatePayrollRow As CalculatePayrollRow = CType(Me.NewRow,CalculatePayrollRow)
-            Dim columnValuesArray() As Object = New Object() {chequeid, PayrollDate, empid, employeename, ytd_gross, cur_gross, cur_incometax, ytd_incometax, cur_cpp, ytd_cpp, cur_ei, ytd_ei, cur_pension, ytd_pension, net}
-            rowCalculatePayrollRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowCalculatePayrollRow)
-            Return rowCalculatePayrollRow
+        Public Overloads Function AddGetLastPayrollRow(ByVal PayrollDate As Date, ByVal empid As Integer, ByVal employeename As String, ByVal ytd_gross As Decimal, ByVal cur_gross As Decimal, ByVal cur_incometax As Decimal, ByVal ytd_incometax As Decimal, ByVal cur_cpp As Decimal, ByVal ytd_cpp As Decimal, ByVal cur_ei As Decimal, ByVal ytd_ei As Decimal, ByVal cur_pension As Decimal, ByVal ytd_pension As Decimal, ByVal net As Decimal) As GetLastPayrollRow
+            Dim rowGetLastPayrollRow As GetLastPayrollRow = CType(Me.NewRow,GetLastPayrollRow)
+            Dim columnValuesArray() As Object = New Object() {Nothing, PayrollDate, empid, employeename, ytd_gross, cur_gross, cur_incometax, ytd_incometax, cur_cpp, ytd_cpp, cur_ei, ytd_ei, cur_pension, ytd_pension, net}
+            rowGetLastPayrollRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowGetLastPayrollRow)
+            Return rowGetLastPayrollRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function FindBychequeid(ByVal chequeid As Integer) As GetLastPayrollRow
+            Return CType(Me.Rows.Find(New Object() {chequeid}),GetLastPayrollRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As CalculatePayrollDataTable = CType(MyBase.Clone,CalculatePayrollDataTable)
+            Dim cln As GetLastPayrollDataTable = CType(MyBase.Clone,GetLastPayrollDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -524,7 +530,7 @@ Partial Public Class FinalProjDataSet2
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New CalculatePayrollDataTable()
+            Return New GetLastPayrollDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -580,33 +586,50 @@ Partial Public Class FinalProjDataSet2
             MyBase.Columns.Add(Me.columnytd_pension)
             Me.columnnet = New Global.System.Data.DataColumn("net", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnnet)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnchequeid}, true))
+            Me.columnchequeid.AutoIncrement = true
+            Me.columnchequeid.AllowDBNull = false
+            Me.columnchequeid.ReadOnly = true
+            Me.columnchequeid.Unique = true
+            Me.columnPayrollDate.AllowDBNull = false
+            Me.columnempid.AllowDBNull = false
             Me.columnemployeename.MaxLength = 50
+            Me.columnytd_gross.AllowDBNull = false
+            Me.columncur_gross.AllowDBNull = false
+            Me.columncur_incometax.AllowDBNull = false
+            Me.columnytd_incometax.AllowDBNull = false
+            Me.columncur_cpp.AllowDBNull = false
+            Me.columnytd_cpp.AllowDBNull = false
+            Me.columncur_ei.AllowDBNull = false
+            Me.columnytd_ei.AllowDBNull = false
+            Me.columncur_pension.AllowDBNull = false
+            Me.columnytd_pension.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function NewCalculatePayrollRow() As CalculatePayrollRow
-            Return CType(Me.NewRow,CalculatePayrollRow)
+        Public Function NewGetLastPayrollRow() As GetLastPayrollRow
+            Return CType(Me.NewRow,GetLastPayrollRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New CalculatePayrollRow(builder)
+            Return New GetLastPayrollRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(CalculatePayrollRow)
+            Return GetType(GetLastPayrollRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.CalculatePayrollRowChangedEvent) Is Nothing) Then
-                RaiseEvent CalculatePayrollRowChanged(Me, New CalculatePayrollRowChangeEvent(CType(e.Row,CalculatePayrollRow), e.Action))
+            If (Not (Me.GetLastPayrollRowChangedEvent) Is Nothing) Then
+                RaiseEvent GetLastPayrollRowChanged(Me, New GetLastPayrollRowChangeEvent(CType(e.Row,GetLastPayrollRow), e.Action))
             End If
         End Sub
         
@@ -614,8 +637,8 @@ Partial Public Class FinalProjDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.CalculatePayrollRowChangingEvent) Is Nothing) Then
-                RaiseEvent CalculatePayrollRowChanging(Me, New CalculatePayrollRowChangeEvent(CType(e.Row,CalculatePayrollRow), e.Action))
+            If (Not (Me.GetLastPayrollRowChangingEvent) Is Nothing) Then
+                RaiseEvent GetLastPayrollRowChanging(Me, New GetLastPayrollRowChangeEvent(CType(e.Row,GetLastPayrollRow), e.Action))
             End If
         End Sub
         
@@ -623,8 +646,8 @@ Partial Public Class FinalProjDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.CalculatePayrollRowDeletedEvent) Is Nothing) Then
-                RaiseEvent CalculatePayrollRowDeleted(Me, New CalculatePayrollRowChangeEvent(CType(e.Row,CalculatePayrollRow), e.Action))
+            If (Not (Me.GetLastPayrollRowDeletedEvent) Is Nothing) Then
+                RaiseEvent GetLastPayrollRowDeleted(Me, New GetLastPayrollRowChangeEvent(CType(e.Row,GetLastPayrollRow), e.Action))
             End If
         End Sub
         
@@ -632,14 +655,14 @@ Partial Public Class FinalProjDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.CalculatePayrollRowDeletingEvent) Is Nothing) Then
-                RaiseEvent CalculatePayrollRowDeleting(Me, New CalculatePayrollRowChangeEvent(CType(e.Row,CalculatePayrollRow), e.Action))
+            If (Not (Me.GetLastPayrollRowDeletingEvent) Is Nothing) Then
+                RaiseEvent GetLastPayrollRowDeleting(Me, New GetLastPayrollRowChangeEvent(CType(e.Row,GetLastPayrollRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub RemoveCalculatePayrollRow(ByVal row As CalculatePayrollRow)
+        Public Sub RemoveGetLastPayrollRow(ByVal row As GetLastPayrollRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -648,7 +671,7 @@ Partial Public Class FinalProjDataSet2
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As FinalProjDataSet2 = New FinalProjDataSet2()
+            Dim ds As FinalProjGetLastPayroll = New FinalProjGetLastPayroll()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -666,7 +689,7 @@ Partial Public Class FinalProjDataSet2
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "CalculatePayrollDataTable"
+            attribute2.FixedValue = "GetLastPayrollDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -713,30 +736,26 @@ Partial Public Class FinalProjDataSet2
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class CalculatePayrollRow
+    Partial Public Class GetLastPayrollRow
         Inherits Global.System.Data.DataRow
         
-        Private tableCalculatePayroll As CalculatePayrollDataTable
+        Private tableGetLastPayroll As GetLastPayrollDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tableCalculatePayroll = CType(Me.Table,CalculatePayrollDataTable)
+            Me.tableGetLastPayroll = CType(Me.Table,GetLastPayrollDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property chequeid() As Integer
             Get
-                Try 
-                    Return CType(Me(Me.tableCalculatePayroll.chequeidColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'chequeid' in table 'CalculatePayroll' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableGetLastPayroll.chequeidColumn),Integer)
             End Get
             Set
-                Me(Me.tableCalculatePayroll.chequeidColumn) = value
+                Me(Me.tableGetLastPayroll.chequeidColumn) = value
             End Set
         End Property
         
@@ -744,14 +763,10 @@ Partial Public Class FinalProjDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property PayrollDate() As Date
             Get
-                Try 
-                    Return CType(Me(Me.tableCalculatePayroll.PayrollDateColumn),Date)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'PayrollDate' in table 'CalculatePayroll' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableGetLastPayroll.PayrollDateColumn),Date)
             End Get
             Set
-                Me(Me.tableCalculatePayroll.PayrollDateColumn) = value
+                Me(Me.tableGetLastPayroll.PayrollDateColumn) = value
             End Set
         End Property
         
@@ -759,14 +774,10 @@ Partial Public Class FinalProjDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property empid() As Integer
             Get
-                Try 
-                    Return CType(Me(Me.tableCalculatePayroll.empidColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'empid' in table 'CalculatePayroll' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableGetLastPayroll.empidColumn),Integer)
             End Get
             Set
-                Me(Me.tableCalculatePayroll.empidColumn) = value
+                Me(Me.tableGetLastPayroll.empidColumn) = value
             End Set
         End Property
         
@@ -775,13 +786,13 @@ Partial Public Class FinalProjDataSet2
         Public Property employeename() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableCalculatePayroll.employeenameColumn),String)
+                    Return CType(Me(Me.tableGetLastPayroll.employeenameColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'employeename' in table 'CalculatePayroll' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'employeename' in table 'GetLastPayroll' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableCalculatePayroll.employeenameColumn) = value
+                Me(Me.tableGetLastPayroll.employeenameColumn) = value
             End Set
         End Property
         
@@ -789,14 +800,10 @@ Partial Public Class FinalProjDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property ytd_gross() As Decimal
             Get
-                Try 
-                    Return CType(Me(Me.tableCalculatePayroll.ytd_grossColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ytd_gross' in table 'CalculatePayroll' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableGetLastPayroll.ytd_grossColumn),Decimal)
             End Get
             Set
-                Me(Me.tableCalculatePayroll.ytd_grossColumn) = value
+                Me(Me.tableGetLastPayroll.ytd_grossColumn) = value
             End Set
         End Property
         
@@ -804,14 +811,10 @@ Partial Public Class FinalProjDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property cur_gross() As Decimal
             Get
-                Try 
-                    Return CType(Me(Me.tableCalculatePayroll.cur_grossColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'cur_gross' in table 'CalculatePayroll' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableGetLastPayroll.cur_grossColumn),Decimal)
             End Get
             Set
-                Me(Me.tableCalculatePayroll.cur_grossColumn) = value
+                Me(Me.tableGetLastPayroll.cur_grossColumn) = value
             End Set
         End Property
         
@@ -819,14 +822,10 @@ Partial Public Class FinalProjDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property cur_incometax() As Decimal
             Get
-                Try 
-                    Return CType(Me(Me.tableCalculatePayroll.cur_incometaxColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'cur_incometax' in table 'CalculatePayroll' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableGetLastPayroll.cur_incometaxColumn),Decimal)
             End Get
             Set
-                Me(Me.tableCalculatePayroll.cur_incometaxColumn) = value
+                Me(Me.tableGetLastPayroll.cur_incometaxColumn) = value
             End Set
         End Property
         
@@ -834,14 +833,10 @@ Partial Public Class FinalProjDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property ytd_incometax() As Decimal
             Get
-                Try 
-                    Return CType(Me(Me.tableCalculatePayroll.ytd_incometaxColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ytd_incometax' in table 'CalculatePayroll' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableGetLastPayroll.ytd_incometaxColumn),Decimal)
             End Get
             Set
-                Me(Me.tableCalculatePayroll.ytd_incometaxColumn) = value
+                Me(Me.tableGetLastPayroll.ytd_incometaxColumn) = value
             End Set
         End Property
         
@@ -849,14 +844,10 @@ Partial Public Class FinalProjDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property cur_cpp() As Decimal
             Get
-                Try 
-                    Return CType(Me(Me.tableCalculatePayroll.cur_cppColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'cur_cpp' in table 'CalculatePayroll' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableGetLastPayroll.cur_cppColumn),Decimal)
             End Get
             Set
-                Me(Me.tableCalculatePayroll.cur_cppColumn) = value
+                Me(Me.tableGetLastPayroll.cur_cppColumn) = value
             End Set
         End Property
         
@@ -864,14 +855,10 @@ Partial Public Class FinalProjDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property ytd_cpp() As Decimal
             Get
-                Try 
-                    Return CType(Me(Me.tableCalculatePayroll.ytd_cppColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ytd_cpp' in table 'CalculatePayroll' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableGetLastPayroll.ytd_cppColumn),Decimal)
             End Get
             Set
-                Me(Me.tableCalculatePayroll.ytd_cppColumn) = value
+                Me(Me.tableGetLastPayroll.ytd_cppColumn) = value
             End Set
         End Property
         
@@ -879,14 +866,10 @@ Partial Public Class FinalProjDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property cur_ei() As Decimal
             Get
-                Try 
-                    Return CType(Me(Me.tableCalculatePayroll.cur_eiColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'cur_ei' in table 'CalculatePayroll' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableGetLastPayroll.cur_eiColumn),Decimal)
             End Get
             Set
-                Me(Me.tableCalculatePayroll.cur_eiColumn) = value
+                Me(Me.tableGetLastPayroll.cur_eiColumn) = value
             End Set
         End Property
         
@@ -894,14 +877,10 @@ Partial Public Class FinalProjDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property ytd_ei() As Decimal
             Get
-                Try 
-                    Return CType(Me(Me.tableCalculatePayroll.ytd_eiColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ytd_ei' in table 'CalculatePayroll' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableGetLastPayroll.ytd_eiColumn),Decimal)
             End Get
             Set
-                Me(Me.tableCalculatePayroll.ytd_eiColumn) = value
+                Me(Me.tableGetLastPayroll.ytd_eiColumn) = value
             End Set
         End Property
         
@@ -909,14 +888,10 @@ Partial Public Class FinalProjDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property cur_pension() As Decimal
             Get
-                Try 
-                    Return CType(Me(Me.tableCalculatePayroll.cur_pensionColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'cur_pension' in table 'CalculatePayroll' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableGetLastPayroll.cur_pensionColumn),Decimal)
             End Get
             Set
-                Me(Me.tableCalculatePayroll.cur_pensionColumn) = value
+                Me(Me.tableGetLastPayroll.cur_pensionColumn) = value
             End Set
         End Property
         
@@ -924,14 +899,10 @@ Partial Public Class FinalProjDataSet2
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property ytd_pension() As Decimal
             Get
-                Try 
-                    Return CType(Me(Me.tableCalculatePayroll.ytd_pensionColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ytd_pension' in table 'CalculatePayroll' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableGetLastPayroll.ytd_pensionColumn),Decimal)
             End Get
             Set
-                Me(Me.tableCalculatePayroll.ytd_pensionColumn) = value
+                Me(Me.tableGetLastPayroll.ytd_pensionColumn) = value
             End Set
         End Property
         
@@ -940,194 +911,38 @@ Partial Public Class FinalProjDataSet2
         Public Property net() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableCalculatePayroll.netColumn),Decimal)
+                    Return CType(Me(Me.tableGetLastPayroll.netColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'net' in table 'CalculatePayroll' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'net' in table 'GetLastPayroll' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableCalculatePayroll.netColumn) = value
+                Me(Me.tableGetLastPayroll.netColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IschequeidNull() As Boolean
-            Return Me.IsNull(Me.tableCalculatePayroll.chequeidColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetchequeidNull()
-            Me(Me.tableCalculatePayroll.chequeidColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPayrollDateNull() As Boolean
-            Return Me.IsNull(Me.tableCalculatePayroll.PayrollDateColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPayrollDateNull()
-            Me(Me.tableCalculatePayroll.PayrollDateColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsempidNull() As Boolean
-            Return Me.IsNull(Me.tableCalculatePayroll.empidColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetempidNull()
-            Me(Me.tableCalculatePayroll.empidColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsemployeenameNull() As Boolean
-            Return Me.IsNull(Me.tableCalculatePayroll.employeenameColumn)
+            Return Me.IsNull(Me.tableGetLastPayroll.employeenameColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetemployeenameNull()
-            Me(Me.tableCalculatePayroll.employeenameColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isytd_grossNull() As Boolean
-            Return Me.IsNull(Me.tableCalculatePayroll.ytd_grossColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setytd_grossNull()
-            Me(Me.tableCalculatePayroll.ytd_grossColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Iscur_grossNull() As Boolean
-            Return Me.IsNull(Me.tableCalculatePayroll.cur_grossColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setcur_grossNull()
-            Me(Me.tableCalculatePayroll.cur_grossColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Iscur_incometaxNull() As Boolean
-            Return Me.IsNull(Me.tableCalculatePayroll.cur_incometaxColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setcur_incometaxNull()
-            Me(Me.tableCalculatePayroll.cur_incometaxColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isytd_incometaxNull() As Boolean
-            Return Me.IsNull(Me.tableCalculatePayroll.ytd_incometaxColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setytd_incometaxNull()
-            Me(Me.tableCalculatePayroll.ytd_incometaxColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Iscur_cppNull() As Boolean
-            Return Me.IsNull(Me.tableCalculatePayroll.cur_cppColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setcur_cppNull()
-            Me(Me.tableCalculatePayroll.cur_cppColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isytd_cppNull() As Boolean
-            Return Me.IsNull(Me.tableCalculatePayroll.ytd_cppColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setytd_cppNull()
-            Me(Me.tableCalculatePayroll.ytd_cppColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Iscur_eiNull() As Boolean
-            Return Me.IsNull(Me.tableCalculatePayroll.cur_eiColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setcur_eiNull()
-            Me(Me.tableCalculatePayroll.cur_eiColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isytd_eiNull() As Boolean
-            Return Me.IsNull(Me.tableCalculatePayroll.ytd_eiColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setytd_eiNull()
-            Me(Me.tableCalculatePayroll.ytd_eiColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Iscur_pensionNull() As Boolean
-            Return Me.IsNull(Me.tableCalculatePayroll.cur_pensionColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setcur_pensionNull()
-            Me(Me.tableCalculatePayroll.cur_pensionColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isytd_pensionNull() As Boolean
-            Return Me.IsNull(Me.tableCalculatePayroll.ytd_pensionColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setytd_pensionNull()
-            Me(Me.tableCalculatePayroll.ytd_pensionColumn) = Global.System.Convert.DBNull
+            Me(Me.tableGetLastPayroll.employeenameColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsnetNull() As Boolean
-            Return Me.IsNull(Me.tableCalculatePayroll.netColumn)
+            Return Me.IsNull(Me.tableGetLastPayroll.netColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetnetNull()
-            Me(Me.tableCalculatePayroll.netColumn) = Global.System.Convert.DBNull
+            Me(Me.tableGetLastPayroll.netColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -1135,16 +950,16 @@ Partial Public Class FinalProjDataSet2
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Class CalculatePayrollRowChangeEvent
+    Public Class GetLastPayrollRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As CalculatePayrollRow
+        Private eventRow As GetLastPayrollRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New(ByVal row As CalculatePayrollRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As GetLastPayrollRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -1152,7 +967,7 @@ Partial Public Class FinalProjDataSet2
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Row() As CalculatePayrollRow
+        Public ReadOnly Property Row() As GetLastPayrollRow
             Get
                 Return Me.eventRow
             End Get
@@ -1168,7 +983,7 @@ Partial Public Class FinalProjDataSet2
     End Class
 End Class
 
-Namespace FinalProjDataSet2TableAdapters
+Namespace FinalProjGetLastPayrollTableAdapters
     
     '''<summary>
     '''Represents the connection and commands used to retrieve and save data.
@@ -1179,7 +994,7 @@ Namespace FinalProjDataSet2TableAdapters
      Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
      Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class CalculatePayrollTableAdapter
+    Partial Public Class GetLastPayrollTableAdapter
         Inherits Global.System.ComponentModel.Component
         
         Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
@@ -1296,7 +1111,7 @@ Namespace FinalProjDataSet2TableAdapters
             Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "CalculatePayroll"
+            tableMapping.DataSetTable = "GetLastPayroll"
             tableMapping.ColumnMappings.Add("chequeid", "chequeid")
             tableMapping.ColumnMappings.Add("PayrollDate", "PayrollDate")
             tableMapping.ColumnMappings.Add("empid", "empid")
@@ -1328,29 +1143,17 @@ Namespace FinalProjDataSet2TableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "dbo.CalculatePayroll"
+            Me._commandCollection(0).CommandText = "dbo.GetLastPayroll"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@passcode", Global.System.Data.SqlDbType.NChar, 4, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@processdate", Global.System.Data.SqlDbType.[Date], 3, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As FinalProjDataSet2.CalculatePayrollDataTable, ByVal passcode As String, ByVal processdate As Global.System.Nullable(Of Date)) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As FinalProjGetLastPayroll.GetLastPayrollDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (passcode Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(passcode,String)
-            End If
-            If (processdate.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(processdate.Value,Date)
-            Else
-                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
-            End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -1362,19 +1165,9 @@ Namespace FinalProjDataSet2TableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal passcode As String, ByVal processdate As Global.System.Nullable(Of Date)) As FinalProjDataSet2.CalculatePayrollDataTable
+        Public Overloads Overridable Function GetData() As FinalProjGetLastPayroll.GetLastPayrollDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (passcode Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(passcode,String)
-            End If
-            If (processdate.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(processdate.Value,Date)
-            Else
-                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
-            End If
-            Dim dataTable As FinalProjDataSet2.CalculatePayrollDataTable = New FinalProjDataSet2.CalculatePayrollDataTable()
+            Dim dataTable As FinalProjGetLastPayroll.GetLastPayrollDataTable = New FinalProjGetLastPayroll.GetLastPayrollDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -1449,7 +1242,7 @@ Namespace FinalProjDataSet2TableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Function UpdateUpdatedRows(ByVal dataSet As FinalProjDataSet2, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateUpdatedRows(ByVal dataSet As FinalProjGetLastPayroll, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
             Return result
         End Function
@@ -1459,7 +1252,7 @@ Namespace FinalProjDataSet2TableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Function UpdateInsertedRows(ByVal dataSet As FinalProjDataSet2, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateInsertedRows(ByVal dataSet As FinalProjGetLastPayroll, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
             Return result
         End Function
@@ -1469,7 +1262,7 @@ Namespace FinalProjDataSet2TableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Function UpdateDeletedRows(ByVal dataSet As FinalProjDataSet2, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateDeletedRows(ByVal dataSet As FinalProjGetLastPayroll, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
             Return result
         End Function
@@ -1505,7 +1298,7 @@ Namespace FinalProjDataSet2TableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overridable Function UpdateAll(ByVal dataSet As FinalProjDataSet2) As Integer
+        Public Overridable Function UpdateAll(ByVal dataSet As FinalProjGetLastPayroll) As Integer
             If (dataSet Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("dataSet")
             End If
