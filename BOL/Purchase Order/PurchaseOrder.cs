@@ -33,6 +33,7 @@ namespace BOL.Purchase_Order
 
         public double calculateSubtotal()
         {
+            subtotal = 0;
             foreach (PurchaseOrderItem item in Items)
             {
                 subtotal += item.calculateSubtotal();
@@ -49,7 +50,7 @@ namespace BOL.Purchase_Order
 
         public double calculateTotal()
         {
-            total = subtotal * taxamnt;
+            total = subtotal + taxamnt;
             return total;
         }
 

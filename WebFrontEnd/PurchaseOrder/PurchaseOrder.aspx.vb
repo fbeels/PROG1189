@@ -52,18 +52,18 @@ Public Class CreatePO
         Dim rowIndex As Integer = 0
 
         For i As Integer = 0 To myPurchaseOrder.Items.Count - 1
-            Dim box1 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(1).FindControl("txtName"), TextBox)
-            Dim box2 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(2).FindControl("txtDesc"), TextBox)
-            Dim box3 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(3).FindControl("txtPrice"), TextBox)
-            Dim box4 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(4).FindControl("txtQ"), TextBox)
-            Dim box5 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(5).FindControl("txtStore"), TextBox)
-            Dim box6 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(6).FindControl("txtJust"), TextBox)
-            box1.Text = myPurchaseOrder.Items.Item(i).ItemName
-            box2.Text = myPurchaseOrder.Items.Item(i).Description
-            box3.Text = myPurchaseOrder.Items.Item(i).Price
-            box4.Text = myPurchaseOrder.Items.Item(i).Quantity
-            box5.Text = myPurchaseOrder.Items.Item(i).Source
-            box6.Text = myPurchaseOrder.Items.Item(i).Justification
+            Dim txtName As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(1).FindControl("txtName"), TextBox)
+            Dim txtDesc As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(2).FindControl("txtDesc"), TextBox)
+            Dim txtPrice As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(3).FindControl("txtPrice"), TextBox)
+            Dim txtQ As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(4).FindControl("txtQ"), TextBox)
+            Dim txtStore As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(5).FindControl("txtStore"), TextBox)
+            Dim txtJust As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(6).FindControl("txtJust"), TextBox)
+            txtName.Text = myPurchaseOrder.Items.Item(i).ItemName
+            txtDesc.Text = myPurchaseOrder.Items.Item(i).Description
+            txtPrice.Text = myPurchaseOrder.Items.Item(i).Price
+            txtQ.Text = myPurchaseOrder.Items.Item(i).Quantity
+            txtStore.Text = myPurchaseOrder.Items.Item(i).Source
+            txtJust.Text = myPurchaseOrder.Items.Item(i).Justification
             rowIndex += 1
             AddNewRowToGrid(False, True)
         Next
@@ -92,6 +92,7 @@ Public Class CreatePO
         dt.Columns.Add(New DataColumn("Column5", GetType(String)))
         dt.Columns.Add(New DataColumn("Column6", GetType(String)))
         dt.Columns.Add(New DataColumn("Column7", GetType(String)))
+        dt.Columns.Add(New DataColumn("Column8", GetType(Boolean)))
         dr = dt.NewRow()
         dr("RowNumber") = 1
         dr("Column1") = String.Empty
@@ -101,6 +102,7 @@ Public Class CreatePO
         dr("Column5") = String.Empty
         dr("Column6") = String.Empty
         dr("Column7") = String.Empty
+        dr("Column8") = False
         dt.Rows.Add(dr)
         ViewState("CurrentTable") = dt
         Gridview1.DataSource = dt
@@ -119,39 +121,51 @@ Public Class CreatePO
     Private Sub AddNewRowToGrid(isSubmit As Boolean, skipInsertLogic As Boolean)
         Dim rowIndex As Integer = 0
 
-
         If ViewState("CurrentTable") IsNot Nothing Then
             Dim dtCurrentTable As DataTable = DirectCast(ViewState("CurrentTable"), DataTable)
             Dim drCurrentRow As DataRow = Nothing
 
             If dtCurrentTable.Rows.Count > 0 Then
                 For i As Integer = 1 To dtCurrentTable.Rows.Count
-                    Dim box1 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(1).FindControl("txtName"), TextBox)
-                    Dim box2 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(2).FindControl("txtDesc"), TextBox)
-                    Dim box3 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(3).FindControl("txtPrice"), TextBox)
-                    Dim box4 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(4).FindControl("txtQ"), TextBox)
-                    Dim box5 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(5).FindControl("txtStore"), TextBox)
-                    Dim box6 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(6).FindControl("txtJust"), TextBox)
-                    Dim status As Label = DirectCast(Gridview1.Rows(rowIndex).Cells(7).FindControl("lblStatus"), Label)
+                    Dim txtName As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(1).FindControl("txtName"), TextBox)
+                    Dim txtDesc As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(2).FindControl("txtDesc"), TextBox)
+                    Dim txtPrice As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(3).FindControl("txtPrice"), TextBox)
+                    Dim txtQ As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(4).FindControl("txtQ"), TextBox)
+                    Dim txtStore As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(5).FindControl("txtStore"), TextBox)
+                    Dim txtJust As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(6).FindControl("txtJust"), TextBox)
+                    Dim lblStatus As Label = DirectCast(Gridview1.Rows(rowIndex).Cells(7).FindControl("lblStatus"), Label)
+                    Dim chkNotNeeded As CheckBox = DirectCast(Gridview1.Rows(rowIndex).Cells(8).FindControl("chkNotNeeded"), CheckBox)
 
                     drCurrentRow = dtCurrentTable.NewRow()
                     drCurrentRow("RowNumber") = i + 1
 
                     If skipInsertLogic = False Then
 
-                        If rowIndex <> dtCurrentTable.Rows.Count - 1 Then
+                        If rowIndex <> dtCurrentTable.Rows.Count Then
                             Dim item As PurchaseOrderItem = PurchaseOrderItemFactory.Create()
 
+                            If chkNotNeeded.Checked Then
+                                txtPrice.Text = 0
+                                txtQ.Text = 0
+                                txtDesc.Text = "No longer needed"
+                            End If
+
                             Try
-                                item.ItemName = Validation.String(box1.Text)
-                                item.Description = Validation.String(box2.Text)
-                                item.Price = Validation.Double(box3.Text)
-                                item.Quantity = Validation.String(box4.Text)
-                                item.Source = Validation.String(box5.Text)
-                                item.Justification = Validation.String(box6.Text)
+                                item.ItemName = Validation.String(txtName.Text)
+                                item.Description = Validation.String(txtDesc.Text)
+
+                                If txtDesc.Text <> "No longer needed" Then 'skip validation for these, since they are empty and will trigger validation
+                                    item.Price = Validation.Double(txtPrice.Text)
+                                    item.Quantity = Validation.String(txtQ.Text)
+                                End If
+
+                                item.Source = Validation.String(txtStore.Text)
+                                item.Justification = Validation.String(txtJust.Text)
                             Catch ex As Exception
                                 lblError.Text = ex.Message.ToString()
+                                Exit Sub
                             End Try
+
 
                             If rowIndex = dtCurrentTable.Rows.Count - 1 Then 'if the rowindex is equal to the rowcount AKA the last row, give it a fake index so it can be found and replaced later
                                 item.ItemID = -1
@@ -169,15 +183,50 @@ Public Class CreatePO
                                 myPurchaseOrder.Items(rowIndex).ItemID = ids("ItemID")
 
                             Else 'if the po is already in the DB, update
-                                If rowIndex = myPurchaseOrder.Items.Count Then 'if the last item, add it, calculate, insert and change id
+
+                                Dim merge As Boolean = False
+                                Dim mergeId As Integer
+                                For x As Integer = 0 To myPurchaseOrder.Items.Count - 1
+                                    If item.ItemName = myPurchaseOrder.Items(x).ItemName AndAlso item.Description = myPurchaseOrder.Items(x).Description AndAlso rowIndex = dtCurrentTable.Rows.Count - 1 Then
+                                        merge = True
+                                        mergeId = x
+                                        Exit For
+                                    Else
+                                        merge = False
+                                    End If
+                                Next
+
+                                If merge Then
+                                    'merge
+                                    myPurchaseOrder.Items(mergeId).Price += item.Price
+                                    myPurchaseOrder.Items(mergeId).Quantity += item.Quantity
+                                    doTaxCalculations()
+                                    PurchaseOrderItemCUD.Update(myPurchaseOrder.Items(mergeId))
+                                    PurchaseOrderCUD.Update(myPurchaseOrder)
+                                    txtName.Text = String.Empty
+                                    txtDesc.Text = String.Empty
+                                    txtPrice.Text = String.Empty
+                                    txtQ.Text = String.Empty
+                                    txtStore.Text = String.Empty
+                                    txtJust.Text = String.Empty
+                                    lblStatus.Text = String.Empty
+                                    Exit Sub
+                                ElseIf rowIndex = myPurchaseOrder.Items.Count Then
+                                    'insert
                                     item.PurchaseOrderID = myPurchaseOrder.PurchaseOrderID
                                     myPurchaseOrder.Items.Insert(rowIndex, item)
                                     doTaxCalculations()
                                     myPurchaseOrder.Items.Last.ItemID = PurchaseOrderItemCUD.Insert(item)
                                     PurchaseOrderCUD.Update(myPurchaseOrder)
                                 Else
+                                    'update
                                     item.ItemID = myPurchaseOrder.Items(rowIndex).ItemID
                                     item.PurchaseOrderID = myPurchaseOrder.Items(rowIndex).PurchaseOrderID
+
+                                    If item.Description = "No longer needed" Then
+                                        item.Status = ItemStatus.Denied
+                                    End If
+
                                     myPurchaseOrder.Items.RemoveAt(rowIndex)
                                     myPurchaseOrder.Items.Insert(rowIndex, item)
                                     doTaxCalculations()
@@ -188,27 +237,29 @@ Public Class CreatePO
                         End If
                     Else
                         If rowIndex <> dtCurrentTable.Rows.Count - 1 Then
-                            box1.Text = myPurchaseOrder.Items(rowIndex).ItemName
-                            box2.Text = myPurchaseOrder.Items(rowIndex).Description
-                            box3.Text = myPurchaseOrder.Items(rowIndex).Price
-                            box4.Text = myPurchaseOrder.Items(rowIndex).Quantity
-                            box5.Text = myPurchaseOrder.Items(rowIndex).Source
-                            box6.Text = myPurchaseOrder.Items(rowIndex).Justification
-                            status.Text = myPurchaseOrder.Items(rowIndex).Status.ToString
+                            txtName.Text = myPurchaseOrder.Items(rowIndex).ItemName
+                            txtDesc.Text = myPurchaseOrder.Items(rowIndex).Description
+                            txtPrice.Text = myPurchaseOrder.Items(rowIndex).Price
+                            txtQ.Text = myPurchaseOrder.Items(rowIndex).Quantity
+                            txtStore.Text = myPurchaseOrder.Items(rowIndex).Source
+                            txtJust.Text = myPurchaseOrder.Items(rowIndex).Justification
+                            lblStatus.Text = myPurchaseOrder.Items(rowIndex).Status.ToString
                         End If
                     End If
                     ViewState("PO") = myPurchaseOrder
                     If rowIndex <> dtCurrentTable.Rows.Count - 1 Then
-                        status.Text = myPurchaseOrder.Items(rowIndex).Status.ToString
+                        lblStatus.Text = myPurchaseOrder.Items(rowIndex).Status.ToString
                     End If
 
-                    dtCurrentTable.Rows(i - 1)("Column1") = box1.Text
-                    dtCurrentTable.Rows(i - 1)("Column2") = box2.Text
-                    dtCurrentTable.Rows(i - 1)("Column3") = box3.Text
-                    dtCurrentTable.Rows(i - 1)("Column4") = box4.Text
-                    dtCurrentTable.Rows(i - 1)("Column5") = box5.Text
-                    dtCurrentTable.Rows(i - 1)("Column6") = box6.Text
-                    dtCurrentTable.Rows(i - 1)("Column7") = status.Text
+                    dtCurrentTable.Rows(i - 1)("Column1") = txtName.Text
+                    dtCurrentTable.Rows(i - 1)("Column2") = txtDesc.Text
+                    dtCurrentTable.Rows(i - 1)("Column3") = txtPrice.Text
+                    dtCurrentTable.Rows(i - 1)("Column4") = txtQ.Text
+                    dtCurrentTable.Rows(i - 1)("Column5") = txtStore.Text
+                    dtCurrentTable.Rows(i - 1)("Column6") = txtJust.Text
+                    dtCurrentTable.Rows(i - 1)("Column7") = lblStatus.Text
+                    dtCurrentTable.Rows(i - 1)("Column8") = chkNotNeeded.Checked
+
 
                     rowIndex += 1
                 Next
@@ -239,20 +290,28 @@ Public Class CreatePO
             Dim dt As DataTable = DirectCast(ViewState("CurrentTable"), DataTable)
             If dt.Rows.Count > 0 Then
                 For i As Integer = 0 To dt.Rows.Count - 1
-                    Dim box1 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(1).FindControl("txtName"), TextBox)
-                    Dim box2 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(2).FindControl("txtDesc"), TextBox)
-                    Dim box3 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(3).FindControl("txtPrice"), TextBox)
-                    Dim box4 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(4).FindControl("txtQ"), TextBox)
-                    Dim box5 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(5).FindControl("txtStore"), TextBox)
-                    Dim box6 As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(6).FindControl("txtJust"), TextBox)
-                    Dim status As Label = DirectCast(Gridview1.Rows(rowIndex).Cells(7).FindControl("lblStatus"), Label)
-                    box1.Text = dt.Rows(i)("Column1").ToString()
-                    box2.Text = dt.Rows(i)("Column2").ToString()
-                    box3.Text = dt.Rows(i)("Column3").ToString()
-                    box4.Text = dt.Rows(i)("Column4").ToString()
-                    box5.Text = dt.Rows(i)("Column5").ToString()
-                    box6.Text = dt.Rows(i)("Column6").ToString()
-                    status.Text = dt.Rows(i)("Column7").ToString()
+                    Dim txtName As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(1).FindControl("txtName"), TextBox)
+                    Dim txtDesc As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(2).FindControl("txtDesc"), TextBox)
+                    Dim txtPrice As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(3).FindControl("txtPrice"), TextBox)
+                    Dim txtQ As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(4).FindControl("txtQ"), TextBox)
+                    Dim txtStore As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(5).FindControl("txtStore"), TextBox)
+                    Dim txtJust As TextBox = DirectCast(Gridview1.Rows(rowIndex).Cells(6).FindControl("txtJust"), TextBox)
+                    Dim lblStatus As Label = DirectCast(Gridview1.Rows(rowIndex).Cells(7).FindControl("lblStatus"), Label)
+                    Dim chkNotNeeded As CheckBox = DirectCast(Gridview1.Rows(rowIndex).Cells(8).FindControl("chkNotNeeded"), CheckBox)
+                    txtName.Text = dt.Rows(i)("Column1").ToString()
+                    txtDesc.Text = dt.Rows(i)("Column2").ToString()
+                    txtPrice.Text = dt.Rows(i)("Column3").ToString()
+                    txtQ.Text = dt.Rows(i)("Column4").ToString()
+                    txtStore.Text = dt.Rows(i)("Column5").ToString()
+                    txtJust.Text = dt.Rows(i)("Column6").ToString()
+                    lblStatus.Text = dt.Rows(i)("Column7").ToString()
+
+                    If txtDesc.Text = "Not longer needed" Then
+                        chkNotNeeded.Checked = True
+                    Else
+                        chkNotNeeded.Checked = False
+                    End If
+
 
                     rowIndex += 1
                 Next

@@ -10,13 +10,12 @@ namespace Common
     {
 
         static public string String(string validate)
-        {
-            if (string.IsNullOrEmpty(validate))
+        {            
+           if (string.IsNullOrEmpty(validate) == true)
             {
                 throw new FormatException(validate + " is not a valid entry for this field. Please enter a proper value.");
-
             }
-            else
+           else
             {
                 return validate;
             }
@@ -26,28 +25,29 @@ namespace Common
 
         static public int Int(string validate)
         {
-            try
-            {
-                return int.Parse(validate);
-            }
-            catch (Exception)
-            {
+            int ret;
+            int.TryParse(validate, out ret);
 
+            if (ret == 0)
+            {
                 throw new FormatException(validate + " is not a valid number. Please enter a proper value");
-            }
+            }else
+            {
+                return ret;
+            }             
         }
 
         static public double Double(string validate)
         {
-            try
+            double ret;
+            double.TryParse(validate,out ret);
+            if (ret == 0)
             {
-                return double.Parse(validate);
-            }
-            catch (Exception)
+                throw new FormatException(validate + " is not a valid number. Please enter a proper value");               
+            }else
             {
-
-                throw new FormatException(validate + " is not a valid number. Please enter a proper value");
-            }
+                return ret;
+            }            
         }
 
 

@@ -207,6 +207,9 @@
     <EmbeddedResource Include="PurchaseOrder\CreatePO.resx">
       <DependentUpon>CreatePO.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseOrder\ModifyPO.resx">
+      <DependentUpon>ModifyPO.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="FinalProjGetLastPayroll.xsc">
