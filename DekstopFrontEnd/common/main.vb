@@ -45,15 +45,6 @@
         End If
     End Sub
 
-    Private Sub btnmodPO_Click(sender As Object, e As EventArgs) Handles btnmodPO.Click
-        If TabControl1.Contains(ModifyPO) Then
-            TabControl1.TabPages(ModifyPO).Select()
-        Else
-            TabControl1.TabPages.Add(ModifyPO)
-        End If
-    End Sub
-
- 
     Private Sub main_Load(sender As Object, e As EventArgs) Handles Me.Load
 
         Dim ispayday As Boolean = False
