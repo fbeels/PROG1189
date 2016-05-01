@@ -31,14 +31,14 @@ namespace BOL.Purchase_Order_Item
             foreach (DataRow row in dt.Rows)
             {
                 item.ItemID = int.Parse(row["po_item_ID"].ToString());
-                item.Description = row["desc"].ToString();
+                item.Description = row["itemdesc"].ToString();
                 item.ItemName = row["itemname"].ToString();
                 item.PurchaseOrderID = int.Parse(row["po_id"].ToString());
                 item.Price = double.Parse(row["price"].ToString());
                 item.Quantity = int.Parse(row["quantity"].ToString());
                 item.Reason = row["reason"].ToString();
                 item.Source = row["source"].ToString();
-                item.Status = (ItemStatus)int.Parse(row["reason"].ToString());
+                item.Status = (ItemStatus)int.Parse(row["itemstatus"].ToString());
                 item.Justification = row["justification"].ToString();
 
             }

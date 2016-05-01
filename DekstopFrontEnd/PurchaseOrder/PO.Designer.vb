@@ -310,6 +310,7 @@ Partial Class CreatePO
         Me.lstResults.Name = "lstResults"
         Me.lstResults.Size = New System.Drawing.Size(120, 251)
         Me.lstResults.TabIndex = 23
+        Me.lstResults.Visible = False
         '
         'CreatePO
         '
@@ -337,7 +338,7 @@ Partial Class CreatePO
         Me.Controls.Add(Me.dgvPO)
         Me.Controls.Add(Me.ddlEmployees)
         Me.Name = "CreatePO"
-        Me.Text = "CreatePO"
+        Me.Text = "Purchase Order"
         CType(Me.dgvPO, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()

@@ -27,5 +27,20 @@ namespace BOL.Purchase_Order_Item
         {
             return Price * Quantity;
         }
+
+        static public void approveItem(PurchaseOrderItem item)
+        {
+            item.Status = ItemStatus.Approved;
+
+            SQLLayer.PurchaseOrderItemSQL.modifyItem(item);
+        }
+
+        static public void denyItem(PurchaseOrderItem item, string reason)
+        {
+            item.Status = ItemStatus.Denied;
+            item.Reason = reason;
+
+            SQLLayer.PurchaseOrderItemSQL.modifyItem(item);
+        }
     }
 }

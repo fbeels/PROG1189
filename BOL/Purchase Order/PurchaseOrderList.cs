@@ -41,5 +41,10 @@ namespace BOL.Purchase_Order
             }
             return myList;
         }
+
+        static public List<PurchaseOrderList> Create(OrderStatus status, string EmpName, int SupervisorID, DateTime? startdate = null, DateTime? enddate = null)
+        {
+            return RePackager(PurchaseOrderSQL.searchPO(status, EmpName, SupervisorID, startdate, enddate));
+        }
     }
 }

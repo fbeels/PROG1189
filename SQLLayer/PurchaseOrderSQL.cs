@@ -80,5 +80,20 @@ namespace SQLLayer
             return null;
         }
 
+
+        static public DataTable searchPO(OrderStatus status, string EmpName, int SupervisorID, DateTime? startdate = null, DateTime? enddate = null)
+        {
+            var eStartDate = startdate ?? DateTime.MinValue;
+            var eEndDate = enddate ?? DateTime.MinValue;
+
+            List<ParmStructure> tmpParmList = new List<ParmStructure>();
+
+            tmpParmList.Add(new ParmStructure("@empid", SqlDbType.Int, ParameterDirection.Input, 0, SupervisorID));
+
+            tmpParmList.Add(new ParmStructure("@startdate", SqlDbType.Date, ParameterDirection.Input, 0, eStartDate));
+            tmpParmList.Add(new ParmStructure("@enddate", SqlDbType.Date, ParameterDirection.Input, 0, eEndDate));
+            return DataAccess.GetDataTable("GetPOByDate", tmpParmList);
+        }
+
     }
 }
