@@ -23,12 +23,12 @@ namespace BOL
 
 
      //retireve employee form
-        static public int IsItPayday()
+        static public Boolean IsItPayday()
         {
             return IsItPaydayRePackager(PayPeriodSQL.IsItPayday());
         }
 
-        static private int IsItPaydayRePackager(DataTable dt)
+        static private Boolean IsItPaydayRePackager(DataTable dt)
         {
             //List<Employee> myList = new List<Employee>();
 
@@ -42,14 +42,52 @@ namespace BOL
             //return myList;
             //Employee myList = new Employee();
        //    PayPeriod x = new PayPeriod();
-           int y = 0;
-            foreach (DataRow emps in dt.Rows)
+
+           
+            if (dt.Rows.Count == 1)
             {
-                //  x.EmpID = (int)emps[0];
-                y = (int)emps[0];
+                return true;
             }
-            //return myList;
-            return y;
+            else
+            {
+                return false;
+            }
+
+
         }
- }
-}
+
+        static public Boolean HasPayBeenRun()
+        {
+            return HasPayBeenRunRePackager(PayPeriodSQL.HasPayBeenRun());
+        }
+        static private Boolean HasPayBeenRunRePackager(DataTable dt)
+        {
+            //List<Employee> myList = new List<Employee>();
+                PayPeriod x = new PayPeriod();
+            foreach (DataRow pay in dt.Rows)
+            {
+               
+                x.hasbeenprocesed=  (bool)pay[0];
+            //    x.LastName = (string)emps[1];
+            //    myList.Add(x);
+            }
+            return x.hasbeenprocesed;
+            //Employee myList = new Employee();
+            //    PayPeriod x = new PayPeriod();
+
+
+            //if (dt.Rows.Count == 1)
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
+
+
+        }
+
+
+ }//end of class
+}//end of namespace

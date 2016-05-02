@@ -25,5 +25,11 @@ namespace SQLLayer
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
             return DataAccess.GetDataTable("IsPayday", tmpParmList);
         }
+
+         public static DataTable HasPayBeenRun()
+         {
+             List<ParmStructure> tmpParmList = new List<ParmStructure>();
+             return DataAccess.GetDataTable("HasPayBeenRun", tmpParmList);
+         }
     }
 }

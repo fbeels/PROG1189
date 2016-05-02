@@ -35,11 +35,12 @@ namespace BOL
         public double PayRate { get; set; }
         public DateTime TerminationDate { get; set; }
         public bool EmailNotification { get; set; }
+        public int status { get; set; }
 
-        public Employee create(string Lastname, char MiddleIntm, string FirstName, DateTime DOB, string Address, string City, string Prov, string Postal, int EmpID, string Phone, string Cell, string Email, string SIN, DateTime SeniorityDate, DateTime JobStartDate, int JobID, int DeptID, int SupervisorID, double PayRate, bool EmailNotification, DateTime TerminationDate)
-        {
-            throw new System.NotImplementedException();
-        }
+        //public Employee create(string Lastname, char MiddleIntm, string FirstName, DateTime DOB, string Address, string City, string Prov, string Postal, int EmpID, string Phone, string Cell, string Email, string SIN, DateTime SeniorityDate, DateTime JobStartDate, int JobID, int DeptID, int SupervisorID, double PayRate, bool EmailNotification, DateTime TerminationDate)
+        //{
+        //    throw new System.NotImplementedException();
+        //}
 
         static public Employee create()
         {
@@ -100,7 +101,7 @@ namespace BOL
                x.PayRate = System.Convert.ToDouble((Decimal)emps[18]);
                 x.TerminationDate = (DateTime)emps[19];
                 x.DeptID= (int)emps[20];
-
+                x.status = (int)emps[21];
 
              //   myList.Add(x);
             }

@@ -1,4 +1,6 @@
-﻿Public Class main
+﻿Imports BOL
+
+Public Class main
 
     Private Sub btnAddEmp_Click(sender As Object, e As EventArgs)
         If TabControl1.Contains(AddEmployee) Then
@@ -53,21 +55,27 @@
         End If
     End Sub
 
- 
+
     Private Sub main_Load(sender As Object, e As EventArgs) Handles Me.Load
 
-        Dim ispayday As Boolean = False
-        Dim hasrun As Boolean = False
+        ' Dim thispayperiod As PayPeriod
+
+        Dim ispayday As Boolean = PayPeriod.IsItPayday
+        Dim hasrun As Boolean = PayPeriod.HasPayBeenRun
 
         If (ispayday = True) Then
+
             If (hasrun = False) Then
                 'ask for passcode
+                MsgBox("yea payday and it hasnot been run")
             Else
                 'do nothing
+                MsgBox("yea payday and BOOOOO it has been run")
             End If
 
         Else
             'do nothing
+            MsgBox("NOT payday")
         End If
 
 
