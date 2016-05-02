@@ -34,9 +34,12 @@ Public Class CreatePO
             .Add("Quantity", GetType(String))
             .Add("Store", GetType(String))
             .Add("Justification", GetType(String))
+            .Add("Status", GetType(String))
+            .Add("No Longer Needed", GetType(Boolean))
         End With
 
         dgvPO.DataSource = Table
+        dgvPO.Columns("Status").ReadOnly = True
     End Sub
 
     Private Sub dgvPO_RowLeave(sender As Object, e As DataGridViewCellEventArgs) Handles dgvPO.RowLeave
@@ -46,24 +49,56 @@ Public Class CreatePO
             lblErr.Text = String.Empty
             Dim item As PurchaseOrderItem = PurchaseOrderItemFactory.Create()
 
+
+            item.ItemName = dgvPO.Item("Name", i).EditedFormattedValue
+            item.Description = dgvPO.Item("Descripion", i).EditedFormattedValue
+            item.Price = dgvPO.Item("Price", i).EditedFormattedValue
+            item.Quantity = dgvPO.Item("Quantity", i).EditedFormattedValue
+            item.Source = dgvPO.Item("Store", i).EditedFormattedValue
+            item.Justification = dgvPO.Item("Justification", i).EditedFormattedValue
+            item.Status = ItemStatus.Pending
+
+            If dgvPO.Rows(i).Cells(7).FormattedValue Then
+                dgvPO.Rows(i).Cells("Price").Value = 0
+                dgvPO.Rows(i).Cells("Quantity").Value = 0
+                dgvPO.Rows(i).Cells("Descripion").Value = "No longer needed"
+                item.Description = "No longer needed"
+                item.Price = 0
+                item.Quantity = 0
+                item.Status = ItemStatus.Denied
+            End If
+
+            Dim merge As Boolean = False
+            Dim mergeId As Integer
+            For x As Integer = 0 To myPurchaseOrder.Items.Count - 1
+                If item.ItemName = myPurchaseOrder.Items(x).ItemName AndAlso item.Description = myPurchaseOrder.Items(x).Description Then
+                    If dgvPO.Rows.Count <> 2 Then
+                        merge = True
+                        mergeId = x
+                        Exit For
+                    End If
+                Else
+                    merge = False
+                End If
+            Next
+
+            If merge Then
+                myPurchaseOrder.Items(mergeId).Price += item.Price
+                dgvPO.Rows(i).Cells("Price").Value = myPurchaseOrder.Items(mergeId).Price
+                myPurchaseOrder.Items(mergeId).Quantity += item.Quantity
+                dgvPO.Rows(i).Cells("Quantity").Value = myPurchaseOrder.Items(mergeId).Quantity
+                doTaxCalculations()
+                PurchaseOrderItemCUD.Update(myPurchaseOrder.Items(mergeId))
+                PurchaseOrderCUD.Update(myPurchaseOrder)
+                BeginInvoke(New Action(Sub() dgvPO.Rows.RemoveAt(e.RowIndex)))
+                Exit Sub
+            End If
+
             If i = myPurchaseOrder.Items.Count Then 'if the item at the rowindex does not already exist, create it and add it.           
-                item.ItemName = dgvPO.Item("Name", i).EditedFormattedValue
-                item.Description = dgvPO.Item("Descripion", i).EditedFormattedValue
-                item.Price = dgvPO.Item("Price", i).EditedFormattedValue
-                item.Quantity = dgvPO.Item("Quantity", i).EditedFormattedValue
-                item.Source = dgvPO.Item("Store", i).EditedFormattedValue
-                item.Justification = dgvPO.Item("Justification", i).EditedFormattedValue
                 item.ItemID = -1
 
                 myPurchaseOrder.Items.Insert(i, item)
             Else 'if it does exist, remove and remake
-
-                item.ItemName = dgvPO.Item("Name", i).EditedFormattedValue
-                item.Description = dgvPO.Item("Descripion", i).EditedFormattedValue
-                item.Price = dgvPO.Item("Price", i).EditedFormattedValue
-                item.Quantity = dgvPO.Item("Quantity", i).EditedFormattedValue
-                item.Source = dgvPO.Item("Store", i).EditedFormattedValue
-                item.Justification = dgvPO.Item("Justification", i).EditedFormattedValue
                 item.ItemID = myPurchaseOrder.Items(i).ItemID
 
                 myPurchaseOrder.Items(i) = item
@@ -102,6 +137,7 @@ Public Class CreatePO
                     PurchaseOrderCUD.Update(myPurchaseOrder)
                 End If
             End If
+            dgvPO.Rows(i).Cells("Status").Value = item.Status.ToString
         End If
 
 
@@ -131,7 +167,7 @@ Public Class CreatePO
             Validation.String(dgvPO.Item("Store", row).EditedFormattedValue.ToString)
             Validation.String(dgvPO.Item("Justification", row).EditedFormattedValue.ToString)
         Catch ex As Exception
-            lblErr.Text = "Row " & row + 1 & " is invalid please correct"
+            lblErr.Text = "Row " & row + 1 & " Is invalid please correct"
             err = True
         End Try
         Return err
@@ -163,13 +199,14 @@ Public Class CreatePO
     End Sub
 
     Sub loadDataGrid(results As List(Of PurchaseOrderList))
+        lstResults.Visible = True
         For Each item As PurchaseOrderList In results
             lstResults.Items.Add(item.PurchaseOrderID & ", " & item.Total.ToString("C2") & ", " & item.OrderDate.ToShortDateString)
         Next
     End Sub
 
     Private Sub lstResults_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles lstResults.MouseDoubleClick
-        Dim id As Integer = lstResults.SelectedItem.ToString.Substring(0, lstResults.SelectedItem.ToString.IndexOf(","))
+        Dim id As Integer = lstResults.SelectedItem.ToString.Substring(0, lstResults.SelectedItem.ToString.IndexOf(", "))
 
         myPurchaseOrder = PurchaseOrderFactory.Create(id)
         Dim Table As New DataTable

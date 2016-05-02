@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Common;
 using BOL.Purchase_Order_Item;
+using SQLLayer;
 
 
 namespace BOL.Purchase_Order
@@ -54,5 +55,23 @@ namespace BOL.Purchase_Order
             return total;
         }
 
+
+        public static void closeOrder(PurchaseOrder PO)
+        {
+            PO.Status = OrderStatus.Closed;
+            PurchaseOrderSQL.modifyPO(PO);
+        }
+
+        public static void markUnderReview(PurchaseOrder PO)
+        {
+            PO.Status = OrderStatus.UnderReview;
+            PurchaseOrderSQL.modifyPO(PO);
+        }
+
+        public static void markPending(PurchaseOrder PO)
+        {
+            PO.Status = OrderStatus.Pending;
+            PurchaseOrderSQL.modifyPO(PO);
+        }
     }
 }

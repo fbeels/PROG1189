@@ -14,7 +14,7 @@ namespace SQLLayer
         static public DataTable retrievePurchaseOrderItem(int POItem_ID)
         {
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
-            tmpParmList.Add(new ParmStructure("@poItemid", SqlDbType.Int, ParameterDirection.Input, 0, POItem_ID));
+            tmpParmList.Add(new ParmStructure("@id", SqlDbType.Int, ParameterDirection.Input, 0, POItem_ID));
 
             return DataAccess.GetDataTable("getPOItemByID", tmpParmList);
         }
@@ -67,5 +67,7 @@ namespace SQLLayer
             return true;
         }
 
+
+       
     }
 }

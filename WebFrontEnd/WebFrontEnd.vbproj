@@ -99,11 +99,15 @@
     <Content Include="css\jquery-ui.css" />
     <Content Include="css\jquery-ui.structure.css" />
     <Content Include="css\jquery-ui.theme.css" />
+    <Content Include="Employee\EditEmployee.aspx" />
     <Content Include="img\acme_logo.png" />
     <Content Include="js\jquery-ui.js" />
     <Content Include="js\jquery.js" />
+    <Content Include="PurchaseOrder\EditIItemStatus.aspx" />
+    <Content Include="PurchaseOrder\ProcessPO.aspx" />
     <Content Include="PurchaseOrder\PurchaseOrder.aspx" />
     <Content Include="PurchaseOrder\SearchPO.aspx" />
+    <Content Include="PurchaseOrder\SearchPOSupervisor.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +117,13 @@
     <Compile Include="Acme.Master.vb">
       <DependentUpon>Acme.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\EditEmployee.aspx.designer.vb">
+      <DependentUpon>EditEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\EditEmployee.aspx.vb">
+      <DependentUpon>EditEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -133,6 +144,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PurchaseOrder\EditIItemStatus.aspx.designer.vb">
+      <DependentUpon>EditIItemStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrder\EditIItemStatus.aspx.vb">
+      <DependentUpon>EditIItemStatus.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PurchaseOrder\ProcessPO.aspx.designer.vb">
+      <DependentUpon>ProcessPO.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrder\ProcessPO.aspx.vb">
+      <DependentUpon>ProcessPO.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="PurchaseOrder\PurchaseOrder.aspx.designer.vb">
       <DependentUpon>PurchaseOrder.aspx</DependentUpon>
     </Compile>
@@ -145,6 +170,13 @@
     </Compile>
     <Compile Include="PurchaseOrder\SearchPO.aspx.vb">
       <DependentUpon>SearchPO.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PurchaseOrder\SearchPOSupervisor.aspx.designer.vb">
+      <DependentUpon>SearchPOSupervisor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrder\SearchPOSupervisor.aspx.vb">
+      <DependentUpon>SearchPOSupervisor.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>

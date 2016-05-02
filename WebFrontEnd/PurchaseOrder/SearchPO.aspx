@@ -9,6 +9,8 @@
     <script>
         $(function () {
             $("#Content_txtSearchDate").datepicker();
+            $("#Content_txtEndDate").datepicker();
+            
         });
     </script>
 </asp:Content>
