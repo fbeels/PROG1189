@@ -101,9 +101,9 @@ namespace BOL
                x.PayRate = System.Convert.ToDouble((Decimal)emps[18]);
                 x.TerminationDate = (DateTime)emps[19];
                 x.DeptID= (int)emps[20];
-                x.status = (int)emps[21];
+                x.status = int.Parse(emps[21].ToString());
 
-             //   myList.Add(x);
+                //   myList.Add(x);
             }
             //return myList;
             return x;

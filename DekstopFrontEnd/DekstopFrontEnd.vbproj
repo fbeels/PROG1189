@@ -167,6 +167,12 @@
     <Compile Include="PurchaseOrder\PO.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="PurchaseOrder\ProcessPO.Designer.vb">
+      <DependentUpon>ProcessPO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrder\ProcessPO.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="common\AboutBox1.resx">
@@ -200,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrder\PO.resx">
       <DependentUpon>PO.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseOrder\ProcessPO.resx">
+      <DependentUpon>ProcessPO.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

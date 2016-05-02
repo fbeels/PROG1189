@@ -43,9 +43,11 @@ Public Class CreatePO
     Sub loadEmp()
         Dim myEmp As Employee = Employee.retrieve(ddlEmployee.Text)
         lblEmp.Text = myEmp.FirstName & " " & myEmp.LastName
-        lblDept.Text = myEmp.DeptID
+
         Dim sup As Employee = Employee.retrieve(myEmp.SupervisorID)
         lblSuper.Text = sup.FirstName & " " & sup.LastName
+        Dim dept As Department = Department.GetADept(myEmp.DeptID)
+        lblDept.Text = dept.DeptName
     End Sub
 
     Sub SetupModify()

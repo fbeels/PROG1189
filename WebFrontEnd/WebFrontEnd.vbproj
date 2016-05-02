@@ -103,7 +103,7 @@
     <Content Include="img\acme_logo.png" />
     <Content Include="js\jquery-ui.js" />
     <Content Include="js\jquery.js" />
-    <Content Include="PurchaseOrder\EditIItemStatus.aspx" />
+    <Content Include="PurchaseOrder\EditItemStatus.aspx" />
     <Content Include="PurchaseOrder\ProcessPO.aspx" />
     <Content Include="PurchaseOrder\PurchaseOrder.aspx" />
     <Content Include="PurchaseOrder\SearchPO.aspx" />
@@ -144,11 +144,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="PurchaseOrder\EditIItemStatus.aspx.designer.vb">
-      <DependentUpon>EditIItemStatus.aspx</DependentUpon>
+    <Compile Include="PurchaseOrder\EditItemStatus.aspx.designer.vb">
+      <DependentUpon>EditItemStatus.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PurchaseOrder\EditIItemStatus.aspx.vb">
-      <DependentUpon>EditIItemStatus.aspx</DependentUpon>
+    <Compile Include="PurchaseOrder\EditItemStatus.aspx.vb">
+      <DependentUpon>EditItemStatus.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="PurchaseOrder\ProcessPO.aspx.designer.vb">

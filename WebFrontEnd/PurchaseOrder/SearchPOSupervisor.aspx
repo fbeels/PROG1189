@@ -15,14 +15,16 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <asp:DropDownList runat="server" ID="ddlEmployee">
-        <asp:ListItem>10000005</asp:ListItem>
+        <asp:ListItem>10000002</asp:ListItem>
         <asp:ListItem>10000007</asp:ListItem>
     </asp:DropDownList><br />
     <hr />
 
     <br />
-    Employee Name:
-    <asp:TextBox runat="server" ID="txtEmployeeName" placeholder="Employee Name" /><br />
+    Employee First:
+    <asp:TextBox runat="server" ID="txtFirst" placeholder="Employee First Name" />
+    Employee Last:
+    <asp:TextBox runat="server" ID="txtLast" placeholder="Employee Last Name" /><br />
     Purchase Order Status:
     <asp:DropDownList ID="ddlStatus" runat="server">
         <asp:ListItem Text="Pending" />

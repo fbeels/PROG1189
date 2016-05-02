@@ -81,18 +81,35 @@ namespace SQLLayer
         }
 
 
-        static public DataTable searchPO(OrderStatus status, string EmpName, int SupervisorID, DateTime? startdate = null, DateTime? enddate = null)
+        static public DataTable searchPO(OrderStatus status, int SupervisorID, string firstName = null,string lastName = null,  DateTime? startdate = null, DateTime? enddate = null)
         {
-            var eStartDate = startdate ?? DateTime.MinValue;
-            var eEndDate = enddate ?? DateTime.MinValue;
+            
 
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
+            
+            tmpParmList.Add(new ParmStructure("@SupervisorId", SqlDbType.Int, ParameterDirection.Input, 0, SupervisorID));               
+            tmpParmList.Add(new ParmStructure("@POStatus", SqlDbType.TinyInt, ParameterDirection.Input, 0, status));
 
-            tmpParmList.Add(new ParmStructure("@empid", SqlDbType.Int, ParameterDirection.Input, 0, SupervisorID));
+            if (startdate != null)
+            {
+                tmpParmList.Add(new ParmStructure("@startdate", SqlDbType.Date, ParameterDirection.Input, 0, startdate));
+            }
+            if (enddate != null)
+            {
+                tmpParmList.Add(new ParmStructure("@enddate", SqlDbType.Date, ParameterDirection.Input, 0, enddate));
+            }
 
-            tmpParmList.Add(new ParmStructure("@startdate", SqlDbType.Date, ParameterDirection.Input, 0, eStartDate));
-            tmpParmList.Add(new ParmStructure("@enddate", SqlDbType.Date, ParameterDirection.Input, 0, eEndDate));
-            return DataAccess.GetDataTable("GetPOByDate", tmpParmList);
+            if (firstName == null)
+            {
+                tmpParmList.Add(new ParmStructure("@firstName", SqlDbType.VarChar, ParameterDirection.Input, 100, firstName));
+            }
+            if (lastName == null)
+            {
+                tmpParmList.Add(new ParmStructure("@lastName", SqlDbType.VarChar, ParameterDirection.Input, 100, lastName));
+            }
+
+
+            return DataAccess.GetDataTable("GetPOsForSupervisorID", tmpParmList);
         }
 
     }
