@@ -7,12 +7,18 @@ Public Class SearchPOSupervisor
 
     End Sub
     Protected Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
-        If txtEmployeeName.Text = String.Empty Then
-            lblErr.Text = "Must have an employee name or partial name"
+
+        If ddlStatus.SelectedIndex = 0 Then
+            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(ddlEmployee.Text, OrderStatus.Pending, txtFirst.Text, txtLast.Text, IIf(txtSearchDate.Text = String.Empty, Nothing, txtSearchDate.Text), IIf(txtEndDate.Text = String.Empty, Nothing, txtEndDate.Text))
+            loadDataGrid(results)
+        ElseIf ddlStatus.SelectedIndex = 1 Then
+            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(ddlEmployee.Text, OrderStatus.Closed, txtFirst.Text, txtLast.Text, IIf(txtSearchDate.Text = String.Empty, Nothing, txtSearchDate.Text), IIf(txtEndDate.Text = String.Empty, Nothing, txtEndDate.Text))
+            loadDataGrid(results)
         Else
-            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(ddlStatus.SelectedIndex, txtEmployeeName.Text, ddlEmployee.Text, txtSearchDate.Text, txtEndDate.Text)
+            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(ddlEmployee.Text, Nothing, txtFirst.Text, txtLast.Text, IIf(txtSearchDate.Text = String.Empty, Nothing, txtSearchDate.Text), IIf(txtEndDate.Text = String.Empty, Nothing, txtEndDate.Text))
             loadDataGrid(results)
         End If
+
     End Sub
 
     Sub loadDataGrid(results As List(Of PurchaseOrderList))
@@ -30,7 +36,7 @@ Public Class SearchPOSupervisor
             Dim Row As DataRow
             Row = Table.NewRow()
             Dim id As Integer = results.Item(i).PurchaseOrderID
-            Row.Item("ID") = "<a href='PurchaseOrder.aspx?id=" & id & "' >" & id & "</a>"
+            Row.Item("ID") = "<a href='ProcessPO.aspx?id=" & id & "' >" & id & "</a>"
             Row.Item("Employee ID") = results.Item(i).EmployeeID
             Row.Item("Status") = results.Item(i).Status.ToString
             Row.Item("Total") = results.Item(i).Total.ToString("c2")

@@ -5,6 +5,8 @@
         <asp:DropDownList runat="server" ID="ddlEmployee">
             <asp:ListItem>10000001</asp:ListItem>
             <asp:ListItem>10000003</asp:ListItem>
+            <asp:ListItem>10000008</asp:ListItem>
+            <asp:ListItem>10000011</asp:ListItem>
         </asp:DropDownList><br />
         <asp:Label runat="server" ID="lblPage" Font-Size="large" /><br />
        

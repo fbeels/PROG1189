@@ -23,13 +23,22 @@ Partial Public Class SearchPOSupervisor
     Protected WithEvents ddlEmployee As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
-    '''txtEmployeeName control.
+    '''txtFirst control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtEmployeeName As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtFirst As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''txtLast control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtLast As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
     '''ddlStatus control.

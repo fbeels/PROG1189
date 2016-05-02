@@ -16,6 +16,7 @@ namespace BOL.Purchase_Order
         public OrderStatus Status { get; set; }
         public double Total { get; set; }
         public DateTime OrderDate { get; set; }
+        public string EmployeeName { get; set; }
 
 
 
@@ -32,7 +33,9 @@ namespace BOL.Purchase_Order
             foreach (DataRow orders in dt.Rows)
             {
                 PurchaseOrderList x = new PurchaseOrderList();
-                x.EmployeeID = (int)orders[5];
+                Employee emp = Employee.retrieve((int)orders[5]);
+                x.EmployeeName = emp.FirstName + " " + emp.LastName;
+                x.EmployeeID = ((int)orders[5]);
                 x.Status = (OrderStatus) int.Parse(orders[2].ToString());
                 x.Total = (double.Parse(orders[3].ToString())) + (double.Parse(orders[4].ToString()));
                 x.OrderDate = DateTime.Parse(orders[1].ToString());
@@ -42,9 +45,9 @@ namespace BOL.Purchase_Order
             return myList;
         }
 
-        static public List<PurchaseOrderList> Create(OrderStatus status, string EmpName, int SupervisorID, DateTime? startdate = null, DateTime? enddate = null)
+        static public List<PurchaseOrderList> Create(int SupervisorID, OrderStatus status = OrderStatus.Pending, string firstName = null, string lastName = null, DateTime? startdate = null, DateTime? enddate = null)
         {
-            return RePackager(PurchaseOrderSQL.searchPO(status, EmpName, SupervisorID, startdate, enddate));
+            return RePackager(PurchaseOrderSQL.searchPO(status, SupervisorID, firstName, lastName, startdate, enddate));
         }
     }
 }
