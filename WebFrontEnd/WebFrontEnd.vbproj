@@ -99,6 +99,7 @@
     <Content Include="css\jquery-ui.css" />
     <Content Include="css\jquery-ui.structure.css" />
     <Content Include="css\jquery-ui.theme.css" />
+    <Content Include="Employee\EditEmployee.aspx" />
     <Content Include="img\acme_logo.png" />
     <Content Include="js\jquery-ui.js" />
     <Content Include="js\jquery.js" />
@@ -116,6 +117,13 @@
     <Compile Include="Acme.Master.vb">
       <DependentUpon>Acme.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\EditEmployee.aspx.designer.vb">
+      <DependentUpon>EditEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\EditEmployee.aspx.vb">
+      <DependentUpon>EditEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
