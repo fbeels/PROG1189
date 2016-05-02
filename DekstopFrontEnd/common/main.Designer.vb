@@ -22,6 +22,7 @@ Partial Class main
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(main))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -29,17 +30,25 @@ Partial Class main
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.btnmodPO = New System.Windows.Forms.Button()
-        Me.btncreatePO = New System.Windows.Forms.Button()
-        Me.TabControl1 = New MdiTabControl.TabControl()
         Me.grbHR = New System.Windows.Forms.GroupBox()
         Me.btnviewpayroll = New System.Windows.Forms.Button()
         Me.btnmodemp = New System.Windows.Forms.Button()
         Me.btnsearchEmp = New System.Windows.Forms.Button()
         Me.btnAddEmp = New System.Windows.Forms.Button()
         Me.btncalcpayroll = New System.Windows.Forms.Button()
+        Me.btnmodPO = New System.Windows.Forms.Button()
+        Me.btncreatePO = New System.Windows.Forms.Button()
+        Me.TabControl1 = New MdiTabControl.TabControl()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
+        Me.HumanResourcesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProcurementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
+        Me.ToolStrip1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -50,7 +59,7 @@ Partial Class main
         'MenuStrip1
         '
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.HumanResourcesToolStripMenuItem, Me.ProcurementToolStripMenuItem, Me.AboutToolStripMenuItem1})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(9, 3, 0, 3)
@@ -68,7 +77,7 @@ Partial Class main
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(147, 30)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(211, 30)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'StatusStrip1
@@ -91,17 +100,18 @@ Partial Class main
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripLabel1, Me.ToolStripLabel2})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 35)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Padding = New System.Windows.Forms.Padding(0, 0, 2, 0)
-        Me.ToolStrip1.Size = New System.Drawing.Size(1506, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1506, 31)
         Me.ToolStrip1.TabIndex = 2
         Me.ToolStrip1.Text = "ToolStrip1"
         '
         'SplitContainer1
         '
         Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainer1.Location = New System.Drawing.Point(0, 60)
+        Me.SplitContainer1.Location = New System.Drawing.Point(0, 66)
         Me.SplitContainer1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.SplitContainer1.Name = "SplitContainer1"
         '
@@ -116,41 +126,10 @@ Partial Class main
         '
         Me.SplitContainer1.Panel2.BackColor = System.Drawing.SystemColors.ControlDark
         Me.SplitContainer1.Panel2.Controls.Add(Me.TabControl1)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1506, 785)
+        Me.SplitContainer1.Size = New System.Drawing.Size(1506, 779)
         Me.SplitContainer1.SplitterDistance = 270
         Me.SplitContainer1.SplitterWidth = 6
         Me.SplitContainer1.TabIndex = 3
-        '
-        'btnmodPO
-        '
-        Me.btnmodPO.Location = New System.Drawing.Point(33, 91)
-        Me.btnmodPO.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.btnmodPO.Name = "btnmodPO"
-        Me.btnmodPO.Size = New System.Drawing.Size(202, 35)
-        Me.btnmodPO.TabIndex = 1
-        Me.btnmodPO.Text = "Modify Purchase Order"
-        Me.btnmodPO.UseVisualStyleBackColor = True
-        '
-        'btncreatePO
-        '
-        Me.btncreatePO.Location = New System.Drawing.Point(33, 26)
-        Me.btncreatePO.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.btncreatePO.Name = "btncreatePO"
-        Me.btncreatePO.Size = New System.Drawing.Size(202, 35)
-        Me.btncreatePO.TabIndex = 0
-        Me.btncreatePO.Text = "Create Purchase Order"
-        Me.btncreatePO.UseVisualStyleBackColor = True
-        '
-        'TabControl1
-        '
-        Me.TabControl1.Location = New System.Drawing.Point(3, 3)
-        Me.TabControl1.MenuRenderer = Nothing
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.Size = New System.Drawing.Size(1224, 790)
-        Me.TabControl1.TabCloseButtonImage = Nothing
-        Me.TabControl1.TabCloseButtonImageDisabled = Nothing
-        Me.TabControl1.TabCloseButtonImageHot = Nothing
-        Me.TabControl1.TabIndex = 0
         '
         'grbHR
         '
@@ -218,6 +197,83 @@ Partial Class main
         Me.btncalcpayroll.Text = "Calculate Payroll"
         Me.btncalcpayroll.UseVisualStyleBackColor = True
         '
+        'btnmodPO
+        '
+        Me.btnmodPO.Location = New System.Drawing.Point(33, 91)
+        Me.btnmodPO.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnmodPO.Name = "btnmodPO"
+        Me.btnmodPO.Size = New System.Drawing.Size(202, 35)
+        Me.btnmodPO.TabIndex = 1
+        Me.btnmodPO.Text = "Modify Purchase Order"
+        Me.btnmodPO.UseVisualStyleBackColor = True
+        '
+        'btncreatePO
+        '
+        Me.btncreatePO.Location = New System.Drawing.Point(33, 26)
+        Me.btncreatePO.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btncreatePO.Name = "btncreatePO"
+        Me.btncreatePO.Size = New System.Drawing.Size(202, 35)
+        Me.btncreatePO.TabIndex = 0
+        Me.btncreatePO.Text = "Create Purchase Order"
+        Me.btncreatePO.UseVisualStyleBackColor = True
+        '
+        'TabControl1
+        '
+        Me.TabControl1.Location = New System.Drawing.Point(3, 3)
+        Me.TabControl1.MenuRenderer = Nothing
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.Size = New System.Drawing.Size(1224, 790)
+        Me.TabControl1.TabCloseButtonImage = Nothing
+        Me.TabControl1.TabCloseButtonImageDisabled = Nothing
+        Me.TabControl1.TabCloseButtonImageHot = Nothing
+        Me.TabControl1.TabIndex = 0
+        '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(28, 28)
+        Me.ToolStripButton1.Text = "ToolStripButton1"
+        '
+        'ToolStripLabel1
+        '
+        Me.ToolStripLabel1.Name = "ToolStripLabel1"
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(135, 28)
+        Me.ToolStripLabel1.Text = "ToolStripLabel1"
+        '
+        'ToolStripLabel2
+        '
+        Me.ToolStripLabel2.Name = "ToolStripLabel2"
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(135, 28)
+        Me.ToolStripLabel2.Text = "ToolStripLabel2"
+        '
+        'HumanResourcesToolStripMenuItem
+        '
+        Me.HumanResourcesToolStripMenuItem.Name = "HumanResourcesToolStripMenuItem"
+        Me.HumanResourcesToolStripMenuItem.Size = New System.Drawing.Size(167, 29)
+        Me.HumanResourcesToolStripMenuItem.Text = "Human Resources"
+        '
+        'ProcurementToolStripMenuItem
+        '
+        Me.ProcurementToolStripMenuItem.Name = "ProcurementToolStripMenuItem"
+        Me.ProcurementToolStripMenuItem.Size = New System.Drawing.Size(125, 29)
+        Me.ProcurementToolStripMenuItem.Text = "Procurement"
+        '
+        'AboutToolStripMenuItem1
+        '
+        Me.AboutToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem2})
+        Me.AboutToolStripMenuItem1.Name = "AboutToolStripMenuItem1"
+        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(74, 29)
+        Me.AboutToolStripMenuItem1.Text = "About"
+        '
+        'AboutToolStripMenuItem2
+        '
+        Me.AboutToolStripMenuItem2.Name = "AboutToolStripMenuItem2"
+        Me.AboutToolStripMenuItem2.Size = New System.Drawing.Size(211, 30)
+        Me.AboutToolStripMenuItem2.Text = "About"
+        '
         'main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -236,6 +292,8 @@ Partial Class main
         Me.MenuStrip1.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -261,4 +319,11 @@ Partial Class main
     Friend WithEvents btnsearchEmp As System.Windows.Forms.Button
     Friend WithEvents btnAddEmp As System.Windows.Forms.Button
     Friend WithEvents btncalcpayroll As System.Windows.Forms.Button
+    Friend WithEvents HumanResourcesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProcurementToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AboutToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AboutToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripLabel1 As System.Windows.Forms.ToolStripLabel
+    Friend WithEvents ToolStripLabel2 As System.Windows.Forms.ToolStripLabel
 End Class

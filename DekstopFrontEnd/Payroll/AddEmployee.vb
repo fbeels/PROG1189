@@ -63,16 +63,22 @@ Public Class AddEmployee
             Dim inputisallok As Boolean = True
             '----------------------------------------------------------------
             Dim strfname As String = txtfirstname.Text
-            If strfname = "" Then
+
+            validatefirstname(strfname)
+            If ErrorProvider1.GetError(txtfirstname) <> String.Empty Then
                 inputisallok = False
-                ErrorProvider1.SetError(txtfirstname, "first name required")
-                txtfirstname.BackColor = Color.Red
-            Else
-                inputisallok = True
-                ErrorProvider1.SetError(txtfirstname, String.Empty)
-                txtfirstname.BackColor = Color.White
-                myemp.FirstName = strfname
             End If
+
+            'If strfname = "" Then
+            '    inputisallok = False
+            '    ErrorProvider1.SetError(txtfirstname, "first name required")
+            '    txtfirstname.BackColor = Color.Red
+            'Else
+            '    inputisallok = True
+            '    ErrorProvider1.SetError(txtfirstname, String.Empty)
+            '    txtfirstname.BackColor = Color.White
+            '    myemp.FirstName = strfname
+            'End If
 
 
             '----------------------------------------------------------------
@@ -88,16 +94,29 @@ Public Class AddEmployee
 
             '----------------------------------------------------------------
             Dim strlname As String = txtlastname.Text
-            If strlname = "" Then
-                inputisallok = False
-                ErrorProvider1.SetError(txtlastname, "last name required")
-                txtlastname.BackColor = Color.Red
-            Else
+            'If strlname = "" Then
+            '    inputisallok = False
+            '    ErrorProvider1.SetError(txtlastname, "last name required")
+            '    txtlastname.BackColor = Color.Red
+            'Else
+            '    inputisallok = True
+            '    ErrorProvider1.SetError(txtlastname, String.Empty)
+            '    txtlastname.BackColor = Color.White
+            '    myemp.LastName = strlname
+            'End If
+
+
+            Try
+                myemp.LastName = strlname
                 inputisallok = True
                 ErrorProvider1.SetError(txtlastname, String.Empty)
-                txtlastname.BackColor = Color.White
-                myemp.LastName = strlname
-            End If
+                txtfirstname.BackColor = Color.White
+            Catch ex As Exception
+                inputisallok = False
+                ErrorProvider1.SetError(txtlastname, ex.Message)
+                txtlastname.BackColor = Color.Red
+            End Try
+
 
             '----------------------------------------------------------------
             Dim dateofbirth As Date = dtpdateofbirth.Value
@@ -154,14 +173,30 @@ Public Class AddEmployee
             myemp.Prov = strprov
             '----------------------------------------------------------------
             Dim strcellphone As String = mtxcellphone.Text
-            If strcellphone = "" Then
-                ErrorProvider1.SetError(mtxcellphone, "cell phone required")
-                mtxcellphone.BackColor = Color.Red
-            Else
+            'If strcellphone = "" Then
+            '    ErrorProvider1.SetError(mtxcellphone, "cell phone required")
+            '    mtxcellphone.BackColor = Color.Red
+            'Else
+            '    ErrorProvider1.SetError(mtxcellphone, String.Empty)
+            '    mtxcellphone.BackColor = Color.White
+            '    myemp.Cell = strcellphone
+            'End If
+
+
+
+            Try
+                myemp.Cell = strcellphone
+                ' inputisallok = True
                 ErrorProvider1.SetError(mtxcellphone, String.Empty)
                 mtxcellphone.BackColor = Color.White
-                myemp.Cell = strcellphone
-            End If
+            Catch ex As Exception
+                ' inputisallok = False
+                ErrorProvider1.SetError(mtxcellphone, ex.Message)
+                mtxcellphone.BackColor = Color.Red
+            End Try
+
+
+
             '----------------------------------------------------------------
 
             Dim strworkphone As String = mtxworkphone.Text
@@ -212,7 +247,7 @@ Public Class AddEmployee
                 txtpayrate.BackColor = Color.White
                 ' myemp.FirstName = strfname
             End If
-         
+
 
 
 
@@ -350,25 +385,45 @@ Public Class AddEmployee
 
     Private Sub txtfirstname_Leave(sender As Object, e As EventArgs) Handles txtfirstname.Leave
         Dim strfname As String = txtfirstname.Text
-        If strfname = "" Then
-            ErrorProvider1.SetError(txtfirstname, "first name required")
-            txtfirstname.BackColor = Color.Red
-        Else
-            ErrorProvider1.SetError(txtfirstname, String.Empty)
-            txtfirstname.BackColor = Color.White
-            ' myemp.FirstName = strfname
-        End If
+        validatefirstname(strfname)
     End Sub
     Private Sub txtlastname_Leave(sender As Object, e As EventArgs) Handles txtlastname.Leave
         Dim strlname As String = txtlastname.Text
-        If strlname = "" Then
-            ErrorProvider1.SetError(txtlastname, "first name required")
-            txtlastname.BackColor = Color.Red
-        Else
+
+        'Dim strlname As String = txtlastname.Text
+        'If strlname = "" Then
+        '    ErrorProvider1.SetError(txtlastname, "first name required")
+        '    txtlastname.BackColor = Color.Red
+        'Else
+        '    ErrorProvider1.SetError(txtlastname, String.Empty)
+        '    txtlastname.BackColor = Color.White
+        '    ' myemp.FirstName = strfname
+        'End If
+
+
+        'If strlname = "" Then
+        '    inputisallok = False
+        '    ErrorProvider1.SetError(txtlastname, "last name required")
+        '    txtlastname.BackColor = Color.Red
+        'Else
+        '    inputisallok = True
+        '    ErrorProvider1.SetError(txtlastname, String.Empty)
+        '    txtlastname.BackColor = Color.White
+        '    myemp.LastName = strlname
+        'End If
+
+
+        Try
+            myemp.LastName = strlname
+            ' inputisallok = True
             ErrorProvider1.SetError(txtlastname, String.Empty)
             txtlastname.BackColor = Color.White
-            ' myemp.FirstName = strfname
-        End If
+        Catch ex As Exception
+            ' inputisallok = False
+            ErrorProvider1.SetError(txtlastname, ex.Message)
+            txtlastname.BackColor = Color.Red
+        End Try
+
 
     End Sub
     Private Sub txtmiddleinit_Leave(sender As Object, e As EventArgs) Handles txtmiddleinit.Leave
@@ -417,14 +472,28 @@ Public Class AddEmployee
     End Sub
     Private Sub mtxcellphone_Leave(sender As Object, e As EventArgs) Handles mtxcellphone.Leave
         Dim strcellphone As String = mtxcellphone.Text
-        If strcellphone = "" Then
-            ErrorProvider1.SetError(mtxcellphone, "cell phone required")
-            mtxcellphone.BackColor = Color.Red
-        Else
+        'If strcellphone = "" Then
+        '    ErrorProvider1.SetError(mtxcellphone, "cell phone required")
+        '    mtxcellphone.BackColor = Color.Red
+        'Else
+        '    ErrorProvider1.SetError(mtxcellphone, String.Empty)
+        '    mtxcellphone.BackColor = Color.White
+        '    ' myemp.FirstName = strfname
+        'End If
+
+
+        Try
+            myemp.Cell = strcellphone
+            ' inputisallok = True
             ErrorProvider1.SetError(mtxcellphone, String.Empty)
             mtxcellphone.BackColor = Color.White
-            ' myemp.FirstName = strfname
-        End If
+        Catch ex As Exception
+            ' inputisallok = False
+            ErrorProvider1.SetError(mtxcellphone, ex.Message)
+            mtxcellphone.BackColor = Color.Red
+        End Try
+
+
     End Sub
     Private Sub mtxworkphone_Leave(sender As Object, e As EventArgs) Handles mtxworkphone.Leave
         Dim strworkphone As String = mtxworkphone.Text
@@ -506,6 +575,17 @@ Public Class AddEmployee
         End If
     End Sub
 
+    Private Sub validatefirstname(ByRef strfname As String)
+        Try
+            myemp.FirstName = strfname
+            ' inputisallok = True
+            ErrorProvider1.SetError(txtfirstname, String.Empty)
+            txtfirstname.BackColor = Color.White
+        Catch ex As Exception
+            ' inputisallok = False
+            ErrorProvider1.SetError(txtfirstname, ex.Message)
+            txtfirstname.BackColor = Color.Red
+        End Try
+    End Sub
 
- 
 End Class

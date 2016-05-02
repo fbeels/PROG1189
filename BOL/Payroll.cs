@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using Common;
+using SQLLayer;
 
 namespace BOL
 {
@@ -16,16 +20,27 @@ namespace BOL
         public double EI { get; set; }
         public double Pension { get; set; }
 
-        public Payroll create()
-        {
-            throw new System.NotImplementedException();
-        }
+       
 
-        public Payroll update()
-        {
-            throw new System.NotImplementedException();
-        }
 
+        static public Boolean RunPayRoll(String strpasscode)
+        {
+            return RePackagerdt2bool(PayRollSQL.RunPayRoll(strpasscode));
+        }
+        static private Boolean RePackagerdt2bool(DataTable dt)
+        {
+            ////Employee myList = new Employee();
+            //Employee x = new Employee();
+            //int y = 0;
+            //foreach (DataRow emps in dt.Rows)
+            //{
+            //    //  x.EmpID = (int)emps[0];
+            //    y = (int)emps[0];
+            //}
+            ////return myList;
+            //return y;
+            return true;
+        }
 
 
 

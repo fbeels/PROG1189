@@ -161,6 +161,12 @@
     <Compile Include="common\SplashScreen1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Payroll\RunPayroll.Designer.vb">
+      <DependentUpon>RunPayroll.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll\RunPayroll.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PurchaseOrder\PO.Designer.vb">
       <DependentUpon>PO.vb</DependentUpon>
     </Compile>
@@ -197,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Payroll\RetrieveEmployee.resx">
       <DependentUpon>RetrieveEmployee.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payroll\RunPayroll.resx">
+      <DependentUpon>RunPayroll.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrder\PO.resx">
       <DependentUpon>PO.vb</DependentUpon>

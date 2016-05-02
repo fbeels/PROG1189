@@ -48,11 +48,11 @@ Public Class main
     End Sub
 
     Private Sub btnmodPO_Click(sender As Object, e As EventArgs) Handles btnmodPO.Click
-        If TabControl1.Contains(ModifyPO) Then
-            TabControl1.TabPages(ModifyPO).Select()
-        Else
-            TabControl1.TabPages.Add(ModifyPO)
-        End If
+        'If TabControl1.Contains(ModifyPO) Then
+        '    TabControl1.TabPages(ModifyPO).Select()
+        'Else
+        '    TabControl1.TabPages.Add(ModifyPO)
+        'End If
     End Sub
 
 
@@ -67,19 +67,37 @@ Public Class main
 
             If (hasrun = False) Then
                 'ask for passcode
-                MsgBox("yea payday and it hasnot been run")
+                'MsgBox("yea payday and it hasnot been run")
+                If TabControl1.Contains(RunPayroll) Then
+                    TabControl1.TabPages(RunPayroll).Select()
+                Else
+                    TabControl1.TabPages.Add(RunPayroll)
+                End If
             Else
                 'do nothing
                 MsgBox("yea payday and BOOOOO it has been run")
+
+                '//////////////////////////////////////////
+                If TabControl1.Contains(RunPayroll) Then
+                    TabControl1.TabPages(RunPayroll).Select()
+                Else
+                    TabControl1.TabPages.Add(RunPayroll)
+                End If
+                '/////////////////////////////////
+
             End If
 
-        Else
-            'do nothing
-            MsgBox("NOT payday")
-        End If
+            Else
+                'do nothing
+                MsgBox("NOT payday")
+            End If
 
 
 
 
+    End Sub
+
+    Private Sub AboutToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem2.Click
+        AboutBox1.ShowDialog()
     End Sub
 End Class

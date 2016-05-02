@@ -45,6 +45,7 @@
     <Compile Include="EmployeeSQL.cs" />
     <Compile Include="JobSQL.cs" />
     <Compile Include="PayPeriodSQL.cs" />
+    <Compile Include="PayRollSQL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseOrderSQL.cs" />
     <Compile Include="PurchaseOrderItemSQL.cs" />

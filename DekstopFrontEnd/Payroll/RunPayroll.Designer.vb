@@ -23,42 +23,63 @@ Partial Class RunPayroll
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.txtpasscode = New System.Windows.Forms.TextBox()
+        Me.btnrunpayroll = New System.Windows.Forms.Button()
+        Me.lblmsg = New System.Windows.Forms.Label()
+        Me.lblResults = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(66, 52)
+        Me.Label1.Location = New System.Drawing.Point(30, 80)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(86, 20)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "PassCode:"
         '
-        'TextBox1
+        'txtpasscode
         '
-        Me.TextBox1.Location = New System.Drawing.Point(176, 51)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(265, 26)
-        Me.TextBox1.TabIndex = 1
+        Me.txtpasscode.Location = New System.Drawing.Point(140, 79)
+        Me.txtpasscode.Name = "txtpasscode"
+        Me.txtpasscode.Size = New System.Drawing.Size(265, 26)
+        Me.txtpasscode.TabIndex = 1
         '
-        'Button1
+        'btnrunpayroll
         '
-        Me.Button1.Location = New System.Drawing.Point(145, 114)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(285, 84)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnrunpayroll.Location = New System.Drawing.Point(55, 141)
+        Me.btnrunpayroll.Name = "btnrunpayroll"
+        Me.btnrunpayroll.Size = New System.Drawing.Size(285, 84)
+        Me.btnrunpayroll.TabIndex = 2
+        Me.btnrunpayroll.Text = "Run"
+        Me.btnrunpayroll.UseVisualStyleBackColor = True
+        '
+        'lblmsg
+        '
+        Me.lblmsg.AutoSize = True
+        Me.lblmsg.Location = New System.Drawing.Point(51, 27)
+        Me.lblmsg.Name = "lblmsg"
+        Me.lblmsg.Size = New System.Drawing.Size(342, 20)
+        Me.lblmsg.TabIndex = 3
+        Me.lblmsg.Text = "It's PAYDAY,enter your passcode to run payroll"
+        '
+        'lblResults
+        '
+        Me.lblResults.AutoSize = True
+        Me.lblResults.Location = New System.Drawing.Point(48, 236)
+        Me.lblResults.Name = "lblResults"
+        Me.lblResults.Size = New System.Drawing.Size(0, 20)
+        Me.lblResults.TabIndex = 4
         '
         'RunPayroll
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(694, 466)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.ClientSize = New System.Drawing.Size(438, 291)
+        Me.Controls.Add(Me.lblResults)
+        Me.Controls.Add(Me.lblmsg)
+        Me.Controls.Add(Me.btnrunpayroll)
+        Me.Controls.Add(Me.txtpasscode)
         Me.Controls.Add(Me.Label1)
         Me.Name = "RunPayroll"
         Me.Text = "RunPayroll"
@@ -67,6 +88,8 @@ Partial Class RunPayroll
 
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents txtpasscode As System.Windows.Forms.TextBox
+    Friend WithEvents btnrunpayroll As System.Windows.Forms.Button
+    Friend WithEvents lblmsg As System.Windows.Forms.Label
+    Friend WithEvents lblResults As System.Windows.Forms.Label
 End Class

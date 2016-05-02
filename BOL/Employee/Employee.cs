@@ -12,20 +12,257 @@ namespace BOL
 {
     public class Employee : IEmployee
     {
+        String _LastName;
+        public string LastName
+        {
+            get
+            {
+                return this._LastName;
+            }
+            set
+            { 
+                if (value=="")
+                {
+                     throw new System.ArgumentException("from class: Lastname cannot be empty");
+                }
+                else
+                {
+                    this._LastName = value;
+                }
+                
+            }
+            
+        }
 
-        public string LastName { get; set; }
+        
+       // public string LastName { get; set; }
         public string MiddleInt { get; set; }
-        public string FirstName { get; set; }
+
+
+        String _FirstName;
+        public string FirstName
+        {
+            get
+            {
+                return this._FirstName;
+            }
+            set
+            {
+                if (value == "")
+                {
+                    throw new System.ArgumentException("from class: FirstName cannot be empty");
+                }
+                else
+                {
+                    this._FirstName = value;
+                }
+
+            }
+
+        }
+
+        //public string FirstName { get; set; }
         public DateTime DOB { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string Prov { get; set; }
-        public string Postal { get; set; }
+       // public string Address { get; set; }
+
+        String _Address;
+        public string Address
+        {
+            get
+            {
+                return this._Address;
+            }
+            set
+            {
+                if (value == "")
+                {
+                    throw new System.ArgumentException("from class: Address cannot be empty");
+                }
+                else
+                {
+                    this._Address = value;
+                }
+
+            }
+
+        }
+
+        //public string City { get; set; }
+
+        String _City;
+        public string City
+        {
+            get
+            {
+                return this._City;
+            }
+            set
+            {
+                if (value == "")
+                {
+                    throw new System.ArgumentException("from class: City cannot be empty");
+                }
+                else
+                {
+                    this._City = value;
+                }
+
+            }
+
+        }
+
+
+       // public string Prov { get; set; }
+
+        String _Prov;
+        public string Prov
+        {
+            get
+            {
+                return this._Prov;
+            }
+            set
+            {
+                if (value == "")
+                {
+                    throw new System.ArgumentException("from class: Prov cannot be empty");
+                }
+                else
+                {
+                    this._Prov = value;
+                }
+
+            }
+
+        }
+      //  public string Postal { get; set; }
+
+        String _Postal;
+        public string Postal
+        {
+            get
+            {
+                return this._Postal;
+            }
+            set
+            {
+                if (value == "")
+                {
+                    throw new System.ArgumentException("from class: Postal cannot be empty");
+                }
+                else
+                {
+                    this._Postal = value;
+                }
+
+            }
+
+        }
+
+
         public int EmpID { get; set; }
-        public string Phone { get; set; }
-        public string Cell { get; set; }
-        public string Email { get; set; }
-        public string SIN { get; set; }
+       // public string Phone { get; set; }
+
+        String _Phone;
+        public string Phone
+        {
+            get
+            {
+                return this._Phone;
+            }
+            set
+            {
+                if (value == "")
+                {
+                    throw new System.ArgumentException("from class: workPhone cannot be empty");
+                }
+                else if (value.Length != 10)
+                {
+                    throw new System.ArgumentException("from class: workphone length must be 10 characters");
+                }
+                else
+                {
+                    this._Phone = value;
+                }
+
+            }
+
+        }
+
+       // public string Cell { get; set; }
+
+        String _Cell;
+        public string Cell
+        {
+            get
+            {
+                return this._Cell;
+            }
+            set
+            {
+                if (value == "")
+                {
+                    throw new System.ArgumentException("from class: Cell cannot be empty");
+                }
+                else if(value.Length!=10)
+                {
+                     throw new System.ArgumentException("from class: Cell length must be 10 characters");
+                }
+                else
+                {
+                    this._Cell = value;
+                }
+            }
+        }
+        
+        //public string Email { get; set; }
+        String _Email;
+        public string Email
+        {
+            get
+            {
+                return this._Email;
+            }
+            set
+            {
+                if (value == "")
+                {
+                    throw new System.ArgumentException("from class: Email cannot be empty");
+                }
+                else
+                {
+                    this._Email = value;
+                }
+
+            }
+
+        }
+        
+        
+       // public string SIN { get; set; }
+        String _SIN;
+        public string SIN
+        {
+            get
+            {
+                return this._SIN;
+            }
+            set
+            {
+                if (value == "")
+                {
+                    throw new System.ArgumentException("from class: SIN cannot be empty");
+                }
+                else
+                {
+                    this._SIN = value;
+                }
+
+            }
+
+        }
+
+        
         public DateTime SeniorityDate { get; set; }
         public DateTime JobStartDate { get; set; }
         public int JobID { get; set; }
@@ -35,7 +272,7 @@ namespace BOL
         public double PayRate { get; set; }
         public DateTime TerminationDate { get; set; }
         public bool EmailNotification { get; set; }
-        public int status { get; set; }
+        public int empstatus { get; set; }
 
         //public Employee create(string Lastname, char MiddleIntm, string FirstName, DateTime DOB, string Address, string City, string Prov, string Postal, int EmpID, string Phone, string Cell, string Email, string SIN, DateTime SeniorityDate, DateTime JobStartDate, int JobID, int DeptID, int SupervisorID, double PayRate, bool EmailNotification, DateTime TerminationDate)
         //{
@@ -98,11 +335,12 @@ namespace BOL
                 x.JobID = (int)emps[15];
                 x.SupervisorID = (int)emps[16];
                 x.EmailNotification = (bool)emps[17];
-               x.PayRate = System.Convert.ToDouble((Decimal)emps[18]);
+                 x.PayRate = System.Convert.ToDouble((Decimal)emps[18]);
                 x.TerminationDate = (DateTime)emps[19];
                 x.DeptID= (int)emps[20];
-                x.status = (int)emps[21];
-
+               // (x.empstatus)int.Parse(emps[21].ToString());
+                // (int)emps[21];
+               x.empstatus = int.Parse(emps[21].ToString());
              //   myList.Add(x);
             }
             //return myList;
