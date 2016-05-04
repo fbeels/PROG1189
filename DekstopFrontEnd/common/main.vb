@@ -2,7 +2,7 @@
 
 Public Class main
 
-    Private Sub btnAddEmp_Click(sender As Object, e As EventArgs)
+    Private Sub btnAddEmp_Click(sender As Object, e As EventArgs) Handles btnAddEmp.Click
         If TabControl1.Contains(AddEmployee) Then
             TabControl1.TabPages(AddEmployee).Select()
         Else
@@ -10,7 +10,7 @@ Public Class main
         End If
     End Sub
 
-    Private Sub btnsearchEmp_Click(sender As Object, e As EventArgs)
+    Private Sub btnsearchEmp_Click(sender As Object, e As EventArgs) Handles btnsearchEmp.Click
         If TabControl1.Contains(RetrieveEmployee) Then
             TabControl1.TabPages(RetrieveEmployee).Select()
         Else
@@ -18,7 +18,7 @@ Public Class main
         End If
     End Sub
 
-    Private Sub btnmodemp_Click(sender As Object, e As EventArgs)
+    Private Sub btnmodemp_Click(sender As Object, e As EventArgs) Handles btnmodemp.Click
 
         If TabControl1.Contains(EditEmployee) Then
             TabControl1.TabPages(EditEmployee).Select()
@@ -48,11 +48,11 @@ Public Class main
     End Sub
 
     Private Sub btnmodPO_Click(sender As Object, e As EventArgs) Handles btnmodPO.Click
-        'If TabControl1.Contains(ModifyPO) Then
-        '    TabControl1.TabPages(ModifyPO).Select()
-        'Else
-        '    TabControl1.TabPages.Add(ModifyPO)
-        'End If
+        If TabControl1.Contains(ProcessPO) Then
+            TabControl1.TabPages(ProcessPO).Select()
+        Else
+            TabControl1.TabPages.Add(ProcessPO)
+        End If
     End Sub
 
 
@@ -87,10 +87,10 @@ Public Class main
 
             End If
 
-            Else
-                'do nothing
-                MsgBox("NOT payday")
-            End If
+        Else
+            'do nothing
+            MsgBox("NOT payday")
+        End If
 
 
 
@@ -116,4 +116,6 @@ Public Class main
             TabControl1.TabPages.Add(ViewPaystubs)
         End If
     End Sub
+
+
 End Class

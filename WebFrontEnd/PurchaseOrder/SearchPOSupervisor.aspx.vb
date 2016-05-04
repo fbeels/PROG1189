@@ -9,13 +9,13 @@ Public Class SearchPOSupervisor
     Protected Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
 
         If ddlStatus.SelectedIndex = 0 Then
-            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(ddlEmployee.Text, OrderStatus.Pending, txtFirst.Text, txtLast.Text, IIf(txtSearchDate.Text = String.Empty, Nothing, txtSearchDate.Text), IIf(txtEndDate.Text = String.Empty, Nothing, txtEndDate.Text))
+            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(ddlEmployee.Text, OrderStatus.Pending, txtFirst.Text, txtLast.Text, IIf(txtSearchDate.Text = String.Empty, Nothing, CDate(txtSearchDate.Text)), IIf(txtEndDate.Text = String.Empty, Nothing, CDate(txtEndDate.Text)))
             loadDataGrid(results)
         ElseIf ddlStatus.SelectedIndex = 1 Then
-            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(ddlEmployee.Text, OrderStatus.Closed, txtFirst.Text, txtLast.Text, IIf(txtSearchDate.Text = String.Empty, Nothing, txtSearchDate.Text), IIf(txtEndDate.Text = String.Empty, Nothing, txtEndDate.Text))
+            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(ddlEmployee.Text, OrderStatus.Closed, txtFirst.Text, txtLast.Text, IIf(txtSearchDate.Text = String.Empty, Nothing, CDate(txtSearchDate.Text)), IIf(txtEndDate.Text = String.Empty, Nothing, CDate(txtEndDate.Text)))
             loadDataGrid(results)
         Else
-            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(ddlEmployee.Text, Nothing, txtFirst.Text, txtLast.Text, IIf(txtSearchDate.Text = String.Empty, Nothing, txtSearchDate.Text), IIf(txtEndDate.Text = String.Empty, Nothing, txtEndDate.Text))
+            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(ddlEmployee.Text, Nothing, txtFirst.Text, txtLast.Text, IIf(txtSearchDate.Text = String.Empty, Nothing, CDate(txtSearchDate.Text)), IIf(txtEndDate.Text = String.Empty, Nothing, CDate(txtEndDate.Text)))
             loadDataGrid(results)
         End If
 

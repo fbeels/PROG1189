@@ -10,24 +10,30 @@
         $(function () {
             $("#Content_txtSearchDate").datepicker();
             $("#Content_txtEndDate").datepicker();
-            
+
         });
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <asp:DropDownList runat="server" ID="ddlEmployee">
-        <asp:ListItem>10000001</asp:ListItem>
-
+        <asp:ListItem Value="10000001">Dude, McDude (S)</asp:ListItem>
+        <asp:ListItem Value="10000003">McLoser, Quitter</asp:ListItem>
+        <asp:ListItem Value="10000008">Markingston, Ronald</asp:ListItem>
+        <asp:ListItem Value="10000011">Smith, John</asp:ListItem>
     </asp:DropDownList><br />
+
     <hr />
 
     Search by ID or by Date<br />
     <asp:TextBox runat="server" ID="txtSearchID" placeholder="Purchase Order ID" />
     - or - 
-    <asp:TextBox runat="server" ID="txtSearchDate" placeholder="Purchase Order Date" /> & <asp:TextBox runat="server" ID="txtEndDate" placeholder="Purchase Order Date" />  <br />
+    <asp:TextBox runat="server" ID="txtSearchDate" placeholder="Purchase Order Date" />
+    &
+    <asp:TextBox runat="server" ID="txtEndDate" placeholder="Purchase Order Date" />
+    <br />
 
     <asp:Button Text="Search" runat="server" ID="btnSearch" />
-    <asp:Label Text="" id="lblErr" runat="server" />
+    <asp:Label Text="" ID="lblErr" runat="server" />
     <asp:DataGrid runat="server" ID="dgData">
     </asp:DataGrid>
 </asp:Content>
