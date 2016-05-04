@@ -184,17 +184,17 @@ Public Class CreatePO
     End Sub
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
-        If dtpStart.Text = Date.Now.ToShortDateString Then
-            If txtID.Text = String.Empty Then
-                lblErr.Text = "Both fields are empty, try again."
-                Exit Sub
-            End If
-            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(Integer.Parse(myEmployee.EmpID), txtID.Text)
-            loadDataGrid(results)
-        Else
-            Dim results As List(Of PurchaseOrderList) = (PurchaseOrderList.Create(Integer.Parse(myEmployee.EmpID), Nothing, Date.Parse(dtpStart.Text), Date.Parse(dtpEnd.Text)))
-            loadDataGrid(results)
-        End If
+        'If dtpStart.Text = Date.Now.ToShortDateString Then
+        '    If txtID.Text = String.Empty Then
+        '        lblErr.Text = "Both fields are empty, try again."
+        '        Exit Sub
+        '    End If
+        '    Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(Integer.Parse(myEmployee.EmpID), txtID.Text)
+        '    loadDataGrid(results)
+        'Else
+        '    Dim results As List(Of PurchaseOrderList) = (PurchaseOrderList.Create(Integer.Parse(myEmployee.EmpID), Nothing, Date.Parse(dtpStart.Text), Date.Parse(dtpEnd.Text)))
+        '    loadDataGrid(results)
+        'End If
 
     End Sub
 

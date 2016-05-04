@@ -86,7 +86,7 @@
     <Compile Include="common\AboutBox1.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FinalProjGetLastPayroll.Designer.vb">
+    <Compile Include="Payroll\FinalProjGetLastPayroll.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FinalProjGetLastPayroll.xsd</DependentUpon>
@@ -97,11 +97,11 @@
     <Compile Include="Payroll\AddEmployee.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.vb">
+    <Compile Include="Payroll\ViewPaystubs.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="Payroll\ViewPaystubs.Designer.vb">
+      <DependentUpon>ViewPaystubs.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="common\main.Designer.vb">
@@ -173,12 +173,6 @@
     <Compile Include="PurchaseOrder\PO.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PurchaseOrder\ProcessPO.Designer.vb">
-      <DependentUpon>ProcessPO.vb</DependentUpon>
-    </Compile>
-    <Compile Include="PurchaseOrder\ProcessPO.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="common\AboutBox1.resx">
@@ -186,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="common\main.resx">
       <DependentUpon>main.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payroll\ViewPaystubs.resx">
+      <DependentUpon>ViewPaystubs.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -199,6 +196,9 @@
     <EmbeddedResource Include="Payroll\CalcPay2.resx">
       <DependentUpon>CalcPay2.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Payroll\EditEmployee.resx">
+      <DependentUpon>EditEmployee.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Payroll\emailTest.resx">
       <DependentUpon>emailTest.vb</DependentUpon>
     </EmbeddedResource>
@@ -207,6 +207,7 @@
     <EmbeddedResource Include="Payroll\AddEmployee.resx">
       <DependentUpon>AddEmployee.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Payroll\PayStubz.rdlc" />
     <EmbeddedResource Include="Payroll\RetrieveEmployee.resx">
       <DependentUpon>RetrieveEmployee.vb</DependentUpon>
     </EmbeddedResource>
@@ -216,20 +217,17 @@
     <EmbeddedResource Include="PurchaseOrder\PO.resx">
       <DependentUpon>PO.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PurchaseOrder\ProcessPO.resx">
-      <DependentUpon>ProcessPO.vb</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="FinalProjGetLastPayroll.xsc">
+    <None Include="Payroll\FinalProjGetLastPayroll.xsc">
       <DependentUpon>FinalProjGetLastPayroll.xsd</DependentUpon>
     </None>
-    <None Include="FinalProjGetLastPayroll.xsd">
+    <None Include="Payroll\FinalProjGetLastPayroll.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>FinalProjGetLastPayroll.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="FinalProjGetLastPayroll.xss">
+    <None Include="Payroll\FinalProjGetLastPayroll.xss">
       <DependentUpon>FinalProjGetLastPayroll.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">

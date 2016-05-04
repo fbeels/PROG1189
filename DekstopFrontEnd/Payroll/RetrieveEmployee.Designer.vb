@@ -30,6 +30,7 @@ Partial Class RetrieveEmployee
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.grbempinfo = New System.Windows.Forms.GroupBox()
+        Me.lblsuper = New System.Windows.Forms.Label()
         Me.lbltermination = New System.Windows.Forms.Label()
         Me.lblstartdate = New System.Windows.Forms.Label()
         Me.lblsenoritydate = New System.Windows.Forms.Label()
@@ -73,7 +74,7 @@ Partial Class RetrieveEmployee
         Me.lstsearchresults = New System.Windows.Forms.ListBox()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.lblnomatches = New System.Windows.Forms.Label()
-        Me.lblsuper = New System.Windows.Forms.Label()
+        Me.chkreadonly = New System.Windows.Forms.CheckBox()
         Me.grbsearch.SuspendLayout()
         Me.grbempinfo.SuspendLayout()
         Me.grbsearchresults.SuspendLayout()
@@ -191,6 +192,15 @@ Partial Class RetrieveEmployee
         Me.grbempinfo.TabIndex = 1
         Me.grbempinfo.TabStop = False
         Me.grbempinfo.Text = "Employee Info"
+        '
+        'lblsuper
+        '
+        Me.lblsuper.AutoSize = True
+        Me.lblsuper.Location = New System.Drawing.Point(857, 76)
+        Me.lblsuper.Name = "lblsuper"
+        Me.lblsuper.Size = New System.Drawing.Size(57, 20)
+        Me.lblsuper.TabIndex = 76
+        Me.lblsuper.Text = "Label3"
         '
         'lbltermination
         '
@@ -585,20 +595,21 @@ Partial Class RetrieveEmployee
         Me.lblnomatches.TabIndex = 9
         Me.lblnomatches.Text = "No matches found"
         '
-        'lblsuper
+        'chkreadonly
         '
-        Me.lblsuper.AutoSize = True
-        Me.lblsuper.Location = New System.Drawing.Point(857, 76)
-        Me.lblsuper.Name = "lblsuper"
-        Me.lblsuper.Size = New System.Drawing.Size(57, 20)
-        Me.lblsuper.TabIndex = 76
-        Me.lblsuper.Text = "Label3"
+        Me.chkreadonly.AutoSize = True
+        Me.chkreadonly.Location = New System.Drawing.Point(1150, 44)
+        Me.chkreadonly.Name = "chkreadonly"
+        Me.chkreadonly.Size = New System.Drawing.Size(22, 21)
+        Me.chkreadonly.TabIndex = 10
+        Me.chkreadonly.UseVisualStyleBackColor = True
         '
         'RetrieveEmployee
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 818)
+        Me.Controls.Add(Me.chkreadonly)
         Me.Controls.Add(Me.lblnomatches)
         Me.Controls.Add(Me.grbsearchresults)
         Me.Controls.Add(Me.lbldebug)
@@ -668,4 +679,5 @@ Partial Class RetrieveEmployee
     Friend WithEvents ErrorProvider1 As System.Windows.Forms.ErrorProvider
     Friend WithEvents lblnomatches As System.Windows.Forms.Label
     Friend WithEvents lblsuper As System.Windows.Forms.Label
+    Friend WithEvents chkreadonly As System.Windows.Forms.CheckBox
 End Class
