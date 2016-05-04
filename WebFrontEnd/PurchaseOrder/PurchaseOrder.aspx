@@ -3,13 +3,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <div>
         <asp:DropDownList runat="server" ID="ddlEmployee">
-            <asp:ListItem>10000001</asp:ListItem>
-            <asp:ListItem>10000003</asp:ListItem>
-            <asp:ListItem>10000008</asp:ListItem>
-            <asp:ListItem>10000011</asp:ListItem>
+            <asp:ListItem Value="10000001">Dude, McDude (S)</asp:ListItem>
+            <asp:ListItem Value="10000003">McLoser, Quitter</asp:ListItem>
+            <asp:ListItem Value="10000008">Markingston, Ronald</asp:ListItem>
+            <asp:ListItem Value="10000011">Smith, John</asp:ListItem>
         </asp:DropDownList><br />
+
         <asp:Label runat="server" ID="lblPage" Font-Size="large" /><br />
-       
+
         <b>Date: </b>
         <asp:Label runat="server" ID="lblDate" />&nbsp;|&nbsp;
        
@@ -22,11 +23,10 @@
         <b>Supervisor: </b>
         <asp:Label ID="lblSuper" runat="server" />
 
-
         <hr />
         <br />
         <br />
-        <asp:Label id="lblError" ForeColor="Red" runat="server" />
+        <asp:Label ID="lblError" ForeColor="Red" runat="server" />
         <asp:GridView ID="Gridview1" runat="server" ShowFooter="true" AutoGenerateColumns="false">
             <Columns>
                 <asp:BoundField DataField="RowNumber" HeaderText="Row Number" />
@@ -57,17 +57,17 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Justification">
                     <ItemTemplate>
-                         <asp:TextBox ID="txtJust" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtJust" runat="server"></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
-                 <asp:TemplateField HeaderText="Status">
+                <asp:TemplateField HeaderText="Status">
                     <ItemTemplate>
-                          <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                        <asp:Label ID="lblStatus" runat="server"></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="No Longer Needed">
                     <ItemTemplate>
-                        <asp:CheckBox id="chkNotNeeded" runat="server" />
+                        <asp:CheckBox ID="chkNotNeeded" runat="server" />
                     </ItemTemplate>
                     <FooterStyle HorizontalAlign="Right" />
                     <FooterTemplate>
