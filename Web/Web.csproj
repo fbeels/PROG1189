@@ -66,6 +66,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\jquery-ui.css" />
+    <Content Include="css\jquery-ui.structure.css" />
+    <Content Include="css\jquery-ui.theme.css" />
+    <Content Include="img\acme_logo.png" />
+    <Content Include="js\jquery-ui.js" />
+    <Content Include="js\jquery.js" />
     <Content Include="packages.config" />
     <Content Include="Acme.Master" />
     <None Include="Web.Debug.config">
