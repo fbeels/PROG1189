@@ -1,0 +1,43 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Acme.master.cs" Inherits="WebCSharp.Acme" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Acme Stuff</title>
+   
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="wrapper">
+            <div id="header">
+                <asp:Image ID="logo" runat="server" ImageUrl="img/acme_logo.png" Height="75" />
+                <asp:HyperLink runat="server" Text="Purchase Order" NavigateUrl="~/PurchaseOrder/PurchaseOrder.aspx"></asp:HyperLink>|
+                <asp:HyperLink runat="server" Text="Search Purchase Order" NavigateUrl="~/PurchaseOrder/SearchPO.aspx"></asp:HyperLink>|
+                <asp:HyperLink runat="server" Text="Process Purchase Order" NavigateUrl="~/PurchaseOrder/SearchPOSupervisor.aspx"></asp:HyperLink>|
+                <hr />
+
+            </div>
+
+
+
+            <div >
+                <asp:ContentPlaceHolder ID="Content" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div id="footer">
+                <hr />
+                <asp:Label ID="lblDate" runat="server"></asp:Label>
+                <br />
+                Copyright &copy; 2016 Acme Stuff Company
+        <br />
+
+            </div>
+        </div>
+    </form>
+</body>
+</html>
