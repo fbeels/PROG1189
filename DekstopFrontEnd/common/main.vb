@@ -78,11 +78,11 @@ Public Class main
                 MsgBox("yea payday and BOOOOO it has been run")
 
                 '//////////////////////////////////////////
-                If TabControl1.Contains(RunPayroll) Then
-                    TabControl1.TabPages(RunPayroll).Select()
-                Else
-                    TabControl1.TabPages.Add(RunPayroll)
-                End If
+                'If TabControl1.Contains(RunPayroll) Then
+                '    TabControl1.TabPages(RunPayroll).Select()
+                'Else
+                '    TabControl1.TabPages.Add(RunPayroll)
+                'End If
                 '/////////////////////////////////
 
             End If
@@ -99,5 +99,21 @@ Public Class main
 
     Private Sub AboutToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem2.Click
         AboutBox1.ShowDialog()
+    End Sub
+
+    Private Sub btnmodemp_Click_1(sender As Object, e As EventArgs) Handles btnmodemp.Click
+        If TabControl1.Contains(EditEmployee) Then
+            TabControl1.TabPages(EditEmployee).Select()
+        Else
+            TabControl1.TabPages.Add(EditEmployee)
+        End If
+    End Sub
+
+    Private Sub btnviewpayroll_Click(sender As Object, e As EventArgs) Handles btnviewpayroll.Click
+        If TabControl1.Contains(ViewPaystubs) Then
+            TabControl1.TabPages(ViewPaystubs).Select()
+        Else
+            TabControl1.TabPages.Add(ViewPaystubs)
+        End If
     End Sub
 End Class

@@ -1,6 +1,7 @@
 ﻿Imports BOL
 Public Class RetrieveEmployee
     Dim tempemp As Employee = Employee.create()
+    Dim blreadonly As Boolean = True
 
     Private Sub btnsearch_Click(sender As Object, e As EventArgs) Handles btnsearch.Click
         Dim searchempid As Integer
@@ -83,7 +84,10 @@ Public Class RetrieveEmployee
             lnameinvalid = False
 
         End If
-        tempemp.LastName = txtsearchlname.Text
+        If Not (txtsearchlname.Text = String.Empty) Then
+            tempemp.LastName = txtsearchlname.Text
+        End If
+
         '/////////////////////////////////////////////////////////////////////////////
         If idinvalid = True And lnameinvalid = True Then
             lstsearchresults.Enabled = False
@@ -195,6 +199,28 @@ Public Class RetrieveEmployee
         LoadJobsDropdown(deptid)
 
         txtpayrate.Text = emp.PayRate
+
+
+        txtfirstname.Enabled = False
+        txtmiddleinit.Enabled = False
+        txtlastname.Enabled = False
+        dtpdateofbirth.Enabled = False
+        txtsin.Enabled = False
+        txtstreetaddress.Enabled = False
+        txtcity.Enabled = False
+        cboProv.Enabled = False
+        txtpostal.Enabled = False
+        mtxcellphone.Enabled = True
+        mtxworkphone.Enabled = True
+        txtemail.Enabled = False
+        cbodept.Enabled = False
+        cbojobid.Enabled = False
+        txtpayrate.Enabled = False
+        dtpsenority.Enabled = False
+        dtpstartdate.Enabled = False
+        dtpterminationdate.Enabled = False
+
+
     End Sub
 
 
@@ -226,6 +252,7 @@ Public Class RetrieveEmployee
     Private Sub RetrieveEmployee_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         grbsearchresults.Visible = False
         grbempinfo.Visible = False
+        If chkreadonly.Checked Then blreadonly = True
     End Sub
 
     Private Sub txtsearchid_GotFocus(sender As Object, e As EventArgs) Handles txtsearchid.GotFocus

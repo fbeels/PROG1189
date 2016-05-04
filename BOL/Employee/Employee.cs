@@ -108,9 +108,7 @@ namespace BOL
                 }
 
             }
-
         }
-
 
        // public string Prov { get; set; }
 
@@ -133,7 +131,6 @@ namespace BOL
                 }
 
             }
-
         }
       //  public string Postal { get; set; }
 
@@ -156,7 +153,6 @@ namespace BOL
                 }
 
             }
-
         }
 
 
@@ -186,7 +182,6 @@ namespace BOL
                 }
 
             }
-
         }
 
        // public string Cell { get; set; }
@@ -235,7 +230,6 @@ namespace BOL
                 }
 
             }
-
         }
         
         
@@ -259,12 +253,13 @@ namespace BOL
                 }
 
             }
-
         }
 
         
         public DateTime SeniorityDate { get; set; }
+
         public DateTime JobStartDate { get; set; }
+        
         public int JobID { get; set; }
         public int DeptID { get; set; }
         public int SupervisorID { get; set; }
@@ -284,12 +279,18 @@ namespace BOL
             return new Employee();
         }
 //-------------------------------------------------------------
+        
       //retireve employee form
         static public List<Employee> search(int search_empid, string search_lname)
         {
                return SearchRePackager(EmployeeSQL.searchEmp(search_empid, search_lname));
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
         static private List<Employee> SearchRePackager(DataTable dt)
         {
             List<Employee> myList = new List<Employee>();
@@ -304,6 +305,11 @@ namespace BOL
             return myList;
         }
 //-----------------------------------------------------------------------------------
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="empid"></param>
+        /// <returns></returns>
         static public Employee retrieve(int empid)
         {
             return RePackager(EmployeeSQL.retrieveEmp(empid));
@@ -382,6 +388,25 @@ namespace BOL
             {
                 //  x.EmpID = (int)emps[0];
                 y = (int)emps[0];
+            }
+            //return myList;
+            return y;
+        }
+
+        static public bool update(Employee emp)
+        {
+            return RePackagerDt2Bool(EmployeeSQL.UpdateEmp(emp));
+        }
+
+        static private bool RePackagerDt2Bool(DataTable dt)
+        {
+            //Employee myList = new Employee();
+           // Employee x = new Employee();
+            bool y = false;
+            foreach (DataRow emps in dt.Rows)
+            {
+                //  x.EmpID = (int)emps[0];
+                y = (bool)emps[0];
             }
             //return myList;
             return y;

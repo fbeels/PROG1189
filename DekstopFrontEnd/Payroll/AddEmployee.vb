@@ -18,7 +18,7 @@ Public Class AddEmployee
 
         LoadDeptsDropdown()
         ' LoadEmployeesDropdown(0)
-        LoadJobsDropdown(0)
+        LoadJobsDropdown(cbodept.SelectedValue)
         btnprefill.Visible = False
 
         mtxcellphone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals
@@ -28,6 +28,7 @@ Public Class AddEmployee
             btnprefill.Visible = True
         End If
         loadorreset = True
+        lblsuperid.Visible = False
 
     End Sub
 
@@ -168,10 +169,7 @@ Public Class AddEmployee
                 myemp.Postal = strpostal
             End If
             '----------------------------------------------------------------
-            Dim strprov As String = cboProv.SelectedItem
-            ' MsgBox(strprov)
-            myemp.Prov = strprov
-            '----------------------------------------------------------------
+            
             Dim strcellphone As String = mtxcellphone.Text
             'If strcellphone = "" Then
             '    ErrorProvider1.SetError(mtxcellphone, "cell phone required")
@@ -183,7 +181,7 @@ Public Class AddEmployee
             'End If
 
 
-
+            mtxcellphone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals
             Try
                 myemp.Cell = strcellphone
                 ' inputisallok = True
@@ -198,7 +196,7 @@ Public Class AddEmployee
 
 
             '----------------------------------------------------------------
-
+            mtxworkphone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals
             Dim strworkphone As String = mtxworkphone.Text
             If strworkphone = "" Then
                 ErrorProvider1.SetError(mtxworkphone, "work phone required")
@@ -247,17 +245,35 @@ Public Class AddEmployee
                 txtpayrate.BackColor = Color.White
                 ' myemp.FirstName = strfname
             End If
+            '--------------------------------------
+            Dim strprov As String = cboProv.Text
+            If strprov = "" Then
+                ErrorProvider1.SetError(cboProv, "item required")
+                cboProv.BackColor = Color.Red
+            Else
+                ErrorProvider1.SetError(cboProv, String.Empty)
+                cboProv.BackColor = Color.White
+                ' myemp.FirstName = strfname
+                myemp.Prov = strprov
+            End If
 
+            'Dim strprov As String = cboProv.SelectedItem
+            MsgBox("the prov is:" & strprov, MsgBoxStyle.OkOnly, "strprov")
+            '
+            '----------------------------------------------------------------
 
-
-
+            '------------------------------------
             myemp.PayRate = dblpayrate
             '----------------------------------------------------------------
             myemp.SeniorityDate = Date.Now
             '----------------------------------------------------------------
             myemp.JobStartDate = Date.Now
             '----------------------------------------------------------------
-
+            If chkemailstub.Checked = True Then
+                myemp.EmailNotification = True
+            Else
+                myemp.EmailNotification = False
+            End If
 
             Dim done As Integer = 0
             If inputisallok = True Then
@@ -327,6 +343,11 @@ Public Class AddEmployee
         'Dim intdept As Integer = cbodept.SelectedValue
         'Dim intsuper As Integer = cbosupervisor.SelectedValue
         'Dim intjob As Integer = cbojobid.SelectedValue
+        cbodept.SelectedIndex = 0
+        LoadJobsDropdown(cbodept.SelectedValue)
+
+        lblsuperid.Text = "10000005"
+        lblsupername.Text = "Bruce Wayne"
 
         txtpayrate.Text = "2300"
         ErrorProvider1.SetError(txtpayrate, String.Empty)
@@ -560,19 +581,33 @@ Public Class AddEmployee
     'End Sub
 
 
+    'Private Sub cbodept_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cbodept.SelectionChangeCommitted
+
+    '    Dim selecteddept As Integer = 0
+    '    If loadorreset = True Then
+    '        selecteddept = CInt(cbodept.SelectedValue)
+    '        'MsgBox(selecteddept)        
+    '        LoadJobsDropdown(selecteddept)
+    '        'clear jobs
+    '        'load jobs in that dept
+    '        GetSupervisor(selecteddept)
+    '    Else
+
+    '    End If
+    'End Sub
     Private Sub cbodept_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cbodept.SelectionChangeCommitted
 
         Dim selecteddept As Integer = 0
-        If loadorreset = True Then
-            selecteddept = CInt(cbodept.SelectedValue)
-            'MsgBox(selecteddept)        
-            LoadJobsDropdown(selecteddept)
-            'clear jobs
-            'load jobs in that dept
-            GetSupervisor(selecteddept)
-        Else
+        ' If loadorreset = True Then
+        selecteddept = CInt(cbodept.SelectedValue)
+        'MsgBox(selecteddept)        
+        LoadJobsDropdown(selecteddept)
+        'clear jobs
+        'load jobs in that dept
+        GetSupervisor(selecteddept)
+        '  Else
 
-        End If
+        '  End If
     End Sub
 
     Private Sub validatefirstname(ByRef strfname As String)
@@ -585,6 +620,18 @@ Public Class AddEmployee
             ' inputisallok = False
             ErrorProvider1.SetError(txtfirstname, ex.Message)
             txtfirstname.BackColor = Color.Red
+        End Try
+    End Sub
+    Private Sub validatelastname(ByRef strlname As String)
+        Try
+            myemp.LastName = strlname
+            ' inputisallok = True
+            ErrorProvider1.SetError(txtlastname, String.Empty)
+            txtlastname.BackColor = Color.White
+        Catch ex As Exception
+            ' inputisallok = False
+            ErrorProvider1.SetError(txtlastname, ex.Message)
+            txtlastname.BackColor = Color.Red
         End Try
     End Sub
 

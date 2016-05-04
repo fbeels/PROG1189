@@ -50,6 +50,7 @@ Partial Class AddEmployee
         Me.lblmiddleint = New System.Windows.Forms.Label()
         Me.lbllastname = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.lblsuperid = New System.Windows.Forms.Label()
         Me.lblsupername = New System.Windows.Forms.Label()
         Me.txtemail = New System.Windows.Forms.TextBox()
         Me.lblemail = New System.Windows.Forms.Label()
@@ -62,7 +63,7 @@ Partial Class AddEmployee
         Me.lbljobid = New System.Windows.Forms.Label()
         Me.lbldept = New System.Windows.Forms.Label()
         Me.lblsupervisor = New System.Windows.Forms.Label()
-        Me.lblsuperid = New System.Windows.Forms.Label()
+        Me.chkemailstub = New System.Windows.Forms.CheckBox()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -328,6 +329,7 @@ Partial Class AddEmployee
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.chkemailstub)
         Me.GroupBox2.Controls.Add(Me.lblsuperid)
         Me.GroupBox2.Controls.Add(Me.lblsupername)
         Me.GroupBox2.Controls.Add(Me.txtemail)
@@ -350,10 +352,19 @@ Partial Class AddEmployee
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Employment Information"
         '
+        'lblsuperid
+        '
+        Me.lblsuperid.AutoSize = True
+        Me.lblsuperid.Location = New System.Drawing.Point(298, 86)
+        Me.lblsuperid.Name = "lblsuperid"
+        Me.lblsuperid.Size = New System.Drawing.Size(57, 20)
+        Me.lblsuperid.TabIndex = 44
+        Me.lblsuperid.Text = "Label1"
+        '
         'lblsupername
         '
         Me.lblsupername.AutoSize = True
-        Me.lblsupername.Location = New System.Drawing.Point(145, 83)
+        Me.lblsupername.Location = New System.Drawing.Point(145, 86)
         Me.lblsupername.Name = "lblsupername"
         Me.lblsupername.Size = New System.Drawing.Size(57, 20)
         Me.lblsupername.TabIndex = 43
@@ -379,7 +390,7 @@ Partial Class AddEmployee
         '
         'mtxworkphone
         '
-        Me.mtxworkphone.Location = New System.Drawing.Point(472, 28)
+        Me.mtxworkphone.Location = New System.Drawing.Point(532, 29)
         Me.mtxworkphone.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.mtxworkphone.Mask = "(999) 000-0000"
         Me.mtxworkphone.Name = "mtxworkphone"
@@ -389,7 +400,7 @@ Partial Class AddEmployee
         'lblworkphone
         '
         Me.lblworkphone.AutoSize = True
-        Me.lblworkphone.Location = New System.Drawing.Point(363, 32)
+        Me.lblworkphone.Location = New System.Drawing.Point(402, 29)
         Me.lblworkphone.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblworkphone.Name = "lblworkphone"
         Me.lblworkphone.Size = New System.Drawing.Size(96, 20)
@@ -399,10 +410,10 @@ Partial Class AddEmployee
         'cbojobid
         '
         Me.cbojobid.FormattingEnabled = True
-        Me.cbojobid.Location = New System.Drawing.Point(147, 118)
+        Me.cbojobid.Location = New System.Drawing.Point(57, 134)
         Me.cbojobid.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbojobid.Name = "cbojobid"
-        Me.cbojobid.Size = New System.Drawing.Size(208, 28)
+        Me.cbojobid.Size = New System.Drawing.Size(298, 28)
         Me.cbojobid.TabIndex = 38
         '
         'cbodept
@@ -416,7 +427,7 @@ Partial Class AddEmployee
         '
         'txtpayrate
         '
-        Me.txtpayrate.Location = New System.Drawing.Point(146, 189)
+        Me.txtpayrate.Location = New System.Drawing.Point(94, 188)
         Me.txtpayrate.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtpayrate.Name = "txtpayrate"
         Me.txtpayrate.Size = New System.Drawing.Size(70, 26)
@@ -425,7 +436,7 @@ Partial Class AddEmployee
         'lblpayrate
         '
         Me.lblpayrate.AutoSize = True
-        Me.lblpayrate.Location = New System.Drawing.Point(56, 186)
+        Me.lblpayrate.Location = New System.Drawing.Point(8, 191)
         Me.lblpayrate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblpayrate.Name = "lblpayrate"
         Me.lblpayrate.Size = New System.Drawing.Size(67, 20)
@@ -435,7 +446,7 @@ Partial Class AddEmployee
         'lbljobid
         '
         Me.lbljobid.AutoSize = True
-        Me.lbljobid.Location = New System.Drawing.Point(88, 128)
+        Me.lbljobid.Location = New System.Drawing.Point(10, 142)
         Me.lbljobid.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbljobid.Name = "lbljobid"
         Me.lbljobid.Size = New System.Drawing.Size(39, 20)
@@ -445,7 +456,7 @@ Partial Class AddEmployee
         'lbldept
         '
         Me.lbldept.AutoSize = True
-        Me.lbldept.Location = New System.Drawing.Point(36, 40)
+        Me.lbldept.Location = New System.Drawing.Point(34, 38)
         Me.lbldept.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbldept.Name = "lbldept"
         Me.lbldept.Size = New System.Drawing.Size(94, 20)
@@ -455,21 +466,22 @@ Partial Class AddEmployee
         'lblsupervisor
         '
         Me.lblsupervisor.AutoSize = True
-        Me.lblsupervisor.Location = New System.Drawing.Point(48, 86)
+        Me.lblsupervisor.Location = New System.Drawing.Point(32, 86)
         Me.lblsupervisor.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblsupervisor.Name = "lblsupervisor"
         Me.lblsupervisor.Size = New System.Drawing.Size(84, 20)
         Me.lblsupervisor.TabIndex = 31
         Me.lblsupervisor.Text = "Supervisor"
         '
-        'lblsuperid
+        'chkemailstub
         '
-        Me.lblsuperid.AutoSize = True
-        Me.lblsuperid.Location = New System.Drawing.Point(7, 86)
-        Me.lblsuperid.Name = "lblsuperid"
-        Me.lblsuperid.Size = New System.Drawing.Size(57, 20)
-        Me.lblsuperid.TabIndex = 44
-        Me.lblsuperid.Text = "Label1"
+        Me.chkemailstub.AutoSize = True
+        Me.chkemailstub.Location = New System.Drawing.Point(180, 190)
+        Me.chkemailstub.Name = "chkemailstub"
+        Me.chkemailstub.Size = New System.Drawing.Size(219, 24)
+        Me.chkemailstub.TabIndex = 45
+        Me.chkemailstub.Text = "Recieve PayStub by Email"
+        Me.chkemailstub.UseVisualStyleBackColor = True
         '
         'AddEmployee
         '
@@ -533,4 +545,5 @@ Partial Class AddEmployee
     Friend WithEvents lbllastname As System.Windows.Forms.Label
     Friend WithEvents lblsupername As System.Windows.Forms.Label
     Friend WithEvents lblsuperid As System.Windows.Forms.Label
+    Friend WithEvents chkemailstub As System.Windows.Forms.CheckBox
 End Class
