@@ -77,6 +77,8 @@ Partial Class EditEmployee
         Me.lbldebug = New System.Windows.Forms.Label()
         Me.lblsuperid = New System.Windows.Forms.Label()
         Me.chkemailstub = New System.Windows.Forms.CheckBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtempid = New System.Windows.Forms.TextBox()
         Me.grbsearchresults.SuspendLayout()
         Me.grbempinfo.SuspendLayout()
         Me.grbsearch.SuspendLayout()
@@ -126,6 +128,8 @@ Partial Class EditEmployee
         '
         'grbempinfo
         '
+        Me.grbempinfo.Controls.Add(Me.txtempid)
+        Me.grbempinfo.Controls.Add(Me.Label3)
         Me.grbempinfo.Controls.Add(Me.chkemailstub)
         Me.grbempinfo.Controls.Add(Me.lblsuperid)
         Me.grbempinfo.Controls.Add(Me.lblsuper)
@@ -266,7 +270,7 @@ Partial Class EditEmployee
         'dtpdateofbirth
         '
         Me.dtpdateofbirth.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpdateofbirth.Location = New System.Drawing.Point(123, 149)
+        Me.dtpdateofbirth.Location = New System.Drawing.Point(125, 192)
         Me.dtpdateofbirth.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.dtpdateofbirth.Name = "dtpdateofbirth"
         Me.dtpdateofbirth.Size = New System.Drawing.Size(122, 26)
@@ -324,7 +328,7 @@ Partial Class EditEmployee
         '
         'txtsin
         '
-        Me.txtsin.Location = New System.Drawing.Point(122, 185)
+        Me.txtsin.Location = New System.Drawing.Point(124, 228)
         Me.txtsin.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtsin.Name = "txtsin"
         Me.txtsin.Size = New System.Drawing.Size(178, 26)
@@ -340,7 +344,7 @@ Partial Class EditEmployee
         '
         'txtmiddleinit
         '
-        Me.txtmiddleinit.Location = New System.Drawing.Point(123, 77)
+        Me.txtmiddleinit.Location = New System.Drawing.Point(125, 120)
         Me.txtmiddleinit.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtmiddleinit.Name = "txtmiddleinit"
         Me.txtmiddleinit.Size = New System.Drawing.Size(66, 26)
@@ -348,7 +352,7 @@ Partial Class EditEmployee
         '
         'txtlastname
         '
-        Me.txtlastname.Location = New System.Drawing.Point(123, 110)
+        Me.txtlastname.Location = New System.Drawing.Point(125, 153)
         Me.txtlastname.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtlastname.Name = "txtlastname"
         Me.txtlastname.Size = New System.Drawing.Size(177, 26)
@@ -356,7 +360,7 @@ Partial Class EditEmployee
         '
         'txtfirstname
         '
-        Me.txtfirstname.Location = New System.Drawing.Point(122, 40)
+        Me.txtfirstname.Location = New System.Drawing.Point(124, 83)
         Me.txtfirstname.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtfirstname.Name = "txtfirstname"
         Me.txtfirstname.Size = New System.Drawing.Size(178, 26)
@@ -405,7 +409,7 @@ Partial Class EditEmployee
         'lblsin
         '
         Me.lblsin.AutoSize = True
-        Me.lblsin.Location = New System.Drawing.Point(57, 189)
+        Me.lblsin.Location = New System.Drawing.Point(59, 232)
         Me.lblsin.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblsin.Name = "lblsin"
         Me.lblsin.Size = New System.Drawing.Size(53, 20)
@@ -485,7 +489,7 @@ Partial Class EditEmployee
         'lbldob
         '
         Me.lbldob.AutoSize = True
-        Me.lbldob.Location = New System.Drawing.Point(11, 151)
+        Me.lbldob.Location = New System.Drawing.Point(13, 194)
         Me.lbldob.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbldob.Name = "lbldob"
         Me.lbldob.Size = New System.Drawing.Size(99, 20)
@@ -495,7 +499,7 @@ Partial Class EditEmployee
         'lblfirstname
         '
         Me.lblfirstname.AutoSize = True
-        Me.lblfirstname.Location = New System.Drawing.Point(20, 43)
+        Me.lblfirstname.Location = New System.Drawing.Point(22, 86)
         Me.lblfirstname.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblfirstname.Name = "lblfirstname"
         Me.lblfirstname.Size = New System.Drawing.Size(90, 20)
@@ -505,7 +509,7 @@ Partial Class EditEmployee
         'lblmiddleint
         '
         Me.lblmiddleint.AutoSize = True
-        Me.lblmiddleint.Location = New System.Drawing.Point(14, 80)
+        Me.lblmiddleint.Location = New System.Drawing.Point(16, 123)
         Me.lblmiddleint.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblmiddleint.Name = "lblmiddleint"
         Me.lblmiddleint.Size = New System.Drawing.Size(96, 20)
@@ -515,7 +519,7 @@ Partial Class EditEmployee
         'lbllastname
         '
         Me.lbllastname.AutoSize = True
-        Me.lbllastname.Location = New System.Drawing.Point(20, 113)
+        Me.lbllastname.Location = New System.Drawing.Point(22, 156)
         Me.lbllastname.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbllastname.Name = "lbllastname"
         Me.lbllastname.Size = New System.Drawing.Size(90, 20)
@@ -619,12 +623,28 @@ Partial Class EditEmployee
         'chkemailstub
         '
         Me.chkemailstub.AutoSize = True
-        Me.chkemailstub.Location = New System.Drawing.Point(76, 268)
+        Me.chkemailstub.Location = New System.Drawing.Point(72, 301)
         Me.chkemailstub.Name = "chkemailstub"
         Me.chkemailstub.Size = New System.Drawing.Size(146, 24)
         Me.chkemailstub.TabIndex = 78
         Me.chkemailstub.Text = "Email pay stubs"
         Me.chkemailstub.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(21, 43)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(104, 20)
+        Me.Label3.TabIndex = 79
+        Me.Label3.Text = "Employee ID:"
+        '
+        'txtempid
+        '
+        Me.txtempid.Location = New System.Drawing.Point(137, 37)
+        Me.txtempid.Name = "txtempid"
+        Me.txtempid.Size = New System.Drawing.Size(173, 26)
+        Me.txtempid.TabIndex = 80
         '
         'EditEmployee
         '
@@ -703,4 +723,6 @@ Partial Class EditEmployee
     Friend WithEvents lbldebug As System.Windows.Forms.Label
     Friend WithEvents lblsuperid As System.Windows.Forms.Label
     Friend WithEvents chkemailstub As System.Windows.Forms.CheckBox
+    Friend WithEvents txtempid As System.Windows.Forms.TextBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
 End Class

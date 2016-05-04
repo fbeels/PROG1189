@@ -68,7 +68,7 @@ namespace SQLLayer
         public static DataTable UpdateEmp(IEmployee emp)
         {
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
-            tmpParmList.Add(new ParmStructure("@empid", SqlDbType.Int, ParameterDirection.InputOutput, 0, emp.EmpID));
+            tmpParmList.Add(new ParmStructure("@empid", SqlDbType.Int, ParameterDirection.Input, 0, emp.EmpID));
             tmpParmList.Add(new ParmStructure("@lastname", SqlDbType.VarChar, ParameterDirection.Input, 0, emp.LastName));
             tmpParmList.Add(new ParmStructure("@middleint", SqlDbType.NChar, ParameterDirection.Input, 0, emp.MiddleInt));
             tmpParmList.Add(new ParmStructure("@firstname", SqlDbType.VarChar, ParameterDirection.Input, 0, emp.FirstName));
@@ -84,7 +84,7 @@ namespace SQLLayer
             tmpParmList.Add(new ParmStructure("@seniorityDate", SqlDbType.Date, ParameterDirection.Input, 0, emp.SeniorityDate));
             tmpParmList.Add(new ParmStructure("@jobstartDate", SqlDbType.Date, ParameterDirection.Input, 0, emp.JobStartDate));
             tmpParmList.Add(new ParmStructure("@JobId", SqlDbType.Int, ParameterDirection.Input, 0, emp.JobID));
-            //tmpParmList.Add(new ParmStructure("@DeptId", SqlDbType.Int, ParameterDirection.Input, 0, emp.DeptID));
+            tmpParmList.Add(new ParmStructure("@DeptId", SqlDbType.Int, ParameterDirection.Input, 0, emp.DeptID));
             tmpParmList.Add(new ParmStructure("@supervisiorID", SqlDbType.Int, ParameterDirection.Input, 0, emp.SupervisorID));
             tmpParmList.Add(new ParmStructure("@payrate", SqlDbType.Decimal, ParameterDirection.Input, 0, emp.PayRate));
             // tmpParmList.Add(new ParmStructure("@terminationDate", SqlDbType.Date, ParameterDirection.Input, 0, emp.TerminationDate));
