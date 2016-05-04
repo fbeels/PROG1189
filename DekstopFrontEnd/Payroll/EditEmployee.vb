@@ -180,7 +180,8 @@ Public Class EditEmployee
 
         txtpayrate.Text = emp.PayRate
 
-       
+        txtempid.Text = emp.EmpID
+        txtempid.Enabled = False
 
 
     End Sub
@@ -272,10 +273,13 @@ Public Class EditEmployee
     Private Sub GetSupervisor(ByRef deptid As Integer)
         Dim superdept As Department = Department.GetADept(deptid)
         lblsuper.Text = superdept.SupervisorName
+        lblsuperid.Text = superdept.SupervisorId
     End Sub
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Try
             Dim inputisallok As Boolean = True
+
+            tempemp.EmpID = txtempid.Text
             '----------------------------------------------------------------
             Dim strfname As String = txtfirstname.Text
 
@@ -384,6 +388,7 @@ Public Class EditEmployee
             End If
             '----------------------------------------------------------------
 
+            mtxcellphone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals
             Dim strcellphone As String = mtxcellphone.Text
             'If strcellphone = "" Then
             '    ErrorProvider1.SetError(mtxcellphone, "cell phone required")
@@ -395,7 +400,7 @@ Public Class EditEmployee
             'End If
 
 
-            mtxcellphone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals
+
             Try
                 tempemp.Cell = strcellphone
                 ' inputisallok = True
@@ -432,16 +437,20 @@ Public Class EditEmployee
                 tempemp.Email = stremail
             End If
             '----------------------------------------------------------------
-            Dim intdept As Integer = cbodept.SelectedValue
+            Dim intdept As Integer = CInt(cbodept.SelectedValue)
             tempemp.DeptID = intdept
+
+            MsgBox("the deptid is:" & intdept, MsgBoxStyle.OkOnly, "intdept")
             '----------------------------------------------------------------
             'Dim intsuper As Integer = cbosupervisor.SelectedValue
             ' myemp.SupervisorID = intsuper
             tempemp.SupervisorID = lblsuperid.Text
             tempemp.supervisorName = lblsuper.Text
             '----------------------------------------------------------------
-            Dim intjob As Integer = cbojobid.SelectedValue
+            Dim intjob As Integer = CInt(cbojobid.SelectedValue)
             tempemp.JobID = intjob
+            MsgBox("the jobid is:" & intjob, MsgBoxStyle.OkOnly, "intjob")
+
             '----------------------------------------------------------------
             Dim dblpayrate As Double
             If txtpayrate.Text = "" Then

@@ -14,6 +14,8 @@ Public Class RunPayroll
         Catch ex As Exception
             MsgBox(ex.Message.ToString)
         End Try
+
+
         lblResults.Text = "PAYROLL Completed"
 
     End Sub

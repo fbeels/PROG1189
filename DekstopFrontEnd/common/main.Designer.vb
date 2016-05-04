@@ -191,7 +191,6 @@ Partial Class main
         '
         'btnviewpayroll
         '
-        Me.btnviewpayroll.Enabled = False
         Me.btnviewpayroll.Location = New System.Drawing.Point(30, 249)
         Me.btnviewpayroll.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnviewpayroll.Name = "btnviewpayroll"
@@ -202,7 +201,6 @@ Partial Class main
         '
         'btnmodemp
         '
-        Me.btnmodemp.Enabled = False
         Me.btnmodemp.Location = New System.Drawing.Point(30, 130)
         Me.btnmodemp.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnmodemp.Name = "btnmodemp"
