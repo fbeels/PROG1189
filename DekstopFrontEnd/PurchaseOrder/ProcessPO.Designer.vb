@@ -55,6 +55,7 @@ Partial Class ProcessPO
         Me.ddlItemStatus = New System.Windows.Forms.ComboBox()
         Me.txtDenial = New System.Windows.Forms.TextBox()
         Me.gpItems = New System.Windows.Forms.GroupBox()
+        Me.btnSubmit = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gpItems.SuspendLayout()
@@ -199,6 +200,7 @@ Partial Class ProcessPO
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(12, 136)
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.Size = New System.Drawing.Size(776, 150)
         Me.DataGridView1.TabIndex = 1
         '
@@ -356,6 +358,7 @@ Partial Class ProcessPO
         '
         'gpItems
         '
+        Me.gpItems.Controls.Add(Me.btnSubmit)
         Me.gpItems.Controls.Add(Me.Label7)
         Me.gpItems.Controls.Add(Me.Label9)
         Me.gpItems.Controls.Add(Me.lblDenial)
@@ -379,6 +382,15 @@ Partial Class ProcessPO
         Me.gpItems.TabStop = False
         Me.gpItems.Text = "Item"
         Me.gpItems.Visible = False
+        '
+        'btnSubmit
+        '
+        Me.btnSubmit.Location = New System.Drawing.Point(360, 81)
+        Me.btnSubmit.Name = "btnSubmit"
+        Me.btnSubmit.Size = New System.Drawing.Size(75, 23)
+        Me.btnSubmit.TabIndex = 19
+        Me.btnSubmit.Text = "Submit"
+        Me.btnSubmit.UseVisualStyleBackColor = True
         '
         'ProcessPO
         '
@@ -433,4 +445,5 @@ Partial Class ProcessPO
     Friend WithEvents ddlItemStatus As ComboBox
     Friend WithEvents txtDenial As TextBox
     Friend WithEvents gpItems As GroupBox
+    Friend WithEvents btnSubmit As Button
 End Class

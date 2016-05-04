@@ -109,4 +109,18 @@ Public Class ProcessPO
             lblDenial.Visible = False
         End If
     End Sub
+
+    Private Sub btnSubmit_Click(sender As Object, e As EventArgs) Handles btnSubmit.Click
+        If ddlItemStatus.SelectedIndex = 2 Then
+            If txtDenial.Text = String.Empty Then
+                MessageBox.Show("Please add a reason for cancellation")
+            Else
+                PurchaseOrderItem.denyItem(myItem, txtDenial.Text)
+            End If
+        ElseIf ddlItemStatus.SelectedIndex = 1 Then
+            PurchaseOrderItem.approveItem(myItem)
+        End If
+
+
+    End Sub
 End Class

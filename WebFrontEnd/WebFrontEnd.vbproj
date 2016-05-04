@@ -105,7 +105,7 @@
     <Content Include="js\jquery.js" />
     <Content Include="PurchaseOrder\EditItemStatus.aspx" />
     <Content Include="PurchaseOrder\ProcessPO.aspx" />
-    <Content Include="PurchaseOrder\PurchaseOrder.aspx" />
+    <Content Include="PurchaseOrder\PurchaseOrderPage.aspx" />
     <Content Include="PurchaseOrder\SearchPO.aspx" />
     <Content Include="PurchaseOrder\SearchPOSupervisor.aspx" />
     <Content Include="Web.config" />
@@ -158,11 +158,11 @@
       <DependentUpon>ProcessPO.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="PurchaseOrder\PurchaseOrder.aspx.designer.vb">
-      <DependentUpon>PurchaseOrder.aspx</DependentUpon>
+    <Compile Include="PurchaseOrder\PurchaseOrderPage.aspx.designer.vb">
+      <DependentUpon>PurchaseOrderPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PurchaseOrder\PurchaseOrder.aspx.vb">
-      <DependentUpon>PurchaseOrder.aspx</DependentUpon>
+    <Compile Include="PurchaseOrder\PurchaseOrderPage.aspx.vb">
+      <DependentUpon>PurchaseOrderPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PurchaseOrder\SearchPO.aspx.designer.vb">

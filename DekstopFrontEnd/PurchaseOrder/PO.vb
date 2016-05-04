@@ -22,6 +22,9 @@ Public Class CreatePO
 
     Sub setupEmployees()
         ddlEmployees.Items.Add("10000001")
+        ddlEmployees.Items.Add("10000003")
+        ddlEmployees.Items.Add("10000008")
+        ddlEmployees.Items.Add("10000011")
         ddlEmployees.SelectedIndex = 0
     End Sub
 
@@ -189,7 +192,7 @@ Public Class CreatePO
                 lblErr.Text = "Both fields are empty, try again."
                 Exit Sub
             End If
-            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(Integer.Parse(myEmployee.EmpID), txtID.Text)
+            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(myEmployee.EmpID, Integer.Parse(txtID.Text), Nothing, Nothing)
             loadDataGrid(results)
         Else
             Dim results As List(Of PurchaseOrderList) = (PurchaseOrderList.Create(Integer.Parse(myEmployee.EmpID), Nothing, Date.Parse(dtpStart.Text), Date.Parse(dtpEnd.Text)))

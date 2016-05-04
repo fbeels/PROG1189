@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Acme.Master" CodeBehind="PurchaseOrder.aspx.vb" Inherits="WebFrontEnd.CreatePO" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Acme.Master" AutoEventWireup="true" CodeBehind="PurchaseOrderPage.aspx.cs" Inherits="WebCSharp.PurchaseOrder.PurchaseOrder" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <div>
