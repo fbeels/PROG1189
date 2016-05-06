@@ -152,7 +152,7 @@ Public Class EditEmployee
         lbltermination.Visible = False
         dtpterminationdate.Text = emp.TerminationDate
 
-        If emp.TerminationDate < "9998-12-31" Then
+        If emp.TerminationDate < "2222-12-31" Then
             dtpterminationdate.Visible = True
             lbltermination.Visible = True
         End If
@@ -218,21 +218,21 @@ Public Class EditEmployee
         If IsNumeric(txtsearchid.Text) And (txtsearchid.TextLength > 0) Then
             If txtsearchid.TextLength = 8 Then
                 ErrorProvider1.SetError(txtsearchid, String.Empty)
-                txtsearchid.BackColor = Color.White
+
             Else
                 ErrorProvider1.SetError(txtsearchid, "invalid employee id length")
-                txtsearchid.BackColor = Color.Red
+
             End If
 
         Else
             If txtsearchlname.Text = "" And txtsearchid.Text = "" Then
                 ErrorProvider1.SetError(txtsearchid, "employee lastname or id is required")
-                txtsearchid.BackColor = Color.Red
+
                 ''elseIf 
 
             Else
                 ErrorProvider1.SetError(txtsearchid, "employee must be a number")
-                txtsearchid.BackColor = Color.Red
+
             End If
 
 
@@ -247,10 +247,10 @@ Public Class EditEmployee
     Private Sub txtsearchlname_Leave(sender As Object, e As EventArgs) Handles txtsearchlname.Leave
         If txtsearchlname.Text = "" And txtsearchid.Text = "" Then
             ErrorProvider1.SetError(txtsearchlname, "employee lastname or id is required")
-            txtsearchlname.BackColor = Color.Red
+
         Else
             ErrorProvider1.SetError(txtsearchlname, String.Empty)
-            txtsearchlname.BackColor = Color.White
+
         End If
     End Sub
 
@@ -291,11 +291,11 @@ Public Class EditEmployee
             If strfname = "" Then
                 inputisallok = False
                 ErrorProvider1.SetError(txtfirstname, "first name required")
-                txtfirstname.BackColor = Color.Red
+
             Else
                 inputisallok = True
                 ErrorProvider1.SetError(txtfirstname, String.Empty)
-                txtfirstname.BackColor = Color.White
+
                 tempemp.FirstName = strfname
             End If
 
@@ -304,10 +304,10 @@ Public Class EditEmployee
             ' Dim strmidinit As String = txtmiddleinit.Text
             If IsNumeric(txtmiddleinit.Text) Then
                 ErrorProvider1.SetError(txtmiddleinit, "middle initial cant be a number")
-                txtmiddleinit.BackColor = Color.Red
+
             Else
                 ErrorProvider1.SetError(txtmiddleinit, String.Empty)
-                txtmiddleinit.BackColor = Color.White
+
                 tempemp.MiddleInt = txtmiddleinit.Text
             End If
 
@@ -329,27 +329,29 @@ Public Class EditEmployee
                 tempemp.LastName = strlname
                 inputisallok = True
                 ErrorProvider1.SetError(txtlastname, String.Empty)
-                txtfirstname.BackColor = Color.White
+
             Catch ex As Exception
                 inputisallok = False
                 ErrorProvider1.SetError(txtlastname, ex.Message)
-                txtlastname.BackColor = Color.Red
+
             End Try
 
 
             '----------------------------------------------------------------
             Dim dateofbirth As Date = dtpdateofbirth.Value
             tempemp.DOB = dateofbirth
+            '    MessageBox.Show(dtpdateofbirth.ToString())
+            '   MessageBox.Show(dateofbirth.ToString())
             '----------------------------------------------------------------
             Dim strsin As String = txtsin.Text
             If strsin = "" Then
                 inputisallok = False
                 ErrorProvider1.SetError(txtsin, "sin required")
-                txtsin.BackColor = Color.Red
+
             Else
                 inputisallok = True
                 ErrorProvider1.SetError(txtsin, String.Empty)
-                txtsin.BackColor = Color.White
+
                 tempemp.SIN = strsin
             End If
 
@@ -358,10 +360,10 @@ Public Class EditEmployee
             Dim straddress As String = txtstreetaddress.Text
             If straddress = "" Then
                 ErrorProvider1.SetError(txtstreetaddress, "address required")
-                txtstreetaddress.BackColor = Color.Red
+
             Else
                 ErrorProvider1.SetError(txtstreetaddress, String.Empty)
-                txtstreetaddress.BackColor = Color.White
+
                 tempemp.Address = straddress
             End If
             '----------------------------------------------------------------
@@ -369,10 +371,10 @@ Public Class EditEmployee
 
             If strcity = "" Then
                 ErrorProvider1.SetError(txtcity, "city required")
-                txtcity.BackColor = Color.Red
+
             Else
                 ErrorProvider1.SetError(txtcity, String.Empty)
-                txtcity.BackColor = Color.White
+
                 tempemp.City = strcity
             End If
             '----------------------------------------------------------------
@@ -380,24 +382,17 @@ Public Class EditEmployee
 
             If strpostal = "" Then
                 ErrorProvider1.SetError(txtpostal, "postal required")
-                txtpostal.BackColor = Color.Red
+
             Else
                 ErrorProvider1.SetError(txtpostal, String.Empty)
-                txtpostal.BackColor = Color.White
+
                 tempemp.Postal = strpostal
             End If
             '----------------------------------------------------------------
 
             mtxcellphone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals
             Dim strcellphone As String = mtxcellphone.Text
-            'If strcellphone = "" Then
-            '    ErrorProvider1.SetError(mtxcellphone, "cell phone required")
-            '    mtxcellphone.BackColor = Color.Red
-            'Else
-            '    ErrorProvider1.SetError(mtxcellphone, String.Empty)
-            '    mtxcellphone.BackColor = Color.White
-            '    myemp.Cell = strcellphone
-            'End If
+           
 
 
 
@@ -405,11 +400,11 @@ Public Class EditEmployee
                 tempemp.Cell = strcellphone
                 ' inputisallok = True
                 ErrorProvider1.SetError(mtxcellphone, String.Empty)
-                mtxcellphone.BackColor = Color.White
+
             Catch ex As Exception
                 ' inputisallok = False
                 ErrorProvider1.SetError(mtxcellphone, ex.Message)
-                mtxcellphone.BackColor = Color.Red
+
             End Try
 
 
@@ -419,10 +414,10 @@ Public Class EditEmployee
             Dim strworkphone As String = mtxworkphone.Text
             If strworkphone = "" Then
                 ErrorProvider1.SetError(mtxworkphone, "work phone required")
-                mtxworkphone.BackColor = Color.Red
+
             Else
                 ErrorProvider1.SetError(mtxworkphone, String.Empty)
-                mtxworkphone.BackColor = Color.White
+
                 tempemp.Phone = strworkphone
             End If
             '----------------------------------------------------------------
@@ -430,17 +425,17 @@ Public Class EditEmployee
 
             If stremail = "" Then
                 ErrorProvider1.SetError(txtemail, "email required")
-                txtemail.BackColor = Color.Red
+
             Else
                 ErrorProvider1.SetError(txtemail, String.Empty)
-                txtemail.BackColor = Color.White
+
                 tempemp.Email = stremail
             End If
             '----------------------------------------------------------------
             Dim intdept As Integer = CInt(cbodept.SelectedValue)
             tempemp.DeptID = intdept
 
-            MsgBox("the deptid is:" & intdept, MsgBoxStyle.OkOnly, "intdept")
+            '  MsgBox("the deptid is:" & intdept, MsgBoxStyle.OkOnly, "intdept")
             '----------------------------------------------------------------
             'Dim intsuper As Integer = cbosupervisor.SelectedValue
             ' myemp.SupervisorID = intsuper
@@ -449,7 +444,7 @@ Public Class EditEmployee
             '----------------------------------------------------------------
             Dim intjob As Integer = CInt(cbojobid.SelectedValue)
             tempemp.JobID = intjob
-            MsgBox("the jobid is:" & intjob, MsgBoxStyle.OkOnly, "intjob")
+            '  MsgBox("the jobid is:" & intjob, MsgBoxStyle.OkOnly, "intjob")
 
             '----------------------------------------------------------------
             Dim dblpayrate As Double
@@ -462,35 +457,50 @@ Public Class EditEmployee
             Dim strpayrate As String = txtpayrate.Text
             If strpayrate = "" Then
                 ErrorProvider1.SetError(txtpayrate, "payrate required")
-                txtpayrate.BackColor = Color.Red
+
             Else
                 ErrorProvider1.SetError(txtpayrate, String.Empty)
-                txtpayrate.BackColor = Color.White
+
                 tempemp.PayRate = CDbl(strpayrate)
             End If
             '--------------------------------------
             Dim strprov As String = cboProv.Text
             If strprov = "" Then
                 ErrorProvider1.SetError(cboProv, "item required")
-                cboProv.BackColor = Color.Red
+
             Else
                 ErrorProvider1.SetError(cboProv, String.Empty)
-                cboProv.BackColor = Color.White
+
                 ' myemp.FirstName = strfname
                 tempemp.Prov = strprov
             End If
 
             'Dim strprov As String = cboProv.SelectedItem
-            MsgBox("the prov is:" & strprov, MsgBoxStyle.OkOnly, "strprov")
+            '  MsgBox("the prov is:" & strprov, MsgBoxStyle.OkOnly, "strprov")
             '
             '----------------------------------------------------------------
 
             '------------------------------------
             tempemp.PayRate = dblpayrate
             '----------------------------------------------------------------
-            tempemp.SeniorityDate = Date.Now
+            Dim SeniorityDate As Date = dtpsenority.Value
+            tempemp.SeniorityDate = SeniorityDate
+
+            '  MessageBox.Show(dtpsenority.ToString())
+            '  MessageBox.Show(SeniorityDate.ToString())
             '----------------------------------------------------------------
-            tempemp.JobStartDate = Date.Now
+            ' tempemp.JobStartDate = Date.Now
+            Dim JobStartDate As Date = dtpstartdate.Value
+            tempemp.JobStartDate = JobStartDate
+
+            '  MessageBox.Show(dtpstartdate.ToString())
+            '   MessageBox.Show(JobStartDate.ToString())
+
+            Dim TerminationDate As Date = dtpterminationdate.Value
+            tempemp.TerminationDate = TerminationDate
+
+            '  MessageBox.Show(dtpterminationdate.ToString())
+            '  MessageBox.Show(TerminationDate.ToString())
             '----------------------------------------------------------------
             If chkemailstub.Checked = True Then
                 tempemp.EmailNotification = True
@@ -503,13 +513,13 @@ Public Class EditEmployee
                 done = Employee.update(tempemp)
             End If
 
-            If done > 0 Then
-                lbldebug.Text = "saved,Employee ID:" & done.ToString
-                'MessageBox.Show("saved,Employee ID:" & done.ToString, "info", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Else
-                lbldebug.Text = "save failed,fix the errors and try again"
-                'MessageBox.Show("save failed,fix the errors and try again", "info", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End If
+            ' If done > 0 Then
+            lbldebug.Text = "saved" ',Employee ID:" & done.ToString
+            'MessageBox.Show("saved,Employee ID:" & done.ToString, "info", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            'Else
+            '    lbldebug.Text = "save failed,fix the errors and try again"
+            '    'MessageBox.Show("save failed,fix the errors and try again", "info", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            'End If
 
         Catch ex As Exception
             ' MessageBox.Show(ex.Message.ToString, "error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -520,5 +530,21 @@ Public Class EditEmployee
     Private Sub EditEmployee_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         grbsearchresults.Visible = False
         grbempinfo.Visible = False
+    End Sub
+
+    Private Sub dtpsenority_ValueChanged(sender As Object, e As EventArgs) Handles dtpsenority.ValueChanged
+
+    End Sub
+
+    Private Sub dtpstartdate_ValueChanged(sender As Object, e As EventArgs) Handles dtpstartdate.ValueChanged
+
+    End Sub
+
+    Private Sub dtpterminationdate_ValueChanged(sender As Object, e As EventArgs) Handles dtpterminationdate.ValueChanged
+
+    End Sub
+
+    Private Sub dtpdateofbirth_ValueChanged(sender As Object, e As EventArgs) Handles dtpdateofbirth.ValueChanged
+
     End Sub
 End Class

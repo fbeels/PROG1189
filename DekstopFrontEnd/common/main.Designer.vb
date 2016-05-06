@@ -45,6 +45,8 @@ Partial Class main
         Me.btnmodPO = New System.Windows.Forms.Button()
         Me.btncreatePO = New System.Windows.Forms.Button()
         Me.TabControl1 = New MdiTabControl.TabControl()
+        Me.cboUser = New System.Windows.Forms.ComboBox()
+        Me.lbluser = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -108,7 +110,7 @@ Partial Class main
         '
         Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 845)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 991)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(2, 0, 21, 0)
         Me.StatusStrip1.Size = New System.Drawing.Size(1506, 30)
@@ -163,6 +165,8 @@ Partial Class main
         'SplitContainer1.Panel1
         '
         Me.SplitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Info
+        Me.SplitContainer1.Panel1.Controls.Add(Me.lbluser)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.cboUser)
         Me.SplitContainer1.Panel1.Controls.Add(Me.grbHR)
         Me.SplitContainer1.Panel1.Controls.Add(Me.btnmodPO)
         Me.SplitContainer1.Panel1.Controls.Add(Me.btncreatePO)
@@ -171,7 +175,7 @@ Partial Class main
         '
         Me.SplitContainer1.Panel2.BackColor = System.Drawing.SystemColors.ControlDark
         Me.SplitContainer1.Panel2.Controls.Add(Me.TabControl1)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1506, 779)
+        Me.SplitContainer1.Size = New System.Drawing.Size(1506, 925)
         Me.SplitContainer1.SplitterDistance = 270
         Me.SplitContainer1.SplitterWidth = 6
         Me.SplitContainer1.TabIndex = 3
@@ -231,7 +235,7 @@ Partial Class main
         '
         'btnmodPO
         '
-        Me.btnmodPO.Location = New System.Drawing.Point(33, 91)
+        Me.btnmodPO.Location = New System.Drawing.Point(33, 277)
         Me.btnmodPO.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnmodPO.Name = "btnmodPO"
         Me.btnmodPO.Size = New System.Drawing.Size(202, 35)
@@ -241,7 +245,7 @@ Partial Class main
         '
         'btncreatePO
         '
-        Me.btncreatePO.Location = New System.Drawing.Point(33, 26)
+        Me.btncreatePO.Location = New System.Drawing.Point(33, 212)
         Me.btncreatePO.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btncreatePO.Name = "btncreatePO"
         Me.btncreatePO.Size = New System.Drawing.Size(202, 35)
@@ -260,11 +264,28 @@ Partial Class main
         Me.TabControl1.TabCloseButtonImageHot = Nothing
         Me.TabControl1.TabIndex = 0
         '
+        'cboUser
+        '
+        Me.cboUser.FormattingEnabled = True
+        Me.cboUser.Location = New System.Drawing.Point(29, 64)
+        Me.cboUser.Name = "cboUser"
+        Me.cboUser.Size = New System.Drawing.Size(216, 28)
+        Me.cboUser.TabIndex = 9
+        '
+        'lbluser
+        '
+        Me.lbluser.AutoSize = True
+        Me.lbluser.Location = New System.Drawing.Point(29, 26)
+        Me.lbluser.Name = "lbluser"
+        Me.lbluser.Size = New System.Drawing.Size(121, 20)
+        Me.lbluser.TabIndex = 10
+        Me.lbluser.Text = "Logged in User:"
+        '
         'main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1506, 875)
+        Me.ClientSize = New System.Drawing.Size(1506, 1021)
         Me.Controls.Add(Me.SplitContainer1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.StatusStrip1)
@@ -281,6 +302,7 @@ Partial Class main
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         Me.SplitContainer1.Panel1.ResumeLayout(False)
+        Me.SplitContainer1.Panel1.PerformLayout()
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
@@ -311,4 +333,6 @@ Partial Class main
     Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripLabel1 As System.Windows.Forms.ToolStripLabel
     Friend WithEvents ToolStripLabel2 As System.Windows.Forms.ToolStripLabel
+    Friend WithEvents lbluser As System.Windows.Forms.Label
+    Friend WithEvents cboUser As System.Windows.Forms.ComboBox
 End Class

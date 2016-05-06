@@ -1,6 +1,9 @@
 ﻿Imports BOL
 
+
+
 Public Class main
+    ' Global glbLoggedinUser As Integer
 
     Private Sub btnAddEmp_Click(sender As Object, e As EventArgs) Handles btnAddEmp.Click
         If TabControl1.Contains(AddEmployee) Then
@@ -57,6 +60,17 @@ Public Class main
 
 
     Private Sub main_Load(sender As Object, e As EventArgs) Handles Me.Load
+
+
+        Dim allemps = New List(Of Employee)
+        allemps = Employee.GetAllEmpsInDept(0)
+        If allemps.Count > 0 Then
+            cboUser.DataSource = allemps
+            cboUser.DisplayMember = "lastname"    ' indicate property name of obj to SHOW
+            cboUser.ValueMember = "empid"     ' prop name of object to return
+        End If
+
+
 
         ' Dim thispayperiod As PayPeriod
 
@@ -118,4 +132,8 @@ Public Class main
     End Sub
 
 
+    Private Sub cboUser_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboUser.SelectionChangeCommitted
+
+
+    End Sub
 End Class

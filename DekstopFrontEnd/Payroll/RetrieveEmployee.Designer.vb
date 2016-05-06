@@ -74,7 +74,6 @@ Partial Class RetrieveEmployee
         Me.lstsearchresults = New System.Windows.Forms.ListBox()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.lblnomatches = New System.Windows.Forms.Label()
-        Me.chkreadonly = New System.Windows.Forms.CheckBox()
         Me.grbsearch.SuspendLayout()
         Me.grbempinfo.SuspendLayout()
         Me.grbsearchresults.SuspendLayout()
@@ -225,9 +224,9 @@ Partial Class RetrieveEmployee
         Me.lblsenoritydate.AutoSize = True
         Me.lblsenoritydate.Location = New System.Drawing.Point(730, 238)
         Me.lblsenoritydate.Name = "lblsenoritydate"
-        Me.lblsenoritydate.Size = New System.Drawing.Size(111, 20)
+        Me.lblsenoritydate.Size = New System.Drawing.Size(109, 20)
         Me.lblsenoritydate.TabIndex = 73
-        Me.lblsenoritydate.Text = "Seniority DAte"
+        Me.lblsenoritydate.Text = "Seniority Date"
         '
         'dtpterminationdate
         '
@@ -436,9 +435,9 @@ Partial Class RetrieveEmployee
         Me.lblemail.Location = New System.Drawing.Point(406, 259)
         Me.lblemail.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblemail.Name = "lblemail"
-        Me.lblemail.Size = New System.Drawing.Size(46, 20)
+        Me.lblemail.Size = New System.Drawing.Size(48, 20)
         Me.lblemail.TabIndex = 48
-        Me.lblemail.Text = "email"
+        Me.lblemail.Text = "Email"
         '
         'lblcellphone
         '
@@ -476,9 +475,9 @@ Partial Class RetrieveEmployee
         Me.lblcity.Location = New System.Drawing.Point(420, 83)
         Me.lblcity.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblcity.Name = "lblcity"
-        Me.lblcity.Size = New System.Drawing.Size(32, 20)
+        Me.lblcity.Size = New System.Drawing.Size(35, 20)
         Me.lblcity.TabIndex = 44
-        Me.lblcity.Text = "city"
+        Me.lblcity.Text = "City"
         '
         'lblprov
         '
@@ -595,21 +594,11 @@ Partial Class RetrieveEmployee
         Me.lblnomatches.TabIndex = 9
         Me.lblnomatches.Text = "No matches found"
         '
-        'chkreadonly
-        '
-        Me.chkreadonly.AutoSize = True
-        Me.chkreadonly.Location = New System.Drawing.Point(1150, 44)
-        Me.chkreadonly.Name = "chkreadonly"
-        Me.chkreadonly.Size = New System.Drawing.Size(22, 21)
-        Me.chkreadonly.TabIndex = 10
-        Me.chkreadonly.UseVisualStyleBackColor = True
-        '
         'RetrieveEmployee
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1196, 818)
-        Me.Controls.Add(Me.chkreadonly)
         Me.Controls.Add(Me.lblnomatches)
         Me.Controls.Add(Me.grbsearchresults)
         Me.Controls.Add(Me.lbldebug)
@@ -679,5 +668,4 @@ Partial Class RetrieveEmployee
     Friend WithEvents ErrorProvider1 As System.Windows.Forms.ErrorProvider
     Friend WithEvents lblnomatches As System.Windows.Forms.Label
     Friend WithEvents lblsuper As System.Windows.Forms.Label
-    Friend WithEvents chkreadonly As System.Windows.Forms.CheckBox
 End Class

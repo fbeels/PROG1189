@@ -256,16 +256,83 @@ namespace BOL
         }
 
         
-        public DateTime SeniorityDate { get; set; }
+        //public DateTime SeniorityDate { get; set; }
+        DateTime _SeniorityDate;
+        public DateTime SeniorityDate
+        {
+            get
+            {
+                return this._SeniorityDate;
+            }
+            set
+            {
+                string startdate = "01/01/1500";
+                DateTime dtstart = Convert.ToDateTime(startdate);
+                if (value >= dtstart && value < Convert.ToDateTime("12/31/2222"))
+                {         
+                    this._SeniorityDate = value;
+                }
+                else
+                {
+                    throw new System.ArgumentException("from class: seniority date outside range");
+                }
 
-        public DateTime JobStartDate { get; set; }
+            }
+        }
+
+       // public DateTime JobStartDate { get; set; }
+        DateTime _JobStartDate;
+        public DateTime JobStartDate
+        {
+            get
+            {
+                return this._JobStartDate;
+            }
+            set
+            {
+                string startdate = "01/01/1500";
+                DateTime dtstart = Convert.ToDateTime(startdate);
+                if (value >= dtstart && value < Convert.ToDateTime("12/31/2222"))
+                {
+                    this._JobStartDate = value;
+                }
+                else
+                {
+                    throw new System.ArgumentException("from class: start date outside range");
+                }
+
+            }
+        }
         
         public int JobID { get; set; }
         public int DeptID { get; set; }
         public int SupervisorID { get; set; }
         public string supervisorName { get; set;}
         public double PayRate { get; set; }
-        public DateTime TerminationDate { get; set; }
+        
+        
+       // public DateTime TerminationDate { get; set; }
+        DateTime _TerminationDate;
+        public DateTime  TerminationDate
+        {
+            get
+            {
+                return this._TerminationDate;
+            }
+            set
+            {
+                if (value >= Convert.ToDateTime("01/01/1500") && value <= Convert.ToDateTime("12/31/2222"))
+                {
+                    this._TerminationDate = value;
+                }
+                else
+                {
+                    throw new System.ArgumentException("from class: termination date outside range");
+                }
+
+            }
+        }
+
         public bool EmailNotification { get; set; }
         public int empstatus { get; set; }
 
@@ -394,6 +461,7 @@ namespace BOL
         }
 
         static public bool update(Employee emp)
+        
         {
             return RePackagerDt2Bool(EmployeeSQL.UpdateEmp(emp));
         }

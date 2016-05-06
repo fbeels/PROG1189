@@ -1,51 +1,35 @@
 ﻿Imports BOL
 Public Class RetrieveEmployee
     Dim tempemp As Employee = Employee.create()
-    Dim blreadonly As Boolean = True
+
 
     Private Sub btnsearch_Click(sender As Object, e As EventArgs) Handles btnsearch.Click
         Dim searchempid As Integer
 
         Dim idinvalid As Boolean = False
         '//////////////////////////////////////////////////////////////////////////////
-        'If txtsearchid.Text = "" Then
-        '    '  ErrorProvider1.SetError(txtsearchid, String.Empty)
-        '    txtsearchid.BackColor = Color.Red
-        '    idinvalid = True
-        'Else
-        '    Try
-        '        tempemp.EmpID = txtsearchid.Text
-        '        '     ErrorProvider1.SetError(txtsearchid, String.Empty)
-        '        txtsearchid.BackColor = Color.White
-        '        searchempid = txtsearchid.Text
-        '    Catch ex As ConstraintException
-        '        '     ErrorProvider1.SetError(txtsearchid, ex.Message)
-        '        txtsearchid.BackColor = Color.Red
-        '        idinvalid = True
-        '    End Try
-        'End If
-        ' Dim strmint As String = txtmiddleinit.Text
+     
         If IsNumeric(txtsearchid.Text) And (txtsearchid.TextLength > 0) Then
             If txtsearchid.TextLength = 8 Then
                 ErrorProvider1.SetError(txtsearchid, String.Empty)
-                txtsearchid.BackColor = Color.White
+
                 searchempid = txtsearchid.Text
                 idinvalid = False
                 tempemp.EmpID = txtsearchid.Text
             Else
                 ErrorProvider1.SetError(txtsearchid, "invalid employee id length")
-                txtsearchid.BackColor = Color.Red
+
                 idinvalid = True
             End If
 
         Else
             If txtsearchlname.Text = "" And txtsearchid.Text = "" Then
                 ErrorProvider1.SetError(txtsearchid, "employee lastname or id is required")
-                txtsearchid.BackColor = Color.Red
+
                 idinvalid = True
             Else
                 ErrorProvider1.SetError(txtsearchid, "employee must be a number")
-                txtsearchid.BackColor = Color.Red
+
                 idinvalid = True
             End If
 
@@ -57,29 +41,13 @@ Public Class RetrieveEmployee
 
         Dim searchlname As String = txtsearchlname.Text
 
-        'If txtsearchlname.Text = "" Then
-        '    '  ErrorProvider1.SetError(txtsearchid, String.Empty)
-        '    txtsearchlname.BackColor = Color.Red
-        '    lnameinvalid = True
-        'Else
-        '    Try
-        '        tempemp.LastName = txtsearchlname.Text
-        '        '     ErrorProvider1.SetError(txtsearchid, String.Empty)
-        '        txtsearchlname.BackColor = Color.White
-        '        searchlname = txtsearchlname.Text
-        '    Catch ex As ConstraintException
-        '        '     ErrorProvider1.SetError(txtsearchid, ex.Message)
-        '        txtsearchlname.BackColor = Color.Red
-        '        lnameinvalid = True
-        '    End Try
-        'End If
         If (txtsearchlname.Text = "") And (txtsearchid.Text = "") Then
             ErrorProvider1.SetError(txtsearchlname, "employee lastname or id is required")
-            txtsearchlname.BackColor = Color.Red
+
             lnameinvalid = True
         Else
             ErrorProvider1.SetError(txtsearchlname, String.Empty)
-            txtsearchlname.BackColor = Color.White
+
             searchlname = txtsearchlname.Text
             lnameinvalid = False
 
@@ -252,7 +220,7 @@ Public Class RetrieveEmployee
     Private Sub RetrieveEmployee_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         grbsearchresults.Visible = False
         grbempinfo.Visible = False
-        If chkreadonly.Checked Then blreadonly = True
+
     End Sub
 
     Private Sub txtsearchid_GotFocus(sender As Object, e As EventArgs) Handles txtsearchid.GotFocus
@@ -264,21 +232,21 @@ Public Class RetrieveEmployee
         If IsNumeric(txtsearchid.Text) And (txtsearchid.TextLength > 0) Then
             If txtsearchid.TextLength = 8 Then
                 ErrorProvider1.SetError(txtsearchid, String.Empty)
-                txtsearchid.BackColor = Color.White
+
             Else
                 ErrorProvider1.SetError(txtsearchid, "invalid employee id length")
-                txtsearchid.BackColor = Color.Red
+
             End If
 
         Else
             If txtsearchlname.Text = "" And txtsearchid.Text = "" Then
                 ErrorProvider1.SetError(txtsearchid, "employee lastname or id is required")
-                txtsearchid.BackColor = Color.Red
+
                 ''elseIf 
 
             Else
                 ErrorProvider1.SetError(txtsearchid, "employee must be a number")
-                txtsearchid.BackColor = Color.Red
+
             End If
 
 
@@ -293,10 +261,10 @@ Public Class RetrieveEmployee
     Private Sub txtsearchlname_Leave(sender As Object, e As EventArgs) Handles txtsearchlname.Leave
         If txtsearchlname.Text = "" And txtsearchid.Text = "" Then
             ErrorProvider1.SetError(txtsearchlname, "employee lastname or id is required")
-            txtsearchlname.BackColor = Color.Red
+
         Else
             ErrorProvider1.SetError(txtsearchlname, String.Empty)
-            txtsearchlname.BackColor = Color.White
+
         End If
     End Sub
 

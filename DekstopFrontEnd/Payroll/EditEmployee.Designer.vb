@@ -28,6 +28,10 @@ Partial Class EditEmployee
         Me.btnselect = New System.Windows.Forms.Button()
         Me.lstsearchresults = New System.Windows.Forms.ListBox()
         Me.grbempinfo = New System.Windows.Forms.GroupBox()
+        Me.txtempid = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.chkemailstub = New System.Windows.Forms.CheckBox()
+        Me.lblsuperid = New System.Windows.Forms.Label()
         Me.lblsuper = New System.Windows.Forms.Label()
         Me.lbltermination = New System.Windows.Forms.Label()
         Me.lblstartdate = New System.Windows.Forms.Label()
@@ -75,20 +79,18 @@ Partial Class EditEmployee
         Me.btnSave = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.lbldebug = New System.Windows.Forms.Label()
-        Me.lblsuperid = New System.Windows.Forms.Label()
-        Me.chkemailstub = New System.Windows.Forms.CheckBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtempid = New System.Windows.Forms.TextBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.grbsearchresults.SuspendLayout()
         Me.grbempinfo.SuspendLayout()
         Me.grbsearch.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'lblnomatches
         '
         Me.lblnomatches.AutoSize = True
-        Me.lblnomatches.Location = New System.Drawing.Point(734, 155)
+        Me.lblnomatches.Location = New System.Drawing.Point(729, 155)
         Me.lblnomatches.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblnomatches.Name = "lblnomatches"
         Me.lblnomatches.Size = New System.Drawing.Size(139, 20)
@@ -99,7 +101,7 @@ Partial Class EditEmployee
         '
         Me.grbsearchresults.Controls.Add(Me.btnselect)
         Me.grbsearchresults.Controls.Add(Me.lstsearchresults)
-        Me.grbsearchresults.Location = New System.Drawing.Point(528, 14)
+        Me.grbsearchresults.Location = New System.Drawing.Point(523, 14)
         Me.grbsearchresults.Name = "grbsearchresults"
         Me.grbsearchresults.Size = New System.Drawing.Size(596, 138)
         Me.grbsearchresults.TabIndex = 13
@@ -170,7 +172,7 @@ Partial Class EditEmployee
         Me.grbempinfo.Controls.Add(Me.lblfirstname)
         Me.grbempinfo.Controls.Add(Me.lblmiddleint)
         Me.grbempinfo.Controls.Add(Me.lbllastname)
-        Me.grbempinfo.Location = New System.Drawing.Point(14, 195)
+        Me.grbempinfo.Location = New System.Drawing.Point(9, 195)
         Me.grbempinfo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.grbempinfo.Name = "grbempinfo"
         Me.grbempinfo.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -178,6 +180,41 @@ Partial Class EditEmployee
         Me.grbempinfo.TabIndex = 12
         Me.grbempinfo.TabStop = False
         Me.grbempinfo.Text = "Employee Info"
+        '
+        'txtempid
+        '
+        Me.txtempid.Location = New System.Drawing.Point(137, 37)
+        Me.txtempid.Name = "txtempid"
+        Me.txtempid.Size = New System.Drawing.Size(173, 26)
+        Me.txtempid.TabIndex = 80
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(21, 43)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(104, 20)
+        Me.Label3.TabIndex = 79
+        Me.Label3.Text = "Employee ID:"
+        '
+        'chkemailstub
+        '
+        Me.chkemailstub.AutoSize = True
+        Me.chkemailstub.Location = New System.Drawing.Point(72, 301)
+        Me.chkemailstub.Name = "chkemailstub"
+        Me.chkemailstub.Size = New System.Drawing.Size(146, 24)
+        Me.chkemailstub.TabIndex = 78
+        Me.chkemailstub.Text = "Email pay stubs"
+        Me.chkemailstub.UseVisualStyleBackColor = True
+        '
+        'lblsuperid
+        '
+        Me.lblsuperid.AutoSize = True
+        Me.lblsuperid.Location = New System.Drawing.Point(991, 76)
+        Me.lblsuperid.Name = "lblsuperid"
+        Me.lblsuperid.Size = New System.Drawing.Size(61, 20)
+        Me.lblsuperid.TabIndex = 77
+        Me.lblsuperid.Text = "superid"
         '
         'lblsuper
         '
@@ -211,9 +248,9 @@ Partial Class EditEmployee
         Me.lblsenoritydate.AutoSize = True
         Me.lblsenoritydate.Location = New System.Drawing.Point(730, 238)
         Me.lblsenoritydate.Name = "lblsenoritydate"
-        Me.lblsenoritydate.Size = New System.Drawing.Size(111, 20)
+        Me.lblsenoritydate.Size = New System.Drawing.Size(109, 20)
         Me.lblsenoritydate.TabIndex = 73
-        Me.lblsenoritydate.Text = "Seniority DAte"
+        Me.lblsenoritydate.Text = "Seniority Date"
         '
         'dtpterminationdate
         '
@@ -422,9 +459,9 @@ Partial Class EditEmployee
         Me.lblemail.Location = New System.Drawing.Point(406, 259)
         Me.lblemail.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblemail.Name = "lblemail"
-        Me.lblemail.Size = New System.Drawing.Size(46, 20)
+        Me.lblemail.Size = New System.Drawing.Size(48, 20)
         Me.lblemail.TabIndex = 48
-        Me.lblemail.Text = "email"
+        Me.lblemail.Text = "Email"
         '
         'lblcellphone
         '
@@ -462,9 +499,9 @@ Partial Class EditEmployee
         Me.lblcity.Location = New System.Drawing.Point(420, 83)
         Me.lblcity.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblcity.Name = "lblcity"
-        Me.lblcity.Size = New System.Drawing.Size(32, 20)
+        Me.lblcity.Size = New System.Drawing.Size(35, 20)
         Me.lblcity.TabIndex = 44
-        Me.lblcity.Text = "city"
+        Me.lblcity.Text = "City"
         '
         'lblprov
         '
@@ -533,7 +570,7 @@ Partial Class EditEmployee
         Me.grbsearch.Controls.Add(Me.txtsearchid)
         Me.grbsearch.Controls.Add(Me.Label2)
         Me.grbsearch.Controls.Add(Me.Label1)
-        Me.grbsearch.Location = New System.Drawing.Point(13, 14)
+        Me.grbsearch.Location = New System.Drawing.Point(8, 14)
         Me.grbsearch.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.grbsearch.Name = "grbsearch"
         Me.grbsearch.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -591,7 +628,7 @@ Partial Class EditEmployee
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(516, 566)
+        Me.btnSave.Location = New System.Drawing.Point(511, 566)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(284, 68)
         Me.btnSave.TabIndex = 15
@@ -605,58 +642,32 @@ Partial Class EditEmployee
         'lbldebug
         '
         Me.lbldebug.AutoSize = True
-        Me.lbldebug.Location = New System.Drawing.Point(56, 590)
+        Me.lbldebug.Location = New System.Drawing.Point(51, 590)
         Me.lbldebug.Name = "lbldebug"
         Me.lbldebug.Size = New System.Drawing.Size(57, 20)
         Me.lbldebug.TabIndex = 16
         Me.lbldebug.Text = "Label3"
         '
-        'lblsuperid
+        'GroupBox1
         '
-        Me.lblsuperid.AutoSize = True
-        Me.lblsuperid.Location = New System.Drawing.Point(991, 76)
-        Me.lblsuperid.Name = "lblsuperid"
-        Me.lblsuperid.Size = New System.Drawing.Size(61, 20)
-        Me.lblsuperid.TabIndex = 77
-        Me.lblsuperid.Text = "superid"
-        '
-        'chkemailstub
-        '
-        Me.chkemailstub.AutoSize = True
-        Me.chkemailstub.Location = New System.Drawing.Point(72, 301)
-        Me.chkemailstub.Name = "chkemailstub"
-        Me.chkemailstub.Size = New System.Drawing.Size(146, 24)
-        Me.chkemailstub.TabIndex = 78
-        Me.chkemailstub.Text = "Email pay stubs"
-        Me.chkemailstub.UseVisualStyleBackColor = True
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(21, 43)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(104, 20)
-        Me.Label3.TabIndex = 79
-        Me.Label3.Text = "Employee ID:"
-        '
-        'txtempid
-        '
-        Me.txtempid.Location = New System.Drawing.Point(137, 37)
-        Me.txtempid.Name = "txtempid"
-        Me.txtempid.Size = New System.Drawing.Size(173, 26)
-        Me.txtempid.TabIndex = 80
+        Me.GroupBox1.Controls.Add(Me.lbldebug)
+        Me.GroupBox1.Controls.Add(Me.btnSave)
+        Me.GroupBox1.Controls.Add(Me.lblnomatches)
+        Me.GroupBox1.Controls.Add(Me.grbsearchresults)
+        Me.GroupBox1.Controls.Add(Me.grbempinfo)
+        Me.GroupBox1.Controls.Add(Me.grbsearch)
+        Me.GroupBox1.Location = New System.Drawing.Point(5, 0)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(1178, 658)
+        Me.GroupBox1.TabIndex = 17
+        Me.GroupBox1.TabStop = False
         '
         'EditEmployee
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1191, 748)
-        Me.Controls.Add(Me.lbldebug)
-        Me.Controls.Add(Me.btnSave)
-        Me.Controls.Add(Me.lblnomatches)
-        Me.Controls.Add(Me.grbsearchresults)
-        Me.Controls.Add(Me.grbempinfo)
-        Me.Controls.Add(Me.grbsearch)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Name = "EditEmployee"
         Me.Text = "EditEmployee"
         Me.grbsearchresults.ResumeLayout(False)
@@ -665,8 +676,9 @@ Partial Class EditEmployee
         Me.grbsearch.ResumeLayout(False)
         Me.grbsearch.PerformLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents lblnomatches As System.Windows.Forms.Label
@@ -725,4 +737,5 @@ Partial Class EditEmployee
     Friend WithEvents chkemailstub As System.Windows.Forms.CheckBox
     Friend WithEvents txtempid As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
 End Class

@@ -11,7 +11,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>1.84722in</Height>
+              <Height>1.85417in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -445,7 +445,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!ytd_gross.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <Format>=FormatCurrency(Fields!ytd_gross,2)</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -767,6 +769,36 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <Textbox Name="Textbox1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>This Period</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                          <Top>1.42361in</Top>
+                          <Left>0.25in</Left>
+                          <Height>0.25in</Height>
+                          <Width>1in</Width>
+                          <ZIndex>32</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
                       </ReportItems>
                       <KeepTogether>true</KeepTogether>
                       <Style>
@@ -843,7 +875,7 @@
         <DataSetName>DataSet1</DataSetName>
         <Top>0.0925in</Top>
         <Left>0.08556in</Left>
-        <Height>1.84722in</Height>
+        <Height>1.85417in</Height>
         <Width>8.44444in</Width>
         <Style>
           <Border>
