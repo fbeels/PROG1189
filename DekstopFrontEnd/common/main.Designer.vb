@@ -178,9 +178,9 @@ Partial Class main
         Me.grbHR.Controls.Add(Me.btnsearchEmp)
         Me.grbHR.Controls.Add(Me.btnAddEmp)
         Me.grbHR.Location = New System.Drawing.Point(15, 307)
-        Me.grbHR.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.grbHR.Margin = New System.Windows.Forms.Padding(2)
         Me.grbHR.Name = "grbHR"
-        Me.grbHR.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.grbHR.Padding = New System.Windows.Forms.Padding(2)
         Me.grbHR.Size = New System.Drawing.Size(149, 201)
         Me.grbHR.TabIndex = 8
         Me.grbHR.TabStop = False
@@ -228,7 +228,7 @@ Partial Class main
         Me.btnmodPO.Name = "btnmodPO"
         Me.btnmodPO.Size = New System.Drawing.Size(135, 23)
         Me.btnmodPO.TabIndex = 1
-        Me.btnmodPO.Text = "Modify Purchase Order"
+        Me.btnmodPO.Text = "Process Purchase Order"
         Me.btnmodPO.UseVisualStyleBackColor = True
         '
         'btncreatePO
@@ -243,7 +243,7 @@ Partial Class main
         'TabControl1
         '
         Me.TabControl1.Location = New System.Drawing.Point(2, 2)
-        Me.TabControl1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TabControl1.Margin = New System.Windows.Forms.Padding(2)
         Me.TabControl1.MenuRenderer = Nothing
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.Size = New System.Drawing.Size(876, 603)
