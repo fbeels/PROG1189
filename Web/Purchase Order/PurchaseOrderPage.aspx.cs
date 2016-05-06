@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using BOL;
 using BOL.Purchase_Order;
 using BOL.Purchase_Order_Item;
-using BOL;
 using Common;
-using System.Data;
 
 namespace WebCSharp.PurchaseOrder
 {
@@ -20,17 +19,23 @@ namespace WebCSharp.PurchaseOrder
         bool isEdit = false;
         int PO_ID = 0;
 
-        protected void Page_Load(object sender, System.EventArgs e)
+
+        protected void Page_Load(object sender, EventArgs e)
         {
-            lblDate.Text = System.DateTime.Now.ToShortDateString();
+            setVisibilityOfID(false);
+            setVisibilityOfMoneyLabels(false);
+
+            lblDate.Text = DateTime.Now.ToShortDateString();
 
             if (!Page.IsPostBack)
             {
                 SetInitialRow();
 
-                myPurchaseOrder = BOL.Purchase_Order.PurchaseOrderFactory.Create();
+                myPurchaseOrder = PurchaseOrderFactory.Create();
+                myPurchaseOrder.Items = new List<PurchaseOrderItem>();
 
             }
+
 
             if (Request.QueryString["id"] != null)
             {
@@ -38,10 +43,12 @@ namespace WebCSharp.PurchaseOrder
                 myPurchaseOrder = PurchaseOrderFactory.Create(PO_ID);
                 isEdit = true;
                 lblPage.Text = "Modify Purchase Order";
+
                 if (!Page.IsPostBack)
                 {
                     SetupModify();
                 }
+
             }
             else {
                 lblPage.Text = "Create Purchase Order";
@@ -55,26 +62,21 @@ namespace WebCSharp.PurchaseOrder
             else {
                 myPurchaseOrder = (BOL.Purchase_Order.PurchaseOrder)ViewState["PO"];
             }
+
             loadEmp();
         }
 
-        public void loadEmp()
-        {
-            Employee myEmp = Employee.retrieve(int.Parse(ddlEmployee.Text));
-            lblEmp.Text = myEmp.FirstName + " " + myEmp.LastName;
 
-            Employee sup = Employee.retrieve(myEmp.SupervisorID);
-            lblSuper.Text = sup.FirstName + " " + sup.LastName;
-            Department dept = Department.GetADept(myEmp.DeptID);
-            lblDept.Text = dept.DeptName;
-        }
-
+        /// <summary>
+        /// Loads all relevant data for modifying purchase orders
+        /// </summary>
         public void SetupModify()
         {
             int rowIndex = 0;
 
             for (int i = 0; i <= myPurchaseOrder.Items.Count - 1; i++)
             {
+
                 TextBox txtName = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("txtName");
                 TextBox txtDesc = (TextBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("txtDesc");
                 TextBox txtPrice = (TextBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("txtPrice");
@@ -87,12 +89,25 @@ namespace WebCSharp.PurchaseOrder
                 txtQ.Text = myPurchaseOrder.Items[i].Quantity.ToString();
                 txtStore.Text = myPurchaseOrder.Items[i].Source;
                 txtJust.Text = myPurchaseOrder.Items[i].Justification;
+                if (myPurchaseOrder.Status != OrderStatus.Pending)
+                {
+                    txtDesc.ReadOnly = true;
+                    txtName.ReadOnly = true;
+                    txtPrice.ReadOnly = true;
+                    txtQ.ReadOnly = true;
+                    txtJust.ReadOnly = true;
+                    txtStore.ReadOnly = true;
+                }
                 rowIndex += 1;
                 AddNewRowToGrid(false, true);
             }
         }
 
+
+
+
         #region "Add PO/Items Controls"
+
         protected void ButtonAdd_Click(object sender, EventArgs e)
         {
             AddNewRowToGrid(false, false);
@@ -101,6 +116,9 @@ namespace WebCSharp.PurchaseOrder
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             AddNewRowToGrid(true, false);
+
+            lblError.ForeColor = System.Drawing.Color.Black;
+            lblError.Text = "Order sent!";
         }
 
         /// <summary>
@@ -135,15 +153,10 @@ namespace WebCSharp.PurchaseOrder
             Gridview1.DataBind();
         }
 
-        public void doTaxCalculations()
-        {
-            myPurchaseOrder.SubTotal = myPurchaseOrder.calculateSubtotal();
-            myPurchaseOrder.Tax = myPurchaseOrder.calculateTax();
-            myPurchaseOrder.Total = myPurchaseOrder.calculateTotal();
-        }
+
 
         /// <summary>
-        /// Adds a new row the gridview
+        /// Adds a new row the gridview, and does all insert logic
         /// </summary>
         private void AddNewRowToGrid(bool isSubmit, bool skipInsertLogic)
         {
@@ -170,6 +183,11 @@ namespace WebCSharp.PurchaseOrder
                         drCurrentRow = dtCurrentTable.NewRow();
                         drCurrentRow["RowNumber"] = i + 1;
 
+                        // if its the last row and it's empty, exit looop
+                        if (i == dtCurrentTable.Rows.Count & txtName.Text == string.Empty & txtDesc.Text == string.Empty & txtStore.Text == string.Empty & txtJust.Text == string.Empty)
+                        {
+                            break;
+                        }
 
                         if (skipInsertLogic == false)
                         {
@@ -216,7 +234,7 @@ namespace WebCSharp.PurchaseOrder
                                 if (myPurchaseOrder.PurchaseOrderID == 0)
                                 {
                                     myPurchaseOrder.Items.Insert(rowIndex, item);
-                                    myPurchaseOrder.OrderDate = System.DateTime.Now;
+                                    myPurchaseOrder.OrderDate = DateTime.Now;
                                     myPurchaseOrder.Status = OrderStatus.Pending;
                                     myPurchaseOrder.EmployeeID = int.Parse(ddlEmployee.SelectedValue);
                                     doTaxCalculations();
@@ -234,7 +252,7 @@ namespace WebCSharp.PurchaseOrder
                                     int mergeId = 0;
                                     for (int x = 0; x <= myPurchaseOrder.Items.Count - 1; x++)
                                     {
-                                        if (item.ItemName == myPurchaseOrder.Items[x].ItemName && item.Description == myPurchaseOrder.Items[x].Description && rowIndex == dtCurrentTable.Rows.Count - 1)
+                                        if (item.ItemName == myPurchaseOrder.Items[x].ItemName & item.Description == myPurchaseOrder.Items[x].Description & rowIndex == dtCurrentTable.Rows.Count - 1)
                                         {
                                             merge = true;
                                             mergeId = x;
@@ -260,6 +278,7 @@ namespace WebCSharp.PurchaseOrder
                                         txtStore.Text = string.Empty;
                                         txtJust.Text = string.Empty;
                                         lblStatus.Text = string.Empty;
+                                        SetPreviousData();
                                         return;
                                     }
                                     else if (rowIndex == myPurchaseOrder.Items.Count)
@@ -303,7 +322,8 @@ namespace WebCSharp.PurchaseOrder
                             }
                         }
                         ViewState["PO"] = myPurchaseOrder;
-                        if (rowIndex != dtCurrentTable.Rows.Count - 1)
+
+                        if (rowIndex == dtCurrentTable.Rows.Count - 1 && txtName.Text != string.Empty)
                         {
                             lblStatus.Text = myPurchaseOrder.Items[rowIndex].Status.ToString();
                         }
@@ -334,11 +354,10 @@ namespace WebCSharp.PurchaseOrder
                 Response.Write("ViewState is null");
             }
             SetPreviousData();
-            lblTotal.Text = myPurchaseOrder.calculateTotal().ToString("c2");
-            lblTax.Text = myPurchaseOrder.calculateTax().ToString("c2");
-            lblSubtotal.Text = myPurchaseOrder.calculateSubtotal().ToString("c2");
-            lblID.Text = myPurchaseOrder.PurchaseOrderID.ToString();
+
         }
+
+
         /// <summary>
         /// Sets the previous data in the row
         /// </summary>
@@ -348,10 +367,10 @@ namespace WebCSharp.PurchaseOrder
 
             if (ViewState["CurrentTable"] != null)
             {
-                DataTable dt = (DataTable) ViewState["CurrentTable"];
+                DataTable dt = (DataTable)ViewState["CurrentTable"];
                 if (dt.Rows.Count > 0)
                 {
-                    for (int i = 0; i <= dt.Rows.Count - 1; i++)
+                    for (int i = 0; i <= myPurchaseOrder.Items.Count - 1; i++)
                     {
                         TextBox txtName = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("txtName");
                         TextBox txtDesc = (TextBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("txtDesc");
@@ -361,15 +380,23 @@ namespace WebCSharp.PurchaseOrder
                         TextBox txtJust = (TextBox)Gridview1.Rows[rowIndex].Cells[6].FindControl("txtJust");
                         Label lblStatus = (Label)Gridview1.Rows[rowIndex].Cells[7].FindControl("lblStatus");
                         CheckBox chkNotNeeded = (CheckBox)Gridview1.Rows[rowIndex].Cells[8].FindControl("chkNotNeeded");
-                        txtName.Text = dt.Rows[i]["Column1"].ToString();
-                        txtDesc.Text = dt.Rows[i]["Column2"].ToString();
-                        txtPrice.Text = dt.Rows[i]["Column3"].ToString();
-                        txtQ.Text = dt.Rows[i]["Column4"].ToString();
-                        txtStore.Text = dt.Rows[i]["Column5"].ToString();
-                        txtJust.Text = dt.Rows[i]["Column6"].ToString();
-                        lblStatus.Text = dt.Rows[i]["Column7"].ToString();
+                        txtName.Text = myPurchaseOrder.Items[i].ItemName;
+                        txtDesc.Text = myPurchaseOrder.Items[i].Description;
+                        txtPrice.Text = myPurchaseOrder.Items[i].Price.ToString();
+                        txtQ.Text = myPurchaseOrder.Items[i].Quantity.ToString();
+                        txtStore.Text = myPurchaseOrder.Items[i].Source;
+                        txtJust.Text = myPurchaseOrder.Items[i].Justification;
+                        
+                        if (myPurchaseOrder.Status != OrderStatus.Pending)
+                        {
+                            lblStatus.Text = "Under Review";                            
+                        } else
+                        {
+                            lblStatus.Text = myPurchaseOrder.Items[i].Status.ToString();
+                        }
+                       
 
-                        if (txtDesc.Text == "Not longer needed")
+                        if (txtDesc.Text == "No longer needed")
                         {
                             chkNotNeeded.Checked = true;
                         }
@@ -382,7 +409,64 @@ namespace WebCSharp.PurchaseOrder
                     }
                 }
             }
+
+            lblTotal.Text = myPurchaseOrder.calculateTotal().ToString("c2");
+            lblTax.Text = myPurchaseOrder.calculateTax().ToString("c2");
+            lblSubtotal.Text = myPurchaseOrder.calculateSubtotal().ToString("c2");
+            lblID.Text = myPurchaseOrder.PurchaseOrderID.ToString();
+            lblPOStatus.Text = myPurchaseOrder.Status.ToString();
+            setVisibilityOfMoneyLabels(true);
+            setVisibilityOfID(true);
         }
         #endregion
+
+
+
+
+
+
+        #region "Misc Functions"
+
+
+        /// <summary>
+        /// Calculates the various caluclations in the myPurchaseOrder object.
+        /// </summary>
+        public void doTaxCalculations()
+        {
+            myPurchaseOrder.SubTotal = myPurchaseOrder.calculateSubtotal();
+            myPurchaseOrder.Tax = myPurchaseOrder.calculateTax();
+            myPurchaseOrder.Total = myPurchaseOrder.calculateTotal();
+        }
+
+        /// <summary>
+        /// Sets the visibility of the labels that display the total, subtotal and tax amount
+        /// </summary>
+        /// <param name="value">The value of which to set the visibility to.</param>
+        private void setVisibilityOfMoneyLabels(bool value)
+        {
+            panMoney.Visible = value;
+        }
+        /// <summary>
+        /// Sets the visibility of the Order ID labels.
+        /// </summary>
+        /// <param name="value">Value of which the labels will be set to,</param>
+        private void setVisibilityOfID(bool value)
+        {
+            orderID.Visible = value;
+        }
+        /// <summary>
+        /// Loads the relevant labels with information about the employee, his department and his supervisor
+        /// </summary>
+        public void loadEmp()
+        {
+            Employee myEmp = Employee.retrieve(int.Parse(ddlEmployee.Text));
+            lblEmp.Text = myEmp.FirstName + " " + myEmp.LastName;
+
+            Employee sup = Employee.retrieve(myEmp.SupervisorID);
+            lblSuper.Text = sup.FirstName + " " + sup.LastName;
+            Department dept = Department.GetADept(myEmp.DeptID);
+            lblDept.Text = dept.DeptName;
+        }
+        #endregion     
     }
 }

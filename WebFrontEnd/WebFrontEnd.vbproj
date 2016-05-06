@@ -99,6 +99,7 @@
     <Content Include="css\jquery-ui.css" />
     <Content Include="css\jquery-ui.structure.css" />
     <Content Include="css\jquery-ui.theme.css" />
+    <Content Include="css\style.css" />
     <Content Include="Employee\EditEmployee.aspx" />
     <Content Include="img\acme_logo.png" />
     <Content Include="js\jquery-ui.js" />
@@ -108,6 +109,7 @@
     <Content Include="PurchaseOrder\PurchaseOrderPage.aspx" />
     <Content Include="PurchaseOrder\SearchPO.aspx" />
     <Content Include="PurchaseOrder\SearchPOSupervisor.aspx" />
+    <Content Include="PurchaseOrder\WebForm1.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +179,13 @@
     </Compile>
     <Compile Include="PurchaseOrder\SearchPOSupervisor.aspx.vb">
       <DependentUpon>SearchPOSupervisor.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PurchaseOrder\WebForm1.aspx.designer.vb">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseOrder\WebForm1.aspx.vb">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>

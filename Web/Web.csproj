@@ -69,6 +69,7 @@
     <Content Include="css\jquery-ui.css" />
     <Content Include="css\jquery-ui.structure.css" />
     <Content Include="css\jquery-ui.theme.css" />
+    <Content Include="css\style.css" />
     <Content Include="img\acme_logo.png" />
     <Content Include="js\jquery-ui.js" />
     <Content Include="js\jquery.js" />

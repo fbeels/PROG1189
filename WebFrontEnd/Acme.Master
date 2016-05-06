@@ -1,12 +1,10 @@
 ﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Acme.master.vb" Inherits="WebFrontEnd.Acme" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Acme Stuff</title>
-   
-
+    <link href="css/style.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
@@ -23,9 +21,7 @@
 
             </div>
 
-
-
-            <div >
+            <div>
                 <asp:ContentPlaceHolder ID="Content" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
@@ -34,7 +30,7 @@
                 <asp:Label ID="lblDate" runat="server"></asp:Label>
                 <br />
                 Copyright &copy; 2016 Acme Stuff Company
-        <br />
+                     <br />
 
             </div>
         </div>

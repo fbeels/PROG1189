@@ -20,7 +20,7 @@ namespace WebCSharp.PurchaseOrder
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            if (txtSearchDate.Text == null)
+            if (txtSearchDate.Text == string.Empty)
             {
                 if (txtSearchID.Text == string.Empty)
                 {
@@ -53,7 +53,7 @@ namespace WebCSharp.PurchaseOrder
                 DataRow Row = default(DataRow);
                 Row = Table.NewRow();
                 int id = results[i].PurchaseOrderID;
-                Row["ID"] = "<a href='PurchaseOrder.aspx?id=" + id + "' >" + id + "</a>";
+                Row["ID"] = "<a href='PurchaseOrderPage.aspx?id=" + id + "' >" + id + "</a>";
                 Row["Employee ID"] = results[i].EmployeeID;
                 Row["Status"] = results[i].Status.ToString();
                 Row["Total"] = results[i].Total.ToString("c2");
