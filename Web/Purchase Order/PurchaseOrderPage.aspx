@@ -1,5 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Acme.Master" AutoEventWireup="true" CodeBehind="PurchaseOrderPage.aspx.cs" Inherits="WebCSharp.PurchaseOrder.PurchaseOrder" %>
 
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="http://localhost:61873/css/style.css" rel="stylesheet" />
+</asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <div>
         <asp:DropDownList runat="server" ID="ddlEmployee">
@@ -9,20 +13,34 @@
             <asp:ListItem Value="10000011">Smith, John</asp:ListItem>
         </asp:DropDownList><br />
 
-        <asp:Label runat="server" ID="lblPage" Font-Size="large" /><br />
+        <asp:Label runat="server" ID="lblPage" /><br />
 
         <b>Date: </b>
         <asp:Label runat="server" ID="lblDate" />&nbsp;|&nbsp;
        
+       
+
         <b>Employee: </b>
         <asp:Label runat="server" ID="lblEmp" />&nbsp;|&nbsp;
        
+       
+
         <b>Department: </b>
         <asp:Label runat="server" ID="lblDept" />&nbsp;| &nbsp;
        
-        <b>Supervisor: </b>
-        <asp:Label ID="lblSuper" runat="server" />
+       
 
+        <b>Supervisor: </b>
+        <asp:Label ID="lblSuper" runat="server" /><br />
+
+        <asp:Panel runat="server" ID="orderID">
+            <b>Order ID: </b>
+            <asp:Label Text="" runat="server" ID="lblID" />&nbsp;|&nbsp;
+            <b>Order Status:</b>
+            <asp:Label Text="" runat="server" ID="lblPOStatus" />
+        </asp:Panel>
+
+        <br />
         <hr />
         <br />
         <br />
@@ -77,20 +95,25 @@
             </Columns>
         </asp:GridView>
         <br />
-        <asp:Button Text="Submit" ID="btnSubmit" runat="server" />
-        <b>Order ID: </b>
-        <asp:Label Text="" runat="server" ID="lblID" />
-        <br />
+        <asp:Button Text="Submit" ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" /><br />
 
-        <b>Subtotal: </b>
-        <asp:Label Text="" runat="server" ID="lblSubtotal" />|&nbsp;
+        <asp:Panel runat="server" ID="panMoney">
+
+            <b>Subtotal: </b>
+            <asp:Label Text="" runat="server" ID="lblSubtotal" />|&nbsp;
       
-        <b>Tax: </b>
-        <asp:Label Text="" runat="server" ID="lblTax" />
-        |&nbsp;
        
+
+        <b>Tax: </b>
+            <asp:Label Text="" runat="server" ID="lblTax" />
+            |&nbsp;
+       
+       
+
         <b>Total: </b>
-        <asp:Label Text="" runat="server" ID="lblTotal" />|
-   
+            <asp:Label Text="" runat="server" ID="lblTotal" />
+        </asp:Panel>
+
+
     </div>
 </asp:Content>
