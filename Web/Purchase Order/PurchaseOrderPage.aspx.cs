@@ -76,6 +76,7 @@ namespace WebCSharp.PurchaseOrder
 
             for (int i = 0; i <= myPurchaseOrder.Items.Count - 1; i++)
             {
+
                 TextBox txtName = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("txtName");
                 TextBox txtDesc = (TextBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("txtDesc");
                 TextBox txtPrice = (TextBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("txtPrice");
@@ -88,6 +89,15 @@ namespace WebCSharp.PurchaseOrder
                 txtQ.Text = myPurchaseOrder.Items[i].Quantity.ToString();
                 txtStore.Text = myPurchaseOrder.Items[i].Source;
                 txtJust.Text = myPurchaseOrder.Items[i].Justification;
+                if (myPurchaseOrder.Status != OrderStatus.Pending)
+                {
+                    txtDesc.ReadOnly = true;
+                    txtName.ReadOnly = true;
+                    txtPrice.ReadOnly = true;
+                    txtQ.ReadOnly = true;
+                    txtJust.ReadOnly = true;
+                    txtStore.ReadOnly = true;
+                }
                 rowIndex += 1;
                 AddNewRowToGrid(false, true);
             }
@@ -344,7 +354,7 @@ namespace WebCSharp.PurchaseOrder
                 Response.Write("ViewState is null");
             }
             SetPreviousData();
-           
+
         }
 
 
@@ -376,9 +386,17 @@ namespace WebCSharp.PurchaseOrder
                         txtQ.Text = myPurchaseOrder.Items[i].Quantity.ToString();
                         txtStore.Text = myPurchaseOrder.Items[i].Source;
                         txtJust.Text = myPurchaseOrder.Items[i].Justification;
-                        lblStatus.Text = myPurchaseOrder.Items[i].Status.ToString();
+                        
+                        if (myPurchaseOrder.Status != OrderStatus.Pending)
+                        {
+                            lblStatus.Text = "Under Review";                            
+                        } else
+                        {
+                            lblStatus.Text = myPurchaseOrder.Items[i].Status.ToString();
+                        }
+                       
 
-                        if (txtDesc.Text == "Not longer needed")
+                        if (txtDesc.Text == "No longer needed")
                         {
                             chkNotNeeded.Checked = true;
                         }

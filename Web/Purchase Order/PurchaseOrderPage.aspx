@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Acme.Master" AutoEventWireup="true" CodeBehind="PurchaseOrderPage.aspx.cs" Inherits="WebCSharp.PurchaseOrder.PurchaseOrder" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="http://localhost:61873/css/style.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">

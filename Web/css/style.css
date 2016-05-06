@@ -1,0 +1,20 @@
+﻿body {
+   font-family:Arial, Helvetica, sans-serif;
+   text-align:center;
+}
+#wrapper {
+    margin: auto;
+    width: 90%;    
+    padding: 0px;
+    text-align:center;
+}
+
+#Content_lblPage{
+    font-size:25px;
+    font-weight:bolder;
+}
+
+#Content_dgData{
+    text-align:center;
+    margin-left:35%;
+}
