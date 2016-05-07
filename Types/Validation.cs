@@ -25,29 +25,30 @@ namespace Common
 
         static public int Int(string validate)
         {
-            int ret;
-            int.TryParse(validate, out ret);
+           
+           int pInt = int.Parse(validate);
 
-            if (ret == 0)
+            if (pInt < 0)
             {
                 throw new FormatException(validate + " is not a valid number. Please enter a proper value");
             }else
             {
-                return ret;
+                return pInt;
             }             
         }
 
         static public double Double(string validate)
         {
-            double ret;
-            double.TryParse(validate,out ret);
-            if (ret == 0)
+            double pDub = double.Parse(validate);
+
+            if (pDub < 0)
             {
-                throw new FormatException(validate + " is not a valid number. Please enter a proper value");               
-            }else
+                throw new FormatException(validate + " is not a valid number. Please enter a proper value");
+            }
+            else
             {
-                return ret;
-            }            
+                return pDub;
+            }
         }
 
 

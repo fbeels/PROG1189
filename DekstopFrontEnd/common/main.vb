@@ -69,6 +69,8 @@ Public Class main
             cboUser.DisplayMember = "lastname"    ' indicate property name of obj to SHOW
             cboUser.ValueMember = "empid"     ' prop name of object to return
         End If
+        GLOBAL_LOGGEDIN_USERID = cboUser.SelectedValue
+        lblloggedinuserid.Text = GLOBAL_LOGGEDIN_USERID.ToString
 
 
 
