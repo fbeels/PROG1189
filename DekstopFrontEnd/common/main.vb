@@ -133,7 +133,9 @@ Public Class main
 
 
     Private Sub cboUser_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboUser.SelectionChangeCommitted
-
-
+        GLOBAL_LOGGEDIN_USERID = cboUser.SelectedValue
+        lblloggedinuserid.Text = GLOBAL_LOGGEDIN_USERID.ToString
     End Sub
+
+  
 End Class

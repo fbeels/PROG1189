@@ -37,6 +37,8 @@ Partial Class main
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.lbluser = New System.Windows.Forms.Label()
+        Me.cboUser = New System.Windows.Forms.ComboBox()
         Me.grbHR = New System.Windows.Forms.GroupBox()
         Me.btnviewpayroll = New System.Windows.Forms.Button()
         Me.btnmodemp = New System.Windows.Forms.Button()
@@ -45,8 +47,7 @@ Partial Class main
         Me.btnmodPO = New System.Windows.Forms.Button()
         Me.btncreatePO = New System.Windows.Forms.Button()
         Me.TabControl1 = New MdiTabControl.TabControl()
-        Me.cboUser = New System.Windows.Forms.ComboBox()
-        Me.lbluser = New System.Windows.Forms.Label()
+        Me.lblloggedinuserid = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -165,6 +166,7 @@ Partial Class main
         'SplitContainer1.Panel1
         '
         Me.SplitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Info
+        Me.SplitContainer1.Panel1.Controls.Add(Me.lblloggedinuserid)
         Me.SplitContainer1.Panel1.Controls.Add(Me.lbluser)
         Me.SplitContainer1.Panel1.Controls.Add(Me.cboUser)
         Me.SplitContainer1.Panel1.Controls.Add(Me.grbHR)
@@ -179,6 +181,23 @@ Partial Class main
         Me.SplitContainer1.SplitterDistance = 270
         Me.SplitContainer1.SplitterWidth = 6
         Me.SplitContainer1.TabIndex = 3
+        '
+        'lbluser
+        '
+        Me.lbluser.AutoSize = True
+        Me.lbluser.Location = New System.Drawing.Point(3, 30)
+        Me.lbluser.Name = "lbluser"
+        Me.lbluser.Size = New System.Drawing.Size(121, 20)
+        Me.lbluser.TabIndex = 10
+        Me.lbluser.Text = "Logged in User:"
+        '
+        'cboUser
+        '
+        Me.cboUser.FormattingEnabled = True
+        Me.cboUser.Location = New System.Drawing.Point(29, 64)
+        Me.cboUser.Name = "cboUser"
+        Me.cboUser.Size = New System.Drawing.Size(216, 28)
+        Me.cboUser.TabIndex = 9
         '
         'grbHR
         '
@@ -264,22 +283,14 @@ Partial Class main
         Me.TabControl1.TabCloseButtonImageHot = Nothing
         Me.TabControl1.TabIndex = 0
         '
-        'cboUser
+        'lblloggedinuserid
         '
-        Me.cboUser.FormattingEnabled = True
-        Me.cboUser.Location = New System.Drawing.Point(29, 64)
-        Me.cboUser.Name = "cboUser"
-        Me.cboUser.Size = New System.Drawing.Size(216, 28)
-        Me.cboUser.TabIndex = 9
-        '
-        'lbluser
-        '
-        Me.lbluser.AutoSize = True
-        Me.lbluser.Location = New System.Drawing.Point(29, 26)
-        Me.lbluser.Name = "lbluser"
-        Me.lbluser.Size = New System.Drawing.Size(121, 20)
-        Me.lbluser.TabIndex = 10
-        Me.lbluser.Text = "Logged in User:"
+        Me.lblloggedinuserid.AutoSize = True
+        Me.lblloggedinuserid.Location = New System.Drawing.Point(154, 30)
+        Me.lblloggedinuserid.Name = "lblloggedinuserid"
+        Me.lblloggedinuserid.Size = New System.Drawing.Size(47, 20)
+        Me.lblloggedinuserid.TabIndex = 11
+        Me.lblloggedinuserid.Text = "None"
         '
         'main
         '
@@ -335,4 +346,5 @@ Partial Class main
     Friend WithEvents ToolStripLabel2 As System.Windows.Forms.ToolStripLabel
     Friend WithEvents lbluser As System.Windows.Forms.Label
     Friend WithEvents cboUser As System.Windows.Forms.ComboBox
+    Friend WithEvents lblloggedinuserid As System.Windows.Forms.Label
 End Class

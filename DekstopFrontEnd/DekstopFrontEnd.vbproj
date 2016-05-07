@@ -86,6 +86,7 @@
     <Compile Include="common\AboutBox1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Module1.vb" />
     <Compile Include="Payroll\FinalProjGetLastPayroll.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
