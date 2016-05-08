@@ -24,13 +24,23 @@ Partial Class ViewPaystubs
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
-        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
-        Me.FinalProjGetLastPayroll = New FinalProjGetLastPayroll()
         Me.GetLastPayrollBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FinalProjGetLastPayroll = New FinalProjGetLastPayroll()
+        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.GetLastPayrollTableAdapter = New FinalProjGetLastPayrollTableAdapters.GetLastPayrollTableAdapter()
-        CType(Me.FinalProjGetLastPayroll, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GetLastPayrollBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FinalProjGetLastPayroll, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'GetLastPayrollBindingSource
+        '
+        Me.GetLastPayrollBindingSource.DataMember = "GetLastPayroll"
+        Me.GetLastPayrollBindingSource.DataSource = Me.FinalProjGetLastPayroll
+        '
+        'FinalProjGetLastPayroll
+        '
+        Me.FinalProjGetLastPayroll.DataSetName = "FinalProjGetLastPayroll"
+        Me.FinalProjGetLastPayroll.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'ReportViewer1
         '
@@ -41,33 +51,23 @@ Partial Class ViewPaystubs
         Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "PayStubz.rdlc"
         Me.ReportViewer1.Location = New System.Drawing.Point(0, 0)
         Me.ReportViewer1.Name = "ReportViewer1"
-        Me.ReportViewer1.Size = New System.Drawing.Size(1153, 667)
+        Me.ReportViewer1.Size = New System.Drawing.Size(1202, 865)
         Me.ReportViewer1.TabIndex = 0
-        '
-        'FinalProjGetLastPayroll
-        '
-        Me.FinalProjGetLastPayroll.DataSetName = "FinalProjGetLastPayroll"
-        Me.FinalProjGetLastPayroll.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'GetLastPayrollBindingSource
-        '
-        Me.GetLastPayrollBindingSource.DataMember = "GetLastPayroll"
-        Me.GetLastPayrollBindingSource.DataSource = Me.FinalProjGetLastPayroll
         '
         'GetLastPayrollTableAdapter
         '
         Me.GetLastPayrollTableAdapter.ClearBeforeFill = True
         '
-        'Form1
+        'ViewPaystubs
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1153, 667)
+        Me.ClientSize = New System.Drawing.Size(1202, 865)
         Me.Controls.Add(Me.ReportViewer1)
-        Me.Name = "Form1"
+        Me.Name = "ViewPaystubs"
         Me.Text = "Form1"
-        CType(Me.FinalProjGetLastPayroll, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GetLastPayrollBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FinalProjGetLastPayroll, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
