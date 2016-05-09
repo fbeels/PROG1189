@@ -266,7 +266,7 @@ namespace WebCSharp.PurchaseOrder
                                     if (merge)
                                     {
                                         //merge
-                                        myPurchaseOrder.Items[mergeId].Price += item.Price;
+                                        
                                         myPurchaseOrder.Items[mergeId].Quantity += item.Quantity;
                                         doTaxCalculations();
                                         PurchaseOrderItemCUD.Update(myPurchaseOrder.Items[mergeId]);

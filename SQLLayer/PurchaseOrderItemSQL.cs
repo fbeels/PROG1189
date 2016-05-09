@@ -16,7 +16,7 @@ namespace SQLLayer
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
             tmpParmList.Add(new ParmStructure("@id", SqlDbType.Int, ParameterDirection.Input, 0, POItem_ID));
 
-            return DataAccess.GetDataTable("getPOItemByID", tmpParmList);
+            return DataAccess.GetDataTable("GetPOItemWithID", tmpParmList);
         }
 
         static public int insertPurchaseOrderItem(IPurchaseOrderItem item)

@@ -87,8 +87,7 @@ Public Class CreatePO
             Next
 
             If merge Then
-                myPurchaseOrder.Items(mergeId).Price += item.Price
-                dgvPO.Rows(mergeId).Cells("Price").Value = myPurchaseOrder.Items(mergeId).Price
+
                 myPurchaseOrder.Items(mergeId).Quantity += item.Quantity
                 dgvPO.Rows(mergeId).Cells("Quantity").Value = myPurchaseOrder.Items(mergeId).Quantity
                 doTaxCalculations()
@@ -196,7 +195,8 @@ Public Class CreatePO
                 lblErr.Text = "Both fields are empty, try again."
                 Exit Sub
             End If
-            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(myEmployee.EmpID, Integer.Parse(txtID.Text), Nothing, Nothing)
+
+            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(Integer.Parse(myEmployee.EmpID), Integer.Parse(txtID.Text), Date.MinValue, Date.MaxValue)
             loadDataGrid(results)
         Else
             Dim results As List(Of PurchaseOrderList) = (PurchaseOrderList.Create(Integer.Parse(myEmployee.EmpID), Nothing, Date.Parse(dtpStart.Text), Date.Parse(dtpEnd.Text)))

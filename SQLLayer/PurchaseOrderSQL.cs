@@ -49,7 +49,7 @@ namespace SQLLayer
             tmpParmList.Add(new ParmStructure("@empid", SqlDbType.Int, ParameterDirection.Input, 0, PO.EmployeeID));
             tmpParmList.Add(new ParmStructure("@tax", SqlDbType.Float, ParameterDirection.Input, 9, PO.Tax));
             tmpParmList.Add(new ParmStructure("@subtotal", SqlDbType.Float, ParameterDirection.Input, 9, PO.SubTotal));
-            tmpParmList.Add(new ParmStructure("@orderdate", SqlDbType.Date, ParameterDirection.Input, 0, DateTime.Now));
+            tmpParmList.Add(new ParmStructure("@orderdate", SqlDbType.Date, ParameterDirection.Input, 0, PO.OrderDate));
             tmpParmList.Add(new ParmStructure("@orderstatus", SqlDbType.TinyInt, ParameterDirection.Input, 0, PO.Status));
 
             DataAccess.SendData("UpdatePO", tmpParmList);
@@ -81,7 +81,7 @@ namespace SQLLayer
         }
 
 
-        static public DataTable searchPO(OrderStatus status, int SupervisorID, string firstName = null,string lastName = null,  DateTime? startdate = null, DateTime? enddate = null)
+        static public DataTable searchPO(int status, int SupervisorID, string firstName = null,string lastName = null,  DateTime? startdate = null, DateTime? enddate = null)
         {
             
 

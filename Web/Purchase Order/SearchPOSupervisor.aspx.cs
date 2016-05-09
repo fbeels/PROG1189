@@ -15,26 +15,22 @@ namespace WebCSharp.PurchaseOrder
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            txtEndDate.Text = DateTime.Now.ToShortDateString();
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            //if (ddlStatus.SelectedIndex == 0)
-            //{
-            //    ///List<PurchaseOrderList> results = PurchaseOrderList.Create();
-            //    loadDataGrid(results);
-            //}
-            //else if (ddlStatus.SelectedIndex == 1)
-            //{
-            //    //List<PurchaseOrderList> results = PurchaseOrderList.Create();
-            //    loadDataGrid(results);
-            //}
-            //else {
-            //    //List<PurchaseOrderList> results = PurchaseOrderList.Create();
-            //    loadDataGrid(results);
-            //}
+            List<PurchaseOrderList> results;
+            if (txtSearchDate.Text == string.Empty & txtEndDate.Text == string.Empty)
+            {
+                results = PurchaseOrderList.Create(int.Parse(ddlEmployee.SelectedValue), ddlStatus.SelectedIndex, txtFirst.Text, txtLast.Text);
+            }
+            else
+            {
+                results = PurchaseOrderList.Create(int.Parse(ddlEmployee.SelectedValue), ddlStatus.SelectedIndex, txtFirst.Text, txtLast.Text, DateTime.Parse(txtSearchDate.Text), DateTime.Parse(txtEndDate.Text));
+            }
 
+            loadDataGrid(results);
         }
 
         public void loadDataGrid(List<PurchaseOrderList> results)
@@ -64,6 +60,6 @@ namespace WebCSharp.PurchaseOrder
             dgData.DataSource = Table;
             dgData.DataBind();
         }
-    
+
     }
 }
