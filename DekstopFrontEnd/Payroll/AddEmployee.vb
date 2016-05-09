@@ -30,6 +30,8 @@ Public Class AddEmployee
         loadorreset = True
         lblsuperid.Visible = False
 
+        lblresult.Text = GLOBAL_LOGGEDIN_USERID
+
     End Sub
 
 
