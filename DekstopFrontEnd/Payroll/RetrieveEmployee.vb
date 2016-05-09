@@ -5,56 +5,112 @@ Public Class RetrieveEmployee
 
     Private Sub btnsearch_Click(sender As Object, e As EventArgs) Handles btnsearch.Click
         Dim searchempid As Integer
+        Dim searchlname As String
+        Dim blsearchidisfilled As Boolean = False
+        Dim blsearchlnameisfilled As Boolean = False
 
-        Dim idinvalid As Boolean = False
-        '//////////////////////////////////////////////////////////////////////////////
-     
-        If IsNumeric(txtsearchid.Text) And (txtsearchid.TextLength > 0) Then
-            If txtsearchid.TextLength = 8 Then
-                ErrorProvider1.SetError(txtsearchid, String.Empty)
-
-                searchempid = txtsearchid.Text
-                idinvalid = False
-                tempemp.EmpID = txtsearchid.Text
-            Else
-                ErrorProvider1.SetError(txtsearchid, "invalid employee id length")
-
-                idinvalid = True
-            End If
-
+        If txtsearchlname.Text = "" Then
+            blsearchlnameisfilled = False
+            ErrorProvider1.SetError(txtsearchlname, "lastname required")
         Else
-            If txtsearchlname.Text = "" And txtsearchid.Text = "" Then
-                ErrorProvider1.SetError(txtsearchid, "employee lastname or id is required")
-
-                idinvalid = True
-            Else
-                ErrorProvider1.SetError(txtsearchid, "employee must be a number")
-
-                idinvalid = True
-            End If
-
-
+            blsearchlnameisfilled = True
         End If
 
-        '//////////////////////////////////////////////////////////////////////////////////
+
+        If txtsearchid.Text = "" Then
+            blsearchidisfilled = False
+        Else
+            If IsNumeric(txtsearchid.Text) = False Then
+                blsearchidisfilled = False
+                ErrorProvider1.SetError(txtsearchid, "employee must be a number")
+            Else
+                If txtsearchid.TextLength = 8 Then
+                    blsearchidisfilled = True
+                Else
+                    blsearchidisfilled = False
+                    ErrorProvider1.SetError(txtsearchid, "invalid employee id length")
+                End If
+
+            End If
+        End If
+        Dim idinvalid As Boolean = False
         Dim lnameinvalid As Boolean = False
 
-        Dim searchlname As String = txtsearchlname.Text
-
-        If (txtsearchlname.Text = "") And (txtsearchid.Text = "") Then
-            ErrorProvider1.SetError(txtsearchlname, "employee lastname or id is required")
-
+        If blsearchidisfilled = False And blsearchlnameisfilled = False Then
+            idinvalid = True
             lnameinvalid = True
-        Else
+
+            'ErrorProvider1.SetError(txtsearchlname, String.Empty)
+            'ErrorProvider1.SetError(txtsearchid, String.Empty)
+        ElseIf blsearchidisfilled = False And blsearchlnameisfilled = True Then
             ErrorProvider1.SetError(txtsearchlname, String.Empty)
-
             searchlname = txtsearchlname.Text
-            lnameinvalid = False
+            ErrorProvider1.SetError(txtsearchid, String.Empty)
+            searchempid = txtsearchid.Text
+        ElseIf blsearchidisfilled = True And blsearchlnameisfilled = False Then
+            ErrorProvider1.SetError(txtsearchlname, String.Empty)
+            searchlname = txtsearchlname.Text
+            ErrorProvider1.SetError(txtsearchid, String.Empty)
+            searchempid = txtsearchid.Text
+        ElseIf blsearchidisfilled = True And blsearchlnameisfilled = True Then
+            ErrorProvider1.SetError(txtsearchlname, String.Empty)
+            searchlname = txtsearchlname.Text
+            ErrorProvider1.SetError(txtsearchid, String.Empty)
+            searchempid = txtsearchid.Text
+        End If
 
-        End If
-        If Not (txtsearchlname.Text = String.Empty) Then
-            tempemp.LastName = txtsearchlname.Text
-        End If
+ 
+
+
+        '
+        ''//////////////////////////////////////////////////////////////////////////////
+
+        'If IsNumeric(txtsearchid.Text) And (txtsearchid.TextLength > 0) Then
+        '    If txtsearchid.TextLength = 8 Then
+        '        ErrorProvider1.SetError(txtsearchid, String.Empty)
+
+        '        searchempid = txtsearchid.Text
+        '        idinvalid = False
+        '        tempemp.EmpID = txtsearchid.Text
+        '    Else
+
+
+        '        idinvalid = True
+        '    End If
+
+        'Else
+        '    If txtsearchlname.Text = "" And txtsearchid.Text = "" Then
+        '        ErrorProvider1.SetError(txtsearchid, "employee lastname or id is required")
+
+        '        idinvalid = True
+        '    Else
+
+
+        '        idinvalid = True
+        '    End If
+
+
+        'End If
+
+        ''//////////////////////////////////////////////////////////////////////////////////
+        'Dim lnameinvalid As Boolean = False
+
+
+
+        'If (txtsearchlname.Text = "") And (txtsearchid.Text = "") Then
+        '    ErrorProvider1.SetError(txtsearchlname, "employee lastname or id is required")
+
+        '    lnameinvalid = True
+        'Else
+        '    ErrorProvider1.SetError(txtsearchlname, String.Empty)
+
+        '    searchlname = txtsearchlname.Text
+        '    lnameinvalid = False
+
+        'End If
+        'If Not (txtsearchlname.Text = String.Empty) Then
+        '    tempemp.LastName = txtsearchlname.Text
+        'End If
 
         '/////////////////////////////////////////////////////////////////////////////
         If idinvalid = True And lnameinvalid = True Then
@@ -178,16 +234,36 @@ Public Class RetrieveEmployee
         txtcity.Enabled = False
         cboProv.Enabled = False
         txtpostal.Enabled = False
-        mtxcellphone.Enabled = True
-        mtxworkphone.Enabled = True
+        mtxcellphone.Enabled = False
+        mtxworkphone.Enabled = False
         txtemail.Enabled = False
         cbodept.Enabled = False
         cbojobid.Enabled = False
         txtpayrate.Enabled = False
         dtpsenority.Enabled = False
         dtpstartdate.Enabled = False
-        dtpterminationdate.Enabled = False
 
+
+        '0 active,1 fired,2 retired
+        Select Case emp.empstatus
+            Case 0
+                rdostatusActive.Checked = True
+                dtpterminationdate.Visible = False
+            Case 1
+                rdostatusTerminated.Checked = True
+                dtpterminationdate.Visible = True
+                dtpterminationdate.Top = 291
+
+            Case 2
+                rdostatusRetired.Checked = True
+                dtpterminationdate.Visible = True
+                dtpterminationdate.Top = 264
+        End Select
+
+        dtpterminationdate.Enabled = False
+        rdostatusActive.Enabled = False
+        rdostatusTerminated.Enabled = False
+        rdostatusRetired.Enabled = False
 
     End Sub
 
@@ -221,52 +297,54 @@ Public Class RetrieveEmployee
         grbsearchresults.Visible = False
         grbempinfo.Visible = False
 
+        lbldebug.Visible = False
+        Button1.Visible = False
     End Sub
 
     Private Sub txtsearchid_GotFocus(sender As Object, e As EventArgs) Handles txtsearchid.GotFocus
         grbempinfo.Visible = False
     End Sub
 
-    Private Sub txtsearchid_Leave(sender As Object, e As EventArgs) Handles txtsearchid.Leave
-        ' Dim strmint As String = txtmiddleinit.Text
-        If IsNumeric(txtsearchid.Text) And (txtsearchid.TextLength > 0) Then
-            If txtsearchid.TextLength = 8 Then
-                ErrorProvider1.SetError(txtsearchid, String.Empty)
+    'Private Sub txtsearchid_Leave(sender As Object, e As EventArgs) Handles txtsearchid.Leave
+    '    ' Dim strmint As String = txtmiddleinit.Text
+    '    If IsNumeric(txtsearchid.Text) And (txtsearchid.TextLength > 0) Then
+    '        If txtsearchid.TextLength = 8 Then
+    '            ErrorProvider1.SetError(txtsearchid, String.Empty)
 
-            Else
-                ErrorProvider1.SetError(txtsearchid, "invalid employee id length")
+    '        Else
+    '            ErrorProvider1.SetError(txtsearchid, "invalid employee id length")
 
-            End If
+    '        End If
 
-        Else
-            If txtsearchlname.Text = "" And txtsearchid.Text = "" Then
-                ErrorProvider1.SetError(txtsearchid, "employee lastname or id is required")
+    '    Else
+    '        If txtsearchlname.Text = "" And txtsearchid.Text = "" Then
+    '            ErrorProvider1.SetError(txtsearchid, "employee lastname or id is required")
 
-                ''elseIf 
+    '            ''elseIf 
 
-            Else
-                ErrorProvider1.SetError(txtsearchid, "employee must be a number")
+    '        Else
+    '            ErrorProvider1.SetError(txtsearchid, "employee must be a number")
 
-            End If
+    '        End If
 
 
-        End If
-    End Sub
+    '    End If
+    'End Sub
 
     Private Sub txtsearchlname_GotFocus(sender As Object, e As EventArgs) Handles txtsearchlname.GotFocus
         grbempinfo.Visible = False
     End Sub
 
     
-    Private Sub txtsearchlname_Leave(sender As Object, e As EventArgs) Handles txtsearchlname.Leave
-        If txtsearchlname.Text = "" And txtsearchid.Text = "" Then
-            ErrorProvider1.SetError(txtsearchlname, "employee lastname or id is required")
+    'Private Sub txtsearchlname_Leave(sender As Object, e As EventArgs) Handles txtsearchlname.Leave
+    '    If txtsearchlname.Text = "" And txtsearchid.Text = "" Then
+    '        ErrorProvider1.SetError(txtsearchlname, "employee lastname or id is required")
 
-        Else
-            ErrorProvider1.SetError(txtsearchlname, String.Empty)
+    '    Else
+    '        ErrorProvider1.SetError(txtsearchlname, String.Empty)
 
-        End If
-    End Sub
+    '    End If
+    'End Sub
 
 
     Private Sub lstsearchresults_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstsearchresults.SelectedIndexChanged
@@ -289,4 +367,7 @@ Public Class RetrieveEmployee
         lblsuper.Text = superdept.SupervisorName
     End Sub
     
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        lbldebug.Top = lbldebug.Top + 5
+    End Sub
 End Class

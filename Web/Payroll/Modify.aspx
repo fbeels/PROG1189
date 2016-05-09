@@ -82,6 +82,20 @@
         <tr><td>Email</td><td><asp:TextBox id="txtemail" runat="server" />
             <asp:RequiredFieldValidator runat="server"  ControlToValidate="txtemail" ErrorMessage="email is required.">*</asp:RequiredFieldValidator>
                           </td></tr>
+        <tr><td>dob</td><td><asp:TextBox id="txtdob" runat="server" /></td></tr>
+        <tr><td>sin</td><td><asp:TextBox id="txtsin" runat="server" /></td></tr>
+      <tr><td>seniorityDate</td><td><asp:TextBox id="txtseniorityDate" runat="server" /></td></tr>
+        <tr><td>jobstartDate</td><td><asp:TextBox id="txtjobstartDate" runat="server" /></td></tr>
+        <tr><td>jobId</td><td><asp:TextBox id="txtjobId" runat="server" /></td></tr>
+        <tr><td>supervisiorID</td><td><asp:TextBox id="txtsupervisiorID" runat="server" /></td></tr>
+        <tr><td>emailnotificatoins</td><td><asp:TextBox id="txtemailnotificatoins" runat="server" /></td></tr>
+        <tr><td>payrate</td><td><asp:TextBox id="txtpayrate" runat="server" /></td></tr>
+        <tr><td>terminationDate</td><td><asp:TextBox id="txtterminationDate" runat="server" /></td></tr>
+        <tr><td>deptID</td><td><asp:TextBox id="txtdeptID" runat="server" /></td></tr>
+        <tr><td>empstatus</td><td><asp:TextBox id="txtempstatus" runat="server" /></td></tr>
+        <tr><td>lastchanged</td><td><asp:TextBox id="txtlastchanged" runat="server" /></td></tr>
+
+
 </table>
 
 

@@ -336,6 +336,50 @@ namespace BOL
         public bool EmailNotification { get; set; }
         public int empstatus { get; set; }
 
+
+        Boolean _CANRETIRE;
+        public Boolean CANRETIRE
+        {
+            get
+            {
+                return CanEmpRetire(this.EmpID);
+               // return this._CANRETIRE;
+            }
+            set
+            {
+                this._CANRETIRE = value;
+            }
+           
+        }
+
+        private bool CanEmpRetire(int empid)
+        {
+            return CanRetireRePackager(EmployeeSQL.CanEmpRetire(empid));
+        }
+
+        private bool CanRetireRePackager(DataTable dt)
+        {
+            bool ret = false;
+            int returnval = 0;
+            foreach (DataRow emps in dt.Rows)
+            {
+                //  x.EmpID = (int)emps[0];
+                returnval = (int)emps[0];
+            }
+            
+            if (returnval == 11)
+            {
+                ret=false;
+            }
+             if (returnval == 65)
+            {
+                ret=true;
+            }
+               
+            return ret;
+        }
+
+
         //public Employee create(string Lastname, char MiddleIntm, string FirstName, DateTime DOB, string Address, string City, string Prov, string Postal, int EmpID, string Phone, string Cell, string Email, string SIN, DateTime SeniorityDate, DateTime JobStartDate, int JobID, int DeptID, int SupervisorID, double PayRate, bool EmailNotification, DateTime TerminationDate)
         //{
         //    throw new System.NotImplementedException();
