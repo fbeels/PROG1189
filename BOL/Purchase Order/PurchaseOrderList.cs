@@ -36,18 +36,24 @@ namespace BOL.Purchase_Order
                 Employee emp = Employee.retrieve((int)orders[5]);
                 x.EmployeeName = emp.FirstName + " " + emp.LastName;
                 x.EmployeeID = ((int)orders[5]);
-                x.Status = (OrderStatus) int.Parse(orders[2].ToString());
+                x.Status = (OrderStatus)int.Parse(orders[2].ToString());
                 x.Total = (double.Parse(orders[3].ToString())) + (double.Parse(orders[4].ToString()));
                 x.OrderDate = DateTime.Parse(orders[1].ToString());
-                x.PurchaseOrderID = (int) orders[0];
+                x.PurchaseOrderID = (int)orders[0];
                 myList.Add(x);
             }
             return myList;
         }
 
-        static public List<PurchaseOrderList> Create(int SupervisorID, OrderStatus status = OrderStatus.Pending, string firstName = null, string lastName = null, DateTime? startdate = null, DateTime? enddate = null)
+        static public List<PurchaseOrderList> Create(int SupervisorID, int status = 1, string firstName = null, string lastName = null, DateTime? startdate = null, DateTime? enddate = null)
         {
-            return RePackager(PurchaseOrderSQL.searchPO(status, SupervisorID, firstName, lastName, startdate, enddate));
+            if (status == 2)
+            {
+                return RePackager(PurchaseOrderSQL.searchPO(99, SupervisorID, firstName, lastName, startdate, enddate));
+            }
+            else {
+                return RePackager(PurchaseOrderSQL.searchPO(status, SupervisorID, firstName, lastName, startdate, enddate));
+            }
         }
     }
 }

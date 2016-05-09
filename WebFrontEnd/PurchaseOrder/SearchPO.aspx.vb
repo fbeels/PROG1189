@@ -13,7 +13,7 @@ Public Class SearchPO
                 lblErr.Text = "Both fields are empty, try again."
                 Exit Sub
             End If
-            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(Integer.Parse(ddlEmployee.SelectedValue), Integer.Parse(txtSearchID.Text), Nothing, Nothing)
+            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(Integer.Parse(ddlEmployee.SelectedValue), Integer.Parse(txtSearchID.Text), Date.MinValue, Date.MaxValue)
             loadDataGrid(results)
         Else
             Dim results As List(Of PurchaseOrderList) = (PurchaseOrderList.Create(Integer.Parse(ddlEmployee.SelectedValue), Nothing, Date.Parse(txtSearchDate.Text), Date.Parse(txtEndDate.Text)))

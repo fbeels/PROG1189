@@ -16,5 +16,16 @@
 
 #Content_dgData{
     text-align:center;
-    margin-left:35%;
+    margin-left:15%;
+}
+
+.txt{
+    margin:5px;
+    
+}
+
+#itemDetails{
+    position:static;
+    text-align:end;
+    width:60%
 }
