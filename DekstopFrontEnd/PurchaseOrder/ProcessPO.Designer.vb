@@ -264,10 +264,9 @@ Partial Class ProcessPO
         Me.lblDenial.AutoSize = True
         Me.lblDenial.Location = New System.Drawing.Point(440, 69)
         Me.lblDenial.Name = "lblDenial"
-        Me.lblDenial.Size = New System.Drawing.Size(92, 13)
+        Me.lblDenial.Size = New System.Drawing.Size(47, 13)
         Me.lblDenial.TabIndex = 16
-        Me.lblDenial.Text = "Reason for Denial"
-        Me.lblDenial.Visible = False
+        Me.lblDenial.Text = "Reason "
         '
         'ddlItemStatus
         '
@@ -284,7 +283,6 @@ Partial Class ProcessPO
         Me.txtDenial.Name = "txtDenial"
         Me.txtDenial.Size = New System.Drawing.Size(100, 20)
         Me.txtDenial.TabIndex = 18
-        Me.txtDenial.Visible = False
         '
         'gpItems
         '

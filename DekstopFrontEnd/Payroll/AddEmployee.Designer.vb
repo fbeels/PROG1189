@@ -71,20 +71,18 @@ Partial Class AddEmployee
         '
         'btnsave
         '
-        Me.btnsave.Location = New System.Drawing.Point(262, 546)
-        Me.btnsave.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnsave.Location = New System.Drawing.Point(175, 355)
         Me.btnsave.Name = "btnsave"
-        Me.btnsave.Size = New System.Drawing.Size(402, 72)
+        Me.btnsave.Size = New System.Drawing.Size(268, 47)
         Me.btnsave.TabIndex = 32
         Me.btnsave.Text = "Save"
         Me.btnsave.UseVisualStyleBackColor = True
         '
         'btnreset
         '
-        Me.btnreset.Location = New System.Drawing.Point(28, 546)
-        Me.btnreset.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnreset.Location = New System.Drawing.Point(19, 355)
         Me.btnreset.Name = "btnreset"
-        Me.btnreset.Size = New System.Drawing.Size(202, 72)
+        Me.btnreset.Size = New System.Drawing.Size(135, 47)
         Me.btnreset.TabIndex = 33
         Me.btnreset.Text = "Reset"
         Me.btnreset.UseVisualStyleBackColor = True
@@ -92,18 +90,18 @@ Partial Class AddEmployee
         'lblresult
         '
         Me.lblresult.BackColor = System.Drawing.Color.LemonChiffon
-        Me.lblresult.Location = New System.Drawing.Point(24, 654)
-        Me.lblresult.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblresult.Location = New System.Drawing.Point(16, 425)
         Me.lblresult.Name = "lblresult"
-        Me.lblresult.Size = New System.Drawing.Size(704, 63)
+        Me.lblresult.Size = New System.Drawing.Size(469, 41)
         Me.lblresult.TabIndex = 34
         Me.lblresult.Text = "Errors and result"
         '
         'btnprefill
         '
-        Me.btnprefill.Location = New System.Drawing.Point(672, 574)
+        Me.btnprefill.Location = New System.Drawing.Point(448, 373)
+        Me.btnprefill.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.btnprefill.Name = "btnprefill"
-        Me.btnprefill.Size = New System.Drawing.Size(63, 45)
+        Me.btnprefill.Size = New System.Drawing.Size(42, 29)
         Me.btnprefill.TabIndex = 38
         Me.btnprefill.Text = "prefill"
         Me.btnprefill.UseVisualStyleBackColor = True
@@ -134,196 +132,175 @@ Partial Class AddEmployee
         Me.GroupBox1.Controls.Add(Me.lblfirstname)
         Me.GroupBox1.Controls.Add(Me.lblmiddleint)
         Me.GroupBox1.Controls.Add(Me.lbllastname)
-        Me.GroupBox1.Location = New System.Drawing.Point(16, 26)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox1.Location = New System.Drawing.Point(11, 17)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.GroupBox1.Size = New System.Drawing.Size(718, 226)
+        Me.GroupBox1.Size = New System.Drawing.Size(479, 147)
         Me.GroupBox1.TabIndex = 39
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Personal Information"
         '
         'mtxcellphone
         '
-        Me.mtxcellphone.Location = New System.Drawing.Point(454, 186)
-        Me.mtxcellphone.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.mtxcellphone.Location = New System.Drawing.Point(303, 121)
         Me.mtxcellphone.Mask = "(999) 000-0000"
         Me.mtxcellphone.Name = "mtxcellphone"
-        Me.mtxcellphone.Size = New System.Drawing.Size(148, 26)
+        Me.mtxcellphone.Size = New System.Drawing.Size(100, 20)
         Me.mtxcellphone.TabIndex = 49
         '
         'lblcellphone
         '
         Me.lblcellphone.AutoSize = True
-        Me.lblcellphone.Location = New System.Drawing.Point(360, 186)
-        Me.lblcellphone.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblcellphone.Location = New System.Drawing.Point(240, 121)
         Me.lblcellphone.Name = "lblcellphone"
-        Me.lblcellphone.Size = New System.Drawing.Size(84, 20)
+        Me.lblcellphone.Size = New System.Drawing.Size(57, 13)
         Me.lblcellphone.TabIndex = 48
         Me.lblcellphone.Text = "Cell phone"
         '
         'txtsin
         '
-        Me.txtsin.Location = New System.Drawing.Point(135, 175)
-        Me.txtsin.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtsin.Location = New System.Drawing.Point(90, 114)
         Me.txtsin.Name = "txtsin"
-        Me.txtsin.Size = New System.Drawing.Size(184, 26)
+        Me.txtsin.Size = New System.Drawing.Size(124, 20)
         Me.txtsin.TabIndex = 47
         '
         'lblsin
         '
         Me.lblsin.AutoSize = True
-        Me.lblsin.Location = New System.Drawing.Point(88, 185)
-        Me.lblsin.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblsin.Location = New System.Drawing.Point(59, 120)
         Me.lblsin.Name = "lblsin"
-        Me.lblsin.Size = New System.Drawing.Size(36, 20)
+        Me.lblsin.Size = New System.Drawing.Size(25, 13)
         Me.lblsin.TabIndex = 46
         Me.lblsin.Text = "SIN"
         '
         'dtpdateofbirth
         '
         Me.dtpdateofbirth.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpdateofbirth.Location = New System.Drawing.Point(135, 135)
-        Me.dtpdateofbirth.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.dtpdateofbirth.Location = New System.Drawing.Point(90, 88)
         Me.dtpdateofbirth.Name = "dtpdateofbirth"
-        Me.dtpdateofbirth.Size = New System.Drawing.Size(122, 26)
+        Me.dtpdateofbirth.Size = New System.Drawing.Size(83, 20)
         Me.dtpdateofbirth.TabIndex = 45
         '
         'lbldob
         '
         Me.lbldob.AutoSize = True
-        Me.lbldob.Location = New System.Drawing.Point(28, 140)
-        Me.lbldob.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbldob.Location = New System.Drawing.Point(19, 91)
         Me.lbldob.Name = "lbldob"
-        Me.lbldob.Size = New System.Drawing.Size(99, 20)
+        Me.lbldob.Size = New System.Drawing.Size(66, 13)
         Me.lbldob.TabIndex = 44
         Me.lbldob.Text = "Date of Birth"
         '
         'cboProv
         '
+        Me.cboProv.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboProv.FormattingEnabled = True
         Me.cboProv.Items.AddRange(New Object() {"NB", "NS", "PE", "NF", "QC", "ON"})
-        Me.cboProv.Location = New System.Drawing.Point(454, 103)
-        Me.cboProv.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.cboProv.Location = New System.Drawing.Point(303, 67)
         Me.cboProv.Name = "cboProv"
-        Me.cboProv.Size = New System.Drawing.Size(79, 28)
+        Me.cboProv.Size = New System.Drawing.Size(54, 21)
         Me.cboProv.TabIndex = 43
         '
         'txtpostal
         '
-        Me.txtpostal.Location = New System.Drawing.Point(454, 142)
-        Me.txtpostal.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtpostal.Location = New System.Drawing.Point(303, 92)
         Me.txtpostal.Name = "txtpostal"
-        Me.txtpostal.Size = New System.Drawing.Size(76, 26)
+        Me.txtpostal.Size = New System.Drawing.Size(52, 20)
         Me.txtpostal.TabIndex = 42
         '
         'txtcity
         '
-        Me.txtcity.Location = New System.Drawing.Point(454, 68)
-        Me.txtcity.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtcity.Location = New System.Drawing.Point(303, 44)
         Me.txtcity.Name = "txtcity"
-        Me.txtcity.Size = New System.Drawing.Size(199, 26)
+        Me.txtcity.Size = New System.Drawing.Size(134, 20)
         Me.txtcity.TabIndex = 41
         '
         'txtstreetaddress
         '
-        Me.txtstreetaddress.Location = New System.Drawing.Point(454, 25)
-        Me.txtstreetaddress.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtstreetaddress.Location = New System.Drawing.Point(303, 16)
         Me.txtstreetaddress.Name = "txtstreetaddress"
-        Me.txtstreetaddress.Size = New System.Drawing.Size(186, 26)
+        Me.txtstreetaddress.Size = New System.Drawing.Size(125, 20)
         Me.txtstreetaddress.TabIndex = 40
         '
         'lblpostal
         '
         Me.lblpostal.AutoSize = True
-        Me.lblpostal.Location = New System.Drawing.Point(351, 146)
-        Me.lblpostal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblpostal.Location = New System.Drawing.Point(234, 95)
         Me.lblpostal.Name = "lblpostal"
-        Me.lblpostal.Size = New System.Drawing.Size(92, 20)
+        Me.lblpostal.Size = New System.Drawing.Size(63, 13)
         Me.lblpostal.TabIndex = 39
         Me.lblpostal.Text = "Postal code"
         '
         'lblcity
         '
         Me.lblcity.AutoSize = True
-        Me.lblcity.Location = New System.Drawing.Point(411, 72)
-        Me.lblcity.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblcity.Location = New System.Drawing.Point(274, 47)
         Me.lblcity.Name = "lblcity"
-        Me.lblcity.Size = New System.Drawing.Size(35, 20)
+        Me.lblcity.Size = New System.Drawing.Size(24, 13)
         Me.lblcity.TabIndex = 38
         Me.lblcity.Text = "City"
         '
         'lblprov
         '
         Me.lblprov.AutoSize = True
-        Me.lblprov.Location = New System.Drawing.Point(372, 103)
-        Me.lblprov.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblprov.Location = New System.Drawing.Point(248, 67)
         Me.lblprov.Name = "lblprov"
-        Me.lblprov.Size = New System.Drawing.Size(69, 20)
+        Me.lblprov.Size = New System.Drawing.Size(49, 13)
         Me.lblprov.TabIndex = 37
         Me.lblprov.Text = "Province"
         '
         'lblstreetaddress
         '
         Me.lblstreetaddress.AutoSize = True
-        Me.lblstreetaddress.Location = New System.Drawing.Point(332, 29)
-        Me.lblstreetaddress.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblstreetaddress.Location = New System.Drawing.Point(221, 19)
         Me.lblstreetaddress.Name = "lblstreetaddress"
-        Me.lblstreetaddress.Size = New System.Drawing.Size(116, 20)
+        Me.lblstreetaddress.Size = New System.Drawing.Size(76, 13)
         Me.lblstreetaddress.TabIndex = 36
         Me.lblstreetaddress.Text = "Street Address"
         '
         'txtmiddleinit
         '
-        Me.txtmiddleinit.Location = New System.Drawing.Point(134, 63)
-        Me.txtmiddleinit.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtmiddleinit.Location = New System.Drawing.Point(89, 41)
         Me.txtmiddleinit.Name = "txtmiddleinit"
-        Me.txtmiddleinit.Size = New System.Drawing.Size(66, 26)
+        Me.txtmiddleinit.Size = New System.Drawing.Size(45, 20)
         Me.txtmiddleinit.TabIndex = 24
         '
         'txtlastname
         '
-        Me.txtlastname.Location = New System.Drawing.Point(134, 98)
-        Me.txtlastname.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtlastname.Location = New System.Drawing.Point(89, 64)
         Me.txtlastname.Name = "txtlastname"
-        Me.txtlastname.Size = New System.Drawing.Size(146, 26)
+        Me.txtlastname.Size = New System.Drawing.Size(99, 20)
         Me.txtlastname.TabIndex = 23
         '
         'txtfirstname
         '
-        Me.txtfirstname.Location = New System.Drawing.Point(135, 29)
-        Me.txtfirstname.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtfirstname.Location = New System.Drawing.Point(90, 19)
         Me.txtfirstname.Name = "txtfirstname"
-        Me.txtfirstname.Size = New System.Drawing.Size(178, 26)
+        Me.txtfirstname.Size = New System.Drawing.Size(120, 20)
         Me.txtfirstname.TabIndex = 22
         '
         'lblfirstname
         '
         Me.lblfirstname.AutoSize = True
-        Me.lblfirstname.Location = New System.Drawing.Point(45, 29)
-        Me.lblfirstname.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblfirstname.Location = New System.Drawing.Point(30, 19)
         Me.lblfirstname.Name = "lblfirstname"
-        Me.lblfirstname.Size = New System.Drawing.Size(86, 20)
+        Me.lblfirstname.Size = New System.Drawing.Size(57, 13)
         Me.lblfirstname.TabIndex = 21
         Me.lblfirstname.Text = "First Name"
         '
         'lblmiddleint
         '
         Me.lblmiddleint.AutoSize = True
-        Me.lblmiddleint.Location = New System.Drawing.Point(28, 66)
-        Me.lblmiddleint.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblmiddleint.Location = New System.Drawing.Point(19, 43)
         Me.lblmiddleint.Name = "lblmiddleint"
-        Me.lblmiddleint.Size = New System.Drawing.Size(96, 20)
+        Me.lblmiddleint.Size = New System.Drawing.Size(65, 13)
         Me.lblmiddleint.TabIndex = 20
         Me.lblmiddleint.Text = "Middle Initial"
         '
         'lbllastname
         '
         Me.lbllastname.AutoSize = True
-        Me.lbllastname.Location = New System.Drawing.Point(30, 98)
-        Me.lbllastname.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbllastname.Location = New System.Drawing.Point(20, 64)
         Me.lbllastname.Name = "lbllastname"
-        Me.lbllastname.Size = New System.Drawing.Size(90, 20)
+        Me.lbllastname.Size = New System.Drawing.Size(61, 13)
         Me.lbllastname.TabIndex = 19
         Me.lbllastname.Text = "Last Name:"
         '
@@ -343,11 +320,9 @@ Partial Class AddEmployee
         Me.GroupBox2.Controls.Add(Me.lbljobid)
         Me.GroupBox2.Controls.Add(Me.lbldept)
         Me.GroupBox2.Controls.Add(Me.lblsupervisor)
-        Me.GroupBox2.Location = New System.Drawing.Point(14, 269)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox2.Location = New System.Drawing.Point(9, 175)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.GroupBox2.Size = New System.Drawing.Size(722, 268)
+        Me.GroupBox2.Size = New System.Drawing.Size(481, 174)
         Me.GroupBox2.TabIndex = 40
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Employment Information"
@@ -355,9 +330,10 @@ Partial Class AddEmployee
         'chkemailstub
         '
         Me.chkemailstub.AutoSize = True
-        Me.chkemailstub.Location = New System.Drawing.Point(180, 190)
+        Me.chkemailstub.Location = New System.Drawing.Point(120, 123)
+        Me.chkemailstub.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.chkemailstub.Name = "chkemailstub"
-        Me.chkemailstub.Size = New System.Drawing.Size(219, 24)
+        Me.chkemailstub.Size = New System.Drawing.Size(151, 17)
         Me.chkemailstub.TabIndex = 45
         Me.chkemailstub.Text = "Recieve PayStub by Email"
         Me.chkemailstub.UseVisualStyleBackColor = True
@@ -365,136 +341,127 @@ Partial Class AddEmployee
         'lblsuperid
         '
         Me.lblsuperid.AutoSize = True
-        Me.lblsuperid.Location = New System.Drawing.Point(298, 86)
+        Me.lblsuperid.Location = New System.Drawing.Point(199, 56)
+        Me.lblsuperid.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblsuperid.Name = "lblsuperid"
-        Me.lblsuperid.Size = New System.Drawing.Size(57, 20)
+        Me.lblsuperid.Size = New System.Drawing.Size(39, 13)
         Me.lblsuperid.TabIndex = 44
         Me.lblsuperid.Text = "Label1"
         '
         'lblsupername
         '
         Me.lblsupername.AutoSize = True
-        Me.lblsupername.Location = New System.Drawing.Point(145, 86)
+        Me.lblsupername.Location = New System.Drawing.Point(97, 56)
+        Me.lblsupername.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblsupername.Name = "lblsupername"
-        Me.lblsupername.Size = New System.Drawing.Size(57, 20)
+        Me.lblsupername.Size = New System.Drawing.Size(39, 13)
         Me.lblsupername.TabIndex = 43
         Me.lblsupername.Text = "Label1"
         '
         'txtemail
         '
-        Me.txtemail.Location = New System.Drawing.Point(472, 77)
-        Me.txtemail.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtemail.Location = New System.Drawing.Point(315, 50)
         Me.txtemail.Name = "txtemail"
-        Me.txtemail.Size = New System.Drawing.Size(208, 26)
+        Me.txtemail.Size = New System.Drawing.Size(140, 20)
         Me.txtemail.TabIndex = 42
         '
         'lblemail
         '
         Me.lblemail.AutoSize = True
-        Me.lblemail.Location = New System.Drawing.Point(402, 82)
-        Me.lblemail.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblemail.Location = New System.Drawing.Point(268, 53)
         Me.lblemail.Name = "lblemail"
-        Me.lblemail.Size = New System.Drawing.Size(48, 20)
+        Me.lblemail.Size = New System.Drawing.Size(32, 13)
         Me.lblemail.TabIndex = 41
         Me.lblemail.Text = "Email"
         '
         'mtxworkphone
         '
-        Me.mtxworkphone.Location = New System.Drawing.Point(532, 29)
-        Me.mtxworkphone.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.mtxworkphone.Location = New System.Drawing.Point(355, 19)
         Me.mtxworkphone.Mask = "(999) 000-0000"
         Me.mtxworkphone.Name = "mtxworkphone"
-        Me.mtxworkphone.Size = New System.Drawing.Size(148, 26)
+        Me.mtxworkphone.Size = New System.Drawing.Size(100, 20)
         Me.mtxworkphone.TabIndex = 40
         '
         'lblworkphone
         '
         Me.lblworkphone.AutoSize = True
-        Me.lblworkphone.Location = New System.Drawing.Point(402, 29)
-        Me.lblworkphone.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblworkphone.Location = New System.Drawing.Point(268, 19)
         Me.lblworkphone.Name = "lblworkphone"
-        Me.lblworkphone.Size = New System.Drawing.Size(96, 20)
+        Me.lblworkphone.Size = New System.Drawing.Size(67, 13)
         Me.lblworkphone.TabIndex = 39
         Me.lblworkphone.Text = "Work Phone"
         '
         'cbojobid
         '
+        Me.cbojobid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbojobid.FormattingEnabled = True
-        Me.cbojobid.Location = New System.Drawing.Point(57, 134)
-        Me.cbojobid.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.cbojobid.Location = New System.Drawing.Point(38, 87)
         Me.cbojobid.Name = "cbojobid"
-        Me.cbojobid.Size = New System.Drawing.Size(298, 28)
+        Me.cbojobid.Size = New System.Drawing.Size(200, 21)
         Me.cbojobid.TabIndex = 38
         '
         'cbodept
         '
         Me.cbodept.FormattingEnabled = True
-        Me.cbodept.Location = New System.Drawing.Point(147, 35)
-        Me.cbodept.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.cbodept.Location = New System.Drawing.Point(98, 23)
         Me.cbodept.Name = "cbodept"
-        Me.cbodept.Size = New System.Drawing.Size(208, 28)
+        Me.cbodept.Size = New System.Drawing.Size(140, 21)
         Me.cbodept.TabIndex = 37
         '
         'txtpayrate
         '
-        Me.txtpayrate.Location = New System.Drawing.Point(94, 188)
-        Me.txtpayrate.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtpayrate.Location = New System.Drawing.Point(63, 122)
         Me.txtpayrate.Name = "txtpayrate"
-        Me.txtpayrate.Size = New System.Drawing.Size(70, 26)
+        Me.txtpayrate.Size = New System.Drawing.Size(48, 20)
         Me.txtpayrate.TabIndex = 35
         '
         'lblpayrate
         '
         Me.lblpayrate.AutoSize = True
-        Me.lblpayrate.Location = New System.Drawing.Point(8, 191)
-        Me.lblpayrate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblpayrate.Location = New System.Drawing.Point(5, 124)
         Me.lblpayrate.Name = "lblpayrate"
-        Me.lblpayrate.Size = New System.Drawing.Size(67, 20)
+        Me.lblpayrate.Size = New System.Drawing.Size(46, 13)
         Me.lblpayrate.TabIndex = 34
         Me.lblpayrate.Text = "Payrate:"
         '
         'lbljobid
         '
         Me.lbljobid.AutoSize = True
-        Me.lbljobid.Location = New System.Drawing.Point(10, 142)
-        Me.lbljobid.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbljobid.Location = New System.Drawing.Point(7, 92)
         Me.lbljobid.Name = "lbljobid"
-        Me.lbljobid.Size = New System.Drawing.Size(39, 20)
+        Me.lbljobid.Size = New System.Drawing.Size(27, 13)
         Me.lbljobid.TabIndex = 33
         Me.lbljobid.Text = "Job:"
         '
         'lbldept
         '
         Me.lbldept.AutoSize = True
-        Me.lbldept.Location = New System.Drawing.Point(34, 38)
-        Me.lbldept.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbldept.Location = New System.Drawing.Point(23, 25)
         Me.lbldept.Name = "lbldept"
-        Me.lbldept.Size = New System.Drawing.Size(94, 20)
+        Me.lbldept.Size = New System.Drawing.Size(62, 13)
         Me.lbldept.TabIndex = 32
         Me.lbldept.Text = "Department"
         '
         'lblsupervisor
         '
         Me.lblsupervisor.AutoSize = True
-        Me.lblsupervisor.Location = New System.Drawing.Point(32, 86)
-        Me.lblsupervisor.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblsupervisor.Location = New System.Drawing.Point(21, 56)
         Me.lblsupervisor.Name = "lblsupervisor"
-        Me.lblsupervisor.Size = New System.Drawing.Size(84, 20)
+        Me.lblsupervisor.Size = New System.Drawing.Size(57, 13)
         Me.lblsupervisor.TabIndex = 31
         Me.lblsupervisor.Text = "Supervisor"
         '
         'AddEmployee
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(765, 760)
+        Me.ClientSize = New System.Drawing.Size(510, 494)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnprefill)
         Me.Controls.Add(Me.lblresult)
         Me.Controls.Add(Me.btnreset)
         Me.Controls.Add(Me.btnsave)
-        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "AddEmployee"
         Me.Text = "AddEmp"
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()

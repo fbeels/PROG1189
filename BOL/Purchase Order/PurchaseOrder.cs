@@ -190,6 +190,7 @@ namespace BOL.Purchase_Order
         {
             PO.Status = OrderStatus.Closed;
             PurchaseOrderSQL.modifyPO(PO);
+            PurchaseOrderSQL.closeEmail(PO);
         }
 
 
@@ -212,15 +213,6 @@ namespace BOL.Purchase_Order
             PO.Status = OrderStatus.Pending;
             PurchaseOrderSQL.modifyPO(PO);
         }
-
-
-        /// <summary>
-        /// Sends an email to the requester of a PO
-        /// </summary>
-        /// <param name="PO">Order with information to send email to\</param>
-        public static void sendClosingEmail(PurchaseOrder PO)
-        {
-            PurchaseOrderSQL.closeEmail(PO);
-        }
+       
     }
 }

@@ -9,13 +9,23 @@ Public Class ProcessPO
     Dim myEmp As Employee
 
     Private Sub ProcessPO_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
         loadDropdowns()
 
         myEmp = Employee.retrieve(GLOBAL_LOGGEDIN_USERID)
 
+
+
         lblSup.Text = GLOBAL_LOGGEDIN_USERNAME
         Dim dept As Department = Department.GetADept(myEmp.DeptID)
         lblDept.Text = dept.DeptName
+
+
+        If dept.SupervisorId = myEmp.EmpID Then
+            MsgBox("This user is not a supervisor. Closing form")
+            Me.Close()
+        End If
     End Sub
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
@@ -70,7 +80,7 @@ Public Class ProcessPO
             Dim Row As DataRow
             Row = Table.NewRow()
 
-            Row.Item("ID") = myPurchaseOrder.PurchaseOrderID
+            Row.Item("ID") = myPurchaseOrder.Items(i).ItemID
             Row.Item("Name") = myPurchaseOrder.Items(i).ItemName
             Row.Item("Descripion") = myPurchaseOrder.Items(i).Description
             Row.Item("Price") = myPurchaseOrder.Items(i).Price
@@ -88,38 +98,43 @@ Public Class ProcessPO
             gpItems.Enabled = True
         End If
 
+        If myPurchaseOrder.Items.FindAll(Function(myItem) myItem.Status = ItemStatus.Denied OrElse myItem.Status = ItemStatus.Approved).Count = myPurchaseOrder.Items.Count Then
+            Dim result As Integer = MessageBox.Show("Do you wish to close this purchase order?", "Close Order", MessageBoxButtons.YesNo)
+
+            If result = DialogResult.Yes Then
+                PurchaseOrder.closeOrder(myPurchaseOrder)
+            End If
+        End If
+
     End Sub
 
     Private Sub DataGridView1_DoubleClick(sender As Object, e As EventArgs) Handles DataGridView1.DoubleClick
-        Dim id As Integer = DataGridView1.Item(0, DataGridView1.CurrentRow.Index).Value
 
-        myItem = PurchaseOrderItemFactory.Create(id)
+        If Not IsDBNull(DataGridView1.Item(0, DataGridView1.CurrentRow.Index).Value) Then
 
-        gpItems.Visible = True
 
-        txtDesc.Text = myItem.Description
-        lblItemID.Text = myItem.ItemID
-        txtJustification.Text = myItem.Justification
-        txtItemName.Text = myItem.ItemName
-        txtPrice.Text = myItem.Price
-        txtQuantity.Text = myItem.Quantity
-        txtSource.Text = myItem.Source
+            Dim id As Integer = DataGridView1.Item(0, DataGridView1.CurrentRow.Index).Value
 
-        ddlItemStatus.SelectedIndex = myItem.Status
-    End Sub
+            myItem = PurchaseOrderItemFactory.Create(id)
 
-    Private Sub ddlItemStatus_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlItemStatus.SelectedIndexChanged
-        If ddlItemStatus.SelectedIndex = 2 Then
-            txtDenial.Visible = True
-            lblDenial.Visible = True
-        Else
-            txtDenial.Visible = False
-            lblDenial.Visible = False
+            gpItems.Visible = True
+
+            txtDesc.Text = myItem.Description
+            lblItemID.Text = myItem.ItemID
+            txtJustification.Text = myItem.Justification
+            txtItemName.Text = myItem.ItemName
+            txtPrice.Text = myItem.Price
+            txtQuantity.Text = myItem.Quantity
+            txtSource.Text = myItem.Source
+
+            ddlItemStatus.SelectedIndex = myItem.Status
         End If
     End Sub
 
+
+
     Private Sub btnSubmit_Click(sender As Object, e As EventArgs) Handles btnSubmit.Click
-        If String.Equals(myItem.ItemName, txtItemName.Text) = True OrElse String.Equals(myItem.Description, txtDesc.Text) = True OrElse String.Equals(myItem.Price.ToString(), txtPrice.Text) = True OrElse String.Equals(myItem.Quantity.ToString(), txtQuantity.Text) = True OrElse String.Equals(myItem.Source, txtSource.Text) = True OrElse String.Equals(myItem.Justification, txtJustification.Text) = True Then
+        If String.Equals(myItem.ItemName, txtItemName.Text) = False OrElse String.Equals(myItem.Description, txtDesc.Text) = False OrElse String.Equals(myItem.Price.ToString(), txtPrice.Text) = False OrElse String.Equals(myItem.Quantity.ToString(), txtQuantity.Text) = False OrElse String.Equals(myItem.Source, txtSource.Text) = False OrElse String.Equals(myItem.Justification, txtJustification.Text) = False Then
 
             If txtDenial.Text = String.Empty Then
                 MsgBox("Must provide a reason to change the item.")
@@ -139,9 +154,23 @@ Public Class ProcessPO
                 MessageBox.Show("Please add a reason for cancellation")
             Else
                 PurchaseOrderItem.denyItem(myItem, txtDenial.Text)
+                MsgBox("Item denied.")
             End If
         ElseIf ddlItemStatus.SelectedIndex = 1 Then
             PurchaseOrderItem.approveItem(myItem)
+            MsgBox("Item approved.")
         End If
+
+        If myPurchaseOrder.Items.FindAll(Function(myItem) myItem.Status = ItemStatus.Denied OrElse myItem.Status = ItemStatus.Approved).Count = myPurchaseOrder.Items.Count Then
+            Dim result As Integer = MessageBox.Show("Do you wish to close this purchase order?", "Close Order", MessageBoxButtons.YesNo)
+
+            If result = DialogResult.Yes Then
+                PurchaseOrder.closeOrder(myPurchaseOrder)
+            End If
+        End If
+
+
     End Sub
+
+
 End Class
