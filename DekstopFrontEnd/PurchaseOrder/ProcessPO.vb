@@ -4,25 +4,29 @@ Imports BOL.Purchase_Order_Item
 Imports Common
 Public Class ProcessPO
 
-
     Dim myPurchaseOrder As PurchaseOrder
     Dim myItem As PurchaseOrderItem
+    Dim myEmp As Employee
 
     Private Sub ProcessPO_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         loadDropdowns()
 
+        myEmp = Employee.retrieve(GLOBAL_LOGGEDIN_USERID)
 
+        lblSup.Text = GLOBAL_LOGGEDIN_USERNAME
+        Dim dept As Department = Department.GetADept(myEmp.DeptID)
+        lblDept.Text = dept.DeptName
     End Sub
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         If ddlStatus.SelectedIndex = 0 Then
-            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(ddlSupervisors.Text, OrderStatus.Pending, txtFirst.Text, txtLast.Text, dtStart.Value.ToShortDateString, dtpEnd.Value.ToShortDateString)
+            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(GLOBAL_LOGGEDIN_USERID, OrderStatus.Pending, txtFirst.Text, txtLast.Text, dtStart.Value.ToShortDateString, dtpEnd.Value.ToShortDateString)
             loadDataGrid(results)
         ElseIf ddlStatus.SelectedIndex = 1 Then
-            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(ddlSupervisors.Text, OrderStatus.Closed, txtFirst.Text, txtLast.Text, dtStart.Value.ToShortDateString, dtpEnd.Value.ToShortDateString)
+            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(GLOBAL_LOGGEDIN_USERID, OrderStatus.Closed, txtFirst.Text, txtLast.Text, dtStart.Value.ToShortDateString, dtpEnd.Value.ToShortDateString)
             loadDataGrid(results)
         Else
-            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(ddlSupervisors.Text, Nothing, txtFirst.Text, txtLast.Text, dtStart.Value.ToShortDateString, dtpEnd.Value.ToShortDateString)
+            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(GLOBAL_LOGGEDIN_USERID, Nothing, txtFirst.Text, txtLast.Text, dtStart.Value.ToShortDateString, dtpEnd.Value.ToShortDateString)
             loadDataGrid(results)
         End If
     End Sub
@@ -32,11 +36,6 @@ Public Class ProcessPO
         ddlStatus.Items.Add("Approved")
         ddlStatus.Items.Add("Denied")
         ddlStatus.SelectedIndex = 0
-
-        ddlSupervisors.Items.Add("10000002")
-        ddlSupervisors.Items.Add("10000007")
-        ddlSupervisors.SelectedIndex = 0
-
 
         ddlItemStatus.Items.Add("Pending")
         ddlItemStatus.Items.Add("Approved")
@@ -82,6 +81,13 @@ Public Class ProcessPO
         Next
 
         DataGridView1.DataSource = Table
+
+        If myPurchaseOrder.Status = OrderStatus.Closed Then
+            gpItems.Enabled = False
+        Else
+            gpItems.Enabled = True
+        End If
+
     End Sub
 
     Private Sub DataGridView1_DoubleClick(sender As Object, e As EventArgs) Handles DataGridView1.DoubleClick
@@ -91,12 +97,14 @@ Public Class ProcessPO
 
         gpItems.Visible = True
 
-        lblDesc.Text = myItem.Description
+        txtDesc.Text = myItem.Description
         lblItemID.Text = myItem.ItemID
-        lblJust.Text = myItem.Justification
-        lblName.Text = myItem.ItemName
-        lblPrice.Text = myItem.Price
-        lblQuantity.Text = myItem.Quantity
+        txtJustification.Text = myItem.Justification
+        txtItemName.Text = myItem.ItemName
+        txtPrice.Text = myItem.Price
+        txtQuantity.Text = myItem.Quantity
+        txtSource.Text = myItem.Source
+
         ddlItemStatus.SelectedIndex = myItem.Status
     End Sub
 
@@ -111,6 +119,21 @@ Public Class ProcessPO
     End Sub
 
     Private Sub btnSubmit_Click(sender As Object, e As EventArgs) Handles btnSubmit.Click
+        If String.Equals(myItem.ItemName, txtItemName.Text) = True OrElse String.Equals(myItem.Description, txtDesc.Text) = True OrElse String.Equals(myItem.Price.ToString(), txtPrice.Text) = True OrElse String.Equals(myItem.Quantity.ToString(), txtQuantity.Text) = True OrElse String.Equals(myItem.Source, txtSource.Text) = True OrElse String.Equals(myItem.Justification, txtJustification.Text) = True Then
+
+            If txtDenial.Text = String.Empty Then
+                MsgBox("Must provide a reason to change the item.")
+            Else
+                myItem.ItemName = Validation.[String](txtItemName.Text)
+                myItem.Description = Validation.[String](txtDesc.Text)
+                myItem.Price = Validation.[Double](txtPrice.Text)
+                myItem.Quantity = Integer.Parse(Validation.[String](txtQuantity.Text))
+                myItem.Source = Validation.[String](txtSource.Text)
+                myItem.Justification = Validation.[String](txtJustification.Text)
+                myItem.Reason = Validation.[String](txtDenial.Text)
+            End If
+        End If
+
         If ddlItemStatus.SelectedIndex = 2 Then
             If txtDenial.Text = String.Empty Then
                 MessageBox.Show("Please add a reason for cancellation")
@@ -120,7 +143,5 @@ Public Class ProcessPO
         ElseIf ddlItemStatus.SelectedIndex = 1 Then
             PurchaseOrderItem.approveItem(myItem)
         End If
-
-
     End Sub
 End Class

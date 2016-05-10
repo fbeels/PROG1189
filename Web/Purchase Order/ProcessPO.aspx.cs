@@ -48,23 +48,20 @@ namespace WebCSharp.PurchaseOrder
 
 
 
-                if (!Page.IsPostBack)
+                if (myPurchaseOrder.Status != OrderStatus.Closed)
                 {
-                    if (myPurchaseOrder.Status != OrderStatus.Closed)
+                    if (myPurchaseOrder.Items.FindAll(myItem => myItem.Status == ItemStatus.Denied || myItem.Status == ItemStatus.Approved).Count == myPurchaseOrder.Items.Count)
                     {
-                        if (myPurchaseOrder.Items.Exists(myItem => myItem.Status == ItemStatus.Denied || myItem.Status == ItemStatus.Approved))
-                        {
-                            btnNo.Visible = true;
-                            btnYes.Visible = true;
-                            lblClose.Visible = true;
-                        }
-                        else if (myPurchaseOrder.Items.Exists(myItem => myItem.Status == ItemStatus.Pending))
-                        {
-                            BOL.Purchase_Order.PurchaseOrder.markPending(myPurchaseOrder);
-                        }
-
+                        btnNo.Visible = true;
+                        btnYes.Visible = true;
+                        lblClose.Visible = true;
+                    }
+                    else if (myPurchaseOrder.Items.Exists(myItem => myItem.Status == ItemStatus.Pending))
+                    {
+                        BOL.Purchase_Order.PurchaseOrder.markPending(myPurchaseOrder);
                     }
                 }
+
 
 
                 if (Request.QueryString["iid"] != null)
@@ -84,6 +81,13 @@ namespace WebCSharp.PurchaseOrder
                         txtSource.Text = myItem.Source;
                         ddlStatus.SelectedIndex = (int)myItem.Status;
                         txtReason.Text = myItem.Reason;
+
+
+                        if (ddlStatus.SelectedIndex == 2)
+                        {
+                            lblReason.Visible = true;
+                            txtReason.Visible = true;
+                        }
                     }
                 }
             }
@@ -112,7 +116,6 @@ namespace WebCSharp.PurchaseOrder
 
             }
         }
-
 
         private void loadData()
         {
@@ -157,7 +160,7 @@ namespace WebCSharp.PurchaseOrder
 
         protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlStatus.SelectedIndex != 0)
+            if (ddlStatus.SelectedIndex == 2)
             {
                 lblReason.Visible = true;
                 txtReason.Visible = true;
@@ -175,13 +178,14 @@ namespace WebCSharp.PurchaseOrder
                 }
                 else
                 {
-                    myItem.ItemName = Validation.String(txtName.Text);
-                    myItem.Description = Validation.String(txtDesc.Text);
-                    myItem.Price = Validation.Double(txtPrice.Text);
-                    myItem.Quantity = int.Parse(Validation.String(txtQuantity.Text));
-                    myItem.Source = Validation.String(txtSource.Text);
-                    myItem.Justification = Validation.String(txtJustification.Text);
-                    myItem.Reason = Validation.String(txtReason.Text);
+                    myItem.ItemName = txtName.Text;
+                    myItem.Description = txtDesc.Text;
+                    myItem.Price = double.Parse(txtPrice.Text);
+                    myItem.Quantity = int.Parse(txtQuantity.Text);
+                    myItem.Source = txtSource.Text;
+                    myItem.Justification = txtJustification.Text;
+                    myItem.Reason = txtReason.Text;
+                    doTaxCalculations();
                 }
 
             }
@@ -190,10 +194,11 @@ namespace WebCSharp.PurchaseOrder
             if (ddlStatus.SelectedIndex == 1)
             {
                 PurchaseOrderItem.approveItem(myItem);
+
                 BOL.Purchase_Order.PurchaseOrder.markUnderReview(myPurchaseOrder);
                 Response.Redirect(Request.RawUrl);
             }
-            else if (ddlStatus.SelectedIndex == 1)
+            else if (ddlStatus.SelectedIndex == 2)
             {
                 if (txtReason.Text != string.Empty)
                 {
@@ -207,6 +212,17 @@ namespace WebCSharp.PurchaseOrder
                 }
             }
 
+        }
+
+        public void doTaxCalculations()
+        {
+            myPurchaseOrder.SubTotal = myPurchaseOrder.calculateSubtotal();
+            myPurchaseOrder.Tax = myPurchaseOrder.calculateTax();
+            myPurchaseOrder.Total = myPurchaseOrder.calculateTotal();
+
+            lblSubtotal.Text = myPurchaseOrder.calculateSubtotal().ToString("C2");
+            lblTax.Text = myPurchaseOrder.calculateTax().ToString("C2");
+            lblTotal.Text = myPurchaseOrder.calculateTotal().ToString("C2");
         }
     }
 }

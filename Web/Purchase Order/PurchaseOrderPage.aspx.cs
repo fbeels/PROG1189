@@ -83,27 +83,57 @@ namespace WebCSharp.PurchaseOrder
                 TextBox txtQ = (TextBox)Gridview1.Rows[rowIndex].Cells[4].FindControl("txtQ");
                 TextBox txtStore = (TextBox)Gridview1.Rows[rowIndex].Cells[5].FindControl("txtStore");
                 TextBox txtJust = (TextBox)Gridview1.Rows[rowIndex].Cells[6].FindControl("txtJust");
+                Label lblStatus = (Label)Gridview1.Rows[rowIndex].Cells[6].FindControl("lblStatus");
+                Label lblReason= (Label)Gridview1.Rows[rowIndex].Cells[6].FindControl("lblReason");
+                CheckBox chkNotNeeded = (CheckBox)Gridview1.Rows[rowIndex].Cells[6].FindControl("chkNotNeeded");
+
+                Button btn = (Button)Gridview1.FooterRow.Cells[6].FindControl("buttonAdd");
+
+
                 txtName.Text = myPurchaseOrder.Items[i].ItemName;
                 txtDesc.Text = myPurchaseOrder.Items[i].Description;
                 txtPrice.Text = myPurchaseOrder.Items[i].Price.ToString();
                 txtQ.Text = myPurchaseOrder.Items[i].Quantity.ToString();
                 txtStore.Text = myPurchaseOrder.Items[i].Source;
                 txtJust.Text = myPurchaseOrder.Items[i].Justification;
-                if (myPurchaseOrder.Status != OrderStatus.Pending)
+                lblStatus.Text = myPurchaseOrder.Items[i].Status.ToString();
+                lblReason.Text = myPurchaseOrder.Items[i].Reason;
+                if (txtDesc.Text == "No longer needed")
                 {
-                    txtDesc.ReadOnly = true;
-                    txtName.ReadOnly = true;
-                    txtPrice.ReadOnly = true;
-                    txtQ.ReadOnly = true;
-                    txtJust.ReadOnly = true;
-                    txtStore.ReadOnly = true;
+                    chkNotNeeded.Checked = true;
                 }
+
+
+                if (myPurchaseOrder.Status == OrderStatus.Closed)
+                {
+                    txtDesc.Enabled = false;
+                    txtName.Enabled = false;
+                    txtPrice.Enabled = false;
+                    txtQ.Enabled = false;
+                    txtJust.Enabled = false;
+                    txtStore.Enabled = false;
+                    chkNotNeeded.Enabled = false;
+                    btnSubmit.Enabled = false;
+
+                    btn.Enabled = false;
+
+                }
+
                 rowIndex += 1;
+                if (rowIndex == myPurchaseOrder.Items.Count && myPurchaseOrder.Status == OrderStatus.Closed)
+                {
+                    break;
+                }
                 AddNewRowToGrid(false, true);
             }
+
+            setVisibilityOfID(true);
+            setVisibilityOfMoneyLabels(true);
+            doTaxCalculations();
+
+            lblID.Text = myPurchaseOrder.PurchaseOrderID.ToString();
+            lblPOStatus.Text = myPurchaseOrder.Status.ToString();
         }
-
-
 
 
         #region "Add PO/Items Controls"
@@ -115,6 +145,14 @@ namespace WebCSharp.PurchaseOrder
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+
+            if (myPurchaseOrder.Status == OrderStatus.Closed)
+            {
+                Button btn = (Button)sender;
+                btn.Enabled = false;
+                
+            }
+
             AddNewRowToGrid(true, false);
 
             lblError.ForeColor = System.Drawing.Color.Black;
@@ -136,7 +174,8 @@ namespace WebCSharp.PurchaseOrder
             dt.Columns.Add(new DataColumn("Column5", typeof(string)));
             dt.Columns.Add(new DataColumn("Column6", typeof(string)));
             dt.Columns.Add(new DataColumn("Column7", typeof(string)));
-            dt.Columns.Add(new DataColumn("Column8", typeof(bool)));
+            dt.Columns.Add(new DataColumn("Column8", typeof(string)));
+            dt.Columns.Add(new DataColumn("Column9", typeof(bool)));
             dr = dt.NewRow();
             dr["RowNumber"] = 1;
             dr["Column1"] = string.Empty;
@@ -146,7 +185,7 @@ namespace WebCSharp.PurchaseOrder
             dr["Column5"] = string.Empty;
             dr["Column6"] = string.Empty;
             dr["Column7"] = string.Empty;
-            dr["Column8"] = false;
+            dr["Column9"] = false;
             dt.Rows.Add(dr);
             ViewState["CurrentTable"] = dt;
             Gridview1.DataSource = dt;
@@ -165,7 +204,7 @@ namespace WebCSharp.PurchaseOrder
             if (ViewState["CurrentTable"] != null)
             {
                 DataTable dtCurrentTable = (DataTable)ViewState["CurrentTable"];
-                DataRow drCurrentRow = null;
+                DataRow drCurrentRow = null;                               
 
                 if (dtCurrentTable.Rows.Count > 0)
                 {
@@ -178,11 +217,11 @@ namespace WebCSharp.PurchaseOrder
                         TextBox txtStore = (TextBox)Gridview1.Rows[rowIndex].Cells[5].FindControl("txtStore");
                         TextBox txtJust = (TextBox)Gridview1.Rows[rowIndex].Cells[6].FindControl("txtJust");
                         Label lblStatus = (Label)Gridview1.Rows[rowIndex].Cells[7].FindControl("lblStatus");
+                        Label lblReason = (Label)Gridview1.Rows[rowIndex].Cells[6].FindControl("lblReason");
                         CheckBox chkNotNeeded = (CheckBox)Gridview1.Rows[rowIndex].Cells[8].FindControl("chkNotNeeded");
 
                         drCurrentRow = dtCurrentTable.NewRow();
                         drCurrentRow["RowNumber"] = i + 1;
-
                         // if its the last row and it's empty, exit looop
                         if (i == dtCurrentTable.Rows.Count & txtName.Text == string.Empty & txtDesc.Text == string.Empty & txtStore.Text == string.Empty & txtJust.Text == string.Empty)
                         {
@@ -197,6 +236,8 @@ namespace WebCSharp.PurchaseOrder
 
                                 if (chkNotNeeded.Checked)
                                 {
+                                    PurchaseOrderItem.noLongerNeeded(item);
+
                                     txtPrice.Text = 0.ToString();
                                     txtQ.Text = 0.ToString();
                                     txtDesc.Text = "No longer needed";
@@ -204,18 +245,18 @@ namespace WebCSharp.PurchaseOrder
 
                                 try
                                 {
-                                    item.ItemName = Validation.String(txtName.Text);
-                                    item.Description = Validation.String(txtDesc.Text);
+                                    item.ItemName = txtName.Text;
+                                    item.Description = txtDesc.Text;
 
                                     //skip validation for these, since they are empty and will trigger validation
                                     if (txtDesc.Text != "No longer needed")
                                     {
-                                        item.Price = Validation.Double(txtPrice.Text);
-                                        item.Quantity = int.Parse(Validation.String(txtQ.Text));
+                                        item.Price = double.Parse(txtPrice.Text);
+                                        item.Quantity = int.Parse(txtQ.Text);
                                     }
 
-                                    item.Source = Validation.String(txtStore.Text);
-                                    item.Justification = Validation.String(txtJust.Text);
+                                    item.Source = txtStore.Text;
+                                    item.Justification = txtJust.Text;
                                 }
                                 catch (Exception ex)
                                 {
@@ -337,7 +378,18 @@ namespace WebCSharp.PurchaseOrder
                         dtCurrentTable.Rows[i - 1]["Column7"] = lblStatus.Text;
                         dtCurrentTable.Rows[i - 1]["Column8"] = chkNotNeeded.Checked;
 
+                        if (myPurchaseOrder.Status == OrderStatus.Closed)
+                        {
+                            txtDesc.Enabled = false;
+                            txtName.Enabled = false;
+                            txtPrice.Enabled = false;
+                            txtQ.Enabled = false;
+                            txtJust.Enabled = false;
+                            txtStore.Enabled = false;
+                            chkNotNeeded.Enabled = false;
+                            btnSubmit.Enabled = false;
 
+                        }
                         rowIndex += 1;
                     }
 
@@ -357,7 +409,6 @@ namespace WebCSharp.PurchaseOrder
 
         }
 
-
         /// <summary>
         /// Sets the previous data in the row
         /// </summary>
@@ -370,7 +421,7 @@ namespace WebCSharp.PurchaseOrder
                 DataTable dt = (DataTable)ViewState["CurrentTable"];
                 if (dt.Rows.Count > 0)
                 {
-                    for (int i = 0; i <= myPurchaseOrder.Items.Count - 1; i++)
+                    for (int i = 0; i < dt.Rows.Count - 1; i++)
                     {
                         TextBox txtName = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("txtName");
                         TextBox txtDesc = (TextBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("txtDesc");
@@ -379,6 +430,7 @@ namespace WebCSharp.PurchaseOrder
                         TextBox txtStore = (TextBox)Gridview1.Rows[rowIndex].Cells[5].FindControl("txtStore");
                         TextBox txtJust = (TextBox)Gridview1.Rows[rowIndex].Cells[6].FindControl("txtJust");
                         Label lblStatus = (Label)Gridview1.Rows[rowIndex].Cells[7].FindControl("lblStatus");
+                        Label lblReason = (Label)Gridview1.Rows[rowIndex].Cells[6].FindControl("lblReason");
                         CheckBox chkNotNeeded = (CheckBox)Gridview1.Rows[rowIndex].Cells[8].FindControl("chkNotNeeded");
                         txtName.Text = myPurchaseOrder.Items[i].ItemName;
                         txtDesc.Text = myPurchaseOrder.Items[i].Description;
@@ -386,10 +438,12 @@ namespace WebCSharp.PurchaseOrder
                         txtQ.Text = myPurchaseOrder.Items[i].Quantity.ToString();
                         txtStore.Text = myPurchaseOrder.Items[i].Source;
                         txtJust.Text = myPurchaseOrder.Items[i].Justification;
+                        lblReason.Text = myPurchaseOrder.Items[i].Reason;
                         
-                        if (myPurchaseOrder.Status != OrderStatus.Pending)
+                        if (myPurchaseOrder.Status == OrderStatus.UnderReview )
                         {
-                            lblStatus.Text = "Under Review";                            
+                            lblStatus.Text = "Under Review";
+                            lblReason.Text = "Under Rewiew";          
                         } else
                         {
                             lblStatus.Text = myPurchaseOrder.Items[i].Status.ToString();
@@ -404,7 +458,21 @@ namespace WebCSharp.PurchaseOrder
                             chkNotNeeded.Checked = false;
                         }
 
-
+                        if (myPurchaseOrder.Status != OrderStatus.Pending)
+                        {
+                            txtDesc.Enabled = false;
+                            txtName.Enabled = false;
+                            txtPrice.Enabled = false;
+                            txtQ.Enabled = false;
+                            txtJust.Enabled = false;
+                            txtStore.Enabled = false;
+                            chkNotNeeded.Enabled = false;
+                            if (myPurchaseOrder.Status == OrderStatus.Closed)
+                            {
+                                btnSubmit.Enabled = false;
+                            }
+                               
+                        }
                         rowIndex += 1;
                     }
                 }
@@ -421,13 +489,7 @@ namespace WebCSharp.PurchaseOrder
         #endregion
 
 
-
-
-
-
         #region "Misc Functions"
-
-
         /// <summary>
         /// Calculates the various caluclations in the myPurchaseOrder object.
         /// </summary>
@@ -436,6 +498,10 @@ namespace WebCSharp.PurchaseOrder
             myPurchaseOrder.SubTotal = myPurchaseOrder.calculateSubtotal();
             myPurchaseOrder.Tax = myPurchaseOrder.calculateTax();
             myPurchaseOrder.Total = myPurchaseOrder.calculateTotal();
+
+            lblSubtotal.Text = myPurchaseOrder.SubTotal.ToString("c2");
+            lblTax.Text = myPurchaseOrder.Tax.ToString("c2");
+            lblTotal.Text = myPurchaseOrder.Total.ToString("c2");
         }
 
         /// <summary>
