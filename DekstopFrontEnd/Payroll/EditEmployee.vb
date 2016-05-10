@@ -122,9 +122,37 @@ Public Class EditEmployee
 
 
     Private Sub btnselect_Click(sender As Object, e As EventArgs) Handles btnselect.Click
+        Dim intselectedemp As Integer = lstsearchresults.SelectedValue
+        LoadEmployee(intselectedemp)
+        grbempinfo.Enabled = True
+        grbjob.Enabled = False
+        grbemployment.Enabled = False
+
+    End Sub
+
+    Private Sub btneditjobinfo_Click(sender As Object, e As EventArgs) Handles btneditjobinfo.Click
+        Dim intselectedemp As Integer = lstsearchresults.SelectedValue
+        LoadEmployee(intselectedemp)
+        grbjob.Enabled = True
+        grbempinfo.Enabled = False
+
+        grbemployment.Enabled = False
+    End Sub
+
+    Private Sub btneditemploymentinfo_Click(sender As Object, e As EventArgs) Handles btneditemploymentinfo.Click
+        Dim intselectedemp As Integer = lstsearchresults.SelectedValue
+        LoadEmployee(intselectedemp)
+        grbemployment.Enabled = True
+        grbempinfo.Enabled = False
+        grbjob.Enabled = False
+
+    End Sub
+
+
+    Private Sub LoadEmployee(ByRef intselectedemp As Integer)
         grbempinfo.Visible = True
 
-        Dim intselectedemp As Integer = lstsearchresults.SelectedValue
+
         lbldebug.Text = intselectedemp
 
         Dim emp As Employee
@@ -149,13 +177,13 @@ Public Class EditEmployee
         dtpstartdate.Text = emp.JobStartDate
 
         dtpterminationdate.Visible = False
-        lbltermination.Visible = False
+        ' lbltermination.Visible = False
         dtpterminationdate.Text = emp.TerminationDate
 
-        If emp.TerminationDate < "2222-12-31" Then
-            dtpterminationdate.Visible = True
-            lbltermination.Visible = True
-        End If
+        'If emp.TerminationDate < "2222-12-31" Then
+        '    dtpterminationdate.Visible = True
+        '    '   lbltermination.Visible = True
+        'End If
 
 
         Dim strprov As String = emp.Prov
@@ -183,6 +211,25 @@ Public Class EditEmployee
         txtempid.Text = emp.EmpID
         txtempid.Enabled = False
 
+        Select Case emp.empstatus
+            Case 0
+                rdostatusActive.Checked = True
+                dtpterminationdate.Visible = False
+            Case 1
+                rdostatusTerminated.Checked = True
+                dtpterminationdate.Visible = True
+                ' dtpterminationdate.Top = 291
+
+            Case 2
+                rdostatusRetired.Checked = True
+                dtpterminationdate.Visible = True
+                '  dtpterminationdate.Top = 264
+        End Select
+
+        'If emp.CANRETIRE = True Then
+        '    rdostatusRetired.Enabled = True
+        'End If
+
 
     End Sub
     Private Sub LoadJobsDropdown(ByRef deptid As Integer)
@@ -195,7 +242,7 @@ Public Class EditEmployee
             cbojobid.ValueMember = "JobId"     ' prop name of object to return
         End If
     End Sub
-    Private Sub cbodept_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cbodept.SelectionChangeCommitted
+    Private Sub cbodept_SelectionChangeCommitted(sender As Object, e As EventArgs)
 
         Dim selecteddept As Integer = 0
         ' If loadorreset = True Then
@@ -275,7 +322,7 @@ Public Class EditEmployee
         lblsuper.Text = superdept.SupervisorName
         lblsuperid.Text = superdept.SupervisorId
     End Sub
-    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+    Private Sub btnSave_Click(sender As Object, e As EventArgs)
         Try
             Dim inputisallok As Boolean = True
 
@@ -392,7 +439,7 @@ Public Class EditEmployee
 
             mtxcellphone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals
             Dim strcellphone As String = mtxcellphone.Text
-           
+
 
 
 
@@ -532,19 +579,41 @@ Public Class EditEmployee
         grbempinfo.Visible = False
     End Sub
 
-    Private Sub dtpsenority_ValueChanged(sender As Object, e As EventArgs) Handles dtpsenority.ValueChanged
+    Private Sub dtpsenority_ValueChanged(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub dtpstartdate_ValueChanged(sender As Object, e As EventArgs) Handles dtpstartdate.ValueChanged
+    Private Sub dtpstartdate_ValueChanged(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub dtpterminationdate_ValueChanged(sender As Object, e As EventArgs) Handles dtpterminationdate.ValueChanged
+    Private Sub dtpterminationdate_ValueChanged(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub dtpdateofbirth_ValueChanged(sender As Object, e As EventArgs) Handles dtpdateofbirth.ValueChanged
+    Private Sub dtpdateofbirth_ValueChanged(sender As Object, e As EventArgs)
 
     End Sub
+
+    Private Sub rdostatusRetired_CheckedChanged(sender As Object, e As EventArgs) Handles rdostatusRetired.CheckedChanged
+        If rdostatusRetired.Checked Then
+            dtpterminationdate.Visible = True
+            dtpterminationdate.Top = 52
+        End If
+    End Sub
+
+    Private Sub rdostatusActive_CheckedChanged(sender As Object, e As EventArgs) Handles rdostatusActive.CheckedChanged
+        If rdostatusActive.Checked Then
+            dtpterminationdate.Visible = False
+        End If
+    End Sub
+
+    Private Sub rdostatusTerminated_CheckedChanged(sender As Object, e As EventArgs) Handles rdostatusTerminated.CheckedChanged
+        If rdostatusTerminated.Checked Then
+            dtpterminationdate.Visible = True
+            dtpterminationdate.Top = 82
+        End If
+    End Sub
+
+   
 End Class

@@ -36,6 +36,23 @@ namespace Web.Payroll
             txtPostal.Text = myEmp.Postal;
             txtwork.Text = myEmp.Phone;
             txtemail.Text = myEmp.Email;
+
+
+            txtdob.Text = (myEmp.DOB).ToShortDateString();
+            txtsin.Text = myEmp.SIN;
+            txtseniorityDate.Text = (myEmp.SeniorityDate).ToShortDateString();
+            txtjobstartDate.Text = (myEmp.JobStartDate).ToShortDateString();
+            txtjobId.Text = (myEmp.JobID).ToString();
+            txtsupervisiorID.Text = (myEmp.SupervisorID).ToString();
+              txtemailnotificatoins.Text = (myEmp.EmailNotification).ToString();
+             txtpayrate.Text = (myEmp.PayRate).ToString();
+            txtterminationDate.Text = (myEmp.TerminationDate).ToShortDateString();
+             txtdeptID.Text = (myEmp.JobID).ToString();
+             txtempstatus.Text = (myEmp.JobID).ToString();
+            txtlastchanged.Text = (myEmp.JobID).ToString();
+
+
+
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -55,6 +72,7 @@ namespace Web.Payroll
             emp2save.Postal = txtPostal.Text;
             emp2save.Phone = txtwork.Text;
             emp2save.Email = txtemail.Text;
+
             emp2save.DeptID = myEmp.DeptID;
             emp2save.DOB = myEmp.DOB;
             emp2save.EmailNotification = myEmp.EmailNotification;
@@ -63,7 +81,7 @@ namespace Web.Payroll
             emp2save.JobStartDate = myEmp.JobStartDate;
             emp2save.PayRate = myEmp.PayRate;
             emp2save.SeniorityDate = myEmp.SeniorityDate;
-            emp2save.SIN = myEmp.SIN;
+            emp2save.CANRETIRE = myEmp.CANRETIRE;
             emp2save.SupervisorID = myEmp.SupervisorID;
             emp2save.supervisorName = myEmp.supervisorName;
             emp2save.TerminationDate = myEmp.TerminationDate;
