@@ -75,7 +75,7 @@ Partial Class RunPayroll
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(438, 291)
+        Me.ClientSize = New System.Drawing.Size(1202, 865)
         Me.Controls.Add(Me.lblResults)
         Me.Controls.Add(Me.lblmsg)
         Me.Controls.Add(Me.btnrunpayroll)

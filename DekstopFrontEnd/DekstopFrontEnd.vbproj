@@ -152,18 +152,6 @@
     <Compile Include="Payroll\EditEmployee.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Payroll\emailTest.Designer.vb">
-      <DependentUpon>emailTest.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Payroll\emailTest.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Payroll\GetPayrollInfo.Designer.vb">
-      <DependentUpon>GetPayrollInfo.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Payroll\GetPayrollInfo.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Payroll\RetrieveEmployee.Designer.vb">
       <DependentUpon>RetrieveEmployee.vb</DependentUpon>
     </Compile>
@@ -223,9 +211,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Payroll\EditEmployee.resx">
       <DependentUpon>EditEmployee.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Payroll\emailTest.resx">
-      <DependentUpon>emailTest.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Payroll\LastPayroll.rdlc" />
     <EmbeddedResource Include="Payroll\Payroll.rdlc" />

@@ -51,7 +51,7 @@ Partial Class CalcPay2
         Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "LastPayroll.rdlc"
         Me.ReportViewer1.Location = New System.Drawing.Point(0, 0)
         Me.ReportViewer1.Name = "ReportViewer1"
-        Me.ReportViewer1.Size = New System.Drawing.Size(1389, 571)
+        Me.ReportViewer1.Size = New System.Drawing.Size(1202, 865)
         Me.ReportViewer1.TabIndex = 0
         '
         'GetLastPayrollTableAdapter
@@ -62,7 +62,7 @@ Partial Class CalcPay2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1389, 571)
+        Me.ClientSize = New System.Drawing.Size(1202, 865)
         Me.Controls.Add(Me.ReportViewer1)
         Me.Name = "CalcPay2"
         Me.Text = "CalcPay2"

@@ -766,7 +766,7 @@ Partial Class EditEmployee
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1213, 956)
+        Me.ClientSize = New System.Drawing.Size(1202, 865)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "EditEmployee"
         Me.Text = "EditEmployee"

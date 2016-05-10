@@ -50,6 +50,7 @@ Partial Class AddEmployee
         Me.lblmiddleint = New System.Windows.Forms.Label()
         Me.lbllastname = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.lblbcode = New System.Windows.Forms.Label()
         Me.chkemailstub = New System.Windows.Forms.CheckBox()
         Me.lblsuperid = New System.Windows.Forms.Label()
         Me.lblsupername = New System.Windows.Forms.Label()
@@ -64,7 +65,6 @@ Partial Class AddEmployee
         Me.lbljobid = New System.Windows.Forms.Label()
         Me.lbldept = New System.Windows.Forms.Label()
         Me.lblsupervisor = New System.Windows.Forms.Label()
-        Me.lblbcode = New System.Windows.Forms.Label()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -354,6 +354,16 @@ Partial Class AddEmployee
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Employment Information"
         '
+        'lblbcode
+        '
+        Me.lblbcode.AutoSize = True
+        Me.lblbcode.Font = New System.Drawing.Font("IDAutomationHC39M", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblbcode.Location = New System.Drawing.Point(413, 134)
+        Me.lblbcode.Name = "lblbcode"
+        Me.lblbcode.Size = New System.Drawing.Size(309, 125)
+        Me.lblbcode.TabIndex = 45
+        Me.lblbcode.Text = "10000017"
+        '
         'chkemailstub
         '
         Me.chkemailstub.AutoSize = True
@@ -485,21 +495,11 @@ Partial Class AddEmployee
         Me.lblsupervisor.TabIndex = 31
         Me.lblsupervisor.Text = "Supervisor"
         '
-        'lblbcode
-        '
-        Me.lblbcode.AutoSize = True
-        Me.lblbcode.Font = New System.Drawing.Font("IDAutomationHC39M", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblbcode.Location = New System.Drawing.Point(413, 134)
-        Me.lblbcode.Name = "lblbcode"
-        Me.lblbcode.Size = New System.Drawing.Size(309, 125)
-        Me.lblbcode.TabIndex = 45
-        Me.lblbcode.Text = "10000017"
-        '
         'AddEmployee
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(765, 760)
+        Me.ClientSize = New System.Drawing.Size(1202, 865)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnprefill)

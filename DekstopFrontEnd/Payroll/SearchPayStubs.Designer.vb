@@ -24,6 +24,8 @@ Partial Class SearchPayStubs
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Me.SearchPayStubsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FinalProjSearchPayStubs = New FinalProjSearchPayStubs()
         Me.btnsearchpaystubs = New System.Windows.Forms.Button()
         Me.cboEmployees = New System.Windows.Forms.ComboBox()
         Me.dtpStartDate = New System.Windows.Forms.DateTimePicker()
@@ -32,12 +34,20 @@ Partial Class SearchPayStubs
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
-        Me.FinalProjSearchPayStubs = New FinalProjSearchPayStubs()
-        Me.SearchPayStubsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SearchPayStubsTableAdapter = New FinalProjSearchPayStubsTableAdapters.SearchPayStubsTableAdapter()
-        CType(Me.FinalProjSearchPayStubs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SearchPayStubsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FinalProjSearchPayStubs, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'SearchPayStubsBindingSource
+        '
+        Me.SearchPayStubsBindingSource.DataMember = "SearchPayStubs"
+        Me.SearchPayStubsBindingSource.DataSource = Me.FinalProjSearchPayStubs
+        '
+        'FinalProjSearchPayStubs
+        '
+        Me.FinalProjSearchPayStubs.DataSetName = "FinalProjSearchPayStubs"
+        Me.FinalProjSearchPayStubs.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'btnsearchpaystubs
         '
@@ -111,16 +121,6 @@ Partial Class SearchPayStubs
         Me.ReportViewer1.Size = New System.Drawing.Size(1136, 487)
         Me.ReportViewer1.TabIndex = 7
         '
-        'FinalProjSearchPayStubs
-        '
-        Me.FinalProjSearchPayStubs.DataSetName = "FinalProjSearchPayStubs"
-        Me.FinalProjSearchPayStubs.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'SearchPayStubsBindingSource
-        '
-        Me.SearchPayStubsBindingSource.DataMember = "SearchPayStubs"
-        Me.SearchPayStubsBindingSource.DataSource = Me.FinalProjSearchPayStubs
-        '
         'SearchPayStubsTableAdapter
         '
         Me.SearchPayStubsTableAdapter.ClearBeforeFill = True
@@ -129,7 +129,7 @@ Partial Class SearchPayStubs
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1160, 562)
+        Me.ClientSize = New System.Drawing.Size(1202, 865)
         Me.Controls.Add(Me.ReportViewer1)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -140,8 +140,8 @@ Partial Class SearchPayStubs
         Me.Controls.Add(Me.btnsearchpaystubs)
         Me.Name = "SearchPayStubs"
         Me.Text = "SearchPayStubs"
-        CType(Me.FinalProjSearchPayStubs, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SearchPayStubsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FinalProjSearchPayStubs, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

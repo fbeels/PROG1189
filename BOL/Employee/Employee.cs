@@ -52,10 +52,10 @@ namespace BOL
                 {
                     throw new System.ArgumentException("from class: FirstName cannot be empty");
                 }
-                if (IsNumeric(value))
-                {
+                //if (IsNumeric(value))
+                //{
 
-                }
+                //}
                 else
                 {
                     this._FirstName = value;

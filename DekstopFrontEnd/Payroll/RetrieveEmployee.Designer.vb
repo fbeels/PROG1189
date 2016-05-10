@@ -30,6 +30,9 @@ Partial Class RetrieveEmployee
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.grbempinfo = New System.Windows.Forms.GroupBox()
+        Me.rdostatusTerminated = New System.Windows.Forms.RadioButton()
+        Me.rdostatusRetired = New System.Windows.Forms.RadioButton()
+        Me.rdostatusActive = New System.Windows.Forms.RadioButton()
         Me.lblsuper = New System.Windows.Forms.Label()
         Me.lbltermination = New System.Windows.Forms.Label()
         Me.lblstartdate = New System.Windows.Forms.Label()
@@ -74,9 +77,6 @@ Partial Class RetrieveEmployee
         Me.lstsearchresults = New System.Windows.Forms.ListBox()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.lblnomatches = New System.Windows.Forms.Label()
-        Me.rdostatusActive = New System.Windows.Forms.RadioButton()
-        Me.rdostatusRetired = New System.Windows.Forms.RadioButton()
-        Me.rdostatusTerminated = New System.Windows.Forms.RadioButton()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.grbsearch.SuspendLayout()
         Me.grbempinfo.SuspendLayout()
@@ -198,6 +198,39 @@ Partial Class RetrieveEmployee
         Me.grbempinfo.TabIndex = 1
         Me.grbempinfo.TabStop = False
         Me.grbempinfo.Text = "Employee Info"
+        '
+        'rdostatusTerminated
+        '
+        Me.rdostatusTerminated.AutoSize = True
+        Me.rdostatusTerminated.Location = New System.Drawing.Point(122, 294)
+        Me.rdostatusTerminated.Name = "rdostatusTerminated"
+        Me.rdostatusTerminated.Size = New System.Drawing.Size(114, 24)
+        Me.rdostatusTerminated.TabIndex = 79
+        Me.rdostatusTerminated.TabStop = True
+        Me.rdostatusTerminated.Text = "Terminated"
+        Me.rdostatusTerminated.UseVisualStyleBackColor = True
+        '
+        'rdostatusRetired
+        '
+        Me.rdostatusRetired.AutoSize = True
+        Me.rdostatusRetired.Location = New System.Drawing.Point(122, 264)
+        Me.rdostatusRetired.Name = "rdostatusRetired"
+        Me.rdostatusRetired.Size = New System.Drawing.Size(86, 24)
+        Me.rdostatusRetired.TabIndex = 78
+        Me.rdostatusRetired.TabStop = True
+        Me.rdostatusRetired.Text = "Retired"
+        Me.rdostatusRetired.UseVisualStyleBackColor = True
+        '
+        'rdostatusActive
+        '
+        Me.rdostatusActive.AutoSize = True
+        Me.rdostatusActive.Location = New System.Drawing.Point(122, 234)
+        Me.rdostatusActive.Name = "rdostatusActive"
+        Me.rdostatusActive.Size = New System.Drawing.Size(77, 24)
+        Me.rdostatusActive.TabIndex = 77
+        Me.rdostatusActive.TabStop = True
+        Me.rdostatusActive.Text = "Active"
+        Me.rdostatusActive.UseVisualStyleBackColor = True
         '
         'lblsuper
         '
@@ -601,39 +634,6 @@ Partial Class RetrieveEmployee
         Me.lblnomatches.TabIndex = 9
         Me.lblnomatches.Text = "No matches found"
         '
-        'rdostatusActive
-        '
-        Me.rdostatusActive.AutoSize = True
-        Me.rdostatusActive.Location = New System.Drawing.Point(122, 234)
-        Me.rdostatusActive.Name = "rdostatusActive"
-        Me.rdostatusActive.Size = New System.Drawing.Size(77, 24)
-        Me.rdostatusActive.TabIndex = 77
-        Me.rdostatusActive.TabStop = True
-        Me.rdostatusActive.Text = "Active"
-        Me.rdostatusActive.UseVisualStyleBackColor = True
-        '
-        'rdostatusRetired
-        '
-        Me.rdostatusRetired.AutoSize = True
-        Me.rdostatusRetired.Location = New System.Drawing.Point(122, 264)
-        Me.rdostatusRetired.Name = "rdostatusRetired"
-        Me.rdostatusRetired.Size = New System.Drawing.Size(86, 24)
-        Me.rdostatusRetired.TabIndex = 78
-        Me.rdostatusRetired.TabStop = True
-        Me.rdostatusRetired.Text = "Retired"
-        Me.rdostatusRetired.UseVisualStyleBackColor = True
-        '
-        'rdostatusTerminated
-        '
-        Me.rdostatusTerminated.AutoSize = True
-        Me.rdostatusTerminated.Location = New System.Drawing.Point(122, 294)
-        Me.rdostatusTerminated.Name = "rdostatusTerminated"
-        Me.rdostatusTerminated.Size = New System.Drawing.Size(114, 24)
-        Me.rdostatusTerminated.TabIndex = 79
-        Me.rdostatusTerminated.TabStop = True
-        Me.rdostatusTerminated.Text = "Terminated"
-        Me.rdostatusTerminated.UseVisualStyleBackColor = True
-        '
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(332, 590)
@@ -647,7 +647,7 @@ Partial Class RetrieveEmployee
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1196, 818)
+        Me.ClientSize = New System.Drawing.Size(1202, 865)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.lblnomatches)
         Me.Controls.Add(Me.grbsearchresults)
