@@ -86,15 +86,15 @@
     <Compile Include="common\AboutBox1.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FinalProjDataSet7777.Designer.vb">
+    <Compile Include="Payroll\FinalProjDataSet7777.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FinalProjDataSet7777.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
+    <Compile Include="Payroll\Form1.Designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form1.vb">
+    <Compile Include="Payroll\Form1.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Payroll\FinalProjSearchPayStubs.Designer.vb">
@@ -201,7 +201,7 @@
     <EmbeddedResource Include="common\main.resx">
       <DependentUpon>main.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Payroll\Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Payroll\SearchPayStubs.resx">
@@ -226,8 +226,6 @@
     <EmbeddedResource Include="Payroll\EditEmployee.resx">
       <DependentUpon>EditEmployee.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Payroll\LastPayroll.rdlc" />
-    <EmbeddedResource Include="Payroll\Payroll.rdlc" />
     <EmbeddedResource Include="Payroll\AddEmployee.resx">
       <DependentUpon>AddEmployee.vb</DependentUpon>
     </EmbeddedResource>
@@ -244,18 +242,17 @@
     <EmbeddedResource Include="PurchaseOrder\ProcessPO.resx">
       <DependentUpon>ProcessPO.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="searchpaystubs2.rdlc" />
+    <EmbeddedResource Include="Payroll\searchpaystubs2.rdlc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FinalProjDataSet7777.xsc">
+    <None Include="Payroll\FinalProjDataSet7777.xsc">
       <DependentUpon>FinalProjDataSet7777.xsd</DependentUpon>
     </None>
-    <None Include="FinalProjDataSet7777.xsd">
+    <None Include="Payroll\FinalProjDataSet7777.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>FinalProjDataSet7777.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="FinalProjDataSet7777.xss">
+    <None Include="Payroll\FinalProjDataSet7777.xss">
       <DependentUpon>FinalProjDataSet7777.xsd</DependentUpon>
     </None>
     <None Include="Payroll\FinalProjSearchPayStubs.xsc">

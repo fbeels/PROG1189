@@ -48,6 +48,7 @@ Partial Class main
         Me.btnmodPO = New System.Windows.Forms.Button()
         Me.btncreatePO = New System.Windows.Forms.Button()
         Me.TabControl1 = New MdiTabControl.TabControl()
+        Me.btnsearchpaystubs = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -211,6 +212,7 @@ Partial Class main
         '
         'grbHR
         '
+        Me.grbHR.Controls.Add(Me.btnsearchpaystubs)
         Me.grbHR.Controls.Add(Me.btnviewpayroll)
         Me.grbHR.Controls.Add(Me.btnmodemp)
         Me.grbHR.Controls.Add(Me.btnsearchEmp)
@@ -293,6 +295,15 @@ Partial Class main
         Me.TabControl1.TabCloseButtonImageHot = Nothing
         Me.TabControl1.TabIndex = 0
         '
+        'btnsearchpaystubs
+        '
+        Me.btnsearchpaystubs.Location = New System.Drawing.Point(30, 188)
+        Me.btnsearchpaystubs.Name = "btnsearchpaystubs"
+        Me.btnsearchpaystubs.Size = New System.Drawing.Size(158, 46)
+        Me.btnsearchpaystubs.TabIndex = 13
+        Me.btnsearchpaystubs.Text = "Search Paystubs"
+        Me.btnsearchpaystubs.UseVisualStyleBackColor = True
+        '
         'main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -348,4 +359,5 @@ Partial Class main
     Friend WithEvents lbluser As System.Windows.Forms.Label
     Friend WithEvents cboUser As System.Windows.Forms.ComboBox
     Friend WithEvents lblloggedinuserid As System.Windows.Forms.Label
+    Friend WithEvents btnsearchpaystubs As System.Windows.Forms.Button
 End Class
