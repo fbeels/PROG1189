@@ -52,6 +52,10 @@ namespace BOL
                 {
                     throw new System.ArgumentException("from class: FirstName cannot be empty");
                 }
+                if (IsNumeric(value))
+                {
+
+                }
                 else
                 {
                     this._FirstName = value;
@@ -186,7 +190,7 @@ namespace BOL
 
        // public string Cell { get; set; }
 
-        String _Cell;
+        string _Cell;
         public string Cell
         {
             get
@@ -234,7 +238,7 @@ namespace BOL
         
         
        // public string SIN { get; set; }
-        String _SIN;
+        string _SIN;
         public string SIN
         {
             get
@@ -246,6 +250,10 @@ namespace BOL
                 if (value == "")
                 {
                     throw new System.ArgumentException("from class: SIN cannot be empty");
+                }
+                if (value.Length<6)
+                {
+                    throw new System.ArgumentException("from class: SIN too short");
                 }
                 else
                 {
@@ -290,9 +298,9 @@ namespace BOL
             }
             set
             {
-                string startdate = "01/01/1500";
-                DateTime dtstart = Convert.ToDateTime(startdate);
-                if (value >= dtstart && value < Convert.ToDateTime("12/31/2222"))
+               // string startdate = "01/01/1500";
+                //DateTime dtstart = Convert.ToDateTime(startdate);
+                if (value > Convert.ToDateTime("01/01/1900") & value < Convert.ToDateTime("12/31/2222"))
                 {
                     this._JobStartDate = value;
                 }

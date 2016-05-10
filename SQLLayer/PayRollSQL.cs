@@ -15,6 +15,7 @@ namespace SQLLayer
         {
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
             tmpParmList.Add(new ParmStructure("@passcode", SqlDbType.VarChar, ParameterDirection.Input, 10, strpasscode));
+           // tmpParmList.Add(new ParmStructure("@stubcount", SqlDbType.Int, ParameterDirection.InputOutput,3));
             return DataAccess.GetDataTable("RunPayroll2", tmpParmList);
         }
     }

@@ -97,7 +97,7 @@ namespace SQLLayer
         {
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
             tmpParmList.Add(new ParmStructure("@empid", SqlDbType.Int, ParameterDirection.Input, 0, empid));
-            tmpParmList.Add(new ParmStructure("@result", SqlDbType.Int, ParameterDirection.InputOutput,2));
+          //  tmpParmList.Add(new ParmStructure("@result", SqlDbType.Int, ParameterDirection.InputOutput,2));
             return DataAccess.GetDataTable("CanRetire", tmpParmList);
         }
     }//end of class

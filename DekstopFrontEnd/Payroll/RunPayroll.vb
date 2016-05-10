@@ -5,7 +5,7 @@ Public Class RunPayroll
     Private Sub btnrunpayroll_Click(sender As Object, e As EventArgs) Handles btnrunpayroll.Click
         Dim strpasscode As String = txtpasscode.Text
 
-        Dim result As Boolean
+        Dim result As Integer
         Try
             result = Payroll.RunPayRoll(strpasscode)
             ' btnrunpayroll.Visible = False
@@ -15,8 +15,14 @@ Public Class RunPayroll
             MsgBox(ex.Message.ToString)
         End Try
 
+        If result > 0 Then
+            lblResults.Text = "PAYROLL Completed, " + result.ToString + " paystubs generated"
+            btnrunpayroll.Enabled = False
 
-        lblResults.Text = "PAYROLL Completed"
+        Else
+            lblResults.Text = "ERROR 0 paystubs generated"
+        End If
+
 
     End Sub
 

@@ -64,6 +64,7 @@ Partial Class AddEmployee
         Me.lbljobid = New System.Windows.Forms.Label()
         Me.lbldept = New System.Windows.Forms.Label()
         Me.lblsupervisor = New System.Windows.Forms.Label()
+        Me.lblbcode = New System.Windows.Forms.Label()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -75,7 +76,7 @@ Partial Class AddEmployee
         Me.btnsave.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnsave.Name = "btnsave"
         Me.btnsave.Size = New System.Drawing.Size(402, 72)
-        Me.btnsave.TabIndex = 32
+        Me.btnsave.TabIndex = 17
         Me.btnsave.Text = "Save"
         Me.btnsave.UseVisualStyleBackColor = True
         '
@@ -85,7 +86,7 @@ Partial Class AddEmployee
         Me.btnreset.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnreset.Name = "btnreset"
         Me.btnreset.Size = New System.Drawing.Size(202, 72)
-        Me.btnreset.TabIndex = 33
+        Me.btnreset.TabIndex = 18
         Me.btnreset.Text = "Reset"
         Me.btnreset.UseVisualStyleBackColor = True
         '
@@ -150,7 +151,7 @@ Partial Class AddEmployee
         Me.mtxcellphone.Mask = "(999) 000-0000"
         Me.mtxcellphone.Name = "mtxcellphone"
         Me.mtxcellphone.Size = New System.Drawing.Size(148, 26)
-        Me.mtxcellphone.TabIndex = 49
+        Me.mtxcellphone.TabIndex = 10
         '
         'lblcellphone
         '
@@ -168,7 +169,7 @@ Partial Class AddEmployee
         Me.txtsin.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtsin.Name = "txtsin"
         Me.txtsin.Size = New System.Drawing.Size(184, 26)
-        Me.txtsin.TabIndex = 47
+        Me.txtsin.TabIndex = 5
         '
         'lblsin
         '
@@ -187,7 +188,7 @@ Partial Class AddEmployee
         Me.dtpdateofbirth.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.dtpdateofbirth.Name = "dtpdateofbirth"
         Me.dtpdateofbirth.Size = New System.Drawing.Size(122, 26)
-        Me.dtpdateofbirth.TabIndex = 45
+        Me.dtpdateofbirth.TabIndex = 4
         '
         'lbldob
         '
@@ -207,7 +208,7 @@ Partial Class AddEmployee
         Me.cboProv.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cboProv.Name = "cboProv"
         Me.cboProv.Size = New System.Drawing.Size(79, 28)
-        Me.cboProv.TabIndex = 43
+        Me.cboProv.TabIndex = 8
         '
         'txtpostal
         '
@@ -215,7 +216,7 @@ Partial Class AddEmployee
         Me.txtpostal.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtpostal.Name = "txtpostal"
         Me.txtpostal.Size = New System.Drawing.Size(76, 26)
-        Me.txtpostal.TabIndex = 42
+        Me.txtpostal.TabIndex = 9
         '
         'txtcity
         '
@@ -223,7 +224,7 @@ Partial Class AddEmployee
         Me.txtcity.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtcity.Name = "txtcity"
         Me.txtcity.Size = New System.Drawing.Size(199, 26)
-        Me.txtcity.TabIndex = 41
+        Me.txtcity.TabIndex = 7
         '
         'txtstreetaddress
         '
@@ -231,7 +232,7 @@ Partial Class AddEmployee
         Me.txtstreetaddress.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtstreetaddress.Name = "txtstreetaddress"
         Me.txtstreetaddress.Size = New System.Drawing.Size(186, 26)
-        Me.txtstreetaddress.TabIndex = 40
+        Me.txtstreetaddress.TabIndex = 6
         '
         'lblpostal
         '
@@ -279,7 +280,7 @@ Partial Class AddEmployee
         Me.txtmiddleinit.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtmiddleinit.Name = "txtmiddleinit"
         Me.txtmiddleinit.Size = New System.Drawing.Size(66, 26)
-        Me.txtmiddleinit.TabIndex = 24
+        Me.txtmiddleinit.TabIndex = 2
         '
         'txtlastname
         '
@@ -287,7 +288,7 @@ Partial Class AddEmployee
         Me.txtlastname.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtlastname.Name = "txtlastname"
         Me.txtlastname.Size = New System.Drawing.Size(146, 26)
-        Me.txtlastname.TabIndex = 23
+        Me.txtlastname.TabIndex = 3
         '
         'txtfirstname
         '
@@ -295,7 +296,7 @@ Partial Class AddEmployee
         Me.txtfirstname.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtfirstname.Name = "txtfirstname"
         Me.txtfirstname.Size = New System.Drawing.Size(178, 26)
-        Me.txtfirstname.TabIndex = 22
+        Me.txtfirstname.TabIndex = 1
         '
         'lblfirstname
         '
@@ -329,6 +330,7 @@ Partial Class AddEmployee
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.lblbcode)
         Me.GroupBox2.Controls.Add(Me.chkemailstub)
         Me.GroupBox2.Controls.Add(Me.lblsuperid)
         Me.GroupBox2.Controls.Add(Me.lblsupername)
@@ -358,7 +360,7 @@ Partial Class AddEmployee
         Me.chkemailstub.Location = New System.Drawing.Point(180, 190)
         Me.chkemailstub.Name = "chkemailstub"
         Me.chkemailstub.Size = New System.Drawing.Size(219, 24)
-        Me.chkemailstub.TabIndex = 45
+        Me.chkemailstub.TabIndex = 14
         Me.chkemailstub.Text = "Recieve PayStub by Email"
         Me.chkemailstub.UseVisualStyleBackColor = True
         '
@@ -386,7 +388,7 @@ Partial Class AddEmployee
         Me.txtemail.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtemail.Name = "txtemail"
         Me.txtemail.Size = New System.Drawing.Size(208, 26)
-        Me.txtemail.TabIndex = 42
+        Me.txtemail.TabIndex = 16
         '
         'lblemail
         '
@@ -405,7 +407,7 @@ Partial Class AddEmployee
         Me.mtxworkphone.Mask = "(999) 000-0000"
         Me.mtxworkphone.Name = "mtxworkphone"
         Me.mtxworkphone.Size = New System.Drawing.Size(148, 26)
-        Me.mtxworkphone.TabIndex = 40
+        Me.mtxworkphone.TabIndex = 15
         '
         'lblworkphone
         '
@@ -424,7 +426,7 @@ Partial Class AddEmployee
         Me.cbojobid.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbojobid.Name = "cbojobid"
         Me.cbojobid.Size = New System.Drawing.Size(298, 28)
-        Me.cbojobid.TabIndex = 38
+        Me.cbojobid.TabIndex = 12
         '
         'cbodept
         '
@@ -433,7 +435,7 @@ Partial Class AddEmployee
         Me.cbodept.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbodept.Name = "cbodept"
         Me.cbodept.Size = New System.Drawing.Size(208, 28)
-        Me.cbodept.TabIndex = 37
+        Me.cbodept.TabIndex = 11
         '
         'txtpayrate
         '
@@ -441,7 +443,7 @@ Partial Class AddEmployee
         Me.txtpayrate.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtpayrate.Name = "txtpayrate"
         Me.txtpayrate.Size = New System.Drawing.Size(70, 26)
-        Me.txtpayrate.TabIndex = 35
+        Me.txtpayrate.TabIndex = 13
         '
         'lblpayrate
         '
@@ -482,6 +484,16 @@ Partial Class AddEmployee
         Me.lblsupervisor.Size = New System.Drawing.Size(84, 20)
         Me.lblsupervisor.TabIndex = 31
         Me.lblsupervisor.Text = "Supervisor"
+        '
+        'lblbcode
+        '
+        Me.lblbcode.AutoSize = True
+        Me.lblbcode.Font = New System.Drawing.Font("IDAutomationHC39M", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblbcode.Location = New System.Drawing.Point(413, 134)
+        Me.lblbcode.Name = "lblbcode"
+        Me.lblbcode.Size = New System.Drawing.Size(309, 125)
+        Me.lblbcode.TabIndex = 45
+        Me.lblbcode.Text = "10000017"
         '
         'AddEmployee
         '
@@ -546,4 +558,5 @@ Partial Class AddEmployee
     Friend WithEvents lblsupername As System.Windows.Forms.Label
     Friend WithEvents lblsuperid As System.Windows.Forms.Label
     Friend WithEvents chkemailstub As System.Windows.Forms.CheckBox
+    Friend WithEvents lblbcode As System.Windows.Forms.Label
 End Class

@@ -123,28 +123,46 @@ Public Class EditEmployee
 
     Private Sub btnselect_Click(sender As Object, e As EventArgs) Handles btnselect.Click
         Dim intselectedemp As Integer = lstsearchresults.SelectedValue
+        'If tempemp.EmpID = intselectedemp Then
+        'Else
         LoadEmployee(intselectedemp)
-        grbempinfo.Enabled = True
+        'End If
+
+        grbpersonal.Enabled = True
         grbjob.Enabled = False
+        grbjob.Visible = False
         grbemployment.Enabled = False
+        grbemployment.Visible = False
+      
 
     End Sub
 
     Private Sub btneditjobinfo_Click(sender As Object, e As EventArgs) Handles btneditjobinfo.Click
         Dim intselectedemp As Integer = lstsearchresults.SelectedValue
+        'If tempemp.EmpID = intselectedemp Then
+        'Else
         LoadEmployee(intselectedemp)
+        'End If
         grbjob.Enabled = True
-        grbempinfo.Enabled = False
-
+        grbjob.Visible = True
+        grbpersonal.Enabled = False
         grbemployment.Enabled = False
+        grbemployment.Visible = False
+    
     End Sub
 
     Private Sub btneditemploymentinfo_Click(sender As Object, e As EventArgs) Handles btneditemploymentinfo.Click
         Dim intselectedemp As Integer = lstsearchresults.SelectedValue
+        'If tempemp.EmpID = intselectedemp Then
+        'Else
         LoadEmployee(intselectedemp)
+        'End If
         grbemployment.Enabled = True
-        grbempinfo.Enabled = False
+        grbemployment.Visible = True
+        grbpersonal.Enabled = False
         grbjob.Enabled = False
+        grbjob.Visible = False
+     
 
     End Sub
 
@@ -188,6 +206,7 @@ Public Class EditEmployee
 
         Dim strprov As String = emp.Prov
         'MsgBox(strprov.ToString)
+        cboProv.SelectedText = ""
         cboProv.SelectedText = strprov.ToString
 
         Dim deptid As Integer = emp.DeptID
@@ -226,9 +245,11 @@ Public Class EditEmployee
                 '  dtpterminationdate.Top = 264
         End Select
 
-        'If emp.CANRETIRE = True Then
-        '    rdostatusRetired.Enabled = True
-        'End If
+        If emp.CANRETIRE = True Then
+            rdostatusRetired.Enabled = True
+        Else
+            rdostatusRetired.Enabled = False
+        End If
 
 
     End Sub
@@ -322,7 +343,8 @@ Public Class EditEmployee
         lblsuper.Text = superdept.SupervisorName
         lblsuperid.Text = superdept.SupervisorId
     End Sub
-    Private Sub btnSave_Click(sender As Object, e As EventArgs)
+
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Try
             Dim inputisallok As Boolean = True
 
@@ -616,4 +638,8 @@ Public Class EditEmployee
     End Sub
 
    
+   
+    Private Sub btnSave_Click_1(sender As Object, e As EventArgs) Handles btnSave.Click
+
+    End Sub
 End Class

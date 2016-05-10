@@ -23,23 +23,26 @@ namespace BOL
        
 
 
-        static public Boolean RunPayRoll(String strpasscode)
+        static public int RunPayRoll(String strpasscode)
         {
             return RePackagerdt2bool(PayRollSQL.RunPayRoll(strpasscode));
         }
-        static private Boolean RePackagerdt2bool(DataTable dt)
+        static private int RePackagerdt2bool(DataTable dt)
         {
             ////Employee myList = new Employee();
-            //Employee x = new Employee();
-            //int y = 0;
-            //foreach (DataRow emps in dt.Rows)
-            //{
+            Payroll pr = new Payroll();
+            int y = 0;
+            foreach (DataRow emps in dt.Rows)
+            {
             //    //  x.EmpID = (int)emps[0];
-            //    y = (int)emps[0];
-            //}
+                y = (int)emps[0];
+            }
+
+          
             ////return myList;
-            //return y;
-            return true;
+            return y;
+
+            //return true;
         }
 
 

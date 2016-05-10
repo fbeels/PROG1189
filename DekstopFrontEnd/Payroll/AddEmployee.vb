@@ -6,6 +6,7 @@ Public Class AddEmployee
     Dim DEBUG As Boolean = True
     Dim loadorreset As Boolean = False
     Private Sub AddEmployee_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        lblbcode.Text = ""
         loadorreset = True
         txtfirstname.MaxLength = 50
         txtmiddleinit.MaxLength = 1
@@ -242,7 +243,7 @@ Public Class AddEmployee
             End If
 
             'Dim strprov As String = cboProv.SelectedItem
-            MsgBox("the prov is:" & strprov, MsgBoxStyle.OkOnly, "strprov")
+            'MsgBox("the prov is:" & strprov, MsgBoxStyle.OkOnly, "strprov")
             '
             '----------------------------------------------------------------
 
@@ -266,6 +267,7 @@ Public Class AddEmployee
 
             If done > 0 Then
                 lblresult.Text = "saved,Employee ID:" & done.ToString
+                lblbcode.Text = done.ToString
                 'MessageBox.Show("saved,Employee ID:" & done.ToString, "info", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 lblresult.Text = "save failed,fix the errors and try again"
@@ -337,7 +339,7 @@ Public Class AddEmployee
         ErrorProvider1.SetError(txtpayrate, String.Empty)
 
 
-        cboProv.SelectedText = "NB"
+        cboProv.SelectedIndex = 1
         cbodept.SelectedItem = 1
         'cbosupervisor.SelectedItem = 1
         cbojobid.SelectedItem = 1

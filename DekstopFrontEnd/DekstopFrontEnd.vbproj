@@ -86,6 +86,11 @@
     <Compile Include="common\AboutBox1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Payroll\FinalProjSearchPayStubs.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinalProjSearchPayStubs.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Module1.vb" />
     <Compile Include="Payroll\FinalProjGetLastPayroll.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -96,6 +101,15 @@
       <DependentUpon>AddEmployee.vb</DependentUpon>
     </Compile>
     <Compile Include="Payroll\AddEmployee.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payroll\FinalProjSearchPayStubs.vb">
+      <DependentUpon>FinalProjSearchPayStubs.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll\SearchPayStubs.Designer.vb">
+      <DependentUpon>SearchPayStubs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll\SearchPayStubs.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Payroll\ViewPaystubs.vb">
@@ -188,6 +202,10 @@
     <EmbeddedResource Include="common\main.resx">
       <DependentUpon>main.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Payroll\SearchPayStubs.resx">
+      <DependentUpon>SearchPayStubs.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payroll\SearchPayStubs1.rdlc" />
     <EmbeddedResource Include="Payroll\ViewPaystubs.resx">
       <DependentUpon>ViewPaystubs.vb</DependentUpon>
     </EmbeddedResource>
@@ -229,6 +247,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Payroll\FinalProjSearchPayStubs.xsc">
+      <DependentUpon>FinalProjSearchPayStubs.xsd</DependentUpon>
+    </None>
+    <None Include="Payroll\FinalProjSearchPayStubs.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FinalProjSearchPayStubs.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Payroll\FinalProjSearchPayStubs.xss">
+      <DependentUpon>FinalProjSearchPayStubs.xsd</DependentUpon>
+    </None>
     <None Include="Payroll\FinalProjGetLastPayroll.xsc">
       <DependentUpon>FinalProjGetLastPayroll.xsd</DependentUpon>
     </None>

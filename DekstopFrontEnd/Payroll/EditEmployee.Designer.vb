@@ -25,17 +25,38 @@ Partial Class EditEmployee
         Me.components = New System.ComponentModel.Container()
         Me.lblnomatches = New System.Windows.Forms.Label()
         Me.grbsearchresults = New System.Windows.Forms.GroupBox()
+        Me.btneditemploymentinfo = New System.Windows.Forms.Button()
+        Me.btneditjobinfo = New System.Windows.Forms.Button()
         Me.btnselect = New System.Windows.Forms.Button()
         Me.lstsearchresults = New System.Windows.Forms.ListBox()
         Me.grbempinfo = New System.Windows.Forms.GroupBox()
-        Me.grbsearch = New System.Windows.Forms.GroupBox()
-        Me.btnsearch = New System.Windows.Forms.Button()
-        Me.txtsearchlname = New System.Windows.Forms.TextBox()
-        Me.txtsearchid = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.lbldebug = New System.Windows.Forms.Label()
+        Me.grbemployment = New System.Windows.Forms.GroupBox()
+        Me.txtempid = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtsin = New System.Windows.Forms.TextBox()
+        Me.lblsin = New System.Windows.Forms.Label()
+        Me.chkemailstub = New System.Windows.Forms.CheckBox()
+        Me.lblsenoritydate = New System.Windows.Forms.Label()
+        Me.dtpsenority = New System.Windows.Forms.DateTimePicker()
+        Me.rdostatusTerminated = New System.Windows.Forms.RadioButton()
+        Me.rdostatusRetired = New System.Windows.Forms.RadioButton()
+        Me.rdostatusActive = New System.Windows.Forms.RadioButton()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.dtpterminationdate = New System.Windows.Forms.DateTimePicker()
+        Me.grbjob = New System.Windows.Forms.GroupBox()
+        Me.lblsuperid = New System.Windows.Forms.Label()
+        Me.lblstartdate = New System.Windows.Forms.Label()
+        Me.dtpstartdate = New System.Windows.Forms.DateTimePicker()
+        Me.lblsuper = New System.Windows.Forms.Label()
+        Me.cbojobid = New System.Windows.Forms.ComboBox()
+        Me.cbodept = New System.Windows.Forms.ComboBox()
+        Me.txtpayrate = New System.Windows.Forms.TextBox()
+        Me.lblpayrate = New System.Windows.Forms.Label()
+        Me.lbljobid = New System.Windows.Forms.Label()
+        Me.lbldept = New System.Windows.Forms.Label()
+        Me.lblsupervisor = New System.Windows.Forms.Label()
         Me.grbpersonal = New System.Windows.Forms.GroupBox()
         Me.mtxcellphone = New System.Windows.Forms.MaskedTextBox()
         Me.mtxworkphone = New System.Windows.Forms.MaskedTextBox()
@@ -59,43 +80,22 @@ Partial Class EditEmployee
         Me.lblfirstname = New System.Windows.Forms.Label()
         Me.lblmiddleint = New System.Windows.Forms.Label()
         Me.lbllastname = New System.Windows.Forms.Label()
-        Me.grbjob = New System.Windows.Forms.GroupBox()
-        Me.lblsuperid = New System.Windows.Forms.Label()
-        Me.lblstartdate = New System.Windows.Forms.Label()
-        Me.dtpstartdate = New System.Windows.Forms.DateTimePicker()
-        Me.lblsuper = New System.Windows.Forms.Label()
-        Me.cbojobid = New System.Windows.Forms.ComboBox()
-        Me.cbodept = New System.Windows.Forms.ComboBox()
-        Me.txtpayrate = New System.Windows.Forms.TextBox()
-        Me.lblpayrate = New System.Windows.Forms.Label()
-        Me.lbljobid = New System.Windows.Forms.Label()
-        Me.lbldept = New System.Windows.Forms.Label()
-        Me.lblsupervisor = New System.Windows.Forms.Label()
-        Me.grbemployment = New System.Windows.Forms.GroupBox()
-        Me.txtempid = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtsin = New System.Windows.Forms.TextBox()
-        Me.lblsin = New System.Windows.Forms.Label()
-        Me.chkemailstub = New System.Windows.Forms.CheckBox()
-        Me.lblsenoritydate = New System.Windows.Forms.Label()
-        Me.dtpsenority = New System.Windows.Forms.DateTimePicker()
-        Me.rdostatusTerminated = New System.Windows.Forms.RadioButton()
-        Me.rdostatusRetired = New System.Windows.Forms.RadioButton()
-        Me.rdostatusActive = New System.Windows.Forms.RadioButton()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.dtpterminationdate = New System.Windows.Forms.DateTimePicker()
-        Me.lbldebug = New System.Windows.Forms.Label()
-        Me.btnSave = New System.Windows.Forms.Button()
-        Me.btneditjobinfo = New System.Windows.Forms.Button()
-        Me.btneditemploymentinfo = New System.Windows.Forms.Button()
+        Me.grbsearch = New System.Windows.Forms.GroupBox()
+        Me.btnsearch = New System.Windows.Forms.Button()
+        Me.txtsearchlname = New System.Windows.Forms.TextBox()
+        Me.txtsearchid = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.grbsearchresults.SuspendLayout()
         Me.grbempinfo.SuspendLayout()
+        Me.grbemployment.SuspendLayout()
+        Me.grbjob.SuspendLayout()
+        Me.grbpersonal.SuspendLayout()
         Me.grbsearch.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
-        Me.grbpersonal.SuspendLayout()
-        Me.grbjob.SuspendLayout()
-        Me.grbemployment.SuspendLayout()
         Me.SuspendLayout()
         '
         'lblnomatches
@@ -122,13 +122,31 @@ Partial Class EditEmployee
         Me.grbsearchresults.TabStop = False
         Me.grbsearchresults.Text = "Results"
         '
+        'btneditemploymentinfo
+        '
+        Me.btneditemploymentinfo.Location = New System.Drawing.Point(390, 110)
+        Me.btneditemploymentinfo.Name = "btneditemploymentinfo"
+        Me.btneditemploymentinfo.Size = New System.Drawing.Size(183, 46)
+        Me.btneditemploymentinfo.TabIndex = 7
+        Me.btneditemploymentinfo.Text = "Edit Employment Info"
+        Me.btneditemploymentinfo.UseVisualStyleBackColor = True
+        '
+        'btneditjobinfo
+        '
+        Me.btneditjobinfo.Location = New System.Drawing.Point(386, 70)
+        Me.btneditjobinfo.Name = "btneditjobinfo"
+        Me.btneditjobinfo.Size = New System.Drawing.Size(188, 30)
+        Me.btneditjobinfo.TabIndex = 6
+        Me.btneditjobinfo.Text = "Edit Job Info"
+        Me.btneditjobinfo.UseVisualStyleBackColor = True
+        '
         'btnselect
         '
         Me.btnselect.Location = New System.Drawing.Point(386, 21)
         Me.btnselect.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnselect.Name = "btnselect"
         Me.btnselect.Size = New System.Drawing.Size(180, 38)
-        Me.btnselect.TabIndex = 8
+        Me.btnselect.TabIndex = 5
         Me.btnselect.Text = "Edit Personal Info"
         Me.btnselect.UseVisualStyleBackColor = True
         '
@@ -140,7 +158,7 @@ Partial Class EditEmployee
         Me.lstsearchresults.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.lstsearchresults.Name = "lstsearchresults"
         Me.lstsearchresults.Size = New System.Drawing.Size(320, 104)
-        Me.lstsearchresults.TabIndex = 7
+        Me.lstsearchresults.TabIndex = 4
         '
         'grbempinfo
         '
@@ -158,83 +176,278 @@ Partial Class EditEmployee
         Me.grbempinfo.TabStop = False
         Me.grbempinfo.Text = "Employee Info"
         '
-        'grbsearch
+        'btnSave
         '
-        Me.grbsearch.Controls.Add(Me.btnsearch)
-        Me.grbsearch.Controls.Add(Me.txtsearchlname)
-        Me.grbsearch.Controls.Add(Me.txtsearchid)
-        Me.grbsearch.Controls.Add(Me.Label2)
-        Me.grbsearch.Controls.Add(Me.Label1)
-        Me.grbsearch.Location = New System.Drawing.Point(8, 14)
-        Me.grbsearch.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.grbsearch.Name = "grbsearch"
-        Me.grbsearch.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.grbsearch.Size = New System.Drawing.Size(495, 171)
-        Me.grbsearch.TabIndex = 11
-        Me.grbsearch.TabStop = False
-        Me.grbsearch.Text = "Search"
+        Me.btnSave.Location = New System.Drawing.Point(459, 586)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(284, 68)
+        Me.btnSave.TabIndex = 31
+        Me.btnSave.Text = "Save"
+        Me.btnSave.UseVisualStyleBackColor = True
         '
-        'btnsearch
+        'lbldebug
         '
-        Me.btnsearch.Location = New System.Drawing.Point(311, 43)
-        Me.btnsearch.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.btnsearch.Name = "btnsearch"
-        Me.btnsearch.Size = New System.Drawing.Size(146, 64)
-        Me.btnsearch.TabIndex = 4
-        Me.btnsearch.Text = "Search"
-        Me.btnsearch.UseVisualStyleBackColor = True
+        Me.lbldebug.AutoSize = True
+        Me.lbldebug.Location = New System.Drawing.Point(86, 610)
+        Me.lbldebug.Name = "lbldebug"
+        Me.lbldebug.Size = New System.Drawing.Size(57, 20)
+        Me.lbldebug.TabIndex = 21
+        Me.lbldebug.Text = "Label3"
         '
-        'txtsearchlname
+        'grbemployment
         '
-        Me.txtsearchlname.Location = New System.Drawing.Point(143, 81)
-        Me.txtsearchlname.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.txtsearchlname.Name = "txtsearchlname"
-        Me.txtsearchlname.Size = New System.Drawing.Size(148, 26)
-        Me.txtsearchlname.TabIndex = 3
+        Me.grbemployment.BackColor = System.Drawing.Color.CadetBlue
+        Me.grbemployment.Controls.Add(Me.txtempid)
+        Me.grbemployment.Controls.Add(Me.Label3)
+        Me.grbemployment.Controls.Add(Me.txtsin)
+        Me.grbemployment.Controls.Add(Me.lblsin)
+        Me.grbemployment.Controls.Add(Me.chkemailstub)
+        Me.grbemployment.Controls.Add(Me.lblsenoritydate)
+        Me.grbemployment.Controls.Add(Me.dtpsenority)
+        Me.grbemployment.Controls.Add(Me.rdostatusTerminated)
+        Me.grbemployment.Controls.Add(Me.rdostatusRetired)
+        Me.grbemployment.Controls.Add(Me.rdostatusActive)
+        Me.grbemployment.Controls.Add(Me.Label4)
+        Me.grbemployment.Controls.Add(Me.dtpterminationdate)
+        Me.grbemployment.Location = New System.Drawing.Point(26, 421)
+        Me.grbemployment.Name = "grbemployment"
+        Me.grbemployment.Size = New System.Drawing.Size(1110, 144)
+        Me.grbemployment.TabIndex = 20
+        Me.grbemployment.TabStop = False
+        Me.grbemployment.Text = "Employment Info"
         '
-        'txtsearchid
+        'txtempid
         '
-        Me.txtsearchid.Location = New System.Drawing.Point(143, 43)
-        Me.txtsearchid.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.txtsearchid.Name = "txtsearchid"
-        Me.txtsearchid.Size = New System.Drawing.Size(148, 26)
-        Me.txtsearchid.TabIndex = 2
-        Me.txtsearchid.Text = "10000001"
+        Me.txtempid.Location = New System.Drawing.Point(149, 34)
+        Me.txtempid.Name = "txtempid"
+        Me.txtempid.Size = New System.Drawing.Size(173, 26)
+        Me.txtempid.TabIndex = 23
         '
-        'Label2
+        'Label3
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(51, 81)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(84, 20)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Last name"
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(33, 40)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(104, 20)
+        Me.Label3.TabIndex = 96
+        Me.Label3.Text = "Employee ID:"
         '
-        'Label1
+        'txtsin
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(34, 46)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(101, 20)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Employee Id:"
+        Me.txtsin.Location = New System.Drawing.Point(148, 70)
+        Me.txtsin.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtsin.Name = "txtsin"
+        Me.txtsin.Size = New System.Drawing.Size(178, 26)
+        Me.txtsin.TabIndex = 24
         '
-        'ErrorProvider1
+        'lblsin
         '
-        Me.ErrorProvider1.ContainerControl = Me
+        Me.lblsin.AutoSize = True
+        Me.lblsin.Location = New System.Drawing.Point(83, 74)
+        Me.lblsin.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblsin.Name = "lblsin"
+        Me.lblsin.Size = New System.Drawing.Size(53, 20)
+        Me.lblsin.TabIndex = 94
+        Me.lblsin.Text = "SIN #:"
         '
-        'GroupBox1
+        'chkemailstub
         '
-        Me.GroupBox1.Controls.Add(Me.grbsearchresults)
-        Me.GroupBox1.Controls.Add(Me.grbempinfo)
-        Me.GroupBox1.Controls.Add(Me.grbsearch)
-        Me.GroupBox1.Location = New System.Drawing.Point(5, 0)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1182, 934)
-        Me.GroupBox1.TabIndex = 17
-        Me.GroupBox1.TabStop = False
+        Me.chkemailstub.AutoSize = True
+        Me.chkemailstub.Location = New System.Drawing.Point(411, 74)
+        Me.chkemailstub.Name = "chkemailstub"
+        Me.chkemailstub.Size = New System.Drawing.Size(146, 24)
+        Me.chkemailstub.TabIndex = 26
+        Me.chkemailstub.Text = "Email pay stubs"
+        Me.chkemailstub.UseVisualStyleBackColor = True
+        '
+        'lblsenoritydate
+        '
+        Me.lblsenoritydate.AutoSize = True
+        Me.lblsenoritydate.Location = New System.Drawing.Point(384, 34)
+        Me.lblsenoritydate.Name = "lblsenoritydate"
+        Me.lblsenoritydate.Size = New System.Drawing.Size(109, 20)
+        Me.lblsenoritydate.TabIndex = 92
+        Me.lblsenoritydate.Text = "Seniority Date"
+        '
+        'dtpsenority
+        '
+        Me.dtpsenority.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpsenority.Location = New System.Drawing.Point(510, 28)
+        Me.dtpsenority.Name = "dtpsenority"
+        Me.dtpsenority.Size = New System.Drawing.Size(144, 26)
+        Me.dtpsenority.TabIndex = 25
+        '
+        'rdostatusTerminated
+        '
+        Me.rdostatusTerminated.AutoSize = True
+        Me.rdostatusTerminated.Location = New System.Drawing.Point(756, 82)
+        Me.rdostatusTerminated.Name = "rdostatusTerminated"
+        Me.rdostatusTerminated.Size = New System.Drawing.Size(114, 24)
+        Me.rdostatusTerminated.TabIndex = 29
+        Me.rdostatusTerminated.TabStop = True
+        Me.rdostatusTerminated.Text = "Terminated"
+        Me.rdostatusTerminated.UseVisualStyleBackColor = True
+        '
+        'rdostatusRetired
+        '
+        Me.rdostatusRetired.AutoSize = True
+        Me.rdostatusRetired.Location = New System.Drawing.Point(756, 52)
+        Me.rdostatusRetired.Name = "rdostatusRetired"
+        Me.rdostatusRetired.Size = New System.Drawing.Size(86, 24)
+        Me.rdostatusRetired.TabIndex = 28
+        Me.rdostatusRetired.TabStop = True
+        Me.rdostatusRetired.Text = "Retired"
+        Me.rdostatusRetired.UseVisualStyleBackColor = True
+        '
+        'rdostatusActive
+        '
+        Me.rdostatusActive.AutoSize = True
+        Me.rdostatusActive.Location = New System.Drawing.Point(756, 22)
+        Me.rdostatusActive.Name = "rdostatusActive"
+        Me.rdostatusActive.Size = New System.Drawing.Size(77, 24)
+        Me.rdostatusActive.TabIndex = 27
+        Me.rdostatusActive.TabStop = True
+        Me.rdostatusActive.Text = "Active"
+        Me.rdostatusActive.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(684, 24)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(60, 20)
+        Me.Label4.TabIndex = 87
+        Me.Label4.Text = "Status:"
+        '
+        'dtpterminationdate
+        '
+        Me.dtpterminationdate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpterminationdate.Location = New System.Drawing.Point(874, 82)
+        Me.dtpterminationdate.Name = "dtpterminationdate"
+        Me.dtpterminationdate.Size = New System.Drawing.Size(138, 26)
+        Me.dtpterminationdate.TabIndex = 30
+        '
+        'grbjob
+        '
+        Me.grbjob.BackColor = System.Drawing.Color.Aquamarine
+        Me.grbjob.Controls.Add(Me.lblsuperid)
+        Me.grbjob.Controls.Add(Me.lblstartdate)
+        Me.grbjob.Controls.Add(Me.dtpstartdate)
+        Me.grbjob.Controls.Add(Me.lblsuper)
+        Me.grbjob.Controls.Add(Me.cbojobid)
+        Me.grbjob.Controls.Add(Me.cbodept)
+        Me.grbjob.Controls.Add(Me.txtpayrate)
+        Me.grbjob.Controls.Add(Me.lblpayrate)
+        Me.grbjob.Controls.Add(Me.lbljobid)
+        Me.grbjob.Controls.Add(Me.lbldept)
+        Me.grbjob.Controls.Add(Me.lblsupervisor)
+        Me.grbjob.Location = New System.Drawing.Point(33, 247)
+        Me.grbjob.Name = "grbjob"
+        Me.grbjob.Size = New System.Drawing.Size(1110, 154)
+        Me.grbjob.TabIndex = 19
+        Me.grbjob.TabStop = False
+        Me.grbjob.Text = "Job Info"
+        '
+        'lblsuperid
+        '
+        Me.lblsuperid.AutoSize = True
+        Me.lblsuperid.Location = New System.Drawing.Point(347, 91)
+        Me.lblsuperid.Name = "lblsuperid"
+        Me.lblsuperid.Size = New System.Drawing.Size(61, 20)
+        Me.lblsuperid.TabIndex = 87
+        Me.lblsuperid.Text = "superid"
+        '
+        'lblstartdate
+        '
+        Me.lblstartdate.AutoSize = True
+        Me.lblstartdate.Location = New System.Drawing.Point(678, 97)
+        Me.lblstartdate.Name = "lblstartdate"
+        Me.lblstartdate.Size = New System.Drawing.Size(87, 20)
+        Me.lblstartdate.TabIndex = 86
+        Me.lblstartdate.Text = "Start Date:"
+        '
+        'dtpstartdate
+        '
+        Me.dtpstartdate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpstartdate.Location = New System.Drawing.Point(780, 92)
+        Me.dtpstartdate.Name = "dtpstartdate"
+        Me.dtpstartdate.Size = New System.Drawing.Size(138, 26)
+        Me.dtpstartdate.TabIndex = 22
+        '
+        'lblsuper
+        '
+        Me.lblsuper.AutoSize = True
+        Me.lblsuper.Location = New System.Drawing.Point(144, 91)
+        Me.lblsuper.Name = "lblsuper"
+        Me.lblsuper.Size = New System.Drawing.Size(49, 20)
+        Me.lblsuper.TabIndex = 84
+        Me.lblsuper.Text = "super"
+        '
+        'cbojobid
+        '
+        Me.cbojobid.FormattingEnabled = True
+        Me.cbojobid.Location = New System.Drawing.Point(544, 31)
+        Me.cbojobid.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.cbojobid.Name = "cbojobid"
+        Me.cbojobid.Size = New System.Drawing.Size(260, 28)
+        Me.cbojobid.TabIndex = 20
+        '
+        'cbodept
+        '
+        Me.cbodept.FormattingEnabled = True
+        Me.cbodept.Location = New System.Drawing.Point(142, 31)
+        Me.cbodept.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.cbodept.Name = "cbodept"
+        Me.cbodept.Size = New System.Drawing.Size(260, 28)
+        Me.cbodept.TabIndex = 19
+        '
+        'txtpayrate
+        '
+        Me.txtpayrate.Location = New System.Drawing.Point(544, 91)
+        Me.txtpayrate.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtpayrate.Name = "txtpayrate"
+        Me.txtpayrate.Size = New System.Drawing.Size(70, 26)
+        Me.txtpayrate.TabIndex = 21
+        '
+        'lblpayrate
+        '
+        Me.lblpayrate.AutoSize = True
+        Me.lblpayrate.Location = New System.Drawing.Point(455, 91)
+        Me.lblpayrate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblpayrate.Name = "lblpayrate"
+        Me.lblpayrate.Size = New System.Drawing.Size(67, 20)
+        Me.lblpayrate.TabIndex = 80
+        Me.lblpayrate.Text = "Payrate:"
+        '
+        'lbljobid
+        '
+        Me.lbljobid.AutoSize = True
+        Me.lbljobid.Location = New System.Drawing.Point(447, 34)
+        Me.lbljobid.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbljobid.Name = "lbljobid"
+        Me.lbljobid.Size = New System.Drawing.Size(47, 20)
+        Me.lbljobid.TabIndex = 79
+        Me.lbljobid.Text = "Jobs:"
+        '
+        'lbldept
+        '
+        Me.lbldept.AutoSize = True
+        Me.lbldept.Location = New System.Drawing.Point(12, 39)
+        Me.lbldept.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbldept.Name = "lbldept"
+        Me.lbldept.Size = New System.Drawing.Size(94, 20)
+        Me.lbldept.TabIndex = 78
+        Me.lbldept.Text = "Department"
+        '
+        'lblsupervisor
+        '
+        Me.lblsupervisor.AutoSize = True
+        Me.lblsupervisor.Location = New System.Drawing.Point(22, 91)
+        Me.lblsupervisor.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblsupervisor.Name = "lblsupervisor"
+        Me.lblsupervisor.Size = New System.Drawing.Size(84, 20)
+        Me.lblsupervisor.TabIndex = 77
+        Me.lblsupervisor.Text = "Supervisor"
         '
         'grbpersonal
         '
@@ -275,7 +488,7 @@ Partial Class EditEmployee
         Me.mtxcellphone.Mask = "(999) 000-0000"
         Me.mtxcellphone.Name = "mtxcellphone"
         Me.mtxcellphone.Size = New System.Drawing.Size(148, 26)
-        Me.mtxcellphone.TabIndex = 83
+        Me.mtxcellphone.TabIndex = 17
         '
         'mtxworkphone
         '
@@ -284,7 +497,7 @@ Partial Class EditEmployee
         Me.mtxworkphone.Mask = "(999) 000-0000"
         Me.mtxworkphone.Name = "mtxworkphone"
         Me.mtxworkphone.Size = New System.Drawing.Size(148, 26)
-        Me.mtxworkphone.TabIndex = 82
+        Me.mtxworkphone.TabIndex = 16
         '
         'cboProv
         '
@@ -294,7 +507,7 @@ Partial Class EditEmployee
         Me.cboProv.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cboProv.Name = "cboProv"
         Me.cboProv.Size = New System.Drawing.Size(180, 28)
-        Me.cboProv.TabIndex = 81
+        Me.cboProv.TabIndex = 14
         '
         'txtemail
         '
@@ -302,7 +515,7 @@ Partial Class EditEmployee
         Me.txtemail.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtemail.Name = "txtemail"
         Me.txtemail.Size = New System.Drawing.Size(148, 26)
-        Me.txtemail.TabIndex = 80
+        Me.txtemail.TabIndex = 18
         '
         'txtpostal
         '
@@ -310,7 +523,7 @@ Partial Class EditEmployee
         Me.txtpostal.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtpostal.Name = "txtpostal"
         Me.txtpostal.Size = New System.Drawing.Size(180, 26)
-        Me.txtpostal.TabIndex = 79
+        Me.txtpostal.TabIndex = 15
         '
         'txtcity
         '
@@ -318,7 +531,7 @@ Partial Class EditEmployee
         Me.txtcity.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtcity.Name = "txtcity"
         Me.txtcity.Size = New System.Drawing.Size(186, 26)
-        Me.txtcity.TabIndex = 78
+        Me.txtcity.TabIndex = 13
         '
         'txtstreetaddress
         '
@@ -326,7 +539,7 @@ Partial Class EditEmployee
         Me.txtstreetaddress.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtstreetaddress.Name = "txtstreetaddress"
         Me.txtstreetaddress.Size = New System.Drawing.Size(186, 26)
-        Me.txtstreetaddress.TabIndex = 77
+        Me.txtstreetaddress.TabIndex = 12
         '
         'lblemail
         '
@@ -405,7 +618,7 @@ Partial Class EditEmployee
         Me.dtpdateofbirth.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.dtpdateofbirth.Name = "dtpdateofbirth"
         Me.dtpdateofbirth.Size = New System.Drawing.Size(175, 26)
-        Me.dtpdateofbirth.TabIndex = 68
+        Me.dtpdateofbirth.TabIndex = 11
         '
         'lbldob
         '
@@ -423,7 +636,7 @@ Partial Class EditEmployee
         Me.txtmiddleinit.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtmiddleinit.Name = "txtmiddleinit"
         Me.txtmiddleinit.Size = New System.Drawing.Size(177, 26)
-        Me.txtmiddleinit.TabIndex = 62
+        Me.txtmiddleinit.TabIndex = 9
         '
         'txtlastname
         '
@@ -431,7 +644,7 @@ Partial Class EditEmployee
         Me.txtlastname.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtlastname.Name = "txtlastname"
         Me.txtlastname.Size = New System.Drawing.Size(177, 26)
-        Me.txtlastname.TabIndex = 61
+        Me.txtlastname.TabIndex = 10
         '
         'txtfirstname
         '
@@ -439,7 +652,7 @@ Partial Class EditEmployee
         Me.txtfirstname.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtfirstname.Name = "txtfirstname"
         Me.txtfirstname.Size = New System.Drawing.Size(178, 26)
-        Me.txtfirstname.TabIndex = 60
+        Me.txtfirstname.TabIndex = 8
         '
         'lblfirstname
         '
@@ -471,296 +684,83 @@ Partial Class EditEmployee
         Me.lbllastname.TabIndex = 57
         Me.lbllastname.Text = "Last Name:"
         '
-        'grbjob
+        'grbsearch
         '
-        Me.grbjob.BackColor = System.Drawing.Color.Aquamarine
-        Me.grbjob.Controls.Add(Me.lblsuperid)
-        Me.grbjob.Controls.Add(Me.lblstartdate)
-        Me.grbjob.Controls.Add(Me.dtpstartdate)
-        Me.grbjob.Controls.Add(Me.lblsuper)
-        Me.grbjob.Controls.Add(Me.cbojobid)
-        Me.grbjob.Controls.Add(Me.cbodept)
-        Me.grbjob.Controls.Add(Me.txtpayrate)
-        Me.grbjob.Controls.Add(Me.lblpayrate)
-        Me.grbjob.Controls.Add(Me.lbljobid)
-        Me.grbjob.Controls.Add(Me.lbldept)
-        Me.grbjob.Controls.Add(Me.lblsupervisor)
-        Me.grbjob.Location = New System.Drawing.Point(33, 247)
-        Me.grbjob.Name = "grbjob"
-        Me.grbjob.Size = New System.Drawing.Size(1110, 154)
-        Me.grbjob.TabIndex = 19
-        Me.grbjob.TabStop = False
-        Me.grbjob.Text = "Job Info"
+        Me.grbsearch.Controls.Add(Me.btnsearch)
+        Me.grbsearch.Controls.Add(Me.txtsearchlname)
+        Me.grbsearch.Controls.Add(Me.txtsearchid)
+        Me.grbsearch.Controls.Add(Me.Label2)
+        Me.grbsearch.Controls.Add(Me.Label1)
+        Me.grbsearch.Location = New System.Drawing.Point(8, 14)
+        Me.grbsearch.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.grbsearch.Name = "grbsearch"
+        Me.grbsearch.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.grbsearch.Size = New System.Drawing.Size(495, 171)
+        Me.grbsearch.TabIndex = 11
+        Me.grbsearch.TabStop = False
+        Me.grbsearch.Text = "Search"
         '
-        'lblsuperid
+        'btnsearch
         '
-        Me.lblsuperid.AutoSize = True
-        Me.lblsuperid.Location = New System.Drawing.Point(347, 91)
-        Me.lblsuperid.Name = "lblsuperid"
-        Me.lblsuperid.Size = New System.Drawing.Size(61, 20)
-        Me.lblsuperid.TabIndex = 87
-        Me.lblsuperid.Text = "superid"
+        Me.btnsearch.Location = New System.Drawing.Point(311, 43)
+        Me.btnsearch.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnsearch.Name = "btnsearch"
+        Me.btnsearch.Size = New System.Drawing.Size(146, 64)
+        Me.btnsearch.TabIndex = 3
+        Me.btnsearch.Text = "Search"
+        Me.btnsearch.UseVisualStyleBackColor = True
         '
-        'lblstartdate
+        'txtsearchlname
         '
-        Me.lblstartdate.AutoSize = True
-        Me.lblstartdate.Location = New System.Drawing.Point(678, 97)
-        Me.lblstartdate.Name = "lblstartdate"
-        Me.lblstartdate.Size = New System.Drawing.Size(87, 20)
-        Me.lblstartdate.TabIndex = 86
-        Me.lblstartdate.Text = "Start Date:"
+        Me.txtsearchlname.Location = New System.Drawing.Point(143, 81)
+        Me.txtsearchlname.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtsearchlname.Name = "txtsearchlname"
+        Me.txtsearchlname.Size = New System.Drawing.Size(148, 26)
+        Me.txtsearchlname.TabIndex = 2
         '
-        'dtpstartdate
+        'txtsearchid
         '
-        Me.dtpstartdate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpstartdate.Location = New System.Drawing.Point(780, 92)
-        Me.dtpstartdate.Name = "dtpstartdate"
-        Me.dtpstartdate.Size = New System.Drawing.Size(138, 26)
-        Me.dtpstartdate.TabIndex = 85
+        Me.txtsearchid.Location = New System.Drawing.Point(143, 43)
+        Me.txtsearchid.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtsearchid.Name = "txtsearchid"
+        Me.txtsearchid.Size = New System.Drawing.Size(148, 26)
+        Me.txtsearchid.TabIndex = 1
+        Me.txtsearchid.Text = "10000001"
         '
-        'lblsuper
+        'Label2
         '
-        Me.lblsuper.AutoSize = True
-        Me.lblsuper.Location = New System.Drawing.Point(144, 91)
-        Me.lblsuper.Name = "lblsuper"
-        Me.lblsuper.Size = New System.Drawing.Size(49, 20)
-        Me.lblsuper.TabIndex = 84
-        Me.lblsuper.Text = "super"
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(51, 81)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(84, 20)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Last name"
         '
-        'cbojobid
+        'Label1
         '
-        Me.cbojobid.FormattingEnabled = True
-        Me.cbojobid.Location = New System.Drawing.Point(544, 31)
-        Me.cbojobid.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.cbojobid.Name = "cbojobid"
-        Me.cbojobid.Size = New System.Drawing.Size(260, 28)
-        Me.cbojobid.TabIndex = 83
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(34, 46)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(101, 20)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Employee Id:"
         '
-        'cbodept
+        'ErrorProvider1
         '
-        Me.cbodept.FormattingEnabled = True
-        Me.cbodept.Location = New System.Drawing.Point(142, 31)
-        Me.cbodept.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.cbodept.Name = "cbodept"
-        Me.cbodept.Size = New System.Drawing.Size(260, 28)
-        Me.cbodept.TabIndex = 82
+        Me.ErrorProvider1.ContainerControl = Me
         '
-        'txtpayrate
+        'GroupBox1
         '
-        Me.txtpayrate.Location = New System.Drawing.Point(544, 91)
-        Me.txtpayrate.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.txtpayrate.Name = "txtpayrate"
-        Me.txtpayrate.Size = New System.Drawing.Size(70, 26)
-        Me.txtpayrate.TabIndex = 81
-        '
-        'lblpayrate
-        '
-        Me.lblpayrate.AutoSize = True
-        Me.lblpayrate.Location = New System.Drawing.Point(455, 91)
-        Me.lblpayrate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblpayrate.Name = "lblpayrate"
-        Me.lblpayrate.Size = New System.Drawing.Size(67, 20)
-        Me.lblpayrate.TabIndex = 80
-        Me.lblpayrate.Text = "Payrate:"
-        '
-        'lbljobid
-        '
-        Me.lbljobid.AutoSize = True
-        Me.lbljobid.Location = New System.Drawing.Point(447, 34)
-        Me.lbljobid.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lbljobid.Name = "lbljobid"
-        Me.lbljobid.Size = New System.Drawing.Size(47, 20)
-        Me.lbljobid.TabIndex = 79
-        Me.lbljobid.Text = "Jobs:"
-        '
-        'lbldept
-        '
-        Me.lbldept.AutoSize = True
-        Me.lbldept.Location = New System.Drawing.Point(12, 39)
-        Me.lbldept.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lbldept.Name = "lbldept"
-        Me.lbldept.Size = New System.Drawing.Size(94, 20)
-        Me.lbldept.TabIndex = 78
-        Me.lbldept.Text = "Department"
-        '
-        'lblsupervisor
-        '
-        Me.lblsupervisor.AutoSize = True
-        Me.lblsupervisor.Location = New System.Drawing.Point(22, 91)
-        Me.lblsupervisor.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblsupervisor.Name = "lblsupervisor"
-        Me.lblsupervisor.Size = New System.Drawing.Size(84, 20)
-        Me.lblsupervisor.TabIndex = 77
-        Me.lblsupervisor.Text = "Supervisor"
-        '
-        'grbemployment
-        '
-        Me.grbemployment.BackColor = System.Drawing.Color.CadetBlue
-        Me.grbemployment.Controls.Add(Me.txtempid)
-        Me.grbemployment.Controls.Add(Me.Label3)
-        Me.grbemployment.Controls.Add(Me.txtsin)
-        Me.grbemployment.Controls.Add(Me.lblsin)
-        Me.grbemployment.Controls.Add(Me.chkemailstub)
-        Me.grbemployment.Controls.Add(Me.lblsenoritydate)
-        Me.grbemployment.Controls.Add(Me.dtpsenority)
-        Me.grbemployment.Controls.Add(Me.rdostatusTerminated)
-        Me.grbemployment.Controls.Add(Me.rdostatusRetired)
-        Me.grbemployment.Controls.Add(Me.rdostatusActive)
-        Me.grbemployment.Controls.Add(Me.Label4)
-        Me.grbemployment.Controls.Add(Me.dtpterminationdate)
-        Me.grbemployment.Location = New System.Drawing.Point(26, 421)
-        Me.grbemployment.Name = "grbemployment"
-        Me.grbemployment.Size = New System.Drawing.Size(1110, 144)
-        Me.grbemployment.TabIndex = 20
-        Me.grbemployment.TabStop = False
-        Me.grbemployment.Text = "Employment Info"
-        '
-        'txtempid
-        '
-        Me.txtempid.Location = New System.Drawing.Point(149, 34)
-        Me.txtempid.Name = "txtempid"
-        Me.txtempid.Size = New System.Drawing.Size(173, 26)
-        Me.txtempid.TabIndex = 97
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(33, 40)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(104, 20)
-        Me.Label3.TabIndex = 96
-        Me.Label3.Text = "Employee ID:"
-        '
-        'txtsin
-        '
-        Me.txtsin.Location = New System.Drawing.Point(148, 70)
-        Me.txtsin.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.txtsin.Name = "txtsin"
-        Me.txtsin.Size = New System.Drawing.Size(178, 26)
-        Me.txtsin.TabIndex = 95
-        '
-        'lblsin
-        '
-        Me.lblsin.AutoSize = True
-        Me.lblsin.Location = New System.Drawing.Point(83, 74)
-        Me.lblsin.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblsin.Name = "lblsin"
-        Me.lblsin.Size = New System.Drawing.Size(53, 20)
-        Me.lblsin.TabIndex = 94
-        Me.lblsin.Text = "SIN #:"
-        '
-        'chkemailstub
-        '
-        Me.chkemailstub.AutoSize = True
-        Me.chkemailstub.Location = New System.Drawing.Point(411, 74)
-        Me.chkemailstub.Name = "chkemailstub"
-        Me.chkemailstub.Size = New System.Drawing.Size(146, 24)
-        Me.chkemailstub.TabIndex = 93
-        Me.chkemailstub.Text = "Email pay stubs"
-        Me.chkemailstub.UseVisualStyleBackColor = True
-        '
-        'lblsenoritydate
-        '
-        Me.lblsenoritydate.AutoSize = True
-        Me.lblsenoritydate.Location = New System.Drawing.Point(384, 34)
-        Me.lblsenoritydate.Name = "lblsenoritydate"
-        Me.lblsenoritydate.Size = New System.Drawing.Size(109, 20)
-        Me.lblsenoritydate.TabIndex = 92
-        Me.lblsenoritydate.Text = "Seniority Date"
-        '
-        'dtpsenority
-        '
-        Me.dtpsenority.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpsenority.Location = New System.Drawing.Point(510, 28)
-        Me.dtpsenority.Name = "dtpsenority"
-        Me.dtpsenority.Size = New System.Drawing.Size(144, 26)
-        Me.dtpsenority.TabIndex = 91
-        '
-        'rdostatusTerminated
-        '
-        Me.rdostatusTerminated.AutoSize = True
-        Me.rdostatusTerminated.Location = New System.Drawing.Point(756, 82)
-        Me.rdostatusTerminated.Name = "rdostatusTerminated"
-        Me.rdostatusTerminated.Size = New System.Drawing.Size(114, 24)
-        Me.rdostatusTerminated.TabIndex = 90
-        Me.rdostatusTerminated.TabStop = True
-        Me.rdostatusTerminated.Text = "Terminated"
-        Me.rdostatusTerminated.UseVisualStyleBackColor = True
-        '
-        'rdostatusRetired
-        '
-        Me.rdostatusRetired.AutoSize = True
-        Me.rdostatusRetired.Location = New System.Drawing.Point(756, 52)
-        Me.rdostatusRetired.Name = "rdostatusRetired"
-        Me.rdostatusRetired.Size = New System.Drawing.Size(86, 24)
-        Me.rdostatusRetired.TabIndex = 89
-        Me.rdostatusRetired.TabStop = True
-        Me.rdostatusRetired.Text = "Retired"
-        Me.rdostatusRetired.UseVisualStyleBackColor = True
-        '
-        'rdostatusActive
-        '
-        Me.rdostatusActive.AutoSize = True
-        Me.rdostatusActive.Location = New System.Drawing.Point(756, 22)
-        Me.rdostatusActive.Name = "rdostatusActive"
-        Me.rdostatusActive.Size = New System.Drawing.Size(77, 24)
-        Me.rdostatusActive.TabIndex = 88
-        Me.rdostatusActive.TabStop = True
-        Me.rdostatusActive.Text = "Active"
-        Me.rdostatusActive.UseVisualStyleBackColor = True
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(684, 24)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(60, 20)
-        Me.Label4.TabIndex = 87
-        Me.Label4.Text = "Status:"
-        '
-        'dtpterminationdate
-        '
-        Me.dtpterminationdate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpterminationdate.Location = New System.Drawing.Point(874, 82)
-        Me.dtpterminationdate.Name = "dtpterminationdate"
-        Me.dtpterminationdate.Size = New System.Drawing.Size(138, 26)
-        Me.dtpterminationdate.TabIndex = 86
-        '
-        'lbldebug
-        '
-        Me.lbldebug.AutoSize = True
-        Me.lbldebug.Location = New System.Drawing.Point(86, 610)
-        Me.lbldebug.Name = "lbldebug"
-        Me.lbldebug.Size = New System.Drawing.Size(57, 20)
-        Me.lbldebug.TabIndex = 21
-        Me.lbldebug.Text = "Label3"
-        '
-        'btnSave
-        '
-        Me.btnSave.Location = New System.Drawing.Point(459, 586)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(284, 68)
-        Me.btnSave.TabIndex = 22
-        Me.btnSave.Text = "Save"
-        Me.btnSave.UseVisualStyleBackColor = True
-        '
-        'btneditjobinfo
-        '
-        Me.btneditjobinfo.Location = New System.Drawing.Point(386, 70)
-        Me.btneditjobinfo.Name = "btneditjobinfo"
-        Me.btneditjobinfo.Size = New System.Drawing.Size(188, 30)
-        Me.btneditjobinfo.TabIndex = 9
-        Me.btneditjobinfo.Text = "Edit Job Info"
-        Me.btneditjobinfo.UseVisualStyleBackColor = True
-        '
-        'btneditemploymentinfo
-        '
-        Me.btneditemploymentinfo.Location = New System.Drawing.Point(390, 110)
-        Me.btneditemploymentinfo.Name = "btneditemploymentinfo"
-        Me.btneditemploymentinfo.Size = New System.Drawing.Size(183, 46)
-        Me.btneditemploymentinfo.TabIndex = 15
-        Me.btneditemploymentinfo.Text = "Edit Employment Info"
-        Me.btneditemploymentinfo.UseVisualStyleBackColor = True
+        Me.GroupBox1.Controls.Add(Me.grbsearchresults)
+        Me.GroupBox1.Controls.Add(Me.grbempinfo)
+        Me.GroupBox1.Controls.Add(Me.grbsearch)
+        Me.GroupBox1.Location = New System.Drawing.Point(5, 0)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(1182, 934)
+        Me.GroupBox1.TabIndex = 17
+        Me.GroupBox1.TabStop = False
         '
         'EditEmployee
         '
@@ -774,16 +774,16 @@ Partial Class EditEmployee
         Me.grbsearchresults.PerformLayout()
         Me.grbempinfo.ResumeLayout(False)
         Me.grbempinfo.PerformLayout()
+        Me.grbemployment.ResumeLayout(False)
+        Me.grbemployment.PerformLayout()
+        Me.grbjob.ResumeLayout(False)
+        Me.grbjob.PerformLayout()
+        Me.grbpersonal.ResumeLayout(False)
+        Me.grbpersonal.PerformLayout()
         Me.grbsearch.ResumeLayout(False)
         Me.grbsearch.PerformLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
-        Me.grbpersonal.ResumeLayout(False)
-        Me.grbpersonal.PerformLayout()
-        Me.grbjob.ResumeLayout(False)
-        Me.grbjob.PerformLayout()
-        Me.grbemployment.ResumeLayout(False)
-        Me.grbemployment.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

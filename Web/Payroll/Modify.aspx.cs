@@ -72,20 +72,24 @@ namespace Web.Payroll
             emp2save.Postal = txtPostal.Text;
             emp2save.Phone = txtwork.Text;
             emp2save.Email = txtemail.Text;
+            emp2save.JobStartDate = DateTime.Parse(txtjobstartDate.Text);
+            emp2save.SeniorityDate = DateTime.Parse(txtseniorityDate.Text);
+            emp2save.DOB = DateTime.Parse(txtdob.Text);
+            emp2save.TerminationDate = DateTime.Parse(txtterminationDate.Text);
 
             emp2save.DeptID = myEmp.DeptID;
-            emp2save.DOB = myEmp.DOB;
+            //emp2save.DOB = myEmp.DOB;
             emp2save.EmailNotification = myEmp.EmailNotification;
             emp2save.empstatus = myEmp.empstatus;
             emp2save.JobID = myEmp.JobID;
-            emp2save.JobStartDate = myEmp.JobStartDate;
+            //emp2save.JobStartDate = myEmp.JobStartDate;
             emp2save.PayRate = myEmp.PayRate;
-            emp2save.SeniorityDate = myEmp.SeniorityDate;
+            //emp2save.SeniorityDate = myEmp.SeniorityDate;
             emp2save.CANRETIRE = myEmp.CANRETIRE;
             emp2save.SupervisorID = myEmp.SupervisorID;
             emp2save.supervisorName = myEmp.supervisorName;
-            emp2save.TerminationDate = myEmp.TerminationDate;
-            
+           // emp2save.TerminationDate = myEmp.TerminationDate;
+            emp2save.SIN = myEmp.SIN;
 
             if (Employee.update(emp2save) == true)
             {

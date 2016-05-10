@@ -31,26 +31,28 @@ namespace BOL
         static private Boolean IsItPaydayRePackager(DataTable dt)
         {
             //List<Employee> myList = new List<Employee>();
-
-            //foreach (DataRow emps in dt.Rows)
-            //{
+            PayPeriod x = new PayPeriod();
+            //int itest=0;
+            foreach (DataRow pay in dt.Rows)
+            {
             //    Employee x = new Employee();
+                x.Payrollid = (int)pay[0];
             //    x.EmpID = (int)emps[0];
             //    x.LastName = (string)emps[1];
             //    myList.Add(x);
-            //}
+            }
             //return myList;
             //Employee myList = new Employee();
-       //    PayPeriod x = new PayPeriod();
+       //    
 
            
-            if (dt.Rows.Count == 1)
+            if (x.Payrollid == 9999)
             {
-                return true;
+                return false;
             }
             else
             {
-                return false;
+                return true;
             }
 
 
