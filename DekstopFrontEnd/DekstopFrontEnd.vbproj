@@ -86,6 +86,17 @@
     <Compile Include="common\AboutBox1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FinalProjDataSet7777.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinalProjDataSet7777.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Payroll\FinalProjSearchPayStubs.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -190,6 +201,9 @@
     <EmbeddedResource Include="common\main.resx">
       <DependentUpon>main.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Payroll\SearchPayStubs.resx">
       <DependentUpon>SearchPayStubs.vb</DependentUpon>
     </EmbeddedResource>
@@ -230,8 +244,20 @@
     <EmbeddedResource Include="PurchaseOrder\ProcessPO.resx">
       <DependentUpon>ProcessPO.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="searchpaystubs2.rdlc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="FinalProjDataSet7777.xsc">
+      <DependentUpon>FinalProjDataSet7777.xsd</DependentUpon>
+    </None>
+    <None Include="FinalProjDataSet7777.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FinalProjDataSet7777.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FinalProjDataSet7777.xss">
+      <DependentUpon>FinalProjDataSet7777.xsd</DependentUpon>
+    </None>
     <None Include="Payroll\FinalProjSearchPayStubs.xsc">
       <DependentUpon>FinalProjSearchPayStubs.xsd</DependentUpon>
     </None>

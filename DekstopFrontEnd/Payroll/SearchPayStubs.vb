@@ -20,9 +20,9 @@ Public Class SearchPayStubs
         Dim empid As Integer
         empid = cboEmployees.SelectedValue
 
-        Dim rptParameter As ReportParameter
-        rptParameter = New ReportParameter("empid", empid)
-        ReportViewer1.LocalReport.SetParameters(rptParameter)
+        'Dim rptParameter As ReportParameter
+        'rptParameter = New ReportParameter("empid", empid)
+        'ReportViewer1.LocalReport.SetParameters(rptParameter)
         MessageBox.Show(empid.ToString)
         ' Dim empidParameter = New ReportParameter("empid", empid)
         ' ReportViewer1.LocalReport.SetParameters(new ReportParameter[empidParameter],)
@@ -30,17 +30,17 @@ Public Class SearchPayStubs
         Dim startdtpval As Date
         startdtpval = dtpStartDate.Value
 
-        Dim rptParameter2 As ReportParameter
-        rptParameter2 = New ReportParameter("startdate", startdtpval)
-        ReportViewer1.LocalReport.SetParameters(rptParameter2)
+        'Dim rptParameter2 As ReportParameter
+        'rptParameter2 = New ReportParameter("startdate", startdtpval)
+        'ReportViewer1.LocalReport.SetParameters(rptParameter2)
         MessageBox.Show(startdtpval.ToString)
 
         Dim enddtpval As Date
         enddtpval = dtpEndDate.Value
 
-        Dim rptParameter3 As ReportParameter
-        rptParameter3 = New ReportParameter("enddate", enddtpval)
-        ReportViewer1.LocalReport.SetParameters(rptParameter3)
+        'Dim rptParameter3 As ReportParameter
+        'rptParameter3 = New ReportParameter("enddate", enddtpval)
+        'ReportViewer1.LocalReport.SetParameters(rptParameter3)
         MessageBox.Show(enddtpval.ToString)
 
         Me.SearchPayStubsTableAdapter.Fill(Me.FinalProjSearchPayStubs.SearchPayStubs, empid, startdtpval, enddtpval)
