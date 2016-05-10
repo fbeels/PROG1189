@@ -202,6 +202,7 @@ Partial Class AddEmployee
         '
         'cboProv
         '
+        Me.cboProv.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboProv.FormattingEnabled = True
         Me.cboProv.Items.AddRange(New Object() {"NB", "NS", "PE", "NF", "QC", "ON"})
         Me.cboProv.Location = New System.Drawing.Point(454, 103)
@@ -431,6 +432,7 @@ Partial Class AddEmployee
         '
         'cbojobid
         '
+        Me.cbojobid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbojobid.FormattingEnabled = True
         Me.cbojobid.Location = New System.Drawing.Point(57, 134)
         Me.cbojobid.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -440,6 +442,7 @@ Partial Class AddEmployee
         '
         'cbodept
         '
+        Me.cbodept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbodept.FormattingEnabled = True
         Me.cbodept.Location = New System.Drawing.Point(147, 35)
         Me.cbodept.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)

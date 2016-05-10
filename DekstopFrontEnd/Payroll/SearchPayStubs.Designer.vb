@@ -23,7 +23,7 @@ Partial Class SearchPayStubs
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim ReportDataSource2 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Me.SearchPayStubsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FinalProjSearchPayStubs = New FinalProjSearchPayStubs()
         Me.btnsearchpaystubs = New System.Windows.Forms.Button()
@@ -60,6 +60,7 @@ Partial Class SearchPayStubs
         '
         'cboEmployees
         '
+        Me.cboEmployees.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboEmployees.FormattingEnabled = True
         Me.cboEmployees.Items.AddRange(New Object() {"10000001"})
         Me.cboEmployees.Location = New System.Drawing.Point(146, 13)
@@ -112,9 +113,9 @@ Partial Class SearchPayStubs
         '
         'ReportViewer1
         '
-        ReportDataSource1.Name = "DataSet1"
-        ReportDataSource1.Value = Me.SearchPayStubsBindingSource
-        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource1)
+        ReportDataSource2.Name = "DataSet1"
+        ReportDataSource2.Value = Me.SearchPayStubsBindingSource
+        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource2)
         Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "SearchPayStubs1.rdlc"
         Me.ReportViewer1.Location = New System.Drawing.Point(12, 63)
         Me.ReportViewer1.Name = "ReportViewer1"
