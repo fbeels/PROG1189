@@ -23,8 +23,6 @@ Partial Class ProcessPO
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.ddlSupervisors = New System.Windows.Forms.ComboBox()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -40,22 +38,28 @@ Partial Class ProcessPO
         Me.lstResults = New System.Windows.Forms.ListBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.lblName = New System.Windows.Forms.Label()
-        Me.lblItemID = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.lblDesc = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
-        Me.lblPrice = New System.Windows.Forms.Label()
-        Me.lblQuantity = New System.Windows.Forms.Label()
-        Me.lblJust = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.lblDenial = New System.Windows.Forms.Label()
         Me.ddlItemStatus = New System.Windows.Forms.ComboBox()
         Me.txtDenial = New System.Windows.Forms.TextBox()
         Me.gpItems = New System.Windows.Forms.GroupBox()
+        Me.txtSource = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtJustification = New System.Windows.Forms.TextBox()
+        Me.txtQuantity = New System.Windows.Forms.TextBox()
+        Me.txtPrice = New System.Windows.Forms.TextBox()
+        Me.txtDesc = New System.Windows.Forms.TextBox()
+        Me.txtItemName = New System.Windows.Forms.TextBox()
         Me.btnSubmit = New System.Windows.Forms.Button()
+        Me.lblItemID = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.lblSup = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.lblDept = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gpItems.SuspendLayout()
@@ -63,8 +67,6 @@ Partial Class ProcessPO
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Label6)
-        Me.GroupBox1.Controls.Add(Me.ddlSupervisors)
         Me.GroupBox1.Controls.Add(Me.btnSearch)
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.Label4)
@@ -78,34 +80,16 @@ Partial Class ProcessPO
         Me.GroupBox1.Controls.Add(Me.txtFirst)
         Me.GroupBox1.Location = New System.Drawing.Point(0, 0)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(443, 121)
+        Me.GroupBox1.Size = New System.Drawing.Size(363, 121)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Search"
         '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(324, 16)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(57, 13)
-        Me.Label6.TabIndex = 10
-        Me.Label6.Text = "Supervisor"
-        '
-        'ddlSupervisors
-        '
-        Me.ddlSupervisors.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ddlSupervisors.FormattingEnabled = True
-        Me.ddlSupervisors.Location = New System.Drawing.Point(316, 35)
-        Me.ddlSupervisors.Name = "ddlSupervisors"
-        Me.ddlSupervisors.Size = New System.Drawing.Size(121, 21)
-        Me.ddlSupervisors.TabIndex = 5
-        '
         'btnSearch
         '
-        Me.btnSearch.Location = New System.Drawing.Point(297, 81)
+        Me.btnSearch.Location = New System.Drawing.Point(260, 81)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(140, 23)
+        Me.btnSearch.Size = New System.Drawing.Size(74, 23)
         Me.btnSearch.TabIndex = 6
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
@@ -113,7 +97,7 @@ Partial Class ProcessPO
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(224, 17)
+        Me.Label5.Location = New System.Drawing.Point(254, 17)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(37, 13)
         Me.Label5.TabIndex = 9
@@ -140,7 +124,7 @@ Partial Class ProcessPO
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(118, 17)
+        Me.Label2.Location = New System.Drawing.Point(132, 16)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(58, 13)
         Me.Label2.TabIndex = 6
@@ -159,7 +143,7 @@ Partial Class ProcessPO
         '
         Me.ddlStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ddlStatus.FormattingEnabled = True
-        Me.ddlStatus.Location = New System.Drawing.Point(224, 35)
+        Me.ddlStatus.Location = New System.Drawing.Point(254, 35)
         Me.ddlStatus.Name = "ddlStatus"
         Me.ddlStatus.Size = New System.Drawing.Size(80, 21)
         Me.ddlStatus.TabIndex = 4
@@ -183,7 +167,7 @@ Partial Class ProcessPO
         '
         'txtLast
         '
-        Me.txtLast.Location = New System.Drawing.Point(118, 36)
+        Me.txtLast.Location = New System.Drawing.Point(132, 35)
         Me.txtLast.Name = "txtLast"
         Me.txtLast.Size = New System.Drawing.Size(100, 20)
         Me.txtLast.TabIndex = 1
@@ -230,24 +214,6 @@ Partial Class ProcessPO
         Me.Label8.TabIndex = 4
         Me.Label8.Text = "Item Name:"
         '
-        'lblName
-        '
-        Me.lblName.AutoSize = True
-        Me.lblName.Location = New System.Drawing.Point(111, 63)
-        Me.lblName.Name = "lblName"
-        Me.lblName.Size = New System.Drawing.Size(39, 13)
-        Me.lblName.TabIndex = 5
-        Me.lblName.Text = "Label9"
-        '
-        'lblItemID
-        '
-        Me.lblItemID.AutoSize = True
-        Me.lblItemID.Location = New System.Drawing.Point(105, 35)
-        Me.lblItemID.Name = "lblItemID"
-        Me.lblItemID.Size = New System.Drawing.Size(45, 13)
-        Me.lblItemID.TabIndex = 6
-        Me.lblItemID.Text = "Label10"
-        '
         'Label11
         '
         Me.Label11.AutoSize = True
@@ -265,15 +231,6 @@ Partial Class ProcessPO
         Me.Label12.Size = New System.Drawing.Size(34, 13)
         Me.Label12.TabIndex = 8
         Me.Label12.Text = "Price:"
-        '
-        'lblDesc
-        '
-        Me.lblDesc.AutoSize = True
-        Me.lblDesc.Location = New System.Drawing.Point(105, 91)
-        Me.lblDesc.Name = "lblDesc"
-        Me.lblDesc.Size = New System.Drawing.Size(45, 13)
-        Me.lblDesc.TabIndex = 9
-        Me.lblDesc.Text = "Label13"
         '
         'Label14
         '
@@ -293,37 +250,10 @@ Partial Class ProcessPO
         Me.Label15.TabIndex = 11
         Me.Label15.Text = "Justification:"
         '
-        'lblPrice
-        '
-        Me.lblPrice.AutoSize = True
-        Me.lblPrice.Location = New System.Drawing.Point(102, 116)
-        Me.lblPrice.Name = "lblPrice"
-        Me.lblPrice.Size = New System.Drawing.Size(45, 13)
-        Me.lblPrice.TabIndex = 12
-        Me.lblPrice.Text = "Label16"
-        '
-        'lblQuantity
-        '
-        Me.lblQuantity.AutoSize = True
-        Me.lblQuantity.Location = New System.Drawing.Point(102, 140)
-        Me.lblQuantity.Name = "lblQuantity"
-        Me.lblQuantity.Size = New System.Drawing.Size(45, 13)
-        Me.lblQuantity.TabIndex = 13
-        Me.lblQuantity.Text = "Label17"
-        '
-        'lblJust
-        '
-        Me.lblJust.AutoSize = True
-        Me.lblJust.Location = New System.Drawing.Point(278, 35)
-        Me.lblJust.Name = "lblJust"
-        Me.lblJust.Size = New System.Drawing.Size(45, 13)
-        Me.lblJust.TabIndex = 14
-        Me.lblJust.Text = "Label18"
-        '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(207, 63)
+        Me.Label9.Location = New System.Drawing.Point(439, 16)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(40, 13)
         Me.Label9.TabIndex = 15
@@ -332,32 +262,37 @@ Partial Class ProcessPO
         'lblDenial
         '
         Me.lblDenial.AutoSize = True
-        Me.lblDenial.Location = New System.Drawing.Point(208, 116)
+        Me.lblDenial.Location = New System.Drawing.Point(440, 69)
         Me.lblDenial.Name = "lblDenial"
-        Me.lblDenial.Size = New System.Drawing.Size(92, 13)
+        Me.lblDenial.Size = New System.Drawing.Size(47, 13)
         Me.lblDenial.TabIndex = 16
-        Me.lblDenial.Text = "Reason for Denial"
-        Me.lblDenial.Visible = False
+        Me.lblDenial.Text = "Reason "
         '
         'ddlItemStatus
         '
         Me.ddlItemStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ddlItemStatus.FormattingEnabled = True
-        Me.ddlItemStatus.Location = New System.Drawing.Point(211, 79)
+        Me.ddlItemStatus.Location = New System.Drawing.Point(443, 32)
         Me.ddlItemStatus.Name = "ddlItemStatus"
         Me.ddlItemStatus.Size = New System.Drawing.Size(103, 21)
         Me.ddlItemStatus.TabIndex = 17
         '
         'txtDenial
         '
-        Me.txtDenial.Location = New System.Drawing.Point(214, 137)
+        Me.txtDenial.Location = New System.Drawing.Point(446, 90)
         Me.txtDenial.Name = "txtDenial"
         Me.txtDenial.Size = New System.Drawing.Size(100, 20)
         Me.txtDenial.TabIndex = 18
-        Me.txtDenial.Visible = False
         '
         'gpItems
         '
+        Me.gpItems.Controls.Add(Me.txtSource)
+        Me.gpItems.Controls.Add(Me.Label6)
+        Me.gpItems.Controls.Add(Me.txtJustification)
+        Me.gpItems.Controls.Add(Me.txtQuantity)
+        Me.gpItems.Controls.Add(Me.txtPrice)
+        Me.gpItems.Controls.Add(Me.txtDesc)
+        Me.gpItems.Controls.Add(Me.txtItemName)
         Me.gpItems.Controls.Add(Me.btnSubmit)
         Me.gpItems.Controls.Add(Me.Label7)
         Me.gpItems.Controls.Add(Me.Label9)
@@ -367,36 +302,131 @@ Partial Class ProcessPO
         Me.gpItems.Controls.Add(Me.txtDenial)
         Me.gpItems.Controls.Add(Me.Label8)
         Me.gpItems.Controls.Add(Me.Label11)
-        Me.gpItems.Controls.Add(Me.lblJust)
         Me.gpItems.Controls.Add(Me.Label12)
         Me.gpItems.Controls.Add(Me.Label14)
         Me.gpItems.Controls.Add(Me.lblItemID)
-        Me.gpItems.Controls.Add(Me.lblQuantity)
-        Me.gpItems.Controls.Add(Me.lblName)
-        Me.gpItems.Controls.Add(Me.lblPrice)
-        Me.gpItems.Controls.Add(Me.lblDesc)
         Me.gpItems.Location = New System.Drawing.Point(20, 299)
         Me.gpItems.Name = "gpItems"
-        Me.gpItems.Size = New System.Drawing.Size(756, 163)
+        Me.gpItems.Size = New System.Drawing.Size(564, 163)
         Me.gpItems.TabIndex = 19
         Me.gpItems.TabStop = False
         Me.gpItems.Text = "Item"
         Me.gpItems.Visible = False
         '
+        'txtSource
+        '
+        Me.txtSource.Location = New System.Drawing.Point(278, 69)
+        Me.txtSource.Name = "txtSource"
+        Me.txtSource.Size = New System.Drawing.Size(100, 20)
+        Me.txtSource.TabIndex = 26
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(207, 72)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(44, 13)
+        Me.Label6.TabIndex = 25
+        Me.Label6.Text = "Source:"
+        '
+        'txtJustification
+        '
+        Me.txtJustification.Location = New System.Drawing.Point(278, 32)
+        Me.txtJustification.Name = "txtJustification"
+        Me.txtJustification.Size = New System.Drawing.Size(100, 20)
+        Me.txtJustification.TabIndex = 24
+        '
+        'txtQuantity
+        '
+        Me.txtQuantity.Location = New System.Drawing.Point(97, 142)
+        Me.txtQuantity.Name = "txtQuantity"
+        Me.txtQuantity.Size = New System.Drawing.Size(100, 20)
+        Me.txtQuantity.TabIndex = 23
+        '
+        'txtPrice
+        '
+        Me.txtPrice.Location = New System.Drawing.Point(97, 116)
+        Me.txtPrice.Name = "txtPrice"
+        Me.txtPrice.Size = New System.Drawing.Size(100, 20)
+        Me.txtPrice.TabIndex = 22
+        '
+        'txtDesc
+        '
+        Me.txtDesc.Location = New System.Drawing.Point(97, 88)
+        Me.txtDesc.Name = "txtDesc"
+        Me.txtDesc.Size = New System.Drawing.Size(100, 20)
+        Me.txtDesc.TabIndex = 21
+        '
+        'txtItemName
+        '
+        Me.txtItemName.Location = New System.Drawing.Point(97, 60)
+        Me.txtItemName.Name = "txtItemName"
+        Me.txtItemName.Size = New System.Drawing.Size(100, 20)
+        Me.txtItemName.TabIndex = 20
+        '
         'btnSubmit
         '
-        Me.btnSubmit.Location = New System.Drawing.Point(360, 81)
+        Me.btnSubmit.Location = New System.Drawing.Point(457, 134)
         Me.btnSubmit.Name = "btnSubmit"
         Me.btnSubmit.Size = New System.Drawing.Size(75, 23)
         Me.btnSubmit.TabIndex = 19
         Me.btnSubmit.Text = "Submit"
         Me.btnSubmit.UseVisualStyleBackColor = True
         '
+        'lblItemID
+        '
+        Me.lblItemID.AutoSize = True
+        Me.lblItemID.Location = New System.Drawing.Point(105, 35)
+        Me.lblItemID.Name = "lblItemID"
+        Me.lblItemID.Size = New System.Drawing.Size(45, 13)
+        Me.lblItemID.TabIndex = 6
+        Me.lblItemID.Text = "Label10"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(632, 315)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(60, 13)
+        Me.Label10.TabIndex = 27
+        Me.Label10.Text = "Supervisor:"
+        '
+        'lblSup
+        '
+        Me.lblSup.AutoSize = True
+        Me.lblSup.Location = New System.Drawing.Point(701, 315)
+        Me.lblSup.Name = "lblSup"
+        Me.lblSup.Size = New System.Drawing.Size(45, 13)
+        Me.lblSup.TabIndex = 28
+        Me.lblSup.Text = "Label10"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(632, 339)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(65, 13)
+        Me.Label16.TabIndex = 29
+        Me.Label16.Text = "Department:"
+        '
+        'lblDept
+        '
+        Me.lblDept.AutoSize = True
+        Me.lblDept.Location = New System.Drawing.Point(701, 339)
+        Me.lblDept.Name = "lblDept"
+        Me.lblDept.Size = New System.Drawing.Size(45, 13)
+        Me.lblDept.TabIndex = 30
+        Me.lblDept.Text = "Label10"
+        '
         'ProcessPO
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 474)
+        Me.Controls.Add(Me.Label16)
+        Me.Controls.Add(Me.lblDept)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.lblSup)
         Me.Controls.Add(Me.gpItems)
         Me.Controls.Add(Me.lstResults)
         Me.Controls.Add(Me.GroupBox1)
@@ -409,12 +439,11 @@ Partial Class ProcessPO
         Me.gpItems.ResumeLayout(False)
         Me.gpItems.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Label6 As Label
-    Friend WithEvents ddlSupervisors As ComboBox
     Friend WithEvents btnSearch As Button
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
@@ -430,20 +459,26 @@ Partial Class ProcessPO
     Friend WithEvents lstResults As ListBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
-    Friend WithEvents lblName As Label
-    Friend WithEvents lblItemID As Label
     Friend WithEvents Label11 As Label
     Friend WithEvents Label12 As Label
-    Friend WithEvents lblDesc As Label
     Friend WithEvents Label14 As Label
     Friend WithEvents Label15 As Label
-    Friend WithEvents lblPrice As Label
-    Friend WithEvents lblQuantity As Label
-    Friend WithEvents lblJust As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents lblDenial As Label
     Friend WithEvents ddlItemStatus As ComboBox
     Friend WithEvents txtDenial As TextBox
     Friend WithEvents gpItems As GroupBox
     Friend WithEvents btnSubmit As Button
+    Friend WithEvents txtJustification As TextBox
+    Friend WithEvents txtQuantity As TextBox
+    Friend WithEvents txtPrice As TextBox
+    Friend WithEvents txtDesc As TextBox
+    Friend WithEvents txtItemName As TextBox
+    Friend WithEvents lblItemID As Label
+    Friend WithEvents txtSource As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents lblSup As Label
+    Friend WithEvents Label16 As Label
+    Friend WithEvents lblDept As Label
 End Class

@@ -112,5 +112,16 @@ namespace SQLLayer
             return DataAccess.GetDataTable("GetPOsForSupervisorID", tmpParmList);
         }
 
+        static public void closeEmail(IPurchaseOrder PO)
+        {
+
+            List<ParmStructure> tmpParmList = new List<ParmStructure>();
+
+            tmpParmList.Add(new ParmStructure("@POID", SqlDbType.Int, ParameterDirection.Input, 0, PO.PurchaseOrderID));
+            tmpParmList.Add(new ParmStructure("@EmpID", SqlDbType.Int, ParameterDirection.Input, 0, PO.EmployeeID));
+
+            DataAccess.SendData("ProcessedEmail", tmpParmList);
+        }
+
     }
 }

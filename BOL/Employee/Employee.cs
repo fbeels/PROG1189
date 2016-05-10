@@ -12,7 +12,7 @@ namespace BOL
 {
     public class Employee : IEmployee
     {
-        String _LastName;
+        string _LastName;
         public string LastName
         {
             get

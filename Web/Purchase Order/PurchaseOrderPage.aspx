@@ -83,6 +83,11 @@
                         <asp:Label ID="lblStatus" runat="server"></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Reason">
+                    <ItemTemplate>
+                        <asp:Label ID="lblReason" runat="server"></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="No Longer Needed">
                     <ItemTemplate>
                         <asp:CheckBox ID="chkNotNeeded" runat="server" />
