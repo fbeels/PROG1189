@@ -17,22 +17,22 @@ Public Class RetrieveEmployee
         End If
 
 
-        If txtsearchid.Text = "" Then
+        '  If txtsearchid.Text = "" Then
+        'blsearchidisfilled = False
+        'Else
+        If IsNumeric(txtsearchid.Text) = False Then
             blsearchidisfilled = False
+            ErrorProvider1.SetError(txtsearchid, "employee must be a number")
         Else
-            If IsNumeric(txtsearchid.Text) = False Then
-                blsearchidisfilled = False
-                ErrorProvider1.SetError(txtsearchid, "employee must be a number")
+            If txtsearchid.TextLength = 8 Then
+                blsearchidisfilled = True
             Else
-                If txtsearchid.TextLength = 8 Then
-                    blsearchidisfilled = True
-                Else
-                    blsearchidisfilled = False
-                    ErrorProvider1.SetError(txtsearchid, "invalid employee id length")
-                End If
-
+                blsearchidisfilled = False
+                ErrorProvider1.SetError(txtsearchid, "invalid employee id length")
             End If
+
         End If
+        ' End If
         Dim idinvalid As Boolean = False
         Dim lnameinvalid As Boolean = False
 
@@ -46,7 +46,7 @@ Public Class RetrieveEmployee
             ErrorProvider1.SetError(txtsearchlname, String.Empty)
             searchlname = txtsearchlname.Text
             ErrorProvider1.SetError(txtsearchid, String.Empty)
-            searchempid = txtsearchid.Text
+            searchempid = 0
         ElseIf blsearchidisfilled = True And blsearchlnameisfilled = False Then
             ErrorProvider1.SetError(txtsearchlname, String.Empty)
             searchlname = txtsearchlname.Text
@@ -59,7 +59,7 @@ Public Class RetrieveEmployee
             searchempid = txtsearchid.Text
         End If
 
- 
+
 
 
         '
@@ -351,6 +351,21 @@ Public Class RetrieveEmployee
         grbempinfo.Visible = False
     End Sub
 
+    Private Sub txtsearchid_Leave(sender As Object, e As EventArgs) Handles txtsearchid.Leave
+        If IsNumeric(txtsearchid.Text) = False Then
+            ' blsearchidisfilled = False
+            ErrorProvider1.SetError(txtsearchid, "employee must be a number")
+        Else
+            If txtsearchid.TextLength = 8 Then
+                '    blsearchidisfilled = True
+            Else
+                '   blsearchidisfilled = False
+                ErrorProvider1.SetError(txtsearchid, "invalid employee id length")
+            End If
+
+        End If
+    End Sub
+
     Private Sub txtsearchid_TextChanged(sender As Object, e As EventArgs) Handles txtsearchid.TextChanged
         grbempinfo.Visible = False
         grbsearchresults.Visible = False
@@ -370,4 +385,6 @@ Public Class RetrieveEmployee
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         lbldebug.Top = lbldebug.Top + 5
     End Sub
+
+
 End Class

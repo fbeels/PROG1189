@@ -11,7 +11,8 @@ Public Class AddEmployee
         txtfirstname.MaxLength = 50
         txtmiddleinit.MaxLength = 1
         txtlastname.MaxLength = 50
-        dtpdateofbirth.MaxDate = Date.Now
+        dtpdateofbirth.MaxDate = DateTime.Today.AddYears(-16)
+        dtpdateofbirth.MinDate = DateTime.Today.AddYears(-115)
         txtsin.MaxLength = 16
         txtstreetaddress.MaxLength = 50
         txtcity.MaxLength = 50
@@ -32,6 +33,7 @@ Public Class AddEmployee
         lblsuperid.Visible = False
 
         lblresult.Text = GLOBAL_LOGGEDIN_USERID
+        lblsupername.Text = ""
 
     End Sub
 
@@ -391,6 +393,8 @@ Public Class AddEmployee
         cbojobid.SelectedItem = 1
 
         lblresult.Text = ""
+
+        dtpdateofbirth.Value = DateTime.Today.AddYears(-16)
 
     End Sub
 

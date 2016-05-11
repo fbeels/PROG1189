@@ -11,7 +11,7 @@
         '  properties dialog (under the "Project" menu).
 
         'Application title
-        ApplicationTitle.Text = ""
+        'ApplicationTitle.Text = ""
         'If My.Application.Info.Title <> "" Then
         '    ApplicationTitle.Text = My.Application.Info.Title
         'Else
