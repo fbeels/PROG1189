@@ -23,7 +23,7 @@ namespace BOL
             { 
                 if (value=="")
                 {
-                     throw new System.ArgumentException("from class: Lastname cannot be empty");
+                     throw new System.ArgumentException("c: Lastname cannot be empty");
                 }
                 else
                 {
@@ -50,7 +50,7 @@ namespace BOL
             {
                 if (value == "")
                 {
-                    throw new System.ArgumentException("from class: FirstName cannot be empty");
+                    throw new System.ArgumentException("c: FirstName cannot be empty");
                 }
                 //if (IsNumeric(value))
                 //{
@@ -66,7 +66,37 @@ namespace BOL
         }
 
         //public string FirstName { get; set; }
-        public DateTime DOB { get; set; }
+        //public DateTime DOB { get; set; }
+
+
+        DateTime _DOB;
+        public DateTime DOB
+        {
+            get
+            {
+                return this._DOB;
+            }
+            set
+            {
+                if(value>DateTime.Today)
+                {
+                    throw new System.ArgumentException("c: date of birth cant be in the future");
+                }
+
+                //if (value >= Convert.ToDateTime("01/01/1900") && value <= DateTime.Today.AddYears-16)
+                //{
+                //    this._DOB = value;
+                //}
+                //else
+                //{
+                //    throw new System.ArgumentException("c: dob date outside range");
+                //}
+
+            }
+        }
+
+
+
        // public string Address { get; set; }
 
         String _Address;
@@ -80,7 +110,7 @@ namespace BOL
             {
                 if (value == "")
                 {
-                    throw new System.ArgumentException("from class: Address cannot be empty");
+                    throw new System.ArgumentException("c: Address cannot be empty");
                 }
                 else
                 {
@@ -104,7 +134,7 @@ namespace BOL
             {
                 if (value == "")
                 {
-                    throw new System.ArgumentException("from class: City cannot be empty");
+                    throw new System.ArgumentException("c: City cannot be empty");
                 }
                 else
                 {
@@ -127,7 +157,7 @@ namespace BOL
             {
                 if (value == "")
                 {
-                    throw new System.ArgumentException("from class: Prov cannot be empty");
+                    throw new System.ArgumentException("c: Prov cannot be empty");
                 }
                 else
                 {
@@ -149,7 +179,7 @@ namespace BOL
             {
                 if (value == "")
                 {
-                    throw new System.ArgumentException("from class: Postal cannot be empty");
+                    throw new System.ArgumentException("c: Postal cannot be empty");
                 }
                 else
                 {
@@ -174,11 +204,11 @@ namespace BOL
             {
                 if (value == "")
                 {
-                    throw new System.ArgumentException("from class: workPhone cannot be empty");
+                    throw new System.ArgumentException("c: work Phone cannot be empty");
                 }
                 else if (value.Length != 10)
                 {
-                    throw new System.ArgumentException("from class: workphone length must be 10 characters");
+                    throw new System.ArgumentException("c: workphone length must be 10 characters");
                 }
                 else
                 {
@@ -201,11 +231,11 @@ namespace BOL
             {
                 if (value == "")
                 {
-                    throw new System.ArgumentException("from class: Cell cannot be empty");
+                    throw new System.ArgumentException("c: Cell cannot be empty");
                 }
                 else if(value.Length!=10)
                 {
-                     throw new System.ArgumentException("from class: Cell length must be 10 characters");
+                     throw new System.ArgumentException("c: Cell length must be 10 characters");
                 }
                 else
                 {
@@ -226,7 +256,7 @@ namespace BOL
             {
                 if (value == "")
                 {
-                    throw new System.ArgumentException("from class: Email cannot be empty");
+                    throw new System.ArgumentException("c: Email cannot be empty");
                 }
                 else
                 {
@@ -249,11 +279,11 @@ namespace BOL
             {
                 if (value == "")
                 {
-                    throw new System.ArgumentException("from class: SIN cannot be empty");
+                    throw new System.ArgumentException("c: SIN cannot be empty");
                 }
                 if (value.Length<6)
                 {
-                    throw new System.ArgumentException("from class: SIN too short");
+                    throw new System.ArgumentException("c: SIN length too short");
                 }
                 else
                 {
@@ -282,7 +312,7 @@ namespace BOL
                 }
                 else
                 {
-                    throw new System.ArgumentException("from class: seniority date outside range");
+                    throw new System.ArgumentException("c: seniority date outside range");
                 }
 
             }
@@ -306,7 +336,7 @@ namespace BOL
                 }
                 else
                 {
-                    throw new System.ArgumentException("from class: start date outside range");
+                    throw new System.ArgumentException("c: start date outside range");
                 }
 
             }
@@ -335,7 +365,7 @@ namespace BOL
                 }
                 else
                 {
-                    throw new System.ArgumentException("from class: termination date outside range");
+                    throw new System.ArgumentException("c: termination date outside range");
                 }
 
             }

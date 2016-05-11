@@ -11,6 +11,14 @@ namespace Web.Payroll
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+             Session["empID"] = 10000001;
+            Session["startDate"] = "1900-09-09";
+            Session["endDate"] =  "2017-09-09";
+
+        }
+
+        protected void ObjectDataSource1_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
+        {
 
         }
     }

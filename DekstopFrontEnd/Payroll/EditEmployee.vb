@@ -133,7 +133,17 @@ Public Class EditEmployee
         grbjob.Visible = False
         grbemployment.Enabled = False
         grbemployment.Visible = False
-      
+
+        If (GLOBAL_LOGGEDIN_USERID = intselectedemp) Then
+            btnSave.Text = "cant modify own record"
+            btnSave.Enabled = False
+        Else
+            btnSave.Text = "Save"
+            btnSave.Enabled = True
+
+        End If
+
+
 
     End Sub
 
@@ -148,7 +158,14 @@ Public Class EditEmployee
         grbpersonal.Enabled = False
         grbemployment.Enabled = False
         grbemployment.Visible = False
-    
+        If (GLOBAL_LOGGEDIN_USERID = intselectedemp) Then
+            btnSave.Text = "cant modify own record"
+            btnSave.Enabled = False
+        Else
+            btnSave.Text = "Save"
+            btnSave.Enabled = True
+
+        End If
     End Sub
 
     Private Sub btneditemploymentinfo_Click(sender As Object, e As EventArgs) Handles btneditemploymentinfo.Click
@@ -162,7 +179,14 @@ Public Class EditEmployee
         grbpersonal.Enabled = False
         grbjob.Enabled = False
         grbjob.Visible = False
-     
+        If (GLOBAL_LOGGEDIN_USERID = intselectedemp) Then
+            btnSave.Text = "cant modify own record"
+            btnSave.Enabled = False
+        Else
+            btnSave.Text = "Save"
+            btnSave.Enabled = True
+
+        End If
 
     End Sub
 
