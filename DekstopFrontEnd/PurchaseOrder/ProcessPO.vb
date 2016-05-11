@@ -9,26 +9,19 @@ Public Class ProcessPO
     Dim myEmp As Employee
 
     Private Sub ProcessPO_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
         loadDropdowns()
 
         myEmp = Employee.retrieve(GLOBAL_LOGGEDIN_USERID)
 
-
-
-        lblSup.Text = GLOBAL_LOGGEDIN_USERNAME
+        lblSup.Text = myEmp.FirstName & " " & myEmp.LastName
         Dim dept As Department = Department.GetADept(myEmp.DeptID)
         lblDept.Text = dept.DeptName
 
 
-        If dept.SupervisorId = myEmp.EmpID Then
-            MsgBox("This user is not a supervisor. Closing form")
-            Me.Close()
-        End If
     End Sub
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        lstResults.Items.Clear()
         If ddlStatus.SelectedIndex = 0 Then
             Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(GLOBAL_LOGGEDIN_USERID, OrderStatus.Pending, txtFirst.Text, txtLast.Text, dtStart.Value.ToShortDateString, dtpEnd.Value.ToShortDateString)
             loadDataGrid(results)
@@ -62,50 +55,51 @@ Public Class ProcessPO
     End Sub
 
     Private Sub lstResults_DoubleClick(sender As Object, e As EventArgs) Handles lstResults.DoubleClick
-        Dim id As Integer = lstResults.SelectedItem.ToString.Substring(0, lstResults.SelectedItem.ToString.IndexOf(", "))
+        If sender.SelectedIndex <> -1 Then
+            Dim id As Integer = lstResults.SelectedItem.ToString.Substring(0, lstResults.SelectedItem.ToString.IndexOf(", "))
 
-        myPurchaseOrder = PurchaseOrderFactory.Create(id)
-        Dim Table As New DataTable
-        With Table.Columns
-            .Add("ID", GetType(String))
-            .Add("Name", GetType(String))
-            .Add("Descripion", GetType(String))
-            .Add("Price", GetType(String))
-            .Add("Quantity", GetType(String))
-            .Add("Store", GetType(String))
-            .Add("Justification", GetType(String))
-        End With
+            myPurchaseOrder = PurchaseOrderFactory.Create(id)
+            Dim Table As New DataTable
+            With Table.Columns
+                .Add("ID", GetType(String))
+                .Add("Name", GetType(String))
+                .Add("Descripion", GetType(String))
+                .Add("Price", GetType(String))
+                .Add("Quantity", GetType(String))
+                .Add("Store", GetType(String))
+                .Add("Justification", GetType(String))
+            End With
 
-        For i As Integer = 0 To myPurchaseOrder.Items.Count - 1
-            Dim Row As DataRow
-            Row = Table.NewRow()
+            For i As Integer = 0 To myPurchaseOrder.Items.Count - 1
+                Dim Row As DataRow
+                Row = Table.NewRow()
 
-            Row.Item("ID") = myPurchaseOrder.Items(i).ItemID
-            Row.Item("Name") = myPurchaseOrder.Items(i).ItemName
-            Row.Item("Descripion") = myPurchaseOrder.Items(i).Description
-            Row.Item("Price") = myPurchaseOrder.Items(i).Price
-            Row.Item("Quantity") = myPurchaseOrder.Items(i).Quantity
-            Row.Item("Store") = myPurchaseOrder.Items(i).Source
-            Row.Item("Justification") = myPurchaseOrder.Items(i).Justification
-            Table.Rows.Add(Row)
-        Next
+                Row.Item("ID") = myPurchaseOrder.Items(i).ItemID
+                Row.Item("Name") = myPurchaseOrder.Items(i).ItemName
+                Row.Item("Descripion") = myPurchaseOrder.Items(i).Description
+                Row.Item("Price") = myPurchaseOrder.Items(i).Price
+                Row.Item("Quantity") = myPurchaseOrder.Items(i).Quantity
+                Row.Item("Store") = myPurchaseOrder.Items(i).Source
+                Row.Item("Justification") = myPurchaseOrder.Items(i).Justification
+                Table.Rows.Add(Row)
+            Next
 
-        DataGridView1.DataSource = Table
+            DataGridView1.DataSource = Table
 
-        If myPurchaseOrder.Status = OrderStatus.Closed Then
-            gpItems.Enabled = False
-        Else
-            gpItems.Enabled = True
-        End If
+            If myPurchaseOrder.Status = OrderStatus.Closed Then
+                gpItems.Enabled = False
+            Else
+                gpItems.Enabled = True
+            End If
 
-        If myPurchaseOrder.Items.FindAll(Function(myItem) myItem.Status = ItemStatus.Denied OrElse myItem.Status = ItemStatus.Approved).Count = myPurchaseOrder.Items.Count Then
-            Dim result As Integer = MessageBox.Show("Do you wish to close this purchase order?", "Close Order", MessageBoxButtons.YesNo)
+            If myPurchaseOrder.Items.FindAll(Function(myItem) myItem.Status = ItemStatus.Denied OrElse myItem.Status = ItemStatus.Approved).Count = myPurchaseOrder.Items.Count Then
+                Dim result As Integer = MessageBox.Show("Do you wish to close this purchase order?", "Close Order", MessageBoxButtons.YesNo)
 
-            If result = DialogResult.Yes Then
-                PurchaseOrder.closeOrder(myPurchaseOrder)
+                If result = DialogResult.Yes Then
+                    PurchaseOrder.closeOrder(myPurchaseOrder)
+                End If
             End If
         End If
-
     End Sub
 
     Private Sub DataGridView1_DoubleClick(sender As Object, e As EventArgs) Handles DataGridView1.DoubleClick

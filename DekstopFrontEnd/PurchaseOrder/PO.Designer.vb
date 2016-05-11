@@ -22,6 +22,7 @@ Partial Class CreatePO
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CreatePO))
         Me.dgvPO = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblEmp = New System.Windows.Forms.Label()
@@ -52,6 +53,7 @@ Partial Class CreatePO
         Me.btnSave = New System.Windows.Forms.Button()
         Me.lblStatusLabel = New System.Windows.Forms.Label()
         Me.lblStatus = New System.Windows.Forms.Label()
+        Me.lblres = New System.Windows.Forms.Label()
         CType(Me.dgvPO, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -61,7 +63,7 @@ Partial Class CreatePO
         Me.dgvPO.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvPO.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke
         Me.dgvPO.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.dgvPO.Location = New System.Drawing.Point(12, 94)
+        Me.dgvPO.Location = New System.Drawing.Point(15, 186)
         Me.dgvPO.Name = "dgvPO"
         Me.dgvPO.Size = New System.Drawing.Size(777, 250)
         Me.dgvPO.TabIndex = 1
@@ -69,7 +71,7 @@ Partial Class CreatePO
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 36)
+        Me.Label1.Location = New System.Drawing.Point(15, 48)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(53, 13)
         Me.Label1.TabIndex = 3
@@ -78,7 +80,7 @@ Partial Class CreatePO
         'lblEmp
         '
         Me.lblEmp.AutoSize = True
-        Me.lblEmp.Location = New System.Drawing.Point(12, 53)
+        Me.lblEmp.Location = New System.Drawing.Point(15, 65)
         Me.lblEmp.Name = "lblEmp"
         Me.lblEmp.Size = New System.Drawing.Size(38, 13)
         Me.lblEmp.TabIndex = 4
@@ -87,7 +89,7 @@ Partial Class CreatePO
         'lblDep
         '
         Me.lblDep.AutoSize = True
-        Me.lblDep.Location = New System.Drawing.Point(128, 53)
+        Me.lblDep.Location = New System.Drawing.Point(131, 65)
         Me.lblDep.Name = "lblDep"
         Me.lblDep.Size = New System.Drawing.Size(37, 13)
         Me.lblDep.TabIndex = 6
@@ -96,7 +98,7 @@ Partial Class CreatePO
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(128, 36)
+        Me.Label4.Location = New System.Drawing.Point(131, 48)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(62, 13)
         Me.Label4.TabIndex = 5
@@ -105,7 +107,7 @@ Partial Class CreatePO
         'lblSup
         '
         Me.lblSup.AutoSize = True
-        Me.lblSup.Location = New System.Drawing.Point(248, 53)
+        Me.lblSup.Location = New System.Drawing.Point(251, 65)
         Me.lblSup.Name = "lblSup"
         Me.lblSup.Size = New System.Drawing.Size(36, 13)
         Me.lblSup.TabIndex = 8
@@ -114,7 +116,7 @@ Partial Class CreatePO
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(248, 36)
+        Me.Label6.Location = New System.Drawing.Point(251, 48)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(57, 13)
         Me.Label6.TabIndex = 7
@@ -123,7 +125,7 @@ Partial Class CreatePO
         'lblDate
         '
         Me.lblDate.AutoSize = True
-        Me.lblDate.Location = New System.Drawing.Point(352, 53)
+        Me.lblDate.Location = New System.Drawing.Point(355, 65)
         Me.lblDate.Name = "lblDate"
         Me.lblDate.Size = New System.Drawing.Size(40, 13)
         Me.lblDate.TabIndex = 10
@@ -132,7 +134,7 @@ Partial Class CreatePO
         'lblErr
         '
         Me.lblErr.AutoSize = True
-        Me.lblErr.Location = New System.Drawing.Point(189, 78)
+        Me.lblErr.Location = New System.Drawing.Point(160, 96)
         Me.lblErr.Name = "lblErr"
         Me.lblErr.Size = New System.Drawing.Size(30, 13)
         Me.lblErr.TabIndex = 11
@@ -141,10 +143,11 @@ Partial Class CreatePO
         'lblIDlabel
         '
         Me.lblIDlabel.AutoSize = True
-        Me.lblIDlabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblIDlabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblIDlabel.ForeColor = System.Drawing.SystemColors.MenuHighlight
         Me.lblIDlabel.Location = New System.Drawing.Point(139, 15)
         Me.lblIDlabel.Name = "lblIDlabel"
-        Me.lblIDlabel.Size = New System.Drawing.Size(112, 13)
+        Me.lblIDlabel.Size = New System.Drawing.Size(135, 16)
         Me.lblIDlabel.TabIndex = 12
         Me.lblIDlabel.Text = "Purchase Order ID"
         Me.lblIDlabel.Visible = False
@@ -152,7 +155,7 @@ Partial Class CreatePO
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(12, 365)
+        Me.Label3.Location = New System.Drawing.Point(31, 131)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(46, 13)
         Me.Label3.TabIndex = 13
@@ -161,7 +164,7 @@ Partial Class CreatePO
         'lblSubtotal
         '
         Me.lblSubtotal.AutoSize = True
-        Me.lblSubtotal.Location = New System.Drawing.Point(12, 382)
+        Me.lblSubtotal.Location = New System.Drawing.Point(31, 148)
         Me.lblSubtotal.Name = "lblSubtotal"
         Me.lblSubtotal.Size = New System.Drawing.Size(34, 13)
         Me.lblSubtotal.TabIndex = 14
@@ -171,7 +174,7 @@ Partial Class CreatePO
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(109, 365)
+        Me.Label7.Location = New System.Drawing.Point(128, 131)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(25, 13)
         Me.Label7.TabIndex = 15
@@ -180,7 +183,7 @@ Partial Class CreatePO
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(198, 364)
+        Me.Label8.Location = New System.Drawing.Point(217, 130)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(31, 13)
         Me.Label8.TabIndex = 16
@@ -189,7 +192,7 @@ Partial Class CreatePO
         'lblTax
         '
         Me.lblTax.AutoSize = True
-        Me.lblTax.Location = New System.Drawing.Point(109, 382)
+        Me.lblTax.Location = New System.Drawing.Point(128, 148)
         Me.lblTax.Name = "lblTax"
         Me.lblTax.Size = New System.Drawing.Size(34, 13)
         Me.lblTax.TabIndex = 17
@@ -198,7 +201,7 @@ Partial Class CreatePO
         'lblTotal
         '
         Me.lblTotal.AutoSize = True
-        Me.lblTotal.Location = New System.Drawing.Point(198, 382)
+        Me.lblTotal.Location = New System.Drawing.Point(217, 148)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(34, 13)
         Me.lblTotal.TabIndex = 18
@@ -207,10 +210,11 @@ Partial Class CreatePO
         'lblID
         '
         Me.lblID.AutoSize = True
-        Me.lblID.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblID.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblID.ForeColor = System.Drawing.SystemColors.MenuHighlight
         Me.lblID.Location = New System.Drawing.Point(254, 15)
         Me.lblID.Name = "lblID"
-        Me.lblID.Size = New System.Drawing.Size(14, 13)
+        Me.lblID.Size = New System.Drawing.Size(16, 16)
         Me.lblID.TabIndex = 19
         Me.lblID.Text = "0"
         Me.lblID.Visible = False
@@ -303,7 +307,7 @@ Partial Class CreatePO
         'lstResults
         '
         Me.lstResults.FormattingEnabled = True
-        Me.lstResults.Location = New System.Drawing.Point(410, 355)
+        Me.lstResults.Location = New System.Drawing.Point(425, 121)
         Me.lstResults.Name = "lstResults"
         Me.lstResults.Size = New System.Drawing.Size(348, 56)
         Me.lstResults.TabIndex = 23
@@ -311,7 +315,7 @@ Partial Class CreatePO
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(267, 355)
+        Me.btnSave.Location = New System.Drawing.Point(286, 121)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(109, 40)
         Me.btnSave.TabIndex = 24
@@ -321,10 +325,11 @@ Partial Class CreatePO
         'lblStatusLabel
         '
         Me.lblStatusLabel.AutoSize = True
-        Me.lblStatusLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblStatusLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblStatusLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight
         Me.lblStatusLabel.Location = New System.Drawing.Point(283, 15)
         Me.lblStatusLabel.Name = "lblStatusLabel"
-        Me.lblStatusLabel.Size = New System.Drawing.Size(43, 13)
+        Me.lblStatusLabel.Size = New System.Drawing.Size(51, 16)
         Me.lblStatusLabel.TabIndex = 25
         Me.lblStatusLabel.Text = "Status"
         Me.lblStatusLabel.Visible = False
@@ -332,19 +337,31 @@ Partial Class CreatePO
         'lblStatus
         '
         Me.lblStatus.AutoSize = True
-        Me.lblStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblStatus.ForeColor = System.Drawing.SystemColors.MenuHighlight
         Me.lblStatus.Location = New System.Drawing.Point(337, 15)
         Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(11, 13)
+        Me.lblStatus.Size = New System.Drawing.Size(12, 16)
         Me.lblStatus.TabIndex = 26
         Me.lblStatus.Text = "."
         Me.lblStatus.Visible = False
+        '
+        'lblres
+        '
+        Me.lblres.AutoSize = True
+        Me.lblres.Location = New System.Drawing.Point(427, 105)
+        Me.lblres.Name = "lblres"
+        Me.lblres.Size = New System.Drawing.Size(148, 13)
+        Me.lblres.TabIndex = 27
+        Me.lblres.Text = "Search Result (ID/Cost/Date)"
+        Me.lblres.Visible = False
         '
         'CreatePO
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 546)
+        Me.Controls.Add(Me.lblres)
         Me.Controls.Add(Me.lblStatus)
         Me.Controls.Add(Me.lblStatusLabel)
         Me.Controls.Add(Me.btnSave)
@@ -367,6 +384,7 @@ Partial Class CreatePO
         Me.Controls.Add(Me.lblEmp)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.dgvPO)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "CreatePO"
         Me.Text = "Purchase Order"
         CType(Me.dgvPO, System.ComponentModel.ISupportInitialize).EndInit()
@@ -406,4 +424,5 @@ Partial Class CreatePO
     Friend WithEvents btnSave As Button
     Friend WithEvents lblStatusLabel As Label
     Friend WithEvents lblStatus As Label
+    Friend WithEvents lblres As Label
 End Class

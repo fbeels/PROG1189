@@ -20,8 +20,6 @@ Public Class CreatePO
         displayEmp()
     End Sub
 
-
-
     Sub setupDG()
         Dim Table As New DataTable
         With Table.Columns
@@ -71,33 +69,34 @@ Public Class CreatePO
                 item.Quantity = 0
                 item.Status = ItemStatus.Denied
             End If
+            If i = dgvPO.RowCount - 1 Then
 
-            Dim merge As Boolean = False
-            Dim mergeId As Integer
-            For x As Integer = 0 To myPurchaseOrder.Items.Count - 1
-                If item.ItemName = myPurchaseOrder.Items(x).ItemName AndAlso item.Description = myPurchaseOrder.Items(x).Description AndAlso i = dgvPO.RowCount - 2 Then
-                    If dgvPO.Rows.Count <> 2 Then
-                        merge = True
-                        mergeId = x
-                        Exit For
+
+                Dim merge As Boolean = False
+                Dim mergeId As Integer
+                For x As Integer = 0 To myPurchaseOrder.Items.Count - 1
+                    If item.ItemName = myPurchaseOrder.Items(x).ItemName AndAlso item.Description = myPurchaseOrder.Items(x).Description AndAlso i = dgvPO.RowCount - 2 Then
+                        If dgvPO.Rows.Count <> 2 Then
+                            merge = True
+                            mergeId = x
+                            Exit For
+                        End If
+                    Else
+                        merge = False
                     End If
-                Else
-                    merge = False
+                Next
+
+                If merge Then
+                    myPurchaseOrder.Items(mergeId).Quantity += item.Quantity
+                    dgvPO.Rows(mergeId).Cells("Quantity").Value = myPurchaseOrder.Items(mergeId).Quantity
+                    doTaxCalculations()
+                    PurchaseOrderItemCUD.Update(myPurchaseOrder.Items(mergeId))
+                    PurchaseOrderCUD.Update(myPurchaseOrder)
+                    BeginInvoke(New Action(Sub() dgvPO.Rows.RemoveAt(i)))
+                    dgvPO.Refresh()
+                    Exit Sub
                 End If
-            Next
-
-            If merge Then
-
-                myPurchaseOrder.Items(mergeId).Quantity += item.Quantity
-                dgvPO.Rows(mergeId).Cells("Quantity").Value = myPurchaseOrder.Items(mergeId).Quantity
-                doTaxCalculations()
-                PurchaseOrderItemCUD.Update(myPurchaseOrder.Items(mergeId))
-                PurchaseOrderCUD.Update(myPurchaseOrder)
-                BeginInvoke(New Action(Sub() dgvPO.Rows.RemoveAt(e.RowIndex)))
-                dgvPO.Refresh()
-                Exit Sub
             End If
-
             If i = myPurchaseOrder.Items.Count Then 'if the item at the rowindex does not already exist, create it and add it.           
                 item.ItemID = -1
 
@@ -149,6 +148,10 @@ Public Class CreatePO
         lblID.Text = myPurchaseOrder.PurchaseOrderID.ToString
         lblStatus.Text = myPurchaseOrder.Status.ToString()
 
+        lblStatus.Visible = True
+        lblStatusLabel.Visible = True
+        lblID.Visible = True
+        lblIDlabel.Visible = True
     End Sub
 
     Private Sub ddlEmployees_DropDownClosed(sender As Object, e As EventArgs)
@@ -190,6 +193,9 @@ Public Class CreatePO
     End Sub
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        lstResults.Items().Clear()
+        lblres.Visible = True
+
         If dtpStart.Text = Date.Now.ToShortDateString Then
             If txtID.Text = String.Empty Then
                 lblErr.Text = "Both fields are empty, try again."
@@ -215,8 +221,6 @@ Public Class CreatePO
     Private Sub lstResults_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles lstResults.MouseDoubleClick
         If lstResults.SelectedItem <> Nothing Then
             Dim id As Integer = lstResults.SelectedItem.ToString.Substring(0, lstResults.SelectedItem.ToString.IndexOf(", "))
-
-
 
             myPurchaseOrder = PurchaseOrderFactory.Create(id)
             Dim Table As New DataTable

@@ -77,7 +77,7 @@ Partial Class AboutBox1
         Me.LogoPictureBox.Name = "LogoPictureBox"
         Me.TableLayoutPanel.SetRowSpan(Me.LogoPictureBox, 6)
         Me.LogoPictureBox.Size = New System.Drawing.Size(124, 252)
-        Me.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.LogoPictureBox.TabIndex = 0
         Me.LogoPictureBox.TabStop = False
         '
@@ -161,6 +161,7 @@ Partial Class AboutBox1
         Me.ClientSize = New System.Drawing.Size(414, 276)
         Me.Controls.Add(Me.TableLayoutPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "AboutBox1"

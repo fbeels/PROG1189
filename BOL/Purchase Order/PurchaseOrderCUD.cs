@@ -25,8 +25,13 @@ namespace BOL.Purchase_Order
         /// <param name="PO"> PO that is updated</param>
         /// <returns></returns>
         static public bool Update(PurchaseOrder PO)
-        {
-            return PurchaseOrderSQL.modifyPO(PO);
+        {           
+            if(PurchaseOrderSQL.modifyPO(PO))
+            {
+                PO.lastupdated++;
+                return true;
+            }
+            return false;
         }
 
 

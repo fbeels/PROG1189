@@ -22,6 +22,7 @@ Partial Class ProcessPO
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ProcessPO))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -163,7 +164,7 @@ Partial Class ProcessPO
         Me.dtStart.Name = "dtStart"
         Me.dtStart.Size = New System.Drawing.Size(80, 20)
         Me.dtStart.TabIndex = 2
-        Me.dtStart.Value = New Date(1990, 1, 1, 0, 0, 0, 0)
+        Me.dtStart.Value = New Date(2016, 1, 1, 0, 0, 0, 0)
         '
         'txtLast
         '
@@ -431,6 +432,7 @@ Partial Class ProcessPO
         Me.Controls.Add(Me.lstResults)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.DataGridView1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ProcessPO"
         Me.Text = "ProcessPO"
         Me.GroupBox1.ResumeLayout(False)

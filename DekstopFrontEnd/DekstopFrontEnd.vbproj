@@ -48,6 +48,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>acme_logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MdiTabControl">
       <HintPath>..\..\..\..\Google Drive\School\Term 6\Files\N-Tier\Project -  cR\MdiTabControl.dll</HintPath>
@@ -288,7 +291,9 @@
     </None>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="acme_logo.ico" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BOL\BOL.csproj">
       <Project>{5aeff12d-27c4-4851-88c7-076831483886}</Project>

@@ -1,7 +1,4 @@
 ﻿Imports BOL
-
-
-
 Public Class main
     ' Global glbLoggedinUser As Integer
 
@@ -38,7 +35,7 @@ Public Class main
     '    End If
     'End Sub
 
-    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs)
         AboutBox1.Show()
     End Sub
 
@@ -58,10 +55,7 @@ Public Class main
         End If
     End Sub
 
-
     Private Sub main_Load(sender As Object, e As EventArgs) Handles Me.Load
-
-
         Dim allemps = New List(Of Employee)
         allemps = Employee.GetAllEmpsInDept(0)
         If allemps.Count > 0 Then
@@ -71,8 +65,6 @@ Public Class main
         End If
         GLOBAL_LOGGEDIN_USERID = cboUser.SelectedValue
         lblloggedinuserid.Text = GLOBAL_LOGGEDIN_USERID.ToString
-
-
 
         ' Dim thispayperiod As PayPeriod
 
@@ -91,7 +83,8 @@ Public Class main
                 End If
             Else
                 'do nothing
-                MsgBox("yea payday and BOOOOO it has been run")
+
+                ToolStripStatusLabel1.Text = "Payday. Payroll has already been run."
 
                 '//////////////////////////////////////////
                 'If TabControl1.Contains(RunPayroll) Then
@@ -105,7 +98,7 @@ Public Class main
 
         Else
             'do nothing
-            MsgBox("NOT payday")
+            ToolStripStatusLabel1.Text = "Not payday"
         End If
 
 
@@ -113,9 +106,7 @@ Public Class main
 
     End Sub
 
-    Private Sub AboutToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem2.Click
-        AboutBox1.ShowDialog()
-    End Sub
+
 
     Private Sub btnmodemp_Click_1(sender As Object, e As EventArgs) Handles btnmodemp.Click
         If TabControl1.Contains(EditEmployee) Then
@@ -139,12 +130,32 @@ Public Class main
         lblloggedinuserid.Text = GLOBAL_LOGGEDIN_USERID.ToString
     End Sub
 
-  
+
     Private Sub btnsearchpaystubs_Click(sender As Object, e As EventArgs) Handles btnsearchpaystubs.Click
         If TabControl1.Contains(Form1) Then
             TabControl1.TabPages(Form1).Select()
         Else
             TabControl1.TabPages.Add(Form1)
+        End If
+    End Sub
+
+    Private Sub AboutToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem2.Click
+        AboutBox1.Show()
+    End Sub
+
+    Private Sub ToolStripLabel1_Click(sender As Object, e As EventArgs) Handles ToolStripLabel1.Click
+        If TabControl1.Contains(CreatePO) Then
+            TabControl1.TabPages(CreatePO).Select()
+        Else
+            TabControl1.TabPages.Add(CreatePO)
+        End If
+    End Sub
+
+    Private Sub ToolStripLabel2_Click(sender As Object, e As EventArgs) Handles ToolStripLabel2.Click
+        If TabControl1.Contains(AddEmployee) Then
+            TabControl1.TabPages(AddEmployee).Select()
+        Else
+            TabControl1.TabPages.Add(AddEmployee)
         End If
     End Sub
 End Class

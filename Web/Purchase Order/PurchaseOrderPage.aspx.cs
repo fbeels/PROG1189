@@ -199,6 +199,10 @@ namespace WebCSharp.PurchaseOrder
         /// </summary>
         private void AddNewRowToGrid(bool isSubmit, bool skipInsertLogic)
         {
+            try
+            {
+
+           
             int rowIndex = 0;
 
             if (ViewState["CurrentTable"] != null)
@@ -406,7 +410,12 @@ namespace WebCSharp.PurchaseOrder
                 Response.Write("ViewState is null");
             }
             SetPreviousData();
+            }
+            catch (Exception e)
+            {
 
+                lblError.Text = e.Message;
+            }
         }
 
         /// <summary>
