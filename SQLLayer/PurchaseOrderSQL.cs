@@ -51,6 +51,7 @@ namespace SQLLayer
             tmpParmList.Add(new ParmStructure("@subtotal", SqlDbType.Float, ParameterDirection.Input, 9, PO.SubTotal));
             tmpParmList.Add(new ParmStructure("@orderdate", SqlDbType.Date, ParameterDirection.Input, 0, PO.OrderDate));
             tmpParmList.Add(new ParmStructure("@orderstatus", SqlDbType.TinyInt, ParameterDirection.Input, 0, PO.Status));
+            tmpParmList.Add(new ParmStructure("@lastupated", SqlDbType.Int, ParameterDirection.Input, 0, PO.lastupdated));
 
             DataAccess.SendData("UpdatePO", tmpParmList);
 

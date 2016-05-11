@@ -60,7 +60,7 @@ namespace SQLLayer
             tmpParmList.Add(new ParmStructure("@reason", SqlDbType.VarChar, ParameterDirection.Input, 50, item.Reason));
             tmpParmList.Add(new ParmStructure("@source", SqlDbType.VarChar, ParameterDirection.Input, 50, item.Source));
             tmpParmList.Add(new ParmStructure("@itemstatus", SqlDbType.Int, ParameterDirection.Input, 0, item.Status));
-
+            tmpParmList.Add(new ParmStructure("@lastupated", SqlDbType.Int, ParameterDirection.Input, 0, item.lastupdated));
             tmpParmList.Add(new ParmStructure("@justification", SqlDbType.VarChar, ParameterDirection.Input, 50, item.Justification));
 
             DataAccess.SendData("UpdatePOItem", tmpParmList);

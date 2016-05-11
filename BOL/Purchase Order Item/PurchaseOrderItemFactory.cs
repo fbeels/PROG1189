@@ -40,6 +40,7 @@ namespace BOL.Purchase_Order_Item
                 item.Source = row["source"].ToString();
                 item.Status = (ItemStatus)int.Parse(row["itemstatus"].ToString());
                 item.Justification = row["justification"].ToString();
+                item.lastudpated = int.Parse(row["lastupdated"].ToString());
 
             }
 

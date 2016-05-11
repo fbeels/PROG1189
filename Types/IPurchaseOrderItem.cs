@@ -18,5 +18,6 @@ namespace Common
         string Source { get; set; }
         ItemStatus Status { get; set; }
         string Justification { get; set; }
+        int lastupdated { get; set; }
     }
 }
