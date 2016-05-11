@@ -154,8 +154,8 @@ namespace BOL.Purchase_Order
         public List<PurchaseOrderItem> Items { get; set; }
 
 
-        private int _lastupdated;        
-        public int lastudpated
+        private int _lastupdated;
+        public int lastupdated
         {
             get { return _lastupdated; }
             set { _lastupdated = value; }

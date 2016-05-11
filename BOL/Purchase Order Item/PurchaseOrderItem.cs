@@ -222,7 +222,7 @@ namespace BOL.Purchase_Order_Item
 
 
         private int _lastupdated;
-        public int lastudpated
+        public int lastupdated
         {
             get { return _lastupdated; }
             set { _lastupdated = value; }
