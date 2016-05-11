@@ -67,6 +67,8 @@ Public Class ProcessPO
 
             lblTotal.Text = myPurchaseOrder.Total.ToString("c2")
 
+            gpItems.Visible = False
+
             Dim Table As New DataTable
             With Table.Columns
                 .Add("ID", GetType(String))
@@ -172,4 +174,5 @@ Public Class ProcessPO
             End If
         End If
     End Sub
+
 End Class

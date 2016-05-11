@@ -43,114 +43,119 @@ Public Class CreatePO
     End Sub
 
     Private Sub dgvPO_RowLeave(sender As Object, e As DataGridViewCellEventArgs) Handles dgvPO.RowLeave
-        Dim i As Integer = e.RowIndex
-
-        If ValidateRow(i) = False Then
-            lblErr.Text = String.Empty
-            Dim item As PurchaseOrderItem = PurchaseOrderItemFactory.Create()
+        Try
 
 
-            item.ItemName = dgvPO.Item("Name", i).EditedFormattedValue
-            item.Description = dgvPO.Item("Descripion", i).EditedFormattedValue
-            item.Price = dgvPO.Item("Price", i).EditedFormattedValue
-            item.Quantity = dgvPO.Item("Quantity", i).EditedFormattedValue
-            item.Source = dgvPO.Item("Store", i).EditedFormattedValue
-            item.Justification = dgvPO.Item("Justification", i).EditedFormattedValue
-            item.Status = ItemStatus.Pending
+            Dim i As Integer = e.RowIndex
 
-            If dgvPO.Rows(i).Cells("No Longer Needed").FormattedValue Then
-                dgvPO.Rows(i).Cells("Price").Value = 0
-                dgvPO.Rows(i).Cells("Quantity").Value = 0
-                dgvPO.Rows(i).Cells("Descripion").Value = "No longer needed"
-                item.Description = "No longer needed"
-                item.Price = 0
-                item.Quantity = 0
-                item.Status = ItemStatus.Denied
-            End If
-            If i = dgvPO.RowCount - 1 Then
-                Dim merge As Boolean = False
-                Dim mergeId As Integer
-                For x As Integer = 0 To myPurchaseOrder.Items.Count - 1
-                    If item.ItemName = myPurchaseOrder.Items(x).ItemName AndAlso item.Description = myPurchaseOrder.Items(x).Description AndAlso i = dgvPO.RowCount - 2 Then
-                        If dgvPO.Rows.Count <> 2 Then
-                            merge = True
-                            mergeId = x
-                            Exit For
+            If ValidateRow(i) = False Then
+                lblErr.Text = String.Empty
+                Dim item As PurchaseOrderItem = PurchaseOrderItemFactory.Create()
+
+
+                item.ItemName = dgvPO.Item("Name", i).EditedFormattedValue
+                item.Description = dgvPO.Item("Descripion", i).EditedFormattedValue
+                item.Price = dgvPO.Item("Price", i).EditedFormattedValue
+                item.Quantity = dgvPO.Item("Quantity", i).EditedFormattedValue
+                item.Source = dgvPO.Item("Store", i).EditedFormattedValue
+                item.Justification = dgvPO.Item("Justification", i).EditedFormattedValue
+                item.Status = ItemStatus.Pending
+
+                If dgvPO.Rows(i).Cells("No Longer Needed").FormattedValue Then
+                    dgvPO.Rows(i).Cells("Price").Value = 0
+                    dgvPO.Rows(i).Cells("Quantity").Value = 0
+                    dgvPO.Rows(i).Cells("Descripion").Value = "No longer needed"
+                    item.Description = "No longer needed"
+                    item.Price = 0
+                    item.Quantity = 0
+                    item.Status = ItemStatus.Denied
+                End If
+                If i = dgvPO.RowCount - 1 Then
+                    Dim merge As Boolean = False
+                    Dim mergeId As Integer
+                    For x As Integer = 0 To myPurchaseOrder.Items.Count - 1
+                        If item.ItemName = myPurchaseOrder.Items(x).ItemName AndAlso item.Description = myPurchaseOrder.Items(x).Description AndAlso i = dgvPO.RowCount - 2 Then
+                            If dgvPO.Rows.Count <> 2 Then
+                                merge = True
+                                mergeId = x
+                                Exit For
+                            End If
+                        Else
+                            merge = False
                         End If
-                    Else
-                        merge = False
+                    Next
+
+                    If merge Then
+                        myPurchaseOrder.Items(mergeId).Quantity += item.Quantity
+                        dgvPO.Rows(mergeId).Cells("Quantity").Value = myPurchaseOrder.Items(mergeId).Quantity
+                        doTaxCalculations()
+                        PurchaseOrderItemCUD.Update(myPurchaseOrder.Items(mergeId))
+                        PurchaseOrderCUD.Update(myPurchaseOrder)
+                        BeginInvoke(New Action(Sub() dgvPO.Rows.RemoveAt(i)))
+                        dgvPO.Refresh()
+                        Exit Sub
                     End If
-                Next
-
-                If merge Then
-                    myPurchaseOrder.Items(mergeId).Quantity += item.Quantity
-                    dgvPO.Rows(mergeId).Cells("Quantity").Value = myPurchaseOrder.Items(mergeId).Quantity
-                    doTaxCalculations()
-                    PurchaseOrderItemCUD.Update(myPurchaseOrder.Items(mergeId))
-                    PurchaseOrderCUD.Update(myPurchaseOrder)
-                    BeginInvoke(New Action(Sub() dgvPO.Rows.RemoveAt(i)))
-                    dgvPO.Refresh()
-                    Exit Sub
                 End If
-            End If
-            If i = myPurchaseOrder.Items.Count Then 'if the item at the rowindex does not already exist, create it and add it.           
-                item.ItemID = -1
+                If i = myPurchaseOrder.Items.Count Then 'if the item at the rowindex does not already exist, create it and add it.           
+                    item.ItemID = -1
 
-                myPurchaseOrder.Items.Insert(i, item)
-            Else 'if it does exist, remove and remake
-                item.ItemID = myPurchaseOrder.Items(i).ItemID
+                    myPurchaseOrder.Items.Insert(i, item)
+                Else 'if it does exist, remove and remake
+                    item.ItemID = myPurchaseOrder.Items(i).ItemID
 
-                myPurchaseOrder.Items(i) = item
-            End If
+                    myPurchaseOrder.Items(i) = item
+                End If
 
-            If myPurchaseOrder.PurchaseOrderID = 0 Then 'if the PO does not exist in the DB, make it so
-                myPurchaseOrder.OrderDate = Date.Now
-                myPurchaseOrder.Status = OrderStatus.Pending
-                myPurchaseOrder.EmployeeID = GLOBAL_LOGGEDIN_USERID
-
-                doTaxCalculations()
-
-                Dim ids As Dictionary(Of String, Integer) = PurchaseOrderCUD.Create(myPurchaseOrder, item) 'insert the PO and initial item, adding the ID's to a dict
-                myPurchaseOrder.PurchaseOrderID = ids("POID")
-                myPurchaseOrder.Items(i).ItemID = ids("ItemID")
-            Else
-                If item.ItemID = -1 Then
-
+                If myPurchaseOrder.PurchaseOrderID = 0 Then 'if the PO does not exist in the DB, make it so
                     myPurchaseOrder.OrderDate = Date.Now
                     myPurchaseOrder.Status = OrderStatus.Pending
                     myPurchaseOrder.EmployeeID = GLOBAL_LOGGEDIN_USERID
-                    item.PurchaseOrderID = myPurchaseOrder.PurchaseOrderID
+
                     doTaxCalculations()
 
-                    myPurchaseOrder.Items(i).ItemID = PurchaseOrderItemCUD.Insert(item)
-                    PurchaseOrderCUD.Update(myPurchaseOrder)
+                    Dim ids As Dictionary(Of String, Integer) = PurchaseOrderCUD.Create(myPurchaseOrder, item) 'insert the PO and initial item, adding the ID's to a dict
+                    myPurchaseOrder.PurchaseOrderID = ids("POID")
+                    myPurchaseOrder.Items(i).ItemID = ids("ItemID")
                 Else
-                    myPurchaseOrder.Items(i).PurchaseOrderID = myPurchaseOrder.PurchaseOrderID
+                    If item.ItemID = -1 Then
 
-                    myPurchaseOrder.OrderDate = Date.Now
-                    myPurchaseOrder.Status = OrderStatus.Pending
-                    myPurchaseOrder.EmployeeID = GLOBAL_LOGGEDIN_USERID
-                    doTaxCalculations()
+                        myPurchaseOrder.OrderDate = Date.Now
+                        myPurchaseOrder.Status = OrderStatus.Pending
+                        myPurchaseOrder.EmployeeID = GLOBAL_LOGGEDIN_USERID
+                        item.PurchaseOrderID = myPurchaseOrder.PurchaseOrderID
+                        doTaxCalculations()
 
-                    PurchaseOrderItemCUD.Update(item)
-                    PurchaseOrderCUD.Update(myPurchaseOrder)
+                        myPurchaseOrder.Items(i).ItemID = PurchaseOrderItemCUD.Insert(item)
+                        PurchaseOrderCUD.Update(myPurchaseOrder)
+                    Else
+                        myPurchaseOrder.Items(i).PurchaseOrderID = myPurchaseOrder.PurchaseOrderID
+
+                        myPurchaseOrder.OrderDate = Date.Now
+                        myPurchaseOrder.Status = OrderStatus.Pending
+                        myPurchaseOrder.EmployeeID = GLOBAL_LOGGEDIN_USERID
+                        doTaxCalculations()
+
+                        PurchaseOrderItemCUD.Update(item)
+                        PurchaseOrderCUD.Update(myPurchaseOrder)
+                    End If
                 End If
+                dgvPO.Rows(i).Cells("Status").Value = item.Status.ToString
+                dgvPO.Rows(i).Cells("ID").Value = item.ItemID.ToString()
             End If
-            dgvPO.Rows(i).Cells("Status").Value = item.Status.ToString
-            dgvPO.Rows(i).Cells("ID").Value = item.ItemID.ToString()
-        End If
 
 
-        lblID.Text = myPurchaseOrder.PurchaseOrderID.ToString
-        lblStatus.Text = myPurchaseOrder.Status.ToString()
+            lblID.Text = myPurchaseOrder.PurchaseOrderID.ToString
+            lblStatus.Text = myPurchaseOrder.Status.ToString()
 
-        lblStatus.Visible = True
-        lblStatusLabel.Visible = True
-        lblID.Visible = True
-        lblIDlabel.Visible = True
+            lblStatus.Visible = True
+            lblStatusLabel.Visible = True
+            lblID.Visible = True
+            lblIDlabel.Visible = True
 
-        gpExists.Visible = True
-
+            gpExists.Visible = True
+        Catch ex As Exception
+            lblErr.Text = ex.Message
+        End Try
     End Sub
 
     Private Sub ddlEmployees_DropDownClosed(sender As Object, e As EventArgs)
