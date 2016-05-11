@@ -61,9 +61,19 @@ Partial Class ProcessPO
         Me.lblSup = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.lblDept = New System.Windows.Forms.Label()
+        Me.gpResults = New System.Windows.Forms.GroupBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.lblID = New System.Windows.Forms.Label()
+        Me.lblStatus = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.gpPOInfo = New System.Windows.Forms.GroupBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.lblTotal = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gpItems.SuspendLayout()
+        Me.gpResults.SuspendLayout()
+        Me.gpPOInfo.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -192,9 +202,9 @@ Partial Class ProcessPO
         'lstResults
         '
         Me.lstResults.FormattingEnabled = True
-        Me.lstResults.Location = New System.Drawing.Point(449, 9)
+        Me.lstResults.Location = New System.Drawing.Point(6, 19)
         Me.lstResults.Name = "lstResults"
-        Me.lstResults.Size = New System.Drawing.Size(339, 121)
+        Me.lstResults.Size = New System.Drawing.Size(138, 95)
         Me.lstResults.TabIndex = 2
         '
         'Label7
@@ -386,7 +396,7 @@ Partial Class ProcessPO
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(632, 315)
+        Me.Label10.Location = New System.Drawing.Point(677, 17)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(60, 13)
         Me.Label10.TabIndex = 27
@@ -395,7 +405,7 @@ Partial Class ProcessPO
         'lblSup
         '
         Me.lblSup.AutoSize = True
-        Me.lblSup.Location = New System.Drawing.Point(701, 315)
+        Me.lblSup.Location = New System.Drawing.Point(743, 16)
         Me.lblSup.Name = "lblSup"
         Me.lblSup.Size = New System.Drawing.Size(45, 13)
         Me.lblSup.TabIndex = 28
@@ -404,7 +414,7 @@ Partial Class ProcessPO
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(632, 339)
+        Me.Label16.Location = New System.Drawing.Point(546, 17)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(65, 13)
         Me.Label16.TabIndex = 29
@@ -413,33 +423,118 @@ Partial Class ProcessPO
         'lblDept
         '
         Me.lblDept.AutoSize = True
-        Me.lblDept.Location = New System.Drawing.Point(701, 339)
+        Me.lblDept.Location = New System.Drawing.Point(617, 17)
         Me.lblDept.Name = "lblDept"
         Me.lblDept.Size = New System.Drawing.Size(45, 13)
         Me.lblDept.TabIndex = 30
         Me.lblDept.Text = "Label10"
+        '
+        'gpResults
+        '
+        Me.gpResults.Controls.Add(Me.lstResults)
+        Me.gpResults.Location = New System.Drawing.Point(369, 0)
+        Me.gpResults.Name = "gpResults"
+        Me.gpResults.Size = New System.Drawing.Size(156, 121)
+        Me.gpResults.TabIndex = 31
+        Me.gpResults.TabStop = False
+        Me.gpResults.Text = "Search Results"
+        Me.gpResults.Visible = False
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(9, 20)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(50, 13)
+        Me.Label13.TabIndex = 32
+        Me.Label13.Text = "Order ID:"
+        '
+        'lblID
+        '
+        Me.lblID.AutoSize = True
+        Me.lblID.Location = New System.Drawing.Point(80, 20)
+        Me.lblID.Name = "lblID"
+        Me.lblID.Size = New System.Drawing.Size(18, 13)
+        Me.lblID.TabIndex = 33
+        Me.lblID.Text = "ID"
+        '
+        'lblStatus
+        '
+        Me.lblStatus.AutoSize = True
+        Me.lblStatus.Location = New System.Drawing.Point(192, 20)
+        Me.lblStatus.Name = "lblStatus"
+        Me.lblStatus.Size = New System.Drawing.Size(37, 13)
+        Me.lblStatus.TabIndex = 35
+        Me.lblStatus.Text = "Status"
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(121, 20)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(69, 13)
+        Me.Label18.TabIndex = 34
+        Me.Label18.Text = "Order Status:"
+        '
+        'gpPOInfo
+        '
+        Me.gpPOInfo.Controls.Add(Me.Label17)
+        Me.gpPOInfo.Controls.Add(Me.lblTotal)
+        Me.gpPOInfo.Controls.Add(Me.Label13)
+        Me.gpPOInfo.Controls.Add(Me.lblStatus)
+        Me.gpPOInfo.Controls.Add(Me.lblID)
+        Me.gpPOInfo.Controls.Add(Me.Label18)
+        Me.gpPOInfo.Location = New System.Drawing.Point(537, 44)
+        Me.gpPOInfo.Name = "gpPOInfo"
+        Me.gpPOInfo.Size = New System.Drawing.Size(251, 77)
+        Me.gpPOInfo.TabIndex = 36
+        Me.gpPOInfo.TabStop = False
+        Me.gpPOInfo.Text = "Order Information"
+        Me.gpPOInfo.Visible = False
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(9, 47)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(34, 13)
+        Me.Label17.TabIndex = 36
+        Me.Label17.Text = "Total:"
+        '
+        'lblTotal
+        '
+        Me.lblTotal.AutoSize = True
+        Me.lblTotal.Location = New System.Drawing.Point(80, 47)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(31, 13)
+        Me.lblTotal.TabIndex = 37
+        Me.lblTotal.Text = "Total"
         '
         'ProcessPO
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 474)
+        Me.Controls.Add(Me.gpPOInfo)
+        Me.Controls.Add(Me.gpResults)
         Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.lblDept)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.lblSup)
         Me.Controls.Add(Me.gpItems)
-        Me.Controls.Add(Me.lstResults)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ProcessPO"
-        Me.Text = "ProcessPO"
+        Me.Text = "Process Purchase Order"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gpItems.ResumeLayout(False)
         Me.gpItems.PerformLayout()
+        Me.gpResults.ResumeLayout(False)
+        Me.gpPOInfo.ResumeLayout(False)
+        Me.gpPOInfo.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -483,4 +578,12 @@ Partial Class ProcessPO
     Friend WithEvents lblSup As Label
     Friend WithEvents Label16 As Label
     Friend WithEvents lblDept As Label
+    Friend WithEvents gpResults As GroupBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents lblID As Label
+    Friend WithEvents lblStatus As Label
+    Friend WithEvents Label18 As Label
+    Friend WithEvents gpPOInfo As GroupBox
+    Friend WithEvents Label17 As Label
+    Friend WithEvents lblTotal As Label
 End Class

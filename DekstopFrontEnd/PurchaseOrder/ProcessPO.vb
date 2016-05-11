@@ -22,6 +22,7 @@ Public Class ProcessPO
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         lstResults.Items.Clear()
+        gpResults.Visible = True
         If ddlStatus.SelectedIndex = 0 Then
             Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(GLOBAL_LOGGEDIN_USERID, OrderStatus.Pending, txtFirst.Text, txtLast.Text, dtStart.Value.ToShortDateString, dtpEnd.Value.ToShortDateString)
             loadDataGrid(results)
@@ -29,15 +30,15 @@ Public Class ProcessPO
             Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(GLOBAL_LOGGEDIN_USERID, OrderStatus.Closed, txtFirst.Text, txtLast.Text, dtStart.Value.ToShortDateString, dtpEnd.Value.ToShortDateString)
             loadDataGrid(results)
         Else
-            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(GLOBAL_LOGGEDIN_USERID, Nothing, txtFirst.Text, txtLast.Text, dtStart.Value.ToShortDateString, dtpEnd.Value.ToShortDateString)
+            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(GLOBAL_LOGGEDIN_USERID, 99, txtFirst.Text, txtLast.Text, dtStart.Value.ToShortDateString, dtpEnd.Value.ToShortDateString)
             loadDataGrid(results)
         End If
     End Sub
 
     Sub loadDropdowns()
         ddlStatus.Items.Add("Pending")
-        ddlStatus.Items.Add("Approved")
-        ddlStatus.Items.Add("Denied")
+        ddlStatus.Items.Add("Closed")
+        ddlStatus.Items.Add("All")
         ddlStatus.SelectedIndex = 0
 
         ddlItemStatus.Items.Add("Pending")
@@ -59,6 +60,13 @@ Public Class ProcessPO
             Dim id As Integer = lstResults.SelectedItem.ToString.Substring(0, lstResults.SelectedItem.ToString.IndexOf(", "))
 
             myPurchaseOrder = PurchaseOrderFactory.Create(id)
+
+            gpPOInfo.Visible = True
+            lblID.Text = myPurchaseOrder.PurchaseOrderID
+            lblStatus.Text = myPurchaseOrder.Status.ToString()
+
+            lblTotal.Text = myPurchaseOrder.Total.ToString("c2")
+
             Dim Table As New DataTable
             With Table.Columns
                 .Add("ID", GetType(String))
@@ -92,7 +100,7 @@ Public Class ProcessPO
                 gpItems.Enabled = True
             End If
 
-            If myPurchaseOrder.Items.FindAll(Function(myItem) myItem.Status = ItemStatus.Denied OrElse myItem.Status = ItemStatus.Approved).Count = myPurchaseOrder.Items.Count Then
+            If myPurchaseOrder.Items.FindAll(Function(myItem) myItem.Status = ItemStatus.Denied OrElse myItem.Status = ItemStatus.Approved).Count = myPurchaseOrder.Items.Count AndAlso myPurchaseOrder.Status <> OrderStatus.Closed Then
                 Dim result As Integer = MessageBox.Show("Do you wish to close this purchase order?", "Close Order", MessageBoxButtons.YesNo)
 
                 If result = DialogResult.Yes Then
@@ -132,14 +140,15 @@ Public Class ProcessPO
 
             If txtDenial.Text = String.Empty Then
                 MsgBox("Must provide a reason to change the item.")
+                Exit Sub
             Else
-                myItem.ItemName = Validation.[String](txtItemName.Text)
-                myItem.Description = Validation.[String](txtDesc.Text)
-                myItem.Price = Validation.[Double](txtPrice.Text)
-                myItem.Quantity = Integer.Parse(Validation.[String](txtQuantity.Text))
-                myItem.Source = Validation.[String](txtSource.Text)
-                myItem.Justification = Validation.[String](txtJustification.Text)
-                myItem.Reason = Validation.[String](txtDenial.Text)
+                myItem.ItemName = txtItemName.Text
+                myItem.Description = txtDesc.Text
+                myItem.Price = txtPrice.Text
+                myItem.Quantity = txtQuantity.Text
+                myItem.Source = txtSource.Text
+                myItem.Justification = txtJustification.Text
+                myItem.Reason = txtDenial.Text
             End If
         End If
 
@@ -155,16 +164,12 @@ Public Class ProcessPO
             MsgBox("Item approved.")
         End If
 
-        If myPurchaseOrder.Items.FindAll(Function(myItem) myItem.Status = ItemStatus.Denied OrElse myItem.Status = ItemStatus.Approved).Count = myPurchaseOrder.Items.Count Then
+        If myPurchaseOrder.Items.FindAll(Function(myItem) myItem.Status = ItemStatus.Denied OrElse myItem.Status = ItemStatus.Approved).Count = myPurchaseOrder.Items.Count AndAlso myPurchaseOrder.Status <> OrderStatus.Closed Then
             Dim result As Integer = MessageBox.Show("Do you wish to close this purchase order?", "Close Order", MessageBoxButtons.YesNo)
 
             If result = DialogResult.Yes Then
                 PurchaseOrder.closeOrder(myPurchaseOrder)
             End If
         End If
-
-
     End Sub
-
-
 End Class

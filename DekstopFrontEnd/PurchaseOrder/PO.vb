@@ -29,9 +29,8 @@ Public Class CreatePO
             .Add("Price", GetType(String))
             .Add("Quantity", GetType(String))
             .Add("Store", GetType(String))
-            .Add("Reason", GetType(String))
             .Add("Justification", GetType(String))
-
+            .Add("Reason", GetType(String))
             .Add("Status", GetType(String))
             .Add("No Longer Needed", GetType(Boolean))
         End With
@@ -46,8 +45,7 @@ Public Class CreatePO
     Private Sub dgvPO_RowLeave(sender As Object, e As DataGridViewCellEventArgs) Handles dgvPO.RowLeave
         Dim i As Integer = e.RowIndex
 
-
-        If ValidateCell(i) = False Then
+        If ValidateRow(i) = False Then
             lblErr.Text = String.Empty
             Dim item As PurchaseOrderItem = PurchaseOrderItemFactory.Create()
 
@@ -70,8 +68,6 @@ Public Class CreatePO
                 item.Status = ItemStatus.Denied
             End If
             If i = dgvPO.RowCount - 1 Then
-
-
                 Dim merge As Boolean = False
                 Dim mergeId As Integer
                 For x As Integer = 0 To myPurchaseOrder.Items.Count - 1
@@ -152,6 +148,9 @@ Public Class CreatePO
         lblStatusLabel.Visible = True
         lblID.Visible = True
         lblIDlabel.Visible = True
+
+        gpExists.Visible = True
+
     End Sub
 
     Private Sub ddlEmployees_DropDownClosed(sender As Object, e As EventArgs)
@@ -166,7 +165,7 @@ Public Class CreatePO
         lblSup.Text = sup.FirstName & " " & sup.LastName
     End Sub
 
-    Function ValidateCell(row As Integer) As Boolean
+    Function ValidateRow(row As Integer) As Boolean
         Dim err As Boolean = False
         Try
             Validation.String(dgvPO.Item("Name", row).EditedFormattedValue.ToString)
@@ -196,19 +195,8 @@ Public Class CreatePO
         lstResults.Items().Clear()
         lblres.Visible = True
 
-        If dtpStart.Text = Date.Now.ToShortDateString Then
-            If txtID.Text = String.Empty Then
-                lblErr.Text = "Both fields are empty, try again."
-                Exit Sub
-            End If
-
-            Dim results As List(Of PurchaseOrderList) = PurchaseOrderList.Create(Integer.Parse(myEmployee.EmpID), Integer.Parse(txtID.Text), Date.MinValue, Date.MaxValue)
-            loadDataGrid(results)
-        Else
-            Dim results As List(Of PurchaseOrderList) = (PurchaseOrderList.Create(Integer.Parse(myEmployee.EmpID), Nothing, Date.Parse(dtpStart.Text), Date.Parse(dtpEnd.Text)))
-            loadDataGrid(results)
-        End If
-
+        Dim results As List(Of PurchaseOrderList) = (PurchaseOrderList.Create(Integer.Parse(myEmployee.EmpID), Nothing, Date.Parse(dtpStart.Text), Date.Parse(dtpEnd.Text)))
+        loadDataGrid(results)
     End Sub
 
     Sub loadDataGrid(results As List(Of PurchaseOrderList))
@@ -274,6 +262,8 @@ Public Class CreatePO
             lblStatusLabel.Visible = True
             lblID.Visible = True
             lblIDlabel.Visible = True
+
+            gpExists.Visible = True
         End If
     End Sub
 
