@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Common;
 using SQLLayer;
 
-
 namespace BOL
 {
     public class Employee : IEmployee

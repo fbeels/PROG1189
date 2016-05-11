@@ -20,7 +20,8 @@ namespace WebCSharp.PurchaseOrder
 
         Employee myEmployee;
         PurchaseOrderItem myItem;
-
+        Employee mySupervisor;
+        Department myDept;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.QueryString["id"] != null)
@@ -28,10 +29,13 @@ namespace WebCSharp.PurchaseOrder
                 pnlItemInfo.Visible = false;
                 myPurchaseOrder = PurchaseOrderFactory.Create(int.Parse(Request.QueryString["id"]));
                 myEmployee = Employee.retrieve(myPurchaseOrder.EmployeeID);
-
+                mySupervisor = Employee.retrieve(myEmployee.SupervisorID);
+                myDept = Department.GetADept(myEmployee.DeptID);
                 loadData();
 
                 lblEmp.Text = myEmployee.FirstName + " " + myEmployee.LastName;
+                lblDept.Text = myDept.DeptName;
+                lblSupervisor.Text = mySupervisor.FirstName + " " + mySupervisor.LastName;
                 lblPoDate.Text = myPurchaseOrder.OrderDate.ToShortDateString();
                 lblPoNum.Text = myPurchaseOrder.PurchaseOrderID.ToString();
                 lblSubtotal.Text = myPurchaseOrder.calculateSubtotal().ToString("C2");
@@ -56,10 +60,7 @@ namespace WebCSharp.PurchaseOrder
                         btnYes.Visible = true;
                         lblClose.Visible = true;
                     }
-                    else if (myPurchaseOrder.Items.Exists(myItem => myItem.Status == ItemStatus.Pending))
-                    {
-                        BOL.Purchase_Order.PurchaseOrder.markPending(myPurchaseOrder);
-                    }
+                   
                 }
 
 

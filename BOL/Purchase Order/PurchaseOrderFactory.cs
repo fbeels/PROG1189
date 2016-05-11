@@ -39,6 +39,7 @@ namespace BOL.Purchase_Order
                 po.SubTotal = double.Parse(row["subtotal"].ToString());
                 po.Status = (OrderStatus) int.Parse(row["status"].ToString());
                 po.EmployeeID = int.Parse(row["empid"].ToString());
+                po.lastupdated = int.Parse(row["lastupdated"].ToString());
 
             }
 
@@ -56,6 +57,7 @@ namespace BOL.Purchase_Order
                 item.Source = row["source"].ToString();
                 item.Status = (ItemStatus)int.Parse(row["itemstatus"].ToString());
                 item.Justification = row["justification"].ToString();
+                item.lastupdated = int.Parse(row["lastupdated"].ToString());
 
                 po.Items.Add(item);
             }

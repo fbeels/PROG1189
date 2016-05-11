@@ -15,5 +15,6 @@ namespace Common
          double SubTotal { get; set; }
          double Tax { get; set; }
          OrderStatus Status { get; set; }
+        int lastupdated { get; set; }
     }
 }

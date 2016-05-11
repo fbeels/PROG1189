@@ -219,6 +219,16 @@ namespace BOL.Purchase_Order_Item
             set { _Reason = value; }
         }
 
+
+
+        private int _lastupdated;
+        public int lastupdated
+        {
+            get { return _lastupdated; }
+            set { _lastupdated = value; }
+        }
+
+
         /// <summary>
         /// Calculates the subtotal of item
         /// </summary>

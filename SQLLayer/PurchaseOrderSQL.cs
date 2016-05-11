@@ -51,6 +51,7 @@ namespace SQLLayer
             tmpParmList.Add(new ParmStructure("@subtotal", SqlDbType.Float, ParameterDirection.Input, 9, PO.SubTotal));
             tmpParmList.Add(new ParmStructure("@orderdate", SqlDbType.Date, ParameterDirection.Input, 0, PO.OrderDate));
             tmpParmList.Add(new ParmStructure("@orderstatus", SqlDbType.TinyInt, ParameterDirection.Input, 0, PO.Status));
+            tmpParmList.Add(new ParmStructure("@lastupdated", SqlDbType.Int, ParameterDirection.Input, 0, PO.lastupdated));
 
             DataAccess.SendData("UpdatePO", tmpParmList);
 
@@ -99,11 +100,11 @@ namespace SQLLayer
                 tmpParmList.Add(new ParmStructure("@enddate", SqlDbType.Date, ParameterDirection.Input, 0, enddate));
             }
 
-            if (firstName == null)
+            if (firstName != null)
             {
                 tmpParmList.Add(new ParmStructure("@firstName", SqlDbType.VarChar, ParameterDirection.Input, 100, firstName));
             }
-            if (lastName == null)
+            if (lastName != null)
             {
                 tmpParmList.Add(new ParmStructure("@lastName", SqlDbType.VarChar, ParameterDirection.Input, 100, lastName));
             }

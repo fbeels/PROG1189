@@ -297,7 +297,7 @@ namespace WebCSharp.PurchaseOrder
                                         {
                                             merge = true;
                                             mergeId = x;
-                                            break; // TODO: might not be correct. Was : Exit For
+                                            break;
                                         }
                                         else {
                                             merge = false;

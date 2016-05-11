@@ -14,7 +14,9 @@
     PO Status:
     <asp:Label ID="lblPoStatus" runat="server" /><br />
     Employee:
-    <asp:Label ID="lblEmp" runat="server" />
+    <asp:Label ID="lblEmp" runat="server" />&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+    <asp:Label ID="lblDept" runat="server"></asp:Label>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+    <asp:Label ID="lblSupervisor" runat="server"></asp:Label>
     <hr />
     <asp:DataGrid runat="server" ID="dgData">
     </asp:DataGrid>
