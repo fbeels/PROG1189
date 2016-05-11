@@ -132,10 +132,10 @@ Public Class main
 
 
     Private Sub btnsearchpaystubs_Click(sender As Object, e As EventArgs) Handles btnsearchpaystubs.Click
-        If TabControl1.Contains(Form1) Then
-            TabControl1.TabPages(Form1).Select()
+        If TabControl1.Contains(Form2) Then
+            TabControl1.TabPages(Form2).Select()
         Else
-            TabControl1.TabPages.Add(Form1)
+            TabControl1.TabPages.Add(Form2)
         End If
     End Sub
 

@@ -1,9 +1,10 @@
 ﻿Imports BOL
 
-Public Class Form1
+Public Class Form2
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'FinalProjDataSet7777.SearchPayStubs' table. You can move, or remove it, as needed.
+    Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'FinalProjDataSet8888.SearchPayStubs' table. You can move, or remove it, as needed.
+
         Dim allEmps = New List(Of Employee)
         allEmps = Employee.GetAllEmpsInDept(0)
         If allEmps.Count > 0 Then
@@ -11,7 +12,12 @@ Public Class Form1
             cboEmployees.DisplayMember = "lastname"    ' indicate property name of obj to SHOW
             cboEmployees.ValueMember = "empid"     ' prop name of object to return
         End If
-        Me.ReportViewer2.RefreshReport()
+
+        Dim emp As Employee
+        emp = Employee.retrieve(cboEmployees.SelectedValue)
+        dtpStartDate.MinDate = emp.SeniorityDate
+        dtpEndDate.MaxDate = Date.Today
+
     End Sub
 
 
@@ -19,7 +25,7 @@ Public Class Form1
         Dim empid As Integer
         empid = cboEmployees.SelectedValue
         ' MessageBox.Show(empid.ToString)
-    
+
         Dim startdtpval As Date
         startdtpval = dtpStartDate.Value
         '  MessageBox.Show(startdtpval.ToString)
@@ -28,8 +34,17 @@ Public Class Form1
         enddtpval = dtpEndDate.Value
         '  MessageBox.Show(enddtpval.ToString)
 
-        Me.SearchPayStubsTableAdapter.Fill(Me.FinalProjDataSet7777.SearchPayStubs, empid, startdtpval, enddtpval)
+        Me.SearchPayStubsTableAdapter.Fill(Me.FinalProjDataSet8888.SearchPayStubs, empid, startdtpval, enddtpval)
 
         Me.ReportViewer1.RefreshReport()
+
     End Sub
+
+    Private Sub cboEmployees_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboEmployees.SelectionChangeCommitted
+        Dim emp As Employee
+        emp = Employee.retrieve(cboEmployees.SelectedValue)
+        dtpStartDate.MinDate = emp.SeniorityDate
+        dtpEndDate.MaxDate = Date.Today
+    End Sub
+
 End Class

@@ -89,6 +89,11 @@
     <Compile Include="common\AboutBox1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FinalProjDataSet8888.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FinalProjDataSet8888.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Payroll\FinalProjDataSet7777.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -119,6 +124,12 @@
     </Compile>
     <Compile Include="Payroll\FinalProjSearchPayStubs.vb">
       <DependentUpon>FinalProjSearchPayStubs.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll\Form2.Designer.vb">
+      <DependentUpon>Form2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll\Form2.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Payroll\SearchPayStubs.Designer.vb">
       <DependentUpon>SearchPayStubs.vb</DependentUpon>
@@ -207,10 +218,14 @@
     <EmbeddedResource Include="Payroll\Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Payroll\Form2.resx">
+      <DependentUpon>Form2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Payroll\SearchPayStubs.resx">
       <DependentUpon>SearchPayStubs.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Payroll\SearchPayStubs1.rdlc" />
+    <EmbeddedResource Include="Payroll\SearchPayStubs3.rdlc" />
     <EmbeddedResource Include="Payroll\ViewPaystubs.resx">
       <DependentUpon>ViewPaystubs.vb</DependentUpon>
     </EmbeddedResource>
@@ -248,6 +263,17 @@
     <EmbeddedResource Include="Payroll\searchpaystubs2.rdlc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="FinalProjDataSet8888.xsc">
+      <DependentUpon>FinalProjDataSet8888.xsd</DependentUpon>
+    </None>
+    <None Include="FinalProjDataSet8888.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FinalProjDataSet8888.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FinalProjDataSet8888.xss">
+      <DependentUpon>FinalProjDataSet8888.xsd</DependentUpon>
+    </None>
     <None Include="Payroll\FinalProjDataSet7777.xsc">
       <DependentUpon>FinalProjDataSet7777.xsd</DependentUpon>
     </None>

@@ -22,7 +22,9 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Me.components = New System.ComponentModel.Container()
+        Dim ReportDataSource3 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim ReportDataSource4 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -31,17 +33,25 @@ Partial Class Form1
         Me.dtpStartDate = New System.Windows.Forms.DateTimePicker()
         Me.cboEmployees = New System.Windows.Forms.ComboBox()
         Me.btnsearchpaystubs = New System.Windows.Forms.Button()
+        Me.FinalProjDataSet77771 = New FinalProjDataSet7777()
+        Me.FinalProjDataSet77771BindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ReportViewer2 = New Microsoft.Reporting.WinForms.ReportViewer()
+        Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SearchPayStubsTableAdapter1 = New FinalProjDataSet7777TableAdapters.SearchPayStubsTableAdapter()
+        CType(Me.FinalProjDataSet77771, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FinalProjDataSet77771BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ReportViewer1
         '
-        ReportDataSource1.Name = "searchpayroll"
-        ReportDataSource1.Value = Nothing
-        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource1)
+        ReportDataSource3.Name = "searchpayroll"
+        ReportDataSource3.Value = Me.FinalProjDataSet77771BindingSource
+        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource3)
         Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "searchpaystubs2.rdlc"
-        Me.ReportViewer1.Location = New System.Drawing.Point(0, 55)
+        Me.ReportViewer1.Location = New System.Drawing.Point(12, 119)
         Me.ReportViewer1.Name = "ReportViewer1"
-        Me.ReportViewer1.Size = New System.Drawing.Size(1494, 641)
+        Me.ReportViewer1.Size = New System.Drawing.Size(1192, 401)
         Me.ReportViewer1.TabIndex = 0
         '
         'Label3
@@ -106,11 +116,42 @@ Partial Class Form1
         Me.btnsearchpaystubs.Text = "Search"
         Me.btnsearchpaystubs.UseVisualStyleBackColor = True
         '
+        'FinalProjDataSet77771
+        '
+        Me.FinalProjDataSet77771.DataSetName = "FinalProjDataSet7777"
+        Me.FinalProjDataSet77771.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'FinalProjDataSet77771BindingSource
+        '
+        Me.FinalProjDataSet77771BindingSource.DataSource = Me.FinalProjDataSet77771
+        Me.FinalProjDataSet77771BindingSource.Position = 0
+        '
+        'ReportViewer2
+        '
+        ReportDataSource4.Name = "searchpayroll"
+        ReportDataSource4.Value = Me.BindingSource1
+        Me.ReportViewer2.LocalReport.DataSources.Add(ReportDataSource4)
+        Me.ReportViewer2.LocalReport.ReportEmbeddedResource = "searchpaystubs2.rdlc"
+        Me.ReportViewer2.Location = New System.Drawing.Point(48, 574)
+        Me.ReportViewer2.Name = "ReportViewer2"
+        Me.ReportViewer2.Size = New System.Drawing.Size(1035, 246)
+        Me.ReportViewer2.TabIndex = 14
+        '
+        'BindingSource1
+        '
+        Me.BindingSource1.DataMember = "SearchPayStubs"
+        Me.BindingSource1.DataSource = Me.FinalProjDataSet77771BindingSource
+        '
+        'SearchPayStubsTableAdapter1
+        '
+        Me.SearchPayStubsTableAdapter1.ClearBeforeFill = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1202, 865)
+        Me.Controls.Add(Me.ReportViewer2)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -121,6 +162,9 @@ Partial Class Form1
         Me.Controls.Add(Me.ReportViewer1)
         Me.Name = "Form1"
         Me.Text = "Search PayStubs"
+        CType(Me.FinalProjDataSet77771, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FinalProjDataSet77771BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -136,4 +180,9 @@ Partial Class Form1
     Friend WithEvents dtpStartDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents cboEmployees As System.Windows.Forms.ComboBox
     Friend WithEvents btnsearchpaystubs As System.Windows.Forms.Button
+    Friend WithEvents FinalProjDataSet77771BindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents FinalProjDataSet77771 As FinalProjDataSet7777
+    Friend WithEvents ReportViewer2 As Microsoft.Reporting.WinForms.ReportViewer
+    Friend WithEvents BindingSource1 As System.Windows.Forms.BindingSource
+    Friend WithEvents SearchPayStubsTableAdapter1 As FinalProjDataSet7777TableAdapters.SearchPayStubsTableAdapter
 End Class
