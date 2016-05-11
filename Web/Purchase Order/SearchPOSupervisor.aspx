@@ -15,13 +15,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-    <asp:DropDownList runat="server" ID="ddlEmployee">
-        <asp:ListItem>10000005</asp:ListItem>
-        <asp:ListItem>10000007</asp:ListItem>
-    </asp:DropDownList><br />
-    <hr />
 
-    <br />
     Employee First:
    
     <asp:TextBox runat="server" ID="txtFirst" placeholder="Employee First Name" />

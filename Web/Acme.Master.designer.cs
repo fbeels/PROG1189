@@ -40,6 +40,24 @@ namespace WebCSharp {
         protected global::System.Web.UI.WebControls.Image logo;
         
         /// <summary>
+        /// LoggedIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel LoggedIn;
+        
+        /// <summary>
+        /// lblLoggedIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLoggedIn;
+        
+        /// <summary>
         /// Content control.
         /// </summary>
         /// <remarks>

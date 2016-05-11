@@ -74,6 +74,7 @@
     <Content Include="img\acme_logo.png" />
     <Content Include="js\jquery-ui.js" />
     <Content Include="js\jquery.js" />
+    <Content Include="Login.aspx" />
     <Content Include="packages.config" />
     <Content Include="Acme.Master" />
     <None Include="Web.Debug.config">
@@ -100,6 +101,13 @@
     </Compile>
     <Compile Include="Acme.Master.designer.cs">
       <DependentUpon>Acme.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Payroll\Modify.aspx.cs">
       <DependentUpon>Modify.aspx</DependentUpon>

@@ -10,14 +10,19 @@ namespace Web
     public partial class PaystubSearch : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {          
+        {
+
+            if (Session["LoggedInID"] == null)
+            {
+                Response.Redirect("~/Login.aspx");
+            }
             //Session["empID"] = 10000001;
             //Session["startDate"] = "1900-09-09";
             //Session["endDate"] = "2017-09-09";
             if (Page.IsPostBack)
             {
                 ReportViewer1.Visible = true;
-                Session["empID"] = ddlEmployee.SelectedValue;
+                Session["empID"] = Session["LoggedInID"];
                 Session["startDate"] = dtpStart.Text;
                 Session["endDate"] = dtpEnd.Text;
             }
@@ -36,7 +41,7 @@ namespace Web
         {
             if (dtpEnd.Text != string.Empty || dtpStart.Text != string.Empty)
             {
-                Session["empID"] = ddlEmployee.SelectedValue;
+                Session["empID"] = Session["LoggedInID"];
                 Session["startDate"] = dtpStart.Text;
                 Session["endDate"] = dtpEnd.Text;
             }

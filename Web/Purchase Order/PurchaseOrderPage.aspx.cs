@@ -14,7 +14,7 @@ namespace WebCSharp.PurchaseOrder
 {
     public partial class PurchaseOrder : System.Web.UI.Page
     {
-
+                    
         BOL.Purchase_Order.PurchaseOrder myPurchaseOrder;
         bool isEdit = false;
         int PO_ID = 0;
@@ -22,6 +22,12 @@ namespace WebCSharp.PurchaseOrder
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (Session["LoggedInID"] == null)
+            {
+                Response.Redirect("~/Login.aspx");
+            }
+
             setVisibilityOfID(false);
             setVisibilityOfMoneyLabels(false);
 
@@ -281,7 +287,7 @@ namespace WebCSharp.PurchaseOrder
                                     myPurchaseOrder.Items.Insert(rowIndex, item);
                                     myPurchaseOrder.OrderDate = DateTime.Now;
                                     myPurchaseOrder.Status = OrderStatus.Pending;
-                                    myPurchaseOrder.EmployeeID = int.Parse(ddlEmployee.SelectedValue);
+                                    myPurchaseOrder.EmployeeID = int.Parse(Session["LoggedInID"].ToString());
                                     doTaxCalculations();
 
                                     Dictionary<string, int> ids = PurchaseOrderCUD.Create(myPurchaseOrder, item);
@@ -534,7 +540,7 @@ namespace WebCSharp.PurchaseOrder
         /// </summary>
         public void loadEmp()
         {
-            Employee myEmp = Employee.retrieve(int.Parse(ddlEmployee.Text));
+            Employee myEmp = Employee.retrieve(int.Parse(Session["LoggedInID"].ToString()));
             lblEmp.Text = myEmp.FirstName + " " + myEmp.LastName;
 
             Employee sup = Employee.retrieve(myEmp.SupervisorID);
