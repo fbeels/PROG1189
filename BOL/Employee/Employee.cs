@@ -82,14 +82,14 @@ namespace BOL
                     throw new System.ArgumentException("c: date of birth cant be in the future");
                 }
 
-                //if (value >= Convert.ToDateTime("01/01/1900") && value <= DateTime.Today.AddYears-16)
-                //{
-                //    this._DOB = value;
-                //}
-                //else
-                //{
-                //    throw new System.ArgumentException("c: dob date outside range");
-                //}
+                if (value >= Convert.ToDateTime("01/01/1900") && value <= DateTime.Today.AddYears(-16))
+                {
+                    this._DOB = value;
+                }
+                else
+                {
+                    throw new System.ArgumentException("c: dob date outside range");
+                }
 
             }
         }

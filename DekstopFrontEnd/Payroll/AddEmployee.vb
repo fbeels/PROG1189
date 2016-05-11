@@ -90,18 +90,21 @@ Public Class AddEmployee
             '----------------------------------------------------------------
             Dim strlname As String = txtlastname.Text
   
-
-
-            Try
-                myemp.LastName = strlname
-                inputisallok = True
-                ErrorProvider1.SetError(txtlastname, String.Empty)
-
-            Catch ex As Exception
+            validatelastname(strlname)
+            If ErrorProvider1.GetError(txtlastname) <> String.Empty Then
                 inputisallok = False
-                ErrorProvider1.SetError(txtlastname, ex.Message)
+            End If
 
-            End Try
+            'Try
+            '    myemp.LastName = strlname
+            '    inputisallok = True
+            '    ErrorProvider1.SetError(txtlastname, String.Empty)
+
+            'Catch ex As Exception
+            '    inputisallok = False
+            '    ErrorProvider1.SetError(txtlastname, ex.Message)
+
+            'End Try
 
 
             '----------------------------------------------------------------
@@ -109,50 +112,78 @@ Public Class AddEmployee
             myemp.DOB = dateofbirth
             '----------------------------------------------------------------
             Dim strsin As String = txtsin.Text
-            If strsin = "" Then
+            validatesin(strsin)
+            If ErrorProvider1.GetError(txtsin) <> String.Empty Then
                 inputisallok = False
-                ErrorProvider1.SetError(txtsin, "sin required")
-
-            Else
-                inputisallok = True
-                ErrorProvider1.SetError(txtsin, String.Empty)
-
-                myemp.SIN = strsin
             End If
+
+
+
+
+
+            'If strsin = "" Then
+            '    inputisallok = False
+            '    ErrorProvider1.SetError(txtsin, "sin required")
+
+            'Else
+            '    inputisallok = True
+            '    ErrorProvider1.SetError(txtsin, String.Empty)
+
+            '    myemp.SIN = strsin
+            'End If
 
             '----------------------------------------------------------------
 
             Dim straddress As String = txtstreetaddress.Text
-            If straddress = "" Then
-                ErrorProvider1.SetError(txtstreetaddress, "address required")
 
-            Else
-                ErrorProvider1.SetError(txtstreetaddress, String.Empty)
-
-                myemp.Address = straddress
+            validateaddress(straddress)
+            If ErrorProvider1.GetError(txtstreetaddress) <> String.Empty Then
+                inputisallok = False
             End If
+
+            'If straddress = "" Then
+            '    ErrorProvider1.SetError(txtstreetaddress, "address required")
+
+            'Else
+            '    ErrorProvider1.SetError(txtstreetaddress, String.Empty)
+
+            '    myemp.Address = straddress
+            'End If
             '----------------------------------------------------------------
             Dim strcity As String = txtcity.Text
 
-            If strcity = "" Then
-                ErrorProvider1.SetError(txtcity, "city required")
 
-            Else
-                ErrorProvider1.SetError(txtcity, String.Empty)
 
-                myemp.City = strcity
+            validatecity(strcity)
+            If ErrorProvider1.GetError(txtcity) <> String.Empty Then
+                inputisallok = False
             End If
+
+
+            'If strcity = "" Then
+            '    ErrorProvider1.SetError(txtcity, "city required")
+
+            'Else
+            '    ErrorProvider1.SetError(txtcity, String.Empty)
+
+            '    myemp.City = strcity
+            'End If
             '----------------------------------------------------------------
             Dim strpostal As String = txtpostal.Text
 
-            If strpostal = "" Then
-                ErrorProvider1.SetError(txtpostal, "postal required")
-
-            Else
-                ErrorProvider1.SetError(txtpostal, String.Empty)
-
-                myemp.Postal = strpostal
+            validatepostal(strpostal)
+            If ErrorProvider1.GetError(txtpostal) <> String.Empty Then
+                inputisallok = False
             End If
+
+            'If strpostal = "" Then
+            '    ErrorProvider1.SetError(txtpostal, "postal required")
+
+            'Else
+            '    ErrorProvider1.SetError(txtpostal, String.Empty)
+
+            '    myemp.Postal = strpostal
+            'End If
             '----------------------------------------------------------------
             
             Dim strcellphone As String = mtxcellphone.Text
@@ -167,41 +198,56 @@ Public Class AddEmployee
 
 
             mtxcellphone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals
-            Try
-                myemp.Cell = strcellphone
-                ' inputisallok = True
-                ErrorProvider1.SetError(mtxcellphone, String.Empty)
 
-            Catch ex As Exception
-                ' inputisallok = False
-                ErrorProvider1.SetError(mtxcellphone, ex.Message)
+            'If Validation.String(strcellphone)
+            validatecell(strcellphone)
+            If ErrorProvider1.GetError(mtxcellphone) <> String.Empty Then
+                inputisallok = False
+            End If
+            'Try
+            '    myemp.Cell = strcellphone
+            '    ' inputisallok = True
+            '    ErrorProvider1.SetError(mtxcellphone, String.Empty)
 
-            End Try
+            'Catch ex As Exception
+            '    ' inputisallok = False
+            '    ErrorProvider1.SetError(mtxcellphone, ex.Message)
+
+            'End Try
 
 
 
             '----------------------------------------------------------------
             mtxworkphone.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals
             Dim strworkphone As String = mtxworkphone.Text
-            If strworkphone = "" Then
-                ErrorProvider1.SetError(mtxworkphone, "work phone required")
 
-            Else
-                ErrorProvider1.SetError(mtxworkphone, String.Empty)
-
-                myemp.Phone = strworkphone
+            validatework(strworkphone)
+            If ErrorProvider1.GetError(mtxworkphone) <> String.Empty Then
+                inputisallok = False
             End If
+            'If strworkphone = "" Then
+            '    ErrorProvider1.SetError(mtxworkphone, "work phone required")
+
+            'Else
+            '    ErrorProvider1.SetError(mtxworkphone, String.Empty)
+
+            '    myemp.Phone = strworkphone
+            'End If
             '----------------------------------------------------------------
             Dim stremail As String = txtemail.Text
-
-            If stremail = "" Then
-                ErrorProvider1.SetError(txtemail, "email required")
-
-            Else
-                ErrorProvider1.SetError(txtemail, String.Empty)
-
-                myemp.Email = stremail
+            validateemail(stremail)
+            If ErrorProvider1.GetError(txtemail) <> String.Empty Then
+                inputisallok = False
             End If
+
+            'If stremail = "" Then
+            '    ErrorProvider1.SetError(txtemail, "email required")
+
+            'Else
+            '    ErrorProvider1.SetError(txtemail, String.Empty)
+
+            '    myemp.Email = stremail
+            'End If
             '----------------------------------------------------------------
             Dim intdept As Integer = cbodept.SelectedValue
             myemp.DeptID = intdept
@@ -231,7 +277,7 @@ Public Class AddEmployee
                 ' myemp.FirstName = strfname
             End If
             '--------------------------------------
-            Dim strprov As String = cboProv.Text
+            Dim strprov As String = cboProv.SelectedValue
             If strprov = "" Then
                 ErrorProvider1.SetError(cboProv, "item required")
 
@@ -567,6 +613,7 @@ Public Class AddEmployee
         '  End If
     End Sub
 
+
     Private Sub validatefirstname(ByRef strfname As String)
         Try
             myemp.FirstName = strfname
@@ -591,5 +638,97 @@ Public Class AddEmployee
 
         End Try
     End Sub
+    Private Sub validatesin(ByRef strsin As String)
+        Try
+            myemp.SIN = strsin
+            ' inputisallok = True
+            ErrorProvider1.SetError(txtsin, String.Empty)
+
+        Catch ex As Exception
+            ' inputisallok = False
+            ErrorProvider1.SetError(txtsin, ex.Message)
+
+        End Try
+    End Sub
+    Private Sub validateaddress(ByRef straddress As String)
+        Try
+            myemp.Address = straddress
+            ' inputisallok = True
+            ErrorProvider1.SetError(txtstreetaddress, String.Empty)
+
+        Catch ex As Exception
+            ' inputisallok = False
+            ErrorProvider1.SetError(txtstreetaddress, ex.Message)
+
+        End Try
+    End Sub
+
+
+    Private Sub validatecity(ByRef strcity As String)
+        Try
+            myemp.City = strcity
+            ' inputisallok = True
+            ErrorProvider1.SetError(txtcity, String.Empty)
+
+        Catch ex As Exception
+            ' inputisallok = False
+            ErrorProvider1.SetError(txtcity, ex.Message)
+
+        End Try
+    End Sub
+    Private Sub validatepostal(ByRef strpostal As String)
+        Try
+            myemp.Postal = strpostal
+            ' inputisallok = True
+            ErrorProvider1.SetError(txtpostal, String.Empty)
+
+        Catch ex As Exception
+            ' inputisallok = False
+            ErrorProvider1.SetError(txtpostal, ex.Message)
+
+        End Try
+    End Sub
+    Private Sub validatecell(ByRef strcellphone As String)
+        Try
+            myemp.Cell = strcellphone
+            ' inputisallok = True
+            ErrorProvider1.SetError(mtxcellphone, String.Empty)
+
+        Catch ex As Exception
+            ' inputisallok = False
+            ErrorProvider1.SetError(mtxcellphone, ex.Message)
+
+        End Try
+    End Sub
+
+    Private Sub validatework(ByRef mtrworkphone As String)
+        Try
+            myemp.Phone = mtrworkphone
+            ' inputisallok = True
+            ErrorProvider1.SetError(mtxcellphone, String.Empty)
+
+        Catch ex As Exception
+            ' inputisallok = False
+            ErrorProvider1.SetError(mtxcellphone, ex.Message)
+
+        End Try
+    End Sub
+
+    Private Sub validateemail(ByRef stremail As String)
+        Try
+            myemp.Email = stremail
+            ' inputisallok = True
+            ErrorProvider1.SetError(txtemail, String.Empty)
+
+        Catch ex As Exception
+            ' inputisallok = False
+            ErrorProvider1.SetError(txtemail, ex.Message)
+
+        End Try
+    End Sub
+
+   
+
+  
 
 End Class
