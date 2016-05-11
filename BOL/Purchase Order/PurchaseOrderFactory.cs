@@ -37,7 +37,7 @@ namespace BOL.Purchase_Order
                 po.OrderDate = DateTime.Parse(row["orderdate"].ToString());
                 po.Tax = double.Parse(row["Tax"].ToString());
                 po.SubTotal = double.Parse(row["subtotal"].ToString());
-                po.Status = (OrderStatus) int.Parse(row["status"].ToString());
+                po.Status = (OrderStatus)int.Parse(row["status"].ToString());
                 po.EmployeeID = int.Parse(row["empid"].ToString());
                 po.lastupdated = int.Parse(row["lastupdated"].ToString());
 
@@ -62,7 +62,9 @@ namespace BOL.Purchase_Order
                 po.Items.Add(item);
             }
 
-
+            po.calculateSubtotal();
+            po.calculateTax();
+            po.Total = po.calculateTotal();
             return po;
         }
     }

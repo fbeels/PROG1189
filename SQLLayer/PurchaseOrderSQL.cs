@@ -67,7 +67,7 @@ namespace SQLLayer
 
             tmpParmList.Add(new ParmStructure("@empid", SqlDbType.Int, ParameterDirection.Input, 0, empid));
 
-            if (ID != -1)
+            if (ID > 10000000)
             {
                 tmpParmList.Add(new ParmStructure("@poid", SqlDbType.Int, ParameterDirection.Input, 0, ID));
                 return DataAccess.GetDataTable("GetPOByIDAndEmpID", tmpParmList);

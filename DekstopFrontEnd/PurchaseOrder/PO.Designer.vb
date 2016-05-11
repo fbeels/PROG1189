@@ -54,8 +54,10 @@ Partial Class CreatePO
         Me.lblStatusLabel = New System.Windows.Forms.Label()
         Me.lblStatus = New System.Windows.Forms.Label()
         Me.lblres = New System.Windows.Forms.Label()
+        Me.gpExists = New System.Windows.Forms.GroupBox()
         CType(Me.dgvPO, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        Me.gpExists.SuspendLayout()
         Me.SuspendLayout()
         '
         'dgvPO
@@ -134,7 +136,7 @@ Partial Class CreatePO
         'lblErr
         '
         Me.lblErr.AutoSize = True
-        Me.lblErr.Location = New System.Drawing.Point(160, 96)
+        Me.lblErr.Location = New System.Drawing.Point(163, 89)
         Me.lblErr.Name = "lblErr"
         Me.lblErr.Size = New System.Drawing.Size(30, 13)
         Me.lblErr.TabIndex = 11
@@ -155,7 +157,7 @@ Partial Class CreatePO
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(31, 131)
+        Me.Label3.Location = New System.Drawing.Point(32, 29)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(46, 13)
         Me.Label3.TabIndex = 13
@@ -164,7 +166,7 @@ Partial Class CreatePO
         'lblSubtotal
         '
         Me.lblSubtotal.AutoSize = True
-        Me.lblSubtotal.Location = New System.Drawing.Point(31, 148)
+        Me.lblSubtotal.Location = New System.Drawing.Point(32, 46)
         Me.lblSubtotal.Name = "lblSubtotal"
         Me.lblSubtotal.Size = New System.Drawing.Size(34, 13)
         Me.lblSubtotal.TabIndex = 14
@@ -174,7 +176,7 @@ Partial Class CreatePO
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(128, 131)
+        Me.Label7.Location = New System.Drawing.Point(119, 28)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(25, 13)
         Me.Label7.TabIndex = 15
@@ -183,7 +185,7 @@ Partial Class CreatePO
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(217, 130)
+        Me.Label8.Location = New System.Drawing.Point(195, 28)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(31, 13)
         Me.Label8.TabIndex = 16
@@ -192,7 +194,7 @@ Partial Class CreatePO
         'lblTax
         '
         Me.lblTax.AutoSize = True
-        Me.lblTax.Location = New System.Drawing.Point(128, 148)
+        Me.lblTax.Location = New System.Drawing.Point(110, 46)
         Me.lblTax.Name = "lblTax"
         Me.lblTax.Size = New System.Drawing.Size(34, 13)
         Me.lblTax.TabIndex = 17
@@ -201,7 +203,7 @@ Partial Class CreatePO
         'lblTotal
         '
         Me.lblTotal.AutoSize = True
-        Me.lblTotal.Location = New System.Drawing.Point(217, 148)
+        Me.lblTotal.Location = New System.Drawing.Point(195, 46)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(34, 13)
         Me.lblTotal.TabIndex = 18
@@ -315,7 +317,7 @@ Partial Class CreatePO
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(286, 121)
+        Me.btnSave.Location = New System.Drawing.Point(274, 19)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(109, 40)
         Me.btnSave.TabIndex = 24
@@ -356,6 +358,22 @@ Partial Class CreatePO
         Me.lblres.Text = "Search Result (ID/Cost/Date)"
         Me.lblres.Visible = False
         '
+        'gpExists
+        '
+        Me.gpExists.Controls.Add(Me.btnSave)
+        Me.gpExists.Controls.Add(Me.Label8)
+        Me.gpExists.Controls.Add(Me.lblTotal)
+        Me.gpExists.Controls.Add(Me.Label7)
+        Me.gpExists.Controls.Add(Me.Label3)
+        Me.gpExists.Controls.Add(Me.lblSubtotal)
+        Me.gpExists.Controls.Add(Me.lblTax)
+        Me.gpExists.Location = New System.Drawing.Point(12, 105)
+        Me.gpExists.Name = "gpExists"
+        Me.gpExists.Size = New System.Drawing.Size(397, 72)
+        Me.gpExists.TabIndex = 28
+        Me.gpExists.TabStop = False
+        Me.gpExists.Visible = False
+        '
         'CreatePO
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -364,16 +382,9 @@ Partial Class CreatePO
         Me.Controls.Add(Me.lblres)
         Me.Controls.Add(Me.lblStatus)
         Me.Controls.Add(Me.lblStatusLabel)
-        Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.lstResults)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.lblID)
-        Me.Controls.Add(Me.lblTotal)
-        Me.Controls.Add(Me.lblTax)
-        Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.lblSubtotal)
-        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.lblIDlabel)
         Me.Controls.Add(Me.lblErr)
         Me.Controls.Add(Me.lblDate)
@@ -384,12 +395,15 @@ Partial Class CreatePO
         Me.Controls.Add(Me.lblEmp)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.dgvPO)
+        Me.Controls.Add(Me.gpExists)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "CreatePO"
         Me.Text = "Purchase Order"
         CType(Me.dgvPO, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.gpExists.ResumeLayout(False)
+        Me.gpExists.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -425,4 +439,5 @@ Partial Class CreatePO
     Friend WithEvents lblStatusLabel As Label
     Friend WithEvents lblStatus As Label
     Friend WithEvents lblres As Label
+    Friend WithEvents gpExists As GroupBox
 End Class
