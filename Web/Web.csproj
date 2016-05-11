@@ -86,7 +86,7 @@
   <ItemGroup>
     <Content Include="Payroll\Modify.aspx" />
     <Content Include="Payroll\SearchPayStubs.aspx" />
-    <Content Include="PaystubSearch.aspx" />
+    <Content Include="Payroll\PaystubSearch.aspx" />
     <Content Include="Purchase Order\ProcessPO.aspx" />
     <Content Include="Purchase Order\PurchaseOrderPage.aspx" />
     <Content Include="Purchase Order\SearchPO.aspx" />
@@ -115,11 +115,11 @@
     <Compile Include="Payroll\SearchPayStubs.aspx.designer.cs">
       <DependentUpon>SearchPayStubs.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PaystubSearch.aspx.cs">
+    <Compile Include="Payroll\PaystubSearch.aspx.cs">
       <DependentUpon>PaystubSearch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PaystubSearch.aspx.designer.cs">
+    <Compile Include="Payroll\PaystubSearch.aspx.designer.cs">
       <DependentUpon>PaystubSearch.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
