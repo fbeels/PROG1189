@@ -16,6 +16,11 @@ namespace WebCSharp.PurchaseOrder
         protected void Page_Load(object sender, EventArgs e)
         {
             txtEndDate.Text = DateTime.Now.ToShortDateString();
+
+            if (Session["LoggedInID"] == null)
+            {
+                Response.Redirect("~/Login.aspx");
+            }
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -23,11 +28,11 @@ namespace WebCSharp.PurchaseOrder
             List<PurchaseOrderList> results;
             if (txtSearchDate.Text == string.Empty & txtEndDate.Text == string.Empty)
             {
-                results = PurchaseOrderList.Create(int.Parse(ddlEmployee.SelectedValue), ddlStatus.SelectedIndex, txtFirst.Text, txtLast.Text);
+                results = PurchaseOrderList.Create(int.Parse(Session["LoggedInID"].ToString()), ddlStatus.SelectedIndex, txtFirst.Text, txtLast.Text);
             }
             else
             {
-                results = PurchaseOrderList.Create(int.Parse(ddlEmployee.SelectedValue), ddlStatus.SelectedIndex, txtFirst.Text, txtLast.Text, DateTime.Parse(txtSearchDate.Text), DateTime.Parse(txtEndDate.Text));
+                results = PurchaseOrderList.Create(int.Parse(Session["LoggedInID"].ToString()), ddlStatus.SelectedIndex, txtFirst.Text, txtLast.Text, DateTime.Parse(txtSearchDate.Text), DateTime.Parse(txtEndDate.Text));
             }
 
             loadDataGrid(results);

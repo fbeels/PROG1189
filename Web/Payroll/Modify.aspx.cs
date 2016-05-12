@@ -13,13 +13,17 @@ namespace Web.Payroll
         Employee myEmp = new Employee();
         protected void Page_Load(object sender, EventArgs e)
         {
-            myEmp = Employee.retrieve(int.Parse(ddlEmployees.Text));
+            if (Session["LoggedInID"] == null)
+            {
+                Response.Redirect("~/Login.aspx");
+            }
+            myEmp = Employee.retrieve(int.Parse(Session["LoggedInID"].ToString()));
         }
 
         protected void ddlEmployees_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            myEmp = Employee.retrieve(int.Parse(ddlEmployees.Text));
+            myEmp = Employee.retrieve(int.Parse(Session["LoggedInID"].ToString()));
             txtempid.Text = (myEmp.EmpID).ToString();
             txtempid.Enabled = false;
             txtFirst.Text = myEmp.FirstName;

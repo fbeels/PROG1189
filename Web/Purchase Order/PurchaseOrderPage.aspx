@@ -5,14 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-    <div>
-        <asp:DropDownList runat="server" ID="ddlEmployee">
-            <asp:ListItem Value="10000001">Dude, McDude (S)</asp:ListItem>
-            <asp:ListItem Value="10000003">McLoser, Quitter</asp:ListItem>
-            <asp:ListItem Value="10000008">Markingston, Ronald</asp:ListItem>
-            <asp:ListItem Value="10000011">Smith, John</asp:ListItem>
-        </asp:DropDownList><br />
-
+    <div>      
         <asp:Label runat="server" ID="lblPage" /><br />
 
         <b>Date: </b>

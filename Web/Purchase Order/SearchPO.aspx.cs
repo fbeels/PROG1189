@@ -15,7 +15,10 @@ namespace WebCSharp.PurchaseOrder
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["LoggedInID"] == null)
+            {
+                Response.Redirect("~/Login.aspx");
+            }
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -27,11 +30,11 @@ namespace WebCSharp.PurchaseOrder
                     lblErr.Text = "Both fields are empty, try again.";
                     return;
                 }
-                List<PurchaseOrderList> results = PurchaseOrderList.Create(int.Parse(ddlEmployee.SelectedValue), int.Parse(txtSearchID.Text), null, null);
+                List<PurchaseOrderList> results = PurchaseOrderList.Create(int.Parse(Session["LoggedInID"].ToString()), int.Parse(txtSearchID.Text), null, null);
                 loadDataGrid(results);
             }
             else {
-                List<PurchaseOrderList> results = (PurchaseOrderList.Create(int.Parse(ddlEmployee.SelectedValue), -1, System.DateTime.Parse(txtSearchDate.Text), System.DateTime.Parse(txtEndDate.Text)));
+                List<PurchaseOrderList> results = (PurchaseOrderList.Create(int.Parse(Session["LoggedInID"].ToString()), -1, System.DateTime.Parse(txtSearchDate.Text), System.DateTime.Parse(txtEndDate.Text)));
                 loadDataGrid(results);
             }
 

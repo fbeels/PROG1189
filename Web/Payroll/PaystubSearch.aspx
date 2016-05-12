@@ -20,13 +20,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
 
     <div>
-        <asp:DropDownList runat="server" ID="ddlEmployee">
-            <asp:ListItem Value="10000001">Dudette, Dude (S)</asp:ListItem>
-            <asp:ListItem Value="10000003">McLoser, Quitter</asp:ListItem>
-            <asp:ListItem Value="10000008">Markingston, Ronald</asp:ListItem>
-            <asp:ListItem Value="10000011">Smith, John</asp:ListItem>
-        </asp:DropDownList>
-        &nbsp;&nbsp;&nbsp;&nbsp; Start Date:&nbsp;
+        
+         Start Date:&nbsp;
         <asp:TextBox ID="dtpStart" Text="01/01/2016" runat="server" />&nbsp;&nbsp;&nbsp; End Date :
         <asp:TextBox ID="dtpEnd" Text="5/12/2016" runat="server" />&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="Search" OnClick="Search_Click" runat="server" Text="Button" />

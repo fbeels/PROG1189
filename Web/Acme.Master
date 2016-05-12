@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Acme Stuff</title>
-   
+
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -19,13 +19,15 @@
                 <asp:HyperLink runat="server" Text="Purchase Order" NavigateUrl="~/Purchase Order/PurchaseOrderPage.aspx"></asp:HyperLink>|
                 <asp:HyperLink runat="server" Text="Search Purchase Order" NavigateUrl="~/Purchase Order/SearchPO.aspx"></asp:HyperLink>|
                 <asp:HyperLink runat="server" Text="Process Purchase Order" NavigateUrl="~/Purchase Order/SearchPOSupervisor.aspx"></asp:HyperLink>|
+                <asp:HyperLink runat="server" Text="Modify Employee" NavigateUrl="~/Payroll/Modify.aspx"></asp:HyperLink>|
+                <asp:HyperLink runat="server" Text="Search Paystubs" NavigateUrl="~/Payroll/PaystubSearch.aspx"></asp:HyperLink>|
+                <asp:HyperLink runat="server" Text="Login" NavigateUrl="~/Login.aspx"></asp:HyperLink>|
+                <asp:Panel runat="server" ID="LoggedIn">
+                    User:
+                    <asp:Label runat="server" ID="lblLoggedIn"></asp:Label>
+                </asp:Panel>
                 <hr />
 
-            </div>
-
-
-
-            <div >
                 <asp:ContentPlaceHolder ID="Content" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
