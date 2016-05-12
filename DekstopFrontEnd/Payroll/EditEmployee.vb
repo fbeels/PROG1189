@@ -602,6 +602,8 @@ Public Class EditEmployee
                 tempemp.EmailNotification = False
             End If
 
+            tempemp.lastupdated = CInt(lbllastupdated.Text)
+
             Dim done As Integer = 0
             If inputisallok = True Then
                 done = Employee.update(tempemp)
