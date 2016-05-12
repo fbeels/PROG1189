@@ -18,7 +18,14 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     
-
+     <asp:DropDownList runat="server" ID="ddlEmployee">
+        <asp:ListItem Value="10000005">Wayne, Bruce (S)</asp:ListItem>
+        <asp:ListItem Value="10000007">Luthor, Lex (S)</asp:ListItem>
+        <asp:ListItem Value="10000008">MarkingSton, Ronald (S)</asp:ListItem>
+        <asp:ListItem Value="10000024">Newburt, John</asp:ListItem>
+        <asp:ListItem Value="10000025">Potts, Pepper</asp:ListItem>
+        <asp:ListItem Value="10000026">Gordon, Barbra</asp:ListItem>
+    </asp:DropDownList><br />
     Personal Information:
 
     <table border="1">

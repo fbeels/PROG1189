@@ -23,7 +23,7 @@ namespace Web.Payroll
         protected void ddlEmployees_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            myEmp = Employee.retrieve(int.Parse(Session["LoggedInID"].ToString()));
+            myEmp = Employee.retrieve(int.Parse(ddlEmployee.SelectedValue));
             txtempid.Text = (myEmp.EmpID).ToString();
             txtempid.Enabled = false;
             txtFirst.Text = myEmp.FirstName;
