@@ -33,18 +33,18 @@ Public Class EditEmployee
                 tempemp.EmpID = txtsearchid.Text
             Else
                 ErrorProvider1.SetError(txtsearchid, "invalid employee id length")
-                txtsearchid.BackColor = Color.Red
+                ' txtsearchid.BackColor = Color.Red
                 idinvalid = True
             End If
 
         Else
             If txtsearchlname.Text = "" And txtsearchid.Text = "" Then
                 ErrorProvider1.SetError(txtsearchid, "employee lastname or id is required")
-                txtsearchid.BackColor = Color.Red
+                ' txtsearchid.BackColor = Color.Red
                 idinvalid = True
             Else
                 ErrorProvider1.SetError(txtsearchid, "employee must be a number")
-                txtsearchid.BackColor = Color.Red
+                '  txtsearchid.BackColor = Color.Red
                 idinvalid = True
             End If
 
@@ -74,11 +74,11 @@ Public Class EditEmployee
         'End If
         If (txtsearchlname.Text = "") And (txtsearchid.Text = "") Then
             ErrorProvider1.SetError(txtsearchlname, "employee lastname or id is required")
-            txtsearchlname.BackColor = Color.Red
+            ' txtsearchlname.BackColor = Color.Red
             lnameinvalid = True
         Else
             ErrorProvider1.SetError(txtsearchlname, String.Empty)
-            txtsearchlname.BackColor = Color.White
+            ' txtsearchlname.BackColor = Color.White
             searchlname = txtsearchlname.Text
             lnameinvalid = False
 
@@ -247,8 +247,12 @@ Public Class EditEmployee
         End If
 
         GetSupervisor(emp.DeptID)
+        cbodept.SelectedValue = emp.DeptID
+        'cbodept.SelectedIndex = cbodept.FindStringExact(emp.DeptID)
 
         LoadJobsDropdown(deptid)
+        'cbojobid.SelectedIndex = cbojobid.FindStringExact(emp.JobID)
+        cbojobid.SelectedValue = emp.JobID
 
         txtpayrate.Text = emp.PayRate
 
@@ -287,6 +291,9 @@ Public Class EditEmployee
             cbojobid.DisplayMember = "JobName"    ' indicate property name of obj to SHOW
             cbojobid.ValueMember = "JobId"     ' prop name of object to return
         End If
+
+
+
     End Sub
     Private Sub cbodept_SelectionChangeCommitted(sender As Object, e As EventArgs)
 
