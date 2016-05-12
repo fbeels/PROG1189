@@ -9,11 +9,12 @@
     </div>
 
     <asp:DropDownList runat="server" ID="ddlEmployee">
-        <asp:ListItem Value="10000001">Dude, McDude (S)</asp:ListItem>
-        <asp:ListItem Value="10000003">McLoser, Quitter</asp:ListItem>
-        <asp:ListItem Value="10000008">Markingston, Ronald</asp:ListItem>
-        <asp:ListItem Value="10000011">Smith, John</asp:ListItem>
-        <asp:ListItem Value="10000005"> Bruce Wayne (S)</asp:ListItem>
+        <asp:ListItem Value="10000005">Wayne, Bruce (S)</asp:ListItem>
+        <asp:ListItem Value="10000007">Luthor, Lex (S)</asp:ListItem>
+        <asp:ListItem Value="10000008">MarkingSton, Ronald (S)</asp:ListItem>
+        <asp:ListItem Value="10000024">Newburt, John</asp:ListItem>
+        <asp:ListItem Value="10000025">Potts, Pepper</asp:ListItem>
+        <asp:ListItem Value="10000026">Gordon, Barbra</asp:ListItem>
     </asp:DropDownList><br />
     <asp:Button Text="Log in" OnClick="Unnamed_Click" runat="server" />
 </asp:Content>
