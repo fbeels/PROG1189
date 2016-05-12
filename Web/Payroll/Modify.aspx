@@ -18,7 +18,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     
-     <asp:DropDownList runat="server" ID="ddlEmployee">
+     <asp:DropDownList runat="server" AutoPostback="true" OnSelectedIndexChanged="ddlEmployees_SelectedIndexChanged" ID="ddlEmployee">
         <asp:ListItem Value="10000005">Wayne, Bruce (S)</asp:ListItem>
         <asp:ListItem Value="10000007">Luthor, Lex (S)</asp:ListItem>
         <asp:ListItem Value="10000008">MarkingSton, Ronald (S)</asp:ListItem>
