@@ -88,6 +88,7 @@ Partial Class EditEmployee
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lbllastupdated = New System.Windows.Forms.Label()
         Me.grbsearchresults.SuspendLayout()
         Me.grbempinfo.SuspendLayout()
         Me.grbemployment.SuspendLayout()
@@ -454,6 +455,7 @@ Partial Class EditEmployee
         'grbpersonal
         '
         Me.grbpersonal.BackColor = System.Drawing.Color.AntiqueWhite
+        Me.grbpersonal.Controls.Add(Me.lbllastupdated)
         Me.grbpersonal.Controls.Add(Me.mtxcellphone)
         Me.grbpersonal.Controls.Add(Me.mtxworkphone)
         Me.grbpersonal.Controls.Add(Me.cboProv)
@@ -765,11 +767,19 @@ Partial Class EditEmployee
         Me.GroupBox1.TabIndex = 17
         Me.GroupBox1.TabStop = False
         '
+        'lbllastupdated
+        '
+        Me.lbllastupdated.AutoSize = True
+        Me.lbllastupdated.Location = New System.Drawing.Point(1026, 188)
+        Me.lbllastupdated.Name = "lbllastupdated"
+        Me.lbllastupdated.Size = New System.Drawing.Size(0, 20)
+        Me.lbllastupdated.TabIndex = 77
+        '
         'EditEmployee
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1202, 865)
+        Me.ClientSize = New System.Drawing.Size(1202, 915)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "EditEmployee"
         Me.Text = "EditEmployee"
@@ -855,4 +865,5 @@ Partial Class EditEmployee
     Friend WithEvents lbllastname As System.Windows.Forms.Label
     Friend WithEvents btneditemploymentinfo As System.Windows.Forms.Button
     Friend WithEvents btneditjobinfo As System.Windows.Forms.Button
+    Friend WithEvents lbllastupdated As System.Windows.Forms.Label
 End Class

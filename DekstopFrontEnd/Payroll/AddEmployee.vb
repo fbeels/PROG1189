@@ -279,7 +279,7 @@ Public Class AddEmployee
                 ' myemp.FirstName = strfname
             End If
             '--------------------------------------
-            Dim strprov As String = cboProv.SelectedValue
+            Dim strprov As String = cboProv.SelectedItem.ToString
             If strprov = "" Then
                 ErrorProvider1.SetError(cboProv, "item required")
 
@@ -291,7 +291,7 @@ Public Class AddEmployee
             End If
 
             'Dim strprov As String = cboProv.SelectedItem
-            'MsgBox("the prov is:" & strprov, MsgBoxStyle.OkOnly, "strprov")
+            ' MsgBox("the prov is:" & strprov, MsgBoxStyle.OkOnly, "strprov")
             '
             '----------------------------------------------------------------
 
@@ -735,4 +735,7 @@ Public Class AddEmployee
 
   
 
+    Private Sub cboProv_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboProv.SelectedIndexChanged
+
+    End Sub
 End Class

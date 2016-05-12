@@ -229,7 +229,7 @@ Public Class EditEmployee
 
 
         Dim strprov As String = emp.Prov
-        'MsgBox(strprov.ToString)
+        MsgBox(strprov)
         cboProv.SelectedText = ""
         cboProv.SelectedText = strprov.ToString
 
@@ -274,7 +274,7 @@ Public Class EditEmployee
         Else
             rdostatusRetired.Enabled = False
         End If
-
+        lbllastupdated.Text = emp.lastupdated
 
     End Sub
     Private Sub LoadJobsDropdown(ByRef deptid As Integer)

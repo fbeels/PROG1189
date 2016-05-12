@@ -51,6 +51,9 @@
   <PropertyGroup>
     <ApplicationIcon>acme_logo.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MdiTabControl">
       <HintPath>..\..\..\..\Google Drive\School\Term 6\Files\N-Tier\Project -  cR\MdiTabControl.dll</HintPath>
@@ -274,6 +277,7 @@
     <None Include="FinalProjDataSet8888.xss">
       <DependentUpon>FinalProjDataSet8888.xsd</DependentUpon>
     </None>
+    <None Include="My Project\app.manifest" />
     <None Include="Payroll\FinalProjDataSet7777.xsc">
       <DependentUpon>FinalProjDataSet7777.xsd</DependentUpon>
     </None>

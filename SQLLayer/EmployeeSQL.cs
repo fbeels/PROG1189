@@ -89,6 +89,8 @@ namespace SQLLayer
             tmpParmList.Add(new ParmStructure("@payrate", SqlDbType.Decimal, ParameterDirection.Input, 0, emp.PayRate));
            tmpParmList.Add(new ParmStructure("@terminationDate", SqlDbType.Date, ParameterDirection.Input, 0, emp.TerminationDate));
             tmpParmList.Add(new ParmStructure("@emailnotificatoins", SqlDbType.Bit, ParameterDirection.Input, 0, emp.EmailNotification));
+            tmpParmList.Add(new ParmStructure("@empstatus", SqlDbType.Int, ParameterDirection.Input, 0, emp.empstatus));
+            tmpParmList.Add(new ParmStructure("@lastupdated", SqlDbType.Int, ParameterDirection.Input, 0, emp.lastupdated));
 
             return DataAccess.SendData("UpdateEmployee", tmpParmList);
         }

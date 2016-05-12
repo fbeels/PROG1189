@@ -35,9 +35,14 @@ namespace BOL
 
         
        // public string LastName { get; set; }
+        /// <summary>
+        /// employee middle initial
+        /// </summary>
         public string MiddleInt { get; set; }
 
-
+        /// <summary>
+        /// employee firstname cant be blank
+        /// </summary>
         String _FirstName;
         public string FirstName
         {
@@ -67,7 +72,9 @@ namespace BOL
         //public string FirstName { get; set; }
         //public DateTime DOB { get; set; }
 
-
+        /// <summary>
+        /// Employee Date of Birth,can not be a date in the future
+        /// </summary>
         DateTime _DOB;
         public DateTime DOB
         {
@@ -372,7 +379,7 @@ namespace BOL
 
         public bool EmailNotification { get; set; }
         public int empstatus { get; set; }
-
+        public int lastupdated { get; set; }
 
         Boolean _CANRETIRE;
         public Boolean CANRETIRE
@@ -495,19 +502,28 @@ namespace BOL
                // (x.empstatus)int.Parse(emps[21].ToString());
                 // (int)emps[21];
                x.empstatus = int.Parse(emps[21].ToString());
+               x.lastupdated = int.Parse(emps[22].ToString());
              //   myList.Add(x);
             }
             //return myList;
             return x;
         }
       //-------------------------------------------------------------------
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="deptID"></param>
+        /// <returns></returns>
         static public List<Employee> GetAllEmpsInDept(int deptID)
         {
             return GetAllEmpsInDeptRePackager(EmployeeSQL.GetAllEmpsInDept(deptID));
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
         static private List<Employee> GetAllEmpsInDeptRePackager(DataTable dt)
         {
             List<Employee> myList = new List<Employee>();
@@ -521,12 +537,20 @@ namespace BOL
             }
             return myList;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="emp"></param>
+        /// <returns></returns>
         static public int insert(Employee emp)
         {
             return RePackagerdt2int(EmployeeSQL.insertEmp(emp));
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
         static private int RePackagerdt2int(DataTable dt)
         {
             //Employee myList = new Employee();
@@ -540,13 +564,21 @@ namespace BOL
             //return myList;
             return y;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="emp"></param>
+        /// <returns></returns>
         static public int update(Employee emp)
         
         {
             return EmployeeSQL.UpdateEmp(emp);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
         static private bool RePackagerDt2Bool(DataTable dt)
         {
             //Employee myList = new Employee();

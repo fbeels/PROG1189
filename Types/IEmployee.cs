@@ -29,5 +29,9 @@ namespace Common
         double PayRate { get; set; }
         DateTime TerminationDate { get; set; }
        bool EmailNotification { get; set; }
+        int empstatus { get; set; }
+        int lastupdated { get; set; }
+        Boolean CANRETIRE { get; set; }
+
     }
 }
