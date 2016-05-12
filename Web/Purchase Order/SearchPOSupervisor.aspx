@@ -15,7 +15,9 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-
+    <div id="Content_lblPage">
+        Search for Purchase Orders, Supervisor
+    </div>
     Employee First:
    
     <asp:TextBox runat="server" ID="txtFirst" placeholder="Employee First Name" />

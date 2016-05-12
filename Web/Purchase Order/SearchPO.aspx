@@ -16,8 +16,9 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-
-
+    <div id="Content_lblPage">
+    Search for Purchase Orders
+    </div>
     <hr />
 
     Search by ID or by Date<br />

@@ -3,6 +3,10 @@
     <link href="css/style.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
+    <div id="Content_lblPage">
+       Welcome to the Acme Stuff Inc intranet portal! Please login.
+    </div>
+
     <asp:DropDownList runat="server" ID="ddlEmployee">
             <asp:ListItem Value="10000001">Dude, McDude (S)</asp:ListItem>
             <asp:ListItem Value="10000003">McLoser, Quitter</asp:ListItem>

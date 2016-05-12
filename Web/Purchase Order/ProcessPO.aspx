@@ -4,6 +4,9 @@
     <link href="../css/style.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
+    <div id="Content_lblPage">
+       Process Purchase Order
+    </div>
     <asp:Label Text="Do you wish to close this order?" ID="lblClose" runat="server" /><br />
     <asp:Button Text="Yes" OnClick="btnYes_Click" ID="btnYes" runat="server" />
     &nbsp;&nbsp;
