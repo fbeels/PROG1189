@@ -179,7 +179,7 @@ Partial Class EditEmployee
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(459, 586)
+        Me.btnSave.Location = New System.Drawing.Point(852, 610)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(284, 68)
         Me.btnSave.TabIndex = 31
@@ -188,10 +188,9 @@ Partial Class EditEmployee
         '
         'lbldebug
         '
-        Me.lbldebug.AutoSize = True
-        Me.lbldebug.Location = New System.Drawing.Point(86, 610)
+        Me.lbldebug.Location = New System.Drawing.Point(26, 588)
         Me.lbldebug.Name = "lbldebug"
-        Me.lbldebug.Size = New System.Drawing.Size(57, 20)
+        Me.lbldebug.Size = New System.Drawing.Size(796, 77)
         Me.lbldebug.TabIndex = 21
         Me.lbldebug.Text = "Label3"
         '
@@ -786,7 +785,6 @@ Partial Class EditEmployee
         Me.grbsearchresults.ResumeLayout(False)
         Me.grbsearchresults.PerformLayout()
         Me.grbempinfo.ResumeLayout(False)
-        Me.grbempinfo.PerformLayout()
         Me.grbemployment.ResumeLayout(False)
         Me.grbemployment.PerformLayout()
         Me.grbjob.ResumeLayout(False)

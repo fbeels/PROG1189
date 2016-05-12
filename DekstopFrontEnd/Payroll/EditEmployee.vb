@@ -229,9 +229,10 @@ Public Class EditEmployee
 
 
         Dim strprov As String = emp.Prov
-        MsgBox(strprov)
+        'MsgBox(strprov)
         cboProv.SelectedText = ""
-        cboProv.SelectedText = strprov.ToString
+        cboProv.SelectedIndex = cboProv.FindStringExact(strprov)
+        'cboProv.SelectedText = strprov.ToString
 
         Dim deptid As Integer = emp.DeptID
 
@@ -607,6 +608,7 @@ Public Class EditEmployee
             End If
 
             ' If done > 0 Then
+            ' lbldebug.Font.Size.Equals = 14
             lbldebug.Text = "saved" ',Employee ID:" & done.ToString
             'MessageBox.Show("saved,Employee ID:" & done.ToString, "info", MessageBoxButtons.OK, MessageBoxIcon.Information)
             'Else
