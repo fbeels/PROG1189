@@ -67,7 +67,7 @@ namespace SQLLayer
 
             tmpParmList.Add(new ParmStructure("@empid", SqlDbType.Int, ParameterDirection.Input, 0, empid));
 
-            if (ID > 10000000)
+            if (empid > 10000000)
             {
                 tmpParmList.Add(new ParmStructure("@poid", SqlDbType.Int, ParameterDirection.Input, 0, ID));
                 return DataAccess.GetDataTable("GetPOByIDAndEmpID", tmpParmList);
@@ -100,13 +100,19 @@ namespace SQLLayer
                 tmpParmList.Add(new ParmStructure("@enddate", SqlDbType.Date, ParameterDirection.Input, 0, enddate));
             }
 
-            if (firstName != null)
+            if (firstName != string.Empty)
             {
                 tmpParmList.Add(new ParmStructure("@firstName", SqlDbType.VarChar, ParameterDirection.Input, 100, firstName));
+            } else
+            {
+                tmpParmList.Add(new ParmStructure("@firstName", SqlDbType.VarChar, ParameterDirection.Input, 100, "{empty}"));
             }
-            if (lastName != null)
+            if (lastName != string.Empty)
             {
                 tmpParmList.Add(new ParmStructure("@lastName", SqlDbType.VarChar, ParameterDirection.Input, 100, lastName));
+            } else
+            {
+                tmpParmList.Add(new ParmStructure("@lastName", SqlDbType.VarChar, ParameterDirection.Input, 100, "{empty}"));
             }
 
 

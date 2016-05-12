@@ -14,7 +14,7 @@ namespace WebCSharp.PurchaseOrder
 {
     public partial class PurchaseOrder : System.Web.UI.Page
     {
-                    
+
         BOL.Purchase_Order.PurchaseOrder myPurchaseOrder;
         bool isEdit = false;
         int PO_ID = 0;
@@ -27,6 +27,7 @@ namespace WebCSharp.PurchaseOrder
             {
                 Response.Redirect("~/Login.aspx");
             }
+
 
             setVisibilityOfID(false);
             setVisibilityOfMoneyLabels(false);
@@ -90,7 +91,7 @@ namespace WebCSharp.PurchaseOrder
                 TextBox txtStore = (TextBox)Gridview1.Rows[rowIndex].Cells[5].FindControl("txtStore");
                 TextBox txtJust = (TextBox)Gridview1.Rows[rowIndex].Cells[6].FindControl("txtJust");
                 Label lblStatus = (Label)Gridview1.Rows[rowIndex].Cells[6].FindControl("lblStatus");
-                Label lblReason= (Label)Gridview1.Rows[rowIndex].Cells[6].FindControl("lblReason");
+                Label lblReason = (Label)Gridview1.Rows[rowIndex].Cells[6].FindControl("lblReason");
                 CheckBox chkNotNeeded = (CheckBox)Gridview1.Rows[rowIndex].Cells[6].FindControl("chkNotNeeded");
 
                 Button btn = (Button)Gridview1.FooterRow.Cells[6].FindControl("buttonAdd");
@@ -156,7 +157,7 @@ namespace WebCSharp.PurchaseOrder
             {
                 Button btn = (Button)sender;
                 btn.Enabled = false;
-                
+
             }
 
             AddNewRowToGrid(true, false);
@@ -208,215 +209,217 @@ namespace WebCSharp.PurchaseOrder
             try
             {
 
-           
-            int rowIndex = 0;
 
-            if (ViewState["CurrentTable"] != null)
-            {
-                DataTable dtCurrentTable = (DataTable)ViewState["CurrentTable"];
-                DataRow drCurrentRow = null;                               
+                int rowIndex = 0;
 
-                if (dtCurrentTable.Rows.Count > 0)
+                if (ViewState["CurrentTable"] != null)
                 {
-                    for (int i = 1; i <= dtCurrentTable.Rows.Count; i++)
+                    DataTable dtCurrentTable = (DataTable)ViewState["CurrentTable"];
+                    DataRow drCurrentRow = null;
+
+                    if (dtCurrentTable.Rows.Count > 0)
                     {
-                        TextBox txtName = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("txtName");
-                        TextBox txtDesc = (TextBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("txtDesc");
-                        TextBox txtPrice = (TextBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("txtPrice");
-                        TextBox txtQ = (TextBox)Gridview1.Rows[rowIndex].Cells[4].FindControl("txtQ");
-                        TextBox txtStore = (TextBox)Gridview1.Rows[rowIndex].Cells[5].FindControl("txtStore");
-                        TextBox txtJust = (TextBox)Gridview1.Rows[rowIndex].Cells[6].FindControl("txtJust");
-                        Label lblStatus = (Label)Gridview1.Rows[rowIndex].Cells[7].FindControl("lblStatus");
-                        Label lblReason = (Label)Gridview1.Rows[rowIndex].Cells[6].FindControl("lblReason");
-                        CheckBox chkNotNeeded = (CheckBox)Gridview1.Rows[rowIndex].Cells[8].FindControl("chkNotNeeded");
-
-                        drCurrentRow = dtCurrentTable.NewRow();
-                        drCurrentRow["RowNumber"] = i + 1;
-                        // if its the last row and it's empty, exit looop
-                        if (i == dtCurrentTable.Rows.Count & txtName.Text == string.Empty & txtDesc.Text == string.Empty & txtStore.Text == string.Empty & txtJust.Text == string.Empty)
+                        for (int i = 1; i <= dtCurrentTable.Rows.Count; i++)
                         {
-                            break;
-                        }
+                            TextBox txtName = (TextBox)Gridview1.Rows[rowIndex].Cells[1].FindControl("txtName");
+                            TextBox txtDesc = (TextBox)Gridview1.Rows[rowIndex].Cells[2].FindControl("txtDesc");
+                            TextBox txtPrice = (TextBox)Gridview1.Rows[rowIndex].Cells[3].FindControl("txtPrice");
+                            TextBox txtQ = (TextBox)Gridview1.Rows[rowIndex].Cells[4].FindControl("txtQ");
+                            TextBox txtStore = (TextBox)Gridview1.Rows[rowIndex].Cells[5].FindControl("txtStore");
+                            TextBox txtJust = (TextBox)Gridview1.Rows[rowIndex].Cells[6].FindControl("txtJust");
+                            Label lblStatus = (Label)Gridview1.Rows[rowIndex].Cells[7].FindControl("lblStatus");
+                            Label lblReason = (Label)Gridview1.Rows[rowIndex].Cells[6].FindControl("lblReason");
+                            CheckBox chkNotNeeded = (CheckBox)Gridview1.Rows[rowIndex].Cells[8].FindControl("chkNotNeeded");
 
-                        if (skipInsertLogic == false)
-                        {
-                            if (rowIndex != dtCurrentTable.Rows.Count)
+                            drCurrentRow = dtCurrentTable.NewRow();
+                            drCurrentRow["RowNumber"] = i + 1;
+                            // if its the last row and it's empty, exit looop
+                            if (i == dtCurrentTable.Rows.Count & txtName.Text == string.Empty & txtDesc.Text == string.Empty & txtStore.Text == string.Empty & txtJust.Text == string.Empty)
                             {
-                                PurchaseOrderItem item = PurchaseOrderItemFactory.Create();
+                                break;
+                            }
 
-                                if (chkNotNeeded.Checked)
+                            if (skipInsertLogic == false)
+                            {
+                                if (rowIndex != dtCurrentTable.Rows.Count)
                                 {
-                                    PurchaseOrderItem.noLongerNeeded(item);
+                                    PurchaseOrderItem item = PurchaseOrderItemFactory.Create();
 
-                                    txtPrice.Text = 0.ToString();
-                                    txtQ.Text = 0.ToString();
-                                    txtDesc.Text = "No longer needed";
-                                }
-
-                                try
-                                {
-                                    item.ItemName = txtName.Text;
-                                    item.Description = txtDesc.Text;
-
-                                    //skip validation for these, since they are empty and will trigger validation
-                                    if (txtDesc.Text != "No longer needed")
+                                    if (chkNotNeeded.Checked)
                                     {
-                                        item.Price = double.Parse(txtPrice.Text);
-                                        item.Quantity = int.Parse(txtQ.Text);
+                                        PurchaseOrderItem.noLongerNeeded(item);
+
+                                        txtPrice.Text = 0.ToString();
+                                        txtQ.Text = 0.ToString();
+                                        txtDesc.Text = "No longer needed";
                                     }
 
-                                    item.Source = txtStore.Text;
-                                    item.Justification = txtJust.Text;
-                                }
-                                catch (Exception ex)
-                                {
-                                    lblError.Text = ex.Message.ToString();
-                                    return;
-                                }
-
-
-                                //if the rowindex is equal to the rowcount AKA the last row, give it a fake index so it can be found and replaced later
-                                if (rowIndex == dtCurrentTable.Rows.Count - 1)
-                                {
-                                    item.ItemID = -1;
-                                }
-
-                                // if PO has an id of 0 AKA not inserted then do so
-                                if (myPurchaseOrder.PurchaseOrderID == 0)
-                                {
-                                    myPurchaseOrder.Items.Insert(rowIndex, item);
-                                    myPurchaseOrder.OrderDate = DateTime.Now;
-                                    myPurchaseOrder.Status = OrderStatus.Pending;
-                                    myPurchaseOrder.EmployeeID = int.Parse(Session["LoggedInID"].ToString());
-                                    doTaxCalculations();
-
-                                    Dictionary<string, int> ids = PurchaseOrderCUD.Create(myPurchaseOrder, item);
-                                    //insert the PO and initial item, adding the ID's to a dict
-                                    myPurchaseOrder.PurchaseOrderID = ids["POID"];
-                                    myPurchaseOrder.Items[rowIndex].ItemID = ids["ItemID"];
-
-                                    //if the po is already in the DB, update
-                                }
-                                else {
-
-                                    bool merge = false;
-                                    int mergeId = 0;
-                                    for (int x = 0; x <= myPurchaseOrder.Items.Count - 1; x++)
+                                    try
                                     {
-                                        if (item.ItemName == myPurchaseOrder.Items[x].ItemName & item.Description == myPurchaseOrder.Items[x].Description & rowIndex == dtCurrentTable.Rows.Count - 1)
+                                        item.ItemName = txtName.Text;
+                                        item.Description = txtDesc.Text;
+
+                                        //skip validation for these, since they are empty and will trigger validation
+                                        if (txtDesc.Text != "No longer needed")
                                         {
-                                            merge = true;
-                                            mergeId = x;
-                                            break;
+                                            item.Price = double.Parse(txtPrice.Text);
+                                            item.Quantity = int.Parse(txtQ.Text);
                                         }
-                                        else {
-                                            merge = false;
-                                        }
-                                    }
 
-                                    if (merge)
+                                        item.Source = txtStore.Text;
+                                        item.Justification = txtJust.Text;
+                                    }
+                                    catch (Exception)
                                     {
-                                        //merge
-                                        
-                                        myPurchaseOrder.Items[mergeId].Quantity += item.Quantity;
-                                        doTaxCalculations();
-                                        PurchaseOrderItemCUD.Update(myPurchaseOrder.Items[mergeId]);
-                                        PurchaseOrderCUD.Update(myPurchaseOrder);
-                                        txtName.Text = string.Empty;
-                                        txtDesc.Text = string.Empty;
-                                        txtPrice.Text = string.Empty;
-                                        txtQ.Text = string.Empty;
-                                        txtStore.Text = string.Empty;
-                                        txtJust.Text = string.Empty;
-                                        lblStatus.Text = string.Empty;
-                                        SetPreviousData();
+                                        lblError.Text = "One or more fields are invalid. Please check.";
                                         return;
                                     }
-                                    else if (rowIndex == myPurchaseOrder.Items.Count)
+
+
+                                    //if the rowindex is equal to the rowcount AKA the last row, give it a fake index so it can be found and replaced later
+                                    if (rowIndex == dtCurrentTable.Rows.Count - 1)
                                     {
-                                        //insert
-                                        item.PurchaseOrderID = myPurchaseOrder.PurchaseOrderID;
+                                        item.ItemID = -1;
+                                    }
+
+                                    // if PO has an id of 0 AKA not inserted then do so
+                                    if (myPurchaseOrder.PurchaseOrderID == 0)
+                                    {
                                         myPurchaseOrder.Items.Insert(rowIndex, item);
+                                        myPurchaseOrder.OrderDate = DateTime.Now;
+                                        myPurchaseOrder.Status = OrderStatus.Pending;
+                                        myPurchaseOrder.EmployeeID = int.Parse(Session["LoggedInID"].ToString());
                                         doTaxCalculations();
-                                        myPurchaseOrder.Items.Last().ItemID = PurchaseOrderItemCUD.Insert(item);
-                                        PurchaseOrderCUD.Update(myPurchaseOrder);
+
+                                        Dictionary<string, int> ids = PurchaseOrderCUD.Create(myPurchaseOrder, item);
+                                        //insert the PO and initial item, adding the ID's to a dict
+                                        myPurchaseOrder.PurchaseOrderID = ids["POID"];
+                                        myPurchaseOrder.Items[rowIndex].ItemID = ids["ItemID"];
+
+                                        //if the po is already in the DB, update
                                     }
                                     else {
-                                        //update
-                                        item.ItemID = myPurchaseOrder.Items[rowIndex].ItemID;
-                                        item.PurchaseOrderID = myPurchaseOrder.Items[rowIndex].PurchaseOrderID;
 
-                                        if (item.Description == "No longer needed")
+                                        bool merge = false;
+                                        int mergeId = 0;
+                                        for (int x = 0; x <= myPurchaseOrder.Items.Count - 1; x++)
                                         {
-                                            item.Status = ItemStatus.Denied;
+                                            if (item.ItemName == myPurchaseOrder.Items[x].ItemName & item.Description == myPurchaseOrder.Items[x].Description & rowIndex == dtCurrentTable.Rows.Count - 1)
+                                            {
+                                                merge = true;
+                                                mergeId = x;
+                                                break;
+                                            }
+                                            else {
+                                                merge = false;
+                                            }
                                         }
 
-                                        myPurchaseOrder.Items.RemoveAt(rowIndex);
-                                        myPurchaseOrder.Items.Insert(rowIndex, item);
-                                        doTaxCalculations();
-                                        PurchaseOrderItemCUD.Update(myPurchaseOrder.Items[rowIndex]);
-                                        PurchaseOrderCUD.Update(myPurchaseOrder);
+                                        if (merge)
+                                        {
+                                            //merge
+
+                                            myPurchaseOrder.Items[mergeId].Quantity += item.Quantity;
+                                            doTaxCalculations();
+                                            PurchaseOrderItemCUD.Update(myPurchaseOrder.Items[mergeId]);
+                                            PurchaseOrderCUD.Update(myPurchaseOrder);
+                                            txtName.Text = string.Empty;
+                                            txtDesc.Text = string.Empty;
+                                            txtPrice.Text = string.Empty;
+                                            txtQ.Text = string.Empty;
+                                            txtStore.Text = string.Empty;
+                                            txtJust.Text = string.Empty;
+                                            lblStatus.Text = string.Empty;
+                                            SetPreviousData();
+                                            return;
+                                        }
+                                        else if (rowIndex == myPurchaseOrder.Items.Count)
+                                        {
+                                            //insert
+                                            item.PurchaseOrderID = myPurchaseOrder.PurchaseOrderID;
+                                            myPurchaseOrder.Items.Insert(rowIndex, item);
+                                            doTaxCalculations();
+                                            myPurchaseOrder.Items.Last().ItemID = PurchaseOrderItemCUD.Insert(item);
+                                            PurchaseOrderCUD.Update(myPurchaseOrder);
+                                        }
+                                        else {
+                                            //update
+                                            item.ItemID = myPurchaseOrder.Items[rowIndex].ItemID;
+                                            item.PurchaseOrderID = myPurchaseOrder.Items[rowIndex].PurchaseOrderID;
+
+                                            if (item.Description == "No longer needed")
+                                            {
+                                                item.Status = ItemStatus.Denied;
+                                            }
+
+                                            myPurchaseOrder.Items.RemoveAt(rowIndex);
+                                            myPurchaseOrder.Items.Insert(rowIndex, item);
+                                            doTaxCalculations();
+                                            PurchaseOrderItemCUD.Update(myPurchaseOrder.Items[rowIndex]);
+                                            PurchaseOrderCUD.Update(myPurchaseOrder);
+                                        }
                                     }
                                 }
                             }
-                        }
-                        else {
-                            if (rowIndex != dtCurrentTable.Rows.Count - 1)
+                            else {
+                                if (rowIndex != dtCurrentTable.Rows.Count - 1)
+                                {
+                                    txtName.Text = myPurchaseOrder.Items[rowIndex].ItemName;
+                                    txtDesc.Text = myPurchaseOrder.Items[rowIndex].Description;
+                                    txtPrice.Text = myPurchaseOrder.Items[rowIndex].Price.ToString();
+                                    txtQ.Text = myPurchaseOrder.Items[rowIndex].Quantity.ToString();
+                                    txtStore.Text = myPurchaseOrder.Items[rowIndex].Source;
+                                    txtJust.Text = myPurchaseOrder.Items[rowIndex].Justification;
+                                    lblStatus.Text = myPurchaseOrder.Items[rowIndex].Status.ToString();
+                                }
+                            }
+                            ViewState["PO"] = myPurchaseOrder;
+
+                            if (rowIndex == dtCurrentTable.Rows.Count - 1 && txtName.Text != string.Empty)
                             {
-                                txtName.Text = myPurchaseOrder.Items[rowIndex].ItemName;
-                                txtDesc.Text = myPurchaseOrder.Items[rowIndex].Description;
-                                txtPrice.Text = myPurchaseOrder.Items[rowIndex].Price.ToString();
-                                txtQ.Text = myPurchaseOrder.Items[rowIndex].Quantity.ToString();
-                                txtStore.Text = myPurchaseOrder.Items[rowIndex].Source;
-                                txtJust.Text = myPurchaseOrder.Items[rowIndex].Justification;
                                 lblStatus.Text = myPurchaseOrder.Items[rowIndex].Status.ToString();
                             }
-                        }
-                        ViewState["PO"] = myPurchaseOrder;
 
-                        if (rowIndex == dtCurrentTable.Rows.Count - 1 && txtName.Text != string.Empty)
+                            dtCurrentTable.Rows[i - 1]["Column1"] = txtName.Text;
+                            dtCurrentTable.Rows[i - 1]["Column2"] = txtDesc.Text;
+                            dtCurrentTable.Rows[i - 1]["Column3"] = txtPrice.Text;
+                            dtCurrentTable.Rows[i - 1]["Column4"] = txtQ.Text;
+                            dtCurrentTable.Rows[i - 1]["Column5"] = txtStore.Text;
+                            dtCurrentTable.Rows[i - 1]["Column6"] = txtJust.Text;
+                            dtCurrentTable.Rows[i - 1]["Column7"] = lblStatus.Text;
+                            dtCurrentTable.Rows[i - 1]["Column8"] = chkNotNeeded.Checked;
+
+                            if (myPurchaseOrder.Status == OrderStatus.Closed)
+                            {
+                                txtDesc.Enabled = false;
+                                txtName.Enabled = false;
+                                txtPrice.Enabled = false;
+                                txtQ.Enabled = false;
+                                txtJust.Enabled = false;
+                                txtStore.Enabled = false;
+                                chkNotNeeded.Enabled = false;
+                                btnSubmit.Enabled = false;
+
+                            }
+                            rowIndex += 1;
+                        }
+
+                        if (isSubmit == false)
                         {
-                            lblStatus.Text = myPurchaseOrder.Items[rowIndex].Status.ToString();
+                            dtCurrentTable.Rows.Add(drCurrentRow);
+                            ViewState["CurrentTable"] = dtCurrentTable;
+                            Gridview1.DataSource = dtCurrentTable;
+                            Gridview1.DataBind();
                         }
-
-                        dtCurrentTable.Rows[i - 1]["Column1"] = txtName.Text;
-                        dtCurrentTable.Rows[i - 1]["Column2"] = txtDesc.Text;
-                        dtCurrentTable.Rows[i - 1]["Column3"] = txtPrice.Text;
-                        dtCurrentTable.Rows[i - 1]["Column4"] = txtQ.Text;
-                        dtCurrentTable.Rows[i - 1]["Column5"] = txtStore.Text;
-                        dtCurrentTable.Rows[i - 1]["Column6"] = txtJust.Text;
-                        dtCurrentTable.Rows[i - 1]["Column7"] = lblStatus.Text;
-                        dtCurrentTable.Rows[i - 1]["Column8"] = chkNotNeeded.Checked;
-
-                        if (myPurchaseOrder.Status == OrderStatus.Closed)
-                        {
-                            txtDesc.Enabled = false;
-                            txtName.Enabled = false;
-                            txtPrice.Enabled = false;
-                            txtQ.Enabled = false;
-                            txtJust.Enabled = false;
-                            txtStore.Enabled = false;
-                            chkNotNeeded.Enabled = false;
-                            btnSubmit.Enabled = false;
-
-                        }
-                        rowIndex += 1;
-                    }
-
-                    if (isSubmit == false)
-                    {
-                        dtCurrentTable.Rows.Add(drCurrentRow);
-                        ViewState["CurrentTable"] = dtCurrentTable;
-                        Gridview1.DataSource = dtCurrentTable;
-                        Gridview1.DataBind();
                     }
                 }
+                else {
+                    Response.Write("ViewState is null");
+                }
+                SetPreviousData();
+                lblError.Text = "";
             }
-            else {
-                Response.Write("ViewState is null");
-            }
-            SetPreviousData();
-            }
+
             catch (Exception e)
             {
 
@@ -454,16 +457,17 @@ namespace WebCSharp.PurchaseOrder
                         txtStore.Text = myPurchaseOrder.Items[i].Source;
                         txtJust.Text = myPurchaseOrder.Items[i].Justification;
                         lblReason.Text = myPurchaseOrder.Items[i].Reason;
-                        
-                        if (myPurchaseOrder.Status == OrderStatus.UnderReview )
+
+                        if (myPurchaseOrder.Status == OrderStatus.UnderReview)
                         {
                             lblStatus.Text = "Under Review";
-                            lblReason.Text = "Under Rewiew";          
-                        } else
+                            lblReason.Text = "Under Rewiew";
+                        }
+                        else
                         {
                             lblStatus.Text = myPurchaseOrder.Items[i].Status.ToString();
                         }
-                       
+
 
                         if (txtDesc.Text == "No longer needed")
                         {
@@ -486,7 +490,7 @@ namespace WebCSharp.PurchaseOrder
                             {
                                 btnSubmit.Enabled = false;
                             }
-                               
+
                         }
                         rowIndex += 1;
                     }

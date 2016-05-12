@@ -33,7 +33,7 @@
     </asp:DropDownList><br />
     Date Range:
    
-    <asp:TextBox runat="server" ID="txtSearchDate" Text="01/01/2000" placeholder="Purchase Order Date" />
+    <asp:TextBox runat="server" ID="txtSearchDate" Text="01/01/2016" placeholder="Purchase Order Date" />
     To 
    
     <asp:TextBox runat="server" ID="txtEndDate" placeholder="Purchase Order Date" />
