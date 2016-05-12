@@ -35,7 +35,14 @@ namespace WebCSharp.PurchaseOrder
                 results = PurchaseOrderList.Create(int.Parse(Session["LoggedInID"].ToString()), ddlStatus.SelectedIndex, txtFirst.Text, txtLast.Text, DateTime.Parse(txtSearchDate.Text), DateTime.Parse(txtEndDate.Text));
             }
 
-            loadDataGrid(results);
+            if (results.Count == 0)
+            {
+                lblErr.Text = "No results";
+            }
+            else {
+                lblErr.Text = "";
+                loadDataGrid(results);
+            }
         }
 
         public void loadDataGrid(List<PurchaseOrderList> results)
@@ -61,10 +68,8 @@ namespace WebCSharp.PurchaseOrder
                 Row["Order Date"] = results[i].OrderDate.ToShortDateString();
                 Table.Rows.Add(Row);
             }
-
             dgData.DataSource = Table;
             dgData.DataBind();
         }
-
     }
 }

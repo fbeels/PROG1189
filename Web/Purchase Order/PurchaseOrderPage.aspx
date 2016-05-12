@@ -93,7 +93,7 @@
             </Columns>
         </asp:GridView>
         <br />
-        <asp:Button Text="Submit" ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" /><br />
+        <asp:Button Text="Save" ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" /><br />
 
         <asp:Panel runat="server" ID="panMoney">
 

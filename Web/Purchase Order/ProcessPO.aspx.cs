@@ -16,6 +16,10 @@ namespace WebCSharp.PurchaseOrder
 {
     public partial class ProcessPO : System.Web.UI.Page
     {
+
+
+
+
         BOL.Purchase_Order.PurchaseOrder myPurchaseOrder;
 
         Employee myEmployee;
@@ -24,6 +28,22 @@ namespace WebCSharp.PurchaseOrder
         Department myDept;
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
+            if (Session["LoggedInID"] == null)
+            {
+                Response.Redirect("~/Login.aspx");
+            }
+            else
+            {
+                Employee tmpEmp = Employee.retrieve(int.Parse(Session["LoggedInID"].ToString()));
+                Department tmpDept = Department.GetADept(tmpEmp.DeptID);
+                if (tmpDept.SupervisorId != tmpEmp.EmpID)
+                {
+                    Response.Redirect("~/Login.aspx");
+                }
+            }
+
             if (Request.QueryString["id"] != null)
             {
                 pnlItemInfo.Visible = false;

@@ -24,9 +24,9 @@
     Search by ID or by Date<br />
     <asp:TextBox runat="server" ID="txtSearchID" placeholder="Purchase Order ID" />
     - or - 
-    <asp:TextBox runat="server" ID="txtSearchDate" placeholder="Start Date" />
+    <asp:TextBox runat="server" ID="txtSearchDate" Text="01/01/2016" placeholder="Start Date" />
     &
-    <asp:TextBox runat="server" ID="txtEndDate" placeholder="End Date" />
+    <asp:TextBox runat="server" ID="txtEndDate" Text="05/12/2016" placeholder="End Date" />
     <br />
 
     <asp:Button Text="Search" runat="server" ID="btnSearch" OnClick="btnSearch_Click" /><br />

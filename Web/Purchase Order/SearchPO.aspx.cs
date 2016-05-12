@@ -19,10 +19,13 @@ namespace WebCSharp.PurchaseOrder
             {
                 Response.Redirect("~/Login.aspx");
             }
+
+            txtEndDate.Text = DateTime.Now.ToShortDateString();
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            List<PurchaseOrderList> results;
             if (txtSearchDate.Text == string.Empty)
             {
                 if (txtSearchID.Text == string.Empty)
@@ -30,14 +33,24 @@ namespace WebCSharp.PurchaseOrder
                     lblErr.Text = "Both fields are empty, try again.";
                     return;
                 }
-                List<PurchaseOrderList> results = PurchaseOrderList.Create(int.Parse(Session["LoggedInID"].ToString()), int.Parse(txtSearchID.Text), null, null);
-                loadDataGrid(results);
+                results = PurchaseOrderList.Create(int.Parse(Session["LoggedInID"].ToString()), int.Parse(txtSearchID.Text), null, null);
+                
             }
             else {
-                List<PurchaseOrderList> results = (PurchaseOrderList.Create(int.Parse(Session["LoggedInID"].ToString()), -1, System.DateTime.Parse(txtSearchDate.Text), System.DateTime.Parse(txtEndDate.Text)));
+                 results = (PurchaseOrderList.Create(int.Parse(Session["LoggedInID"].ToString()), -1, System.DateTime.Parse(txtSearchDate.Text), System.DateTime.Parse(txtEndDate.Text)));
+                
+            }
+            
+            if (results.Count == 0)
+            {
+                lblErr.Text = "No results";
+            }
+            else
+            {
+                lblErr.Text = "";
                 loadDataGrid(results);
             }
-
+           
         }
 
 
