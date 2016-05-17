@@ -13,10 +13,7 @@
         });
     </script>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-    User:<asp:DropDownList ID="ddlEmployees" runat="server">
-    </asp:DropDownList><br />
-
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">  
     Personal Information:
     <hr />
     First Name:<asp:TextBox ID="txtFirst" runat="server" /><br />

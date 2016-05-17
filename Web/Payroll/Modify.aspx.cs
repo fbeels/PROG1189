@@ -26,7 +26,7 @@ namespace Web.Payroll
             txtFirst.Enabled = false;
             txtMid.Text = myEmp.MiddleInt;
             txtMid.Enabled = false;
-            txtLast.Text =myEmp.LastName;
+            txtLast.Text = myEmp.LastName;
             txtLast.Enabled = false;
             txtStreet.Text = myEmp.Address;
             txtCity.Text = myEmp.City;
@@ -77,27 +77,27 @@ namespace Web.Payroll
 
             //emp2save.JobStartDate = DateTime.Parse(txtjobstartDate.Text);
 
-            DateTime jstart=myEmp.JobStartDate;
+            DateTime jstart = myEmp.JobStartDate;
             emp2save.JobStartDate = jstart;
 
-           // emp2save.SeniorityDate = DateTime.Parse(txtseniorityDate.Text);
-emp2save.SeniorityDate = myEmp.SeniorityDate;
-           // emp2save.DOB = DateTime.Parse(txtdob.Text);
-emp2save.DOB = myEmp.DOB;
-          //  emp2save.TerminationDate = DateTime.Parse(txtterminationDate.Text);
-emp2save.TerminationDate = myEmp.TerminationDate;
+            // emp2save.SeniorityDate = DateTime.Parse(txtseniorityDate.Text);
+            emp2save.SeniorityDate = myEmp.SeniorityDate;
+            // emp2save.DOB = DateTime.Parse(txtdob.Text);
+            emp2save.DOB = myEmp.DOB;
+            //  emp2save.TerminationDate = DateTime.Parse(txtterminationDate.Text);
+            emp2save.TerminationDate = myEmp.TerminationDate;
             emp2save.DeptID = myEmp.DeptID;
-            
+
             emp2save.EmailNotification = myEmp.EmailNotification;
             emp2save.empstatus = myEmp.empstatus;
             emp2save.JobID = myEmp.JobID;
-            
+
             emp2save.PayRate = myEmp.PayRate;
             //
             emp2save.CANRETIRE = myEmp.CANRETIRE;
             emp2save.SupervisorID = myEmp.SupervisorID;
             emp2save.supervisorName = myEmp.supervisorName;
-           // 
+            // 
             emp2save.SIN = myEmp.SIN;
 
             if (Employee.update(emp2save) == true)

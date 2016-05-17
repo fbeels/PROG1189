@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 using Common;
 using BOL.Purchase_Order_Item;
 using SQLLayer;
-
+using System.Data.Sql;
+using System.Data;
 
 namespace BOL.Purchase_Order
 {
     [Serializable]
     public class PurchaseOrder : IPurchaseOrder
     {
+
         /// <summary>
         /// Setter and getter for Purchase Order ID. Primary Key.
         /// </summary>
@@ -36,7 +38,9 @@ namespace BOL.Purchase_Order
             }
         }
 
-
+        /// <summary>
+        /// Gets and sets the employee ID
+        /// </summary>
         private int _EmpID;
         public int EmployeeID
         {
@@ -54,9 +58,10 @@ namespace BOL.Purchase_Order
             }
         }
 
-
+        /// <summary>
+        /// Gets and sets the order date
+        /// </summary>
         private DateTime _OrderDate;
-
         public DateTime OrderDate
         {
             get { return _OrderDate; }
@@ -73,9 +78,10 @@ namespace BOL.Purchase_Order
             }
         }
 
-
+        /// <summary>
+        /// Gets and sets subtotal
+        /// </summary>
         private double _SubTotal;
-
         public double SubTotal
         {
             get { return _SubTotal; }
@@ -94,9 +100,10 @@ namespace BOL.Purchase_Order
             }
         }
 
-
+        /// <summary>
+        /// Gets and set the tax
+        /// </summary>
         private double _Tax;
-
         public double Tax
         {
             get { return _Tax; }
@@ -115,8 +122,10 @@ namespace BOL.Purchase_Order
             }
         }
 
+        /// <summary>
+        /// Gets and sets the total
+        /// </summary>
         private double _Total;
-
         public double Total
         {
             get { return _Total; }
@@ -135,9 +144,23 @@ namespace BOL.Purchase_Order
             }
         }
 
+        /// <summary>
+        /// Gets and sets the status
+        /// </summary>
         public OrderStatus Status { get; set; }
-
+        /// <summary>
+        /// Gets and sets the items.
+        /// </summary>
         public List<PurchaseOrderItem> Items { get; set; }
+
+
+        private byte[] _lastupdated;        
+        public byte[] lastudpated
+        {
+            get { return _lastupdated; }
+            set { _lastupdated = value; }
+        }
+
 
         const double tax = .13;
 

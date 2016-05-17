@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Modify.aspx.cs" Inherits="Web.Payroll.Modify" MasterPageFile="~/Acme.Master"%>
 
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <!-- Do all JavaScript and CSS stuff here -->
@@ -73,7 +75,7 @@
             <asp:RequiredFieldValidator runat="server"  ControlToValidate="txtPostal" ErrorMessage="Postal is required.">*</asp:RequiredFieldValidator>
                                  </td></tr>
         <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
-        <tr><td>Cell Phone:</td><td><asp:TextBox id="txtCell" runat="server" />
+       <tr><td>Cell Phone:</td><td><asp:TextBox id="txtCell" runat="server" />
             <asp:RequiredFieldValidator runat="server"  ControlToValidate="txtCell" ErrorMessage="cell phone is required.">*</asp:RequiredFieldValidator>
                                 </td></tr>
         <tr><td>Work Phone</td><td><asp:TextBox id="txtwork" runat="server" />
@@ -95,6 +97,9 @@
         <tr><td>empstatus</td><td><asp:TextBox id="txtempstatus" runat="server" /></td></tr>
         <tr><td>lastchanged</td><td><asp:TextBox id="txtlastchanged" runat="server" /></td></tr>--%>
 
+        <asp:ScriptManager runat="server" />
+
+        <rsweb:ReportViewer ID="ReportViewer1" runat="server"></rsweb:ReportViewer>
 
 </table>
 
