@@ -512,10 +512,10 @@ namespace BOL
             return y;
         }
 
-        static public bool update(Employee emp)
+        static public int update(Employee emp)
         
         {
-            return RePackagerDt2Bool(EmployeeSQL.UpdateEmp(emp));
+            return EmployeeSQL.UpdateEmp(emp);
         }
 
         static private bool RePackagerDt2Bool(DataTable dt)

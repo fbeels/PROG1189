@@ -65,7 +65,7 @@ namespace SQLLayer
 
 
 
-        public static DataTable UpdateEmp(IEmployee emp)
+        public static int UpdateEmp(IEmployee emp)
         {
             List<ParmStructure> tmpParmList = new List<ParmStructure>();
             tmpParmList.Add(new ParmStructure("@empid", SqlDbType.Int, ParameterDirection.Input, 0, emp.EmpID));
@@ -90,7 +90,7 @@ namespace SQLLayer
            tmpParmList.Add(new ParmStructure("@terminationDate", SqlDbType.Date, ParameterDirection.Input, 0, emp.TerminationDate));
             tmpParmList.Add(new ParmStructure("@emailnotificatoins", SqlDbType.Bit, ParameterDirection.Input, 0, emp.EmailNotification));
 
-            return DataAccess.GetDataTable("UpdateEmployee", tmpParmList);
+            return DataAccess.SendData("UpdateEmployee", tmpParmList);
         }
 
         public static DataTable CanEmpRetire(int empid)

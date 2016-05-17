@@ -13,7 +13,7 @@ namespace Web.Payroll
         Employee myEmp = new Employee();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            myEmp = Employee.retrieve(int.Parse(ddlEmployees.Text));
         }
 
         protected void ddlEmployees_SelectedIndexChanged(object sender, EventArgs e)
@@ -100,13 +100,13 @@ namespace Web.Payroll
             // 
             emp2save.SIN = myEmp.SIN;
 
-            if (Employee.update(emp2save) == true)
+            if (Employee.update(emp2save) > 1 )
             {
-                lblresult.Text = "Saved";
+                lblresult.Text = "error";
             }
             else
             {
-                lblresult.Text = "error";
+                lblresult.Text = "saved";
             }
             //}
             //catch

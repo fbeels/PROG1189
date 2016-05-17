@@ -97,10 +97,6 @@
         <tr><td>empstatus</td><td><asp:TextBox id="txtempstatus" runat="server" /></td></tr>
         <tr><td>lastchanged</td><td><asp:TextBox id="txtlastchanged" runat="server" /></td></tr>--%>
 
-        <asp:ScriptManager runat="server" />
-
-        <rsweb:ReportViewer ID="ReportViewer1" runat="server"></rsweb:ReportViewer>
-
 </table>
 
 
